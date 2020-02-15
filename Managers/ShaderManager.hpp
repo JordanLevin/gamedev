@@ -10,7 +10,7 @@
 class ShaderManager
 {
   private:
-    std::map<std::string, GLuint> programs;
+    static std::map<std::string, GLuint> programs;
 
     std::string readShader(const std::string& filename);
     GLuint createShader(GLenum shaderType,
@@ -23,7 +23,7 @@ class ShaderManager
     void createProgram(const std::string& VertexShaderFilename,
                          const std::string& FragmentShaderFilename, 
                          const std::string& shaderName);
-    GLuint getShader(const std::string& shaderName);
+    static GLuint getShader(const std::string& shaderName);
 
 };
 #endif

@@ -1,5 +1,5 @@
 #include "GameModels.hpp"
-#include "VertexFormat.hpp"
+#include "../Rendering/VertexFormat.hpp"
 
 #include <GL/glew.h> 
 

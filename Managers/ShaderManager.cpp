@@ -8,6 +8,8 @@
 #include <string>
 #include <filesystem>
 
+std::map<std::string, GLuint> ShaderManager::programs; //static definition
+
 std::string ShaderManager::readShader(const std::string& filename){
   std::string shaderCode;
   std::string path = std::string("Shaders/") + filename;

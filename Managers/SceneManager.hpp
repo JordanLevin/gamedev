@@ -2,11 +2,13 @@
 #define SCENEMANAGER_H
 
 #include "ShaderManager.hpp"
+#include "ModelManager.hpp"
 #include "../Core/Init/IListener.hpp"
 
 class SceneManager: public IListener{
   private:
     ShaderManager shaderManager;
+    ModelManager modelManager;
   public:
     SceneManager();
     ~SceneManager() = default;

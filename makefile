@@ -1,8 +1,9 @@
 INITP = ./Core/Init
 CPPFLAGS = -g -Wall -Wextra -std=c++17
 
-all: shaders main gamemodels initglut initglew scenemanager
-	g++ main.o InitGlut.o InitGlew.o GameModels.o ShaderManager.o SceneManager.o \
+all: shaders main initglut initglew scenemanager modelmanager triangle quad model 
+	g++ main.o InitGlut.o InitGlew.o ShaderManager.o SceneManager.o Model.o\
+		ModelManager.o Triangle.o Quad.o \
 		-o main -lglut -lGL -lGLEW $(CPPFLAGS)
 
 main: main.cpp
@@ -21,8 +22,17 @@ shaders: ./Managers/ShaderManager.cpp ./Managers/ShaderManager.hpp
 scenemanager: ./Managers/SceneManager.cpp ./Managers/SceneManager.hpp $(INITP)/IListener.hpp
 	g++ ./Managers/SceneManager.cpp -c $(CPPFLAGS)
 
-gamemodels: ./Core/GameModels.cpp ./Core/GameModels.hpp
-	g++ ./Core/GameModels.cpp -c $(CPPFLAGS)
+modelmanager: ./Managers/ModelManager.cpp ./Managers/ModelManager.hpp $(INITP)/IListener.hpp
+	g++ ./Managers/ModelManager.cpp -c $(CPPFLAGS)
+
+triangle: ./Rendering/Models/Triangle.cpp ./Rendering/Models/Triangle.hpp
+	g++ ./Rendering/Models/Triangle.cpp -c $(CPPFLAGS)
+
+quad: ./Rendering/Models/Quad.cpp ./Rendering/Models/Quad.hpp
+	g++ ./Rendering/Models/Quad.cpp -c $(CPPFLAGS)
+
+model: ./Rendering/Models/Model.cpp ./Rendering/Models/Model.hpp
+	g++ ./Rendering/Models/Model.cpp -c $(CPPFLAGS)
 
 clean:
 	rm -f *.o main
