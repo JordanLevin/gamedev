@@ -1,3 +1,4 @@
+#include "DebugOutput.hpp"
 #include "InitGlut.hpp"
 #include "InitGlew.hpp"
 #include "WindowInfo.hpp"
@@ -33,12 +34,18 @@ void InitGlut::init(const WindowInfo& window,
 
   std::cout << "GLUT: initalized" << std::endl;
 
+  InitGlew::init();
+  //Enable debugging and register callback from debugoutput header
+  glEnable(GL_DEBUG_OUTPUT);
+  glDebugMessageCallback(DebugOutput::myCallback, NULL);
+  glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE,
+                        GL_DONT_CARE, 0, NULL, GL_TRUE);
+
   glutIdleFunc(idleCallback);
   glutCloseFunc(closeCallback);
   glutDisplayFunc(displayCallback);
   glutReshapeFunc(reshapeCallback);
 
-  InitGlew::init();
 
   glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);
 
@@ -69,9 +76,6 @@ void InitGlut::displayCallback()
 
     listener->notifyEndFrame();
   }
-  //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-  //glClearColor(0.0, 0.0, 0.0, 1);
-  //glutSwapBuffers();
 }
 
 void InitGlut::reshapeCallback(int width, int height){

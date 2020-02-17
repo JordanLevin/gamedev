@@ -9,6 +9,8 @@ class SceneManager: public IListener{
   private:
     ShaderManager shaderManager;
     ModelManager modelManager;
+    glm::mat4 view_matrix;
+    glm::mat4 projection_matrix;
   public:
     SceneManager();
     ~SceneManager() = default;

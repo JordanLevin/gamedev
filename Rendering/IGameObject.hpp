@@ -14,6 +14,7 @@ class IGameObject{
     virtual ~IGameObject() = 0;
 
     virtual void draw() = 0;
+    virtual void draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix) = 0;
     virtual void update() = 0;
     virtual void setProgram(GLuint shaderName) = 0;
     virtual void destroy() = 0;

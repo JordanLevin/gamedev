@@ -1,38 +1,44 @@
 INITP = ./Core/Init
-CPPFLAGS = -g -Wall -Wextra -std=c++17
+CPPFLAGS = -g -Wall -Wextra -std=c++17 -fsanitize=undefined -Wno-unused-parameter
+CC = g++
+LIBS = -lglut -lGL -lGLEW -lm
 
-all: shaders main initglut initglew scenemanager modelmanager triangle quad model 
-	g++ main.o InitGlut.o InitGlew.o ShaderManager.o SceneManager.o Model.o\
-		ModelManager.o Triangle.o Quad.o \
-		-o main -lglut -lGL -lGLEW $(CPPFLAGS)
+all: ShaderManager.o main.o InitGlut.o InitGlew.o SceneManager.o ModelManager.o \
+	Triangle.o Quad.o Model.o Cube.o
+	$(CC) main.o InitGlut.o InitGlew.o ShaderManager.o SceneManager.o Model.o\
+		ModelManager.o Triangle.o Quad.o Cube.o \
+		-o main $(LIBS) $(CPPFLAGS)
 
-main: main.cpp
-	g++ main.cpp -c $(CPPFLAGS)
+main.o: main.cpp
+	$(CC) main.cpp -c $(CPPFLAGS)
 
-initglut: $(INITP)/InitGlew.cpp $(INITP)/InitGlut.cpp $(INITP)/ContextInfo.hpp \
-					$(INITP)/FrameBufferInfo.hpp $(INITP)/WindowInfo.hpp
-	g++ $(INITP)/InitGlut.cpp -c -o InitGlut.o $(CPPFLAGS)
+InitGlut.o: $(INITP)/InitGlew.cpp $(INITP)/InitGlut.cpp $(INITP)/ContextInfo.hpp \
+					$(INITP)/FrameBufferInfo.hpp $(INITP)/WindowInfo.hpp $(INITP)/DebugOutput.hpp
+	$(CC) $(INITP)/InitGlut.cpp -c -o InitGlut.o $(CPPFLAGS)
 
-initglew: $(INITP)/InitGlew.cpp $(INITP)/InitGlew.hpp  
-	g++ $(INITP)/InitGlew.cpp -c -o InitGlew.o $(CPPFLAGS)
+InitGlew.o: $(INITP)/InitGlew.cpp $(INITP)/InitGlew.hpp  
+	$(CC) $(INITP)/InitGlew.cpp -c -o InitGlew.o $(CPPFLAGS)
 
-shaders: ./Managers/ShaderManager.cpp ./Managers/ShaderManager.hpp
-	g++ ./Managers/ShaderManager.cpp -c $(CPPFLAGS)
+ShaderManager.o: ./Managers/ShaderManager.cpp ./Managers/ShaderManager.hpp
+	$(CC) ./Managers/ShaderManager.cpp -c $(CPPFLAGS)
 
-scenemanager: ./Managers/SceneManager.cpp ./Managers/SceneManager.hpp $(INITP)/IListener.hpp
-	g++ ./Managers/SceneManager.cpp -c $(CPPFLAGS)
+SceneManager.o: ./Managers/SceneManager.cpp ./Managers/SceneManager.hpp $(INITP)/IListener.hpp
+	$(CC) ./Managers/SceneManager.cpp -c $(CPPFLAGS)
 
-modelmanager: ./Managers/ModelManager.cpp ./Managers/ModelManager.hpp $(INITP)/IListener.hpp
-	g++ ./Managers/ModelManager.cpp -c $(CPPFLAGS)
+ModelManager.o: ./Managers/ModelManager.cpp ./Managers/ModelManager.hpp $(INITP)/IListener.hpp
+	$(CC) ./Managers/ModelManager.cpp -c $(CPPFLAGS)
 
-triangle: ./Rendering/Models/Triangle.cpp ./Rendering/Models/Triangle.hpp
-	g++ ./Rendering/Models/Triangle.cpp -c $(CPPFLAGS)
+Triangle.o: ./Rendering/Models/Triangle.cpp ./Rendering/Models/Triangle.hpp
+	$(CC) ./Rendering/Models/Triangle.cpp -c $(CPPFLAGS)
 
-quad: ./Rendering/Models/Quad.cpp ./Rendering/Models/Quad.hpp
-	g++ ./Rendering/Models/Quad.cpp -c $(CPPFLAGS)
+Quad.o: ./Rendering/Models/Quad.cpp ./Rendering/Models/Quad.hpp
+	$(CC) ./Rendering/Models/Quad.cpp -c $(CPPFLAGS)
 
-model: ./Rendering/Models/Model.cpp ./Rendering/Models/Model.hpp
-	g++ ./Rendering/Models/Model.cpp -c $(CPPFLAGS)
+Cube.o: ./Rendering/Models/Cube.cpp ./Rendering/Models/Cube.hpp
+	$(CC) ./Rendering/Models/Cube.cpp -c $(CPPFLAGS)
+
+Model.o: ./Rendering/Models/Model.cpp ./Rendering/Models/Model.hpp
+	$(CC) ./Rendering/Models/Model.cpp -c $(CPPFLAGS)
 
 clean:
 	rm -f *.o main

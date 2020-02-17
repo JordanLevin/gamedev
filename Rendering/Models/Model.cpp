@@ -6,6 +6,9 @@ Model::~Model(){
 void Model::draw(){
 
 }
+void Model::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix){
+
+}
 void Model::update(){
 
 }
