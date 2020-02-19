@@ -50,9 +50,9 @@ void InitGlut::init(const WindowInfo& window,
   glutDisplayFunc(displayCallback);
   glutReshapeFunc(reshapeCallback);
 
-  glutKeyboardFunc(Camera::keyPress);
-  glutMouseFunc(Camera::mousePress);
-  glutMotionFunc(Camera::mouseMove);
+  glutKeyboardFunc(keyPress);
+  glutMouseFunc(mousePress);
+  glutMotionFunc(mouseMove);
 
   glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);
 
@@ -105,12 +105,20 @@ void InitGlut::exitFullscreen(){
   glutLeaveFullScreen();
 }
 
-glm::mat4 InitGlut::getViewMatrix(){
-  return dynamic_cast<SceneManager*>(listener)->getViewMatrix();
+void InitGlut::updateView(){
+  dynamic_cast<SceneManager*>(listener)->getCamera().updateView();
 }
 
-void InitGlut::setViewMatrix(const glm::mat4& view_matrix){
-  dynamic_cast<SceneManager*>(listener)->setViewMatrix(view_matrix);
+void InitGlut::keyPress(const unsigned char key, int x, int y){
+  dynamic_cast<SceneManager*>(listener)->getCamera().keyPress(key, x, y);
+}
+
+void InitGlut::mouseMove(int x, int y){
+  dynamic_cast<SceneManager*>(listener)->getCamera().mouseMove(x, y);
+}
+
+void InitGlut::mousePress(int button, int state, int x, int y){
+  dynamic_cast<SceneManager*>(listener)->getCamera().mousePress(button, state, x, y);
 }
 
 void InitGlut::printOpenGLInfo(const WindowInfo& window,

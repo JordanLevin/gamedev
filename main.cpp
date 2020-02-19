@@ -23,6 +23,7 @@ int main(int argc, char **argv)
   InitGlut::init(window, context, frameBufferInfo);
 
   IListener* scene = new SceneManager();
+  
   InitGlut::setListener(scene);
 
   InitGlut::run();

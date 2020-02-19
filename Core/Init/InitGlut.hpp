@@ -6,7 +6,6 @@
 #include "WindowInfo.hpp"
 #include "InitGlew.hpp"
 #include "IListener.hpp"
-#include "../../Input/Camera.hpp"
 
 #include <glm/glm.hpp>
 
@@ -21,6 +20,10 @@ class InitGlut{
     static void displayCallback();
     static void reshapeCallback(int width, int height);
     static void closeCallback();
+    static void updateView();
+    static void keyPress(const unsigned char key, int x, int y);
+    static void mouseMove(int x, int y);
+    static void mousePress(int button, int state, int x, int y);
 
   public:
     static void init(const WindowInfo& window,
@@ -35,9 +38,6 @@ class InitGlut{
     static void printOpenGLInfo(const WindowInfo& window,
                                 const ContextInfo& context);
     static void setListener(IListener* listener);
-
-    static glm::mat4 getViewMatrix();
-    static void setViewMatrix(const glm::mat4& view_matrix);
 };
 
 #endif

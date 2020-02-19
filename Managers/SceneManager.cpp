@@ -1,5 +1,6 @@
 #include "SceneManager.hpp"
 #include "ModelManager.hpp"
+#include "../Input/Camera.hpp"
 
 #include <cmath>
 
@@ -14,7 +15,8 @@ SceneManager::SceneManager(){
   view_matrix = glm::mat4(1.0f, 0.0f, 0.0f, 0.0f,
       0.0f, 1.0f, 0.0f, 0.0f,
       0.0f, 0.0f, -1.0f, 0.0f,
-      0.0f, 0.0f, 10.0f, 1.0f);
+      //0.0f, 0.0f, 10.0f, 1.0f);
+      0.0f, 0.0f, 0.0f, 1.0f);
   modelManager.init();
 }
 
@@ -26,8 +28,21 @@ glm::mat4 SceneManager::getViewMatrix(){
   return view_matrix;
 }
 
+Camera& SceneManager::getCamera(){
+  return camera;
+}
+void SceneManager::setCamera(const Camera& cam){
+  camera = cam;
+}
+
 void SceneManager::notifyBeginFrame(){
   modelManager.update();
+  //for(int i = 0; i < 4; i++){
+    //for(int j = 0; j < 4; j++){
+      //std::cout << view_matrix[i][j] << " ";
+    //}
+    //std::cout << std::endl;
+  //}
 }
 
 void SceneManager::notifyDisplayFrame(){

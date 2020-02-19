@@ -5,23 +5,23 @@
 #include <GL/freeglut.h>
 #include <glm/glm.hpp>
 
-#include "../Core/Init/InitGlut.hpp"
-
 class Camera {
   private:
-    static glm::vec3 eyeVector;
-    static glm::vec2 mousePosition;
-    static bool isMousePressed;
-    static float yaw;
-    static float pitch;
-    static float roll;
-    static float mouseXSensitivity;
-    static float mouseYSensitivity;
+    glm::mat4* view_matrix;
+    glm::vec3 eyeVector{0,0,0};
+    glm::vec2 mousePosition{0,0};
+    bool isMousePressed = false;
+    float yaw{0};
+    float pitch{0};
+    float roll{0};
+    float mouseXSensitivity{.01};
+    float mouseYSensitivity{.01};
 
   public: 
-    static void updateView();
-    static void keyPress(const unsigned char key, int x, int y);
-    static void mouseMove(int x, int y);
-    static void mousePress(int button, int state, int x, int y);
+    Camera(glm::mat4* view_matrix_);
+    void updateView();
+    void keyPress(const unsigned char key, int x, int y);
+    void mouseMove(int x, int y);
+    void mousePress(int button, int state, int x, int y);
 };
 #endif

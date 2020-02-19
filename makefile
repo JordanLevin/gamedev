@@ -14,7 +14,7 @@ main.o: main.cpp
 
 InitGlut.o: $(INITP)/InitGlew.cpp $(INITP)/InitGlut.cpp $(INITP)/ContextInfo.hpp \
 					$(INITP)/FrameBufferInfo.hpp $(INITP)/WindowInfo.hpp $(INITP)/DebugOutput.hpp \
-					./Input/Camera.hpp
+					./Managers/SceneManager.hpp
 	$(CC) $(INITP)/InitGlut.cpp -c -o InitGlut.o $(CPPFLAGS)
 
 InitGlew.o: $(INITP)/InitGlew.cpp $(INITP)/InitGlew.hpp  
@@ -23,7 +23,7 @@ InitGlew.o: $(INITP)/InitGlew.cpp $(INITP)/InitGlew.hpp
 ShaderManager.o: ./Managers/ShaderManager.cpp ./Managers/ShaderManager.hpp
 	$(CC) ./Managers/ShaderManager.cpp -c $(CPPFLAGS)
 
-SceneManager.o: ./Managers/SceneManager.cpp ./Managers/SceneManager.hpp $(INITP)/IListener.hpp
+SceneManager.o: ./Managers/SceneManager.cpp ./Managers/SceneManager.hpp $(INITP)/IListener.hpp ./Input/Camera.hpp
 	$(CC) ./Managers/SceneManager.cpp -c $(CPPFLAGS)
 
 ModelManager.o: ./Managers/ModelManager.cpp ./Managers/ModelManager.hpp $(INITP)/IListener.hpp
@@ -44,7 +44,7 @@ IndexCube.o: ./Rendering/Models/IndexCube.cpp ./Rendering/Models/IndexCube.hpp
 Model.o: ./Rendering/Models/Model.cpp ./Rendering/Models/Model.hpp
 	$(CC) ./Rendering/Models/Model.cpp -c $(CPPFLAGS)
 
-Camera.o: ./Input/Camera.cpp ./Input/Camera.hpp ./Managers/SceneManager.hpp
+Camera.o: ./Input/Camera.cpp ./Input/Camera.hpp
 	$(CC) ./Input/Camera.cpp -c $(CPPFLAGS)
 
 clean:

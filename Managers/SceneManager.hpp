@@ -4,6 +4,7 @@
 #include "ShaderManager.hpp"
 #include "ModelManager.hpp"
 #include "../Core/Init/IListener.hpp"
+#include "../Input/Camera.hpp"
 
 class SceneManager: public IListener{
   private:
@@ -11,6 +12,7 @@ class SceneManager: public IListener{
     ModelManager modelManager;
     glm::mat4 view_matrix;
     glm::mat4 projection_matrix;
+    Camera camera{&view_matrix};
   public:
     SceneManager();
     ~SceneManager() = default;
@@ -23,6 +25,9 @@ class SceneManager: public IListener{
 
     void setViewMatrix(glm::mat4 view_matrix_);
     glm::mat4 getViewMatrix();
+
+    Camera& getCamera();
+    void setCamera(const Camera& cam);
 };
 
 #endif

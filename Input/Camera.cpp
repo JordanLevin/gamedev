@@ -5,14 +5,9 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-glm::vec3 Camera::eyeVector = glm::vec3{0,0,0};
-glm::vec2 Camera::mousePosition = glm::vec2{0,0};
-bool Camera::isMousePressed = false;
-float Camera::yaw = 0;
-float Camera::pitch = 0;
-float Camera::roll = 0;
-float Camera::mouseXSensitivity = 0.01;
-float Camera::mouseYSensitivity = 0.01;
+Camera::Camera(glm::mat4* view_matrix_){
+  view_matrix = view_matrix_;
+}
 
 void Camera::updateView(){
   glm::mat4 rollMat = glm::mat4(1.0f);
@@ -20,7 +15,7 @@ void Camera::updateView(){
   glm::mat4 yawMat = glm::mat4(1.0f);
 
   rollMat = glm::rotate(rollMat, roll, glm::vec3(0.0f, 0.0f, 1.0f));
-  pitchMat = glm::rotate(pitchMat, pitch, glm::vec3(1.0f, 0.0f, 1.0f));
+  pitchMat = glm::rotate(pitchMat, pitch, glm::vec3(1.0f, 0.0f, 0.0f));
   yawMat = glm::rotate(yawMat, yaw, glm::vec3(0.0f, 1.0f, 0.0f));
 
   glm::mat4 rotate = rollMat * pitchMat * yawMat;
@@ -28,7 +23,7 @@ void Camera::updateView(){
   glm::mat4 translate = glm::mat4(1.0f);
   translate = glm::translate(translate, -eyeVector);
 
-  InitGlut::setViewMatrix(rotate * translate);
+  *view_matrix = (rotate * translate);
 }
 
 void Camera::keyPress(const unsigned char key, int x, int y){
@@ -51,7 +46,7 @@ void Camera::keyPress(const unsigned char key, int x, int y){
       break;
   }
 
-  glm::mat4 mat = InitGlut::getViewMatrix(); //figure where this comes from
+  glm::mat4& mat = *view_matrix;
   glm::vec3 forward(mat[0][2], mat[1][2], mat[2][2]);
   glm::vec3 strafe(mat[0][0], mat[1][0], mat[2][0]);
 
