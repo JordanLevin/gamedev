@@ -20,6 +20,9 @@ class SceneManager: public IListener{
     virtual void notifyEndFrame();
     virtual void notifyReshape(int width, int height, 
                                int pwidth, int pheight);
+
+    void setViewMatrix(glm::mat4 view_matrix_);
+    glm::mat4 getViewMatrix();
 };
 
 #endif

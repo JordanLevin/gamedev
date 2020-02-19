@@ -8,6 +8,8 @@ uniform vec3 rotation;
 out vec4 color;
 
 void main(){
+  //color = vec4(in_color[0] + sin(rotation.x), in_color[1] + tan(rotation.y),
+  //in_color[2] + sin(rotation.z), in_color[3]);
   color = in_color;
   mat4 rotate_x, rotate_y, rotate_z;
 
@@ -27,5 +29,22 @@ void main(){
       0.0, 0.0, 0.0, 1.0);
 
   gl_Position = projection_matrix * view_matrix * 
-    rotate_y * rotate_x * rotate_z * vec4(in_position, 1);
+    vec4(in_position, 1);
+  //gl_Position = projection_matrix * view_matrix * 
+  //  rotate_y * rotate_x * rotate_z * vec4(in_position, 1);
+  /*mat4 translate = mat4(
+      1,0,0,-in_position.x,
+      0,1,0,-in_position.y,
+      0,0,1,-in_position.z,
+      0,0,0,1
+      );
+  mat4 translate2 = mat4(
+      1,0,0,in_position.x,
+      0,1,0,in_position.y,
+      0,0,1,in_position.z,
+      0,0,0,1
+      );
+  gl_Position = projection_matrix * view_matrix * 
+    translate2 * rotate_y * rotate_x * rotate_z * translate * vec4(in_position, 1);
+  */
 }

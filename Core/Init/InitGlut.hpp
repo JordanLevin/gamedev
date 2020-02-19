@@ -6,6 +6,9 @@
 #include "WindowInfo.hpp"
 #include "InitGlew.hpp"
 #include "IListener.hpp"
+#include "../../Input/Camera.hpp"
+
+#include <glm/glm.hpp>
 
 #include <iostream>
 
@@ -32,6 +35,9 @@ class InitGlut{
     static void printOpenGLInfo(const WindowInfo& window,
                                 const ContextInfo& context);
     static void setListener(IListener* listener);
+
+    static glm::mat4 getViewMatrix();
+    static void setViewMatrix(const glm::mat4& view_matrix);
 };
 
 #endif

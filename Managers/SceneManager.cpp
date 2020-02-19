@@ -18,6 +18,14 @@ SceneManager::SceneManager(){
   modelManager.init();
 }
 
+void SceneManager::setViewMatrix(glm::mat4 view_matrix_){
+  view_matrix = view_matrix_;
+}
+
+glm::mat4 SceneManager::getViewMatrix(){
+  return view_matrix;
+}
+
 void SceneManager::notifyBeginFrame(){
   modelManager.update();
 }
@@ -51,3 +59,4 @@ void SceneManager::notifyReshape(int width, int height,
   projection_matrix[3][2] = 2.0f * near1 * far1 / (near1 - far1);
 
 }
+

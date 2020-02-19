@@ -5,6 +5,7 @@
 #include "../Rendering/Models/Triangle.hpp"
 #include "../Rendering/Models/Quad.hpp"
 #include "../Rendering/Models/Cube.hpp"
+#include "../Rendering/Models/IndexCube.hpp"
 
 ModelManager::~ModelManager(){
   for(auto model: gameModelList){
@@ -34,10 +35,22 @@ void ModelManager::init(){
   //quad->create();
   //gameModelList["quad"] = quad;
 
-  //Cube* cube = new Cube();
-  //cube->setProgram(ShaderManager::getShader("cubeShader"));
-  //cube->create(0,0,0);
-  //gameModelList["cube"] = cube;
+  IndexCube* cube = new IndexCube();
+  cube->setProgram(ShaderManager::getShader("cubeShader"));
+  cube->create();
+  gameModelList["cube"] = cube;
+
+  //for(int i = -8; i < 8; i += 2){
+  //for(int j = -8; j < 8; j += 2){
+  //for(int k = -8; k < 8; k += 2){
+    //Cube* cube1 = new Cube();
+    //cube1->setProgram(ShaderManager::getShader("cubeShader"));
+    //cube1->create(i,j,k);
+    //gameModelList[std::string("cube") + 
+      //std::to_string(i) + std::to_string(j) + std::to_string(k)] = cube1;
+  //}
+  //}
+  //}
 
   Cube* cube1 = new Cube();
   cube1->setProgram(ShaderManager::getShader("cubeShader"));

@@ -5,6 +5,10 @@
 #include "ContextInfo.hpp"
 #include "FrameBufferInfo.hpp"
 
+#include "../../Managers/SceneManager.hpp"
+
+#include <glm/glm.hpp>
+
 //Define static members (its a weird c++ thing)
 IListener* InitGlut::listener = nullptr;
 WindowInfo InitGlut::windowInfo;
@@ -46,6 +50,9 @@ void InitGlut::init(const WindowInfo& window,
   glutDisplayFunc(displayCallback);
   glutReshapeFunc(reshapeCallback);
 
+  glutKeyboardFunc(Camera::keyPress);
+  glutMouseFunc(Camera::mousePress);
+  glutMotionFunc(Camera::mouseMove);
 
   glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);
 
@@ -96,6 +103,14 @@ void InitGlut::enterFullscreen(){
 
 void InitGlut::exitFullscreen(){
   glutLeaveFullScreen();
+}
+
+glm::mat4 InitGlut::getViewMatrix(){
+  return dynamic_cast<SceneManager*>(listener)->getViewMatrix();
+}
+
+void InitGlut::setViewMatrix(const glm::mat4& view_matrix){
+  dynamic_cast<SceneManager*>(listener)->setViewMatrix(view_matrix);
 }
 
 void InitGlut::printOpenGLInfo(const WindowInfo& window,
