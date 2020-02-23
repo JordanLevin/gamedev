@@ -27,20 +27,23 @@ void Camera::updateView(){
 }
 
 void Camera::keyPress(const unsigned char key, int x, int y){
+  if(key == 'f'){
+    mult = 5;
+  }
   float dx =0;
   float dz =0;
   switch (key){
     case 'w':
-      dz = -2;
+      dz = -2*mult;
       break;
     case 's':
-      dz = 2;
+      dz = 2*mult;
       break;
     case 'a':
-      dx = -2;
+      dx = -2*mult;
       break;
     case 'd':
-      dx = 2;
+      dx = 2*mult;
       break;
     default:
       break;

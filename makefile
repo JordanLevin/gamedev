@@ -1,12 +1,12 @@
 INITP = ./Core/Init
-CPPFLAGS = -Wall -Wextra -std=c++17 -fsanitize=undefined -Wno-unused-parameter
+CPPFLAGS = -Wall -Wextra -std=c++17 -Wno-unused-parameter -g #-pg
 CC = g++
 LIBS = -lglut -lGL -lGLEW -lm
 
 all: ShaderManager.o main.o InitGlut.o InitGlew.o SceneManager.o ModelManager.o \
-	Triangle.o Quad.o Model.o Cube.o IndexCube.o Camera.o
+	Triangle.o Quad.o Model.o Cube.o IndexCube.o Camera.o CubeCluster.o
 	$(CC) main.o InitGlut.o InitGlew.o ShaderManager.o SceneManager.o Model.o\
-		ModelManager.o Triangle.o Quad.o Cube.o IndexCube.o Camera.o \
+		ModelManager.o Triangle.o Quad.o Cube.o IndexCube.o Camera.o CubeCluster.o \
 		-o main $(LIBS) $(CPPFLAGS)
 
 main.o: main.cpp
@@ -40,6 +40,9 @@ Cube.o: ./Rendering/Models/Cube.cpp ./Rendering/Models/Cube.hpp
 
 IndexCube.o: ./Rendering/Models/IndexCube.cpp ./Rendering/Models/IndexCube.hpp
 	$(CC) ./Rendering/Models/IndexCube.cpp -c $(CPPFLAGS)
+
+CubeCluster.o: ./Rendering/Models/CubeCluster.cpp ./Rendering/Models/CubeCluster.hpp
+	$(CC) ./Rendering/Models/CubeCluster.cpp -c $(CPPFLAGS)
 
 Model.o: ./Rendering/Models/Model.cpp ./Rendering/Models/Model.hpp
 	$(CC) ./Rendering/Models/Model.cpp -c $(CPPFLAGS)

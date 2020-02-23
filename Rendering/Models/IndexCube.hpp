@@ -15,7 +15,7 @@ class IndexCube: public Model {
     IndexCube() = default;
     ~IndexCube() = default;
 
-    void create();
+    void create(float x, float y, float z);
     virtual void draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix) override final;
     virtual void update() override final;
 };

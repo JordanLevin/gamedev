@@ -2,7 +2,10 @@
 #include "ModelManager.hpp"
 #include "../Input/Camera.hpp"
 
+#include <chrono>
 #include <cmath>
+
+using namespace std::chrono;
 
 SceneManager::SceneManager(){
   glEnable(GL_DEPTH_TEST);
@@ -36,7 +39,8 @@ void SceneManager::setCamera(const Camera& cam){
 }
 
 void SceneManager::notifyBeginFrame(){
-  modelManager.update();
+  frameStart = high_resolution_clock::now();
+  //modelManager.update();
   //for(int i = 0; i < 4; i++){
     //for(int j = 0; j < 4; j++){
       //std::cout << view_matrix[i][j] << " ";
@@ -48,12 +52,14 @@ void SceneManager::notifyBeginFrame(){
 void SceneManager::notifyDisplayFrame(){
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glClearColor(0.0, 0.0, 0.0, 1.0);
-  modelManager.draw();
+  //modelManager.draw();
   modelManager.draw(projection_matrix, view_matrix);
 }
 
 void SceneManager::notifyEndFrame(){
-
+  auto end = high_resolution_clock::now();
+  auto duration = ::duration_cast<milliseconds>(end - frameStart); 
+  std::cout << duration.count() << std::endl; 
 }
 
 void SceneManager::notifyReshape(int width, int height, 

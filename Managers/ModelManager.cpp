@@ -6,6 +6,7 @@
 #include "../Rendering/Models/Quad.hpp"
 #include "../Rendering/Models/Cube.hpp"
 #include "../Rendering/Models/IndexCube.hpp"
+#include "../Rendering/Models/CubeCluster.hpp"
 
 ModelManager::~ModelManager(){
   for(auto model: gameModelList){
@@ -35,27 +36,29 @@ void ModelManager::init(){
   //quad->create();
   //gameModelList["quad"] = quad;
 
-  IndexCube* cube = new IndexCube();
-  cube->setProgram(ShaderManager::getShader("cubeShader"));
-  cube->create();
-  gameModelList["cube"] = cube;
+  //IndexCube* cube = new IndexCube();
+  //cube->setProgram(ShaderManager::getShader("cubeShader"));
+  //cube->create(0,0,0);
+  //gameModelList["cube"] = cube;
 
-  //for(int i = -8; i < 8; i += 2){
-  //for(int j = -8; j < 8; j += 2){
-  //for(int k = -8; k < 8; k += 2){
-    //Cube* cube1 = new Cube();
-    //cube1->setProgram(ShaderManager::getShader("cubeShader"));
-    //cube1->create(i,j,k);
-    //gameModelList[std::string("cube") + 
-      //std::to_string(i) + std::to_string(j) + std::to_string(k)] = cube1;
-  //}
-  //}
-  //}
-
-  Cube* cube1 = new Cube();
+  CubeCluster* cube1 = new CubeCluster();
   cube1->setProgram(ShaderManager::getShader("cubeShader"));
-  cube1->create(2,2,2);
-  gameModelList["cube1"] = cube1;
+  for(int i = -200; i < 200; i += 2){
+    for(int j = -200; j < 200; j += 2){
+      for(int k = -10; k < 10; k += 2){
+      cube1->add(i,j,0);
+      }
+    }
+  }
+  cube1->create();
+  //gameModelList[std::string("cube") + 
+    //std::to_string(i) + ":" + std::to_string(j)] = cube1;
+  gameModelList["cube1"]  = cube1;
+
+  //Cube* cube1 = new Cube();
+  //cube1->setProgram(ShaderManager::getShader("cubeShader"));
+  //cube1->create(2,2,2);
+  //gameModelList["cube1"] = cube1;
 }
 
 void ModelManager::update(){
@@ -65,13 +68,13 @@ void ModelManager::update(){
 }
 
 void ModelManager::draw(){
-  for(auto& model: gameModelList){
+  for(const auto& model: gameModelList){
     model.second->draw();
   }
 }
 
 void ModelManager::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix){
-  for(auto& model: gameModelList){
+  for(const auto& model: gameModelList){
     model.second->draw(projection_matrix, view_matrix);
   }
 }

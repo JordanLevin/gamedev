@@ -10,12 +10,13 @@ class Camera {
     glm::mat4* view_matrix;
     glm::vec3 eyeVector{0,0,0};
     glm::vec2 mousePosition{0,0};
-    bool isMousePressed = false;
+    bool isMousePressed{false};
     float yaw{0};
     float pitch{0};
     float roll{0};
     float mouseXSensitivity{.01};
     float mouseYSensitivity{.01};
+    float mult{1.0f};
 
   public: 
     Camera(glm::mat4* view_matrix_);

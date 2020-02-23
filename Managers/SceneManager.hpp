@@ -6,6 +6,8 @@
 #include "../Core/Init/IListener.hpp"
 #include "../Input/Camera.hpp"
 
+#include <chrono>
+
 class SceneManager: public IListener{
   private:
     ShaderManager shaderManager;
@@ -13,6 +15,7 @@ class SceneManager: public IListener{
     glm::mat4 view_matrix;
     glm::mat4 projection_matrix;
     Camera camera{&view_matrix};
+    std::chrono::high_resolution_clock::time_point frameStart;
   public:
     SceneManager();
     ~SceneManager() = default;
