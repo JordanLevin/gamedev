@@ -54,7 +54,7 @@ class World : public Model{
     void create(Camera* camera_);
     void generate(int x, int y);
     void writeChunk(int x, int y);
-    void readChunk(int x, int y);
+    CubeCluster* readChunk(int x, int y);
     virtual void draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix) override final;
     virtual void update() override final;
     

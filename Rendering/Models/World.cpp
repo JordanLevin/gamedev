@@ -71,8 +71,8 @@ float NoiseGenerator::perlin(float x, float y) {
 void World::create(Camera* camera_){
   camera = camera_;
   noise.generateVectors();
-  for(int x = -16; x < 16; x++){
-    for(int y = -16; y < 16; y++){
+  for(int x = -8; x < 8; x++){
+    for(int y = -8; y < 8; y++){
       generate(x, y);
     }
   }
@@ -80,14 +80,13 @@ void World::create(Camera* camera_){
 
 void World::writeChunk(int x, int z){
   glm::ivec2 coords(x,z);
-  std::string path = std::to_string(x) + "_" + std::to_string(z);
+  std::string path = std::string("WORLDDATA/") + std::to_string(x) + "_" + std::to_string(z);
   cubes[coords]->writeChunk(path);
   generated[coords] = true;
   delete cubes[coords];
-  cubes.erase(coords);
 }
 CubeCluster* World::readChunk(int x, int z){
-  std::string path = std::to_string(x) + "_" + std::to_string(z);
+  std::string path = std::string("WORLDDATA/") + std::to_string(x) + "_" + std::to_string(z);
   CubeCluster* c = new CubeCluster(path);
   c->setProgram(ShaderManager::getShader("cubeShader"));
   c->create();
@@ -95,12 +94,14 @@ CubeCluster* World::readChunk(int x, int z){
 }
 
 void World::generate(int x, int z){
-  glm::ivec2 coords(x,y);
+  glm::ivec2 coords(x,z);
   if(cubes.size() > 16*16){
-    for(const auto& chunk: cubes){
-      if(std::abs(chunk.first.x - camera->getX()/16) > 8 ||
-          std::abs(chunk.first.y - camera->getZ()/16) > 8){
-        writeChunk(x, z);
+    for(auto it = cubes.begin(); it != cubes.end(); it++){
+      if(std::abs(it->first.x - camera->getX()/16) > 9 ||
+          std::abs(it->first.y - camera->getZ()/16) > 9){
+        writeChunk(it->first.x, it->first.y);
+        cubes.erase(it);
+        break;
       }
     }
   }
@@ -111,6 +112,7 @@ void World::generate(int x, int z){
     return;
   }
   
+  //Generate a new chunk using perlin noise
   CubeCluster* c = new CubeCluster();
   c->setProgram(ShaderManager::getShader("cubeShader"));
   for(int row = x*16; row < x*16 + 16; row++){

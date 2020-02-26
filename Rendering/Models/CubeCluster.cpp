@@ -8,14 +8,16 @@ CubeCluster::CubeCluster(){
 }
 
 CubeCluster::CubeCluster(std::string path){
-  std::fstream read{path};
+  std::fstream read;
+  read.open(path, std::ios::in);
   Serialize::deserialize(read, allVertices);
   Serialize::deserialize(read, allIndices);
-  
+
 }
 
 void CubeCluster::writeChunk(std::string path){
-  std::fstream write{path};
+  std::fstream write;
+  write.open(path, std::ios::out);
   Serialize::serialize(write, allVertices);
   Serialize::serialize(write, allIndices);
 }
@@ -57,74 +59,74 @@ void CubeCluster::add(float x, float y, float z){
 void CubeCluster::add(float x, float y, float z, float r, float g, float b){
   unsigned int s = allVertices.size();
   std::vector<unsigned int> indices = { 
-      0+s, 1+s, 2+s, 0+s, 2+s, 3+s, //front
-      4+s, 5+s, 6+s, 4+s, 6+s, 7+s, //right
-      8+s, 9+s, 10+s, 8+s, 10+s, 11+s, //back
-      12+s, 13+s, 14+s, 12+s, 14+s, 15+s, //left
-      16+s, 17+s, 18+s, 16+s, 18+s, 19+s, //upper
-      20+s, 21+s, 22+s, 20+s, 22+s, 23+s}; //bottom
+    0+s, 1+s, 2+s, 0+s, 2+s, 3+s, //front
+    4+s, 5+s, 6+s, 4+s, 6+s, 7+s, //right
+    8+s, 9+s, 10+s, 8+s, 10+s, 11+s, //back
+    12+s, 13+s, 14+s, 12+s, 14+s, 15+s, //left
+    16+s, 17+s, 18+s, 16+s, 18+s, 19+s, //upper
+    20+s, 21+s, 22+s, 20+s, 22+s, 23+s}; //bottom
   allIndices.insert(allIndices.end(), indices.begin(), indices.end());
 
   std::vector<VertexFormat> vertices;
   //front
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, -1.0+y, 1.0+z),
-                                  glm::vec4(r, g, b, 1)));
-  vertices.push_back(VertexFormat(glm::vec3( 1.0+x, -1.0+y, 1.0+z),
-                                  glm::vec4(r, g, b, 1)));
-  vertices.push_back(VertexFormat(glm::vec3( 1.0+x, 1.0+y, 1.0+z),
-                                  glm::vec4(r, g, b, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, 1.0+y, 1.0+z),
-                                  glm::vec4(r, g, b, 1)));
+  vertices.push_back({{-1.0f+x, -1.0f+y, 1.0f+z},
+      {r, g, b, 1}});
+  vertices.push_back({{ 1.0f+x, -1.0f+y, 1.0f+z},
+      {r, g, b, 1}});
+  vertices.push_back({{ 1.0f+x, 1.0f+y, 1.0f+z},
+      {r, g, b, 1}});
+  vertices.push_back({{-1.0f+x, 1.0f+y, 1.0f+z},
+      {r, g, b, 1}});
 
   //right
-  vertices.push_back(VertexFormat(glm::vec3(1.0+x, 1.0+y, 1.0+z),
-                                  glm::vec4(r, g, b, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(1.0+x, 1.0+y, -1.0+z),
-                                  glm::vec4(r, g, b, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(1.0+x, -1.0+y, -1.0+z),
-                                  glm::vec4(r, g, b, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(1.0+x, -1.0+y, 1.0+z),
-                                  glm::vec4(r, g, b, 1)));
+  vertices.push_back({{1.0f+x, 1.0f+y, 1.0f+z},
+      {r, g, b, 1}});
+  vertices.push_back({{1.0f+x, 1.0f+y, -1.0f+z},
+      {r, g, b, 1}});
+  vertices.push_back({{1.0f+x, -1.0f+y, -1.0f+z},
+      {r, g, b, 1}});
+  vertices.push_back({{1.0f+x, -1.0f+y, 1.0f+z},
+      {r, g, b, 1}});
 
   //back
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, -1.0+y, -1.0+z),
-                                  glm::vec4(r, g, b, 1)));
-  vertices.push_back(VertexFormat(glm::vec3( 1.0+x, -1.0+y, -1.0+z),
-                                  glm::vec4(r, g, b, 1)));
-  vertices.push_back(VertexFormat(glm::vec3( 1.0+x, 1.0+y, -1.0+z),
-                                  glm::vec4(r, g, b, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, 1.0+y, -1.0+z),
-                                  glm::vec4(r, g, b, 1)));
+  vertices.push_back({{-1.0f+x, -1.0f+y, -1.0f+z},
+      {r, g, b, 1}});
+  vertices.push_back({{ 1.0f+x, -1.0f+y, -1.0f+z},
+      {r, g, b, 1}});
+  vertices.push_back({{ 1.0f+x, 1.0f+y, -1.0f+z},
+      {r, g, b, 1}});
+  vertices.push_back({{-1.0f+x, 1.0f+y, -1.0f+z},
+      {r, g, b, 1}});
 
   //left
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, -1.0+y, -1.0+z),
-                                  glm::vec4(r, g, b, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, -1.0+y, 1.0+z),
-                                  glm::vec4(r, g, b, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, 1.0+y, 1.0+z),
-                                  glm::vec4(r, g, b, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, 1.0+y, -1.0+z),
-                                  glm::vec4(r, g, b, 1)));
+  vertices.push_back({{-1.0f+x, -1.0f+y, -1.0f+z},
+      {r, g, b, 1}});
+  vertices.push_back({{-1.0f+x, -1.0f+y, 1.0f+z},
+      {r, g, b, 1}});
+  vertices.push_back({{-1.0f+x, 1.0f+y, 1.0f+z},
+      {r, g, b, 1}});
+  vertices.push_back({{-1.0f+x, 1.0f+y, -1.0f+z},
+      {r, g, b, 1}});
 
   //upper
-  vertices.push_back(VertexFormat(glm::vec3( 1.0+x, 1.0+y, 1.0+z),
-                                  glm::vec4(r, g, b, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, 1.0+y, 1.0+z),
-                                  glm::vec4(r, g, b, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, 1.0+y, -1.0+z),
-                                  glm::vec4(r, g, b, 1)));
-  vertices.push_back(VertexFormat(glm::vec3( 1.0+x, 1.0+y, -1.0+z),
-                                  glm::vec4(r, g, b, 1)));
+  vertices.push_back({{ 1.0f+x, 1.0f+y, 1.0f+z},
+      {r, g, b, 1}});
+  vertices.push_back({{-1.0f+x, 1.0f+y, 1.0f+z},
+      {r, g, b, 1}});
+  vertices.push_back({{-1.0f+x, 1.0f+y, -1.0f+z},
+      {r, g, b, 1}});
+  vertices.push_back({{ 1.0f+x, 1.0f+y, -1.0f+z},
+      {r, g, b, 1}});
 
   //bottom
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, -1.0+y, -1.0+z),
-                                  glm::vec4(r, g, b, 1)));
-  vertices.push_back(VertexFormat(glm::vec3( 1.0+x, -1.0+y, -1.0+z),
-                                  glm::vec4(r, g, b, 1)));
-  vertices.push_back(VertexFormat(glm::vec3( 1.0+x, -1.0+y, 1.0+z),
-                                  glm::vec4(r, g, b, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, -1.0+y, 1.0+z),
-                                  glm::vec4(r, g, b, 1)));
+  vertices.push_back({{-1.0f+x, -1.0f+y, -1.0f+z},
+      {r, g, b, 1}});
+  vertices.push_back({{ 1.0f+x, -1.0f+y, -1.0f+z},
+      {r, g, b, 1}});
+  vertices.push_back({{ 1.0f+x, -1.0f+y, 1.0f+z},
+      {r, g, b, 1}});
+  vertices.push_back({{-1.0f+x, -1.0f+y, 1.0f+z},
+      {r, g, b, 1}});
 
   allVertices.insert(allVertices.end(), vertices.begin(), vertices.end());
 }
