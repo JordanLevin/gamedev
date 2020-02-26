@@ -20,7 +20,7 @@ SceneManager::SceneManager(){
       0.0f, 0.0f, -1.0f, 0.0f,
       //0.0f, 0.0f, 10.0f, 1.0f);
       0.0f, 0.0f, 0.0f, 1.0f);
-  modelManager.init();
+  modelManager.init(&camera);
 }
 
 void SceneManager::setViewMatrix(glm::mat4 view_matrix_){
@@ -41,12 +41,6 @@ void SceneManager::setCamera(const Camera& cam){
 void SceneManager::notifyBeginFrame(){
   frameStart = high_resolution_clock::now();
   //modelManager.update();
-  //for(int i = 0; i < 4; i++){
-    //for(int j = 0; j < 4; j++){
-      //std::cout << view_matrix[i][j] << " ";
-    //}
-    //std::cout << std::endl;
-  //}
 }
 
 void SceneManager::notifyDisplayFrame(){

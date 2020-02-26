@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 {
   WindowInfo window(std::string("OpenGL Tutorial "),
                          400, 200,//position
-                         800, 600, //size
+                         1280, 720, //size
                          true);//reshape
 
   ContextInfo context(4, 5, true);

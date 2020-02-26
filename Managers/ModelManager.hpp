@@ -3,8 +3,7 @@
 
 #include "ShaderManager.hpp"
 #include "../Rendering/IGameObject.hpp"
-#include "../Rendering/Models/Triangle.hpp"
-#include "../Rendering/Models/Quad.hpp"
+#include "../Input/Camera.hpp"
 
 #include <map>
 
@@ -16,7 +15,7 @@ class ModelManager{
     ModelManager() = default;
     ~ModelManager();
 
-    void init();
+    void init(Camera* camera);
     void draw();
     void draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix);
     void update();

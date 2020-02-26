@@ -24,5 +24,8 @@ class Camera {
     void keyPress(const unsigned char key, int x, int y);
     void mouseMove(int x, int y);
     void mousePress(int button, int state, int x, int y);
+    float getX();
+    float getY();
+    float getZ();
 };
 #endif

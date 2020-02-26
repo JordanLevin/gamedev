@@ -5,8 +5,20 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include <iostream>
+
 Camera::Camera(glm::mat4* view_matrix_){
   view_matrix = view_matrix_;
+}
+
+float Camera::getX(){
+  return eyeVector[0];
+}
+float Camera::getY(){
+  return eyeVector[1];
+}
+float Camera::getZ(){
+  return eyeVector[2];
 }
 
 void Camera::updateView(){
@@ -24,11 +36,17 @@ void Camera::updateView(){
   translate = glm::translate(translate, -eyeVector);
 
   *view_matrix = (rotate * translate);
+  //for(int i = 0; i < 4; i++){
+    //for(int j = 0; j < 4; j++){
+      //std::cout << (*view_matrix)[i][j] << " ";
+    //}
+    //std::cout << std::endl;
+  //}
 }
 
 void Camera::keyPress(const unsigned char key, int x, int y){
   if(key == 'f'){
-    mult = 5;
+    mult = 20;
   }
   float dx =0;
   float dz =0;
@@ -57,6 +75,8 @@ void Camera::keyPress(const unsigned char key, int x, int y){
 
   //make forward vector negative to look forward
   eyeVector += (-dz * forward + dx* strafe) * speed;
+
+  std::cout << " x: " << eyeVector[0] << " y: " << eyeVector[1] << " z: " << eyeVector[2] << std::endl;
 
   updateView();
 }

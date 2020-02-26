@@ -8,6 +8,11 @@
 #include <vector>
 
 class Model: public IGameObject{
+  protected:
+    GLuint vao;
+    GLuint program;
+    std::vector<GLuint> vbos;
+
   public:
     Model() = default;
     virtual ~Model();
@@ -20,10 +25,6 @@ class Model: public IGameObject{
     virtual GLuint getVao() const override;
     virtual const std::vector<GLuint>& getVbos() const override;
 
-  protected:
-    GLuint vao;
-    GLuint program;
-    std::vector<GLuint> vbos;
 };
 
 #endif

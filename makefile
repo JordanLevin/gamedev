@@ -4,9 +4,9 @@ CC = g++
 LIBS = -lglut -lGL -lGLEW -lm
 
 all: ShaderManager.o main.o InitGlut.o InitGlew.o SceneManager.o ModelManager.o \
-	Triangle.o Quad.o Model.o Cube.o IndexCube.o Camera.o CubeCluster.o
+	Model.o Cube.o IndexCube.o Camera.o CubeCluster.o World.o
 	$(CC) main.o InitGlut.o InitGlew.o ShaderManager.o SceneManager.o Model.o\
-		ModelManager.o Triangle.o Quad.o Cube.o IndexCube.o Camera.o CubeCluster.o \
+		ModelManager.o Cube.o IndexCube.o Camera.o CubeCluster.o World.o\
 		-o main $(LIBS) $(CPPFLAGS)
 
 main.o: main.cpp
@@ -26,14 +26,8 @@ ShaderManager.o: ./Managers/ShaderManager.cpp ./Managers/ShaderManager.hpp
 SceneManager.o: ./Managers/SceneManager.cpp ./Managers/SceneManager.hpp $(INITP)/IListener.hpp ./Input/Camera.hpp
 	$(CC) ./Managers/SceneManager.cpp -c $(CPPFLAGS)
 
-ModelManager.o: ./Managers/ModelManager.cpp ./Managers/ModelManager.hpp $(INITP)/IListener.hpp
+ModelManager.o: ./Managers/ModelManager.cpp ./Managers/ModelManager.hpp $(INITP)/IListener.hpp ./Lib/OctTree.hpp
 	$(CC) ./Managers/ModelManager.cpp -c $(CPPFLAGS)
-
-Triangle.o: ./Rendering/Models/Triangle.cpp ./Rendering/Models/Triangle.hpp
-	$(CC) ./Rendering/Models/Triangle.cpp -c $(CPPFLAGS)
-
-Quad.o: ./Rendering/Models/Quad.cpp ./Rendering/Models/Quad.hpp
-	$(CC) ./Rendering/Models/Quad.cpp -c $(CPPFLAGS)
 
 Cube.o: ./Rendering/Models/Cube.cpp ./Rendering/Models/Cube.hpp
 	$(CC) ./Rendering/Models/Cube.cpp -c $(CPPFLAGS)
@@ -41,8 +35,11 @@ Cube.o: ./Rendering/Models/Cube.cpp ./Rendering/Models/Cube.hpp
 IndexCube.o: ./Rendering/Models/IndexCube.cpp ./Rendering/Models/IndexCube.hpp
 	$(CC) ./Rendering/Models/IndexCube.cpp -c $(CPPFLAGS)
 
-CubeCluster.o: ./Rendering/Models/CubeCluster.cpp ./Rendering/Models/CubeCluster.hpp
+CubeCluster.o: ./Rendering/Models/CubeCluster.cpp ./Rendering/Models/CubeCluster.hpp ./Lib/Serialize.hpp
 	$(CC) ./Rendering/Models/CubeCluster.cpp -c $(CPPFLAGS)
+
+World.o: ./Rendering/Models/World.cpp ./Rendering/Models/World.hpp
+	$(CC) ./Rendering/Models/World.cpp -c $(CPPFLAGS)
 
 Model.o: ./Rendering/Models/Model.cpp ./Rendering/Models/Model.hpp
 	$(CC) ./Rendering/Models/Model.cpp -c $(CPPFLAGS)

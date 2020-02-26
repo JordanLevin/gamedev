@@ -1,6 +1,23 @@
 #include "CubeCluster.hpp"
+#include "../../Lib/Serialize.hpp"
+
+#include <string>
+#include <fstream>
 
 CubeCluster::CubeCluster(){
+}
+
+CubeCluster::CubeCluster(std::string path){
+  std::fstream read{path};
+  Serialize::deserialize(read, allVertices);
+  Serialize::deserialize(read, allIndices);
+  
+}
+
+void CubeCluster::writeChunk(std::string path){
+  std::fstream write{path};
+  Serialize::serialize(write, allVertices);
+  Serialize::serialize(write, allIndices);
 }
 
 void CubeCluster::create(){
@@ -34,6 +51,10 @@ void CubeCluster::create(){
 }
 
 void CubeCluster::add(float x, float y, float z){
+  add(x,y,z, 0.5, 0.5, 0.5);
+}
+
+void CubeCluster::add(float x, float y, float z, float r, float g, float b){
   unsigned int s = allVertices.size();
   std::vector<unsigned int> indices = { 
       0+s, 1+s, 2+s, 0+s, 2+s, 3+s, //front
@@ -47,63 +68,63 @@ void CubeCluster::add(float x, float y, float z){
   std::vector<VertexFormat> vertices;
   //front
   vertices.push_back(VertexFormat(glm::vec3(-1.0+x, -1.0+y, 1.0+z),
-                                  glm::vec4(0, 0, 1, 1)));
+                                  glm::vec4(r, g, b, 1)));
   vertices.push_back(VertexFormat(glm::vec3( 1.0+x, -1.0+y, 1.0+z),
-                                  glm::vec4(1, 0, 1, 1)));
+                                  glm::vec4(r, g, b, 1)));
   vertices.push_back(VertexFormat(glm::vec3( 1.0+x, 1.0+y, 1.0+z),
-                                  glm::vec4(1, 1, 1, 1)));
+                                  glm::vec4(r, g, b, 1)));
   vertices.push_back(VertexFormat(glm::vec3(-1.0+x, 1.0+y, 1.0+z),
-                                  glm::vec4(0, 1, 1, 1)));
+                                  glm::vec4(r, g, b, 1)));
 
   //right
   vertices.push_back(VertexFormat(glm::vec3(1.0+x, 1.0+y, 1.0+z),
-                                  glm::vec4(1, 1, 1, 1)));
+                                  glm::vec4(r, g, b, 1)));
   vertices.push_back(VertexFormat(glm::vec3(1.0+x, 1.0+y, -1.0+z),
-                                  glm::vec4(1, 1, 0, 1)));
+                                  glm::vec4(r, g, b, 1)));
   vertices.push_back(VertexFormat(glm::vec3(1.0+x, -1.0+y, -1.0+z),
-                                  glm::vec4(1, 0, 0, 1)));
+                                  glm::vec4(r, g, b, 1)));
   vertices.push_back(VertexFormat(glm::vec3(1.0+x, -1.0+y, 1.0+z),
-                                  glm::vec4(1, 0, 1, 1)));
+                                  glm::vec4(r, g, b, 1)));
 
   //back
   vertices.push_back(VertexFormat(glm::vec3(-1.0+x, -1.0+y, -1.0+z),
-                                  glm::vec4(0, 0, 0, 1)));
+                                  glm::vec4(r, g, b, 1)));
   vertices.push_back(VertexFormat(glm::vec3( 1.0+x, -1.0+y, -1.0+z),
-                                  glm::vec4(1, 0, 0, 1)));
+                                  glm::vec4(r, g, b, 1)));
   vertices.push_back(VertexFormat(glm::vec3( 1.0+x, 1.0+y, -1.0+z),
-                                  glm::vec4(1, 1, 0, 1)));
+                                  glm::vec4(r, g, b, 1)));
   vertices.push_back(VertexFormat(glm::vec3(-1.0+x, 1.0+y, -1.0+z),
-                                  glm::vec4(0, 1, 0, 1)));
+                                  glm::vec4(r, g, b, 1)));
 
   //left
   vertices.push_back(VertexFormat(glm::vec3(-1.0+x, -1.0+y, -1.0+z),
-                                  glm::vec4(0, 0, 0, 1)));
+                                  glm::vec4(r, g, b, 1)));
   vertices.push_back(VertexFormat(glm::vec3(-1.0+x, -1.0+y, 1.0+z),
-                                  glm::vec4(0, 0, 1, 1)));
+                                  glm::vec4(r, g, b, 1)));
   vertices.push_back(VertexFormat(glm::vec3(-1.0+x, 1.0+y, 1.0+z),
-                                  glm::vec4(0, 1, 1, 1)));
+                                  glm::vec4(r, g, b, 1)));
   vertices.push_back(VertexFormat(glm::vec3(-1.0+x, 1.0+y, -1.0+z),
-                                  glm::vec4(0, 1, 0, 1)));
+                                  glm::vec4(r, g, b, 1)));
 
   //upper
   vertices.push_back(VertexFormat(glm::vec3( 1.0+x, 1.0+y, 1.0+z),
-                                  glm::vec4(1, 1, 1, 1)));
+                                  glm::vec4(r, g, b, 1)));
   vertices.push_back(VertexFormat(glm::vec3(-1.0+x, 1.0+y, 1.0+z),
-                                  glm::vec4(0, 1, 1, 1)));
+                                  glm::vec4(r, g, b, 1)));
   vertices.push_back(VertexFormat(glm::vec3(-1.0+x, 1.0+y, -1.0+z),
-                                  glm::vec4(0, 1, 0, 1)));
+                                  glm::vec4(r, g, b, 1)));
   vertices.push_back(VertexFormat(glm::vec3( 1.0+x, 1.0+y, -1.0+z),
-                                  glm::vec4(1, 1, 0, 1)));
+                                  glm::vec4(r, g, b, 1)));
 
   //bottom
   vertices.push_back(VertexFormat(glm::vec3(-1.0+x, -1.0+y, -1.0+z),
-                                  glm::vec4(0, 0, 0, 1)));
+                                  glm::vec4(r, g, b, 1)));
   vertices.push_back(VertexFormat(glm::vec3( 1.0+x, -1.0+y, -1.0+z),
-                                  glm::vec4(1, 0, 0, 1)));
+                                  glm::vec4(r, g, b, 1)));
   vertices.push_back(VertexFormat(glm::vec3( 1.0+x, -1.0+y, 1.0+z),
-                                  glm::vec4(1, 0, 1, 1)));
+                                  glm::vec4(r, g, b, 1)));
   vertices.push_back(VertexFormat(glm::vec3(-1.0+x, -1.0+y, 1.0+z),
-                                  glm::vec4(0, 0, 1, 1)));
+                                  glm::vec4(r, g, b, 1)));
 
   allVertices.insert(allVertices.end(), vertices.begin(), vertices.end());
 }
@@ -113,7 +134,7 @@ void CubeCluster::update(){
 }
 
 void CubeCluster::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix){
-  std::cout << "ind: " << allIndices.size() << " vert: " << allVertices.size() << std::endl;
+  //std::cout << "ind: " << allIndices.size() << " vert: " << allVertices.size() << std::endl;
   glUseProgram(program);
   glUniform3f(glGetUniformLocation(program, "rotation"),0,0,0);
   glUniformMatrix4fv(glGetUniformLocation(program, "view_matrix"),

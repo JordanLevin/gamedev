@@ -2,11 +2,14 @@
 #include "ShaderManager.hpp"
 #include "ShaderManager.hpp"
 
-#include "../Rendering/Models/Triangle.hpp"
-#include "../Rendering/Models/Quad.hpp"
 #include "../Rendering/Models/Cube.hpp"
 #include "../Rendering/Models/IndexCube.hpp"
 #include "../Rendering/Models/CubeCluster.hpp"
+#include "../Rendering/Models/World.hpp"
+
+#include "../Lib/OctTree.hpp"
+
+#include <random>
 
 ModelManager::~ModelManager(){
   for(auto model: gameModelList){
@@ -25,40 +28,36 @@ const IGameObject& ModelManager::getModel(const std::string& modelName){
   return (*gameModelList[modelName]);
 }
 
-void ModelManager::init(){
-  //Triangle* triangle = new Triangle();
-  //triangle->setProgram(ShaderManager::getShader("colorShader"));
-  //triangle->create();
-  //gameModelList["triangle"] = triangle;
-
-  //Quad* quad = new Quad();
-  //quad->setProgram(ShaderManager::getShader("colorShader"));
-  //quad->create();
-  //gameModelList["quad"] = quad;
-
+void ModelManager::init(Camera* camera){
+  World* world = new World();
+  world->create(camera);
+  gameModelList["world"] = world;
   //IndexCube* cube = new IndexCube();
   //cube->setProgram(ShaderManager::getShader("cubeShader"));
   //cube->create(0,0,0);
   //gameModelList["cube"] = cube;
 
-  CubeCluster* cube1 = new CubeCluster();
-  cube1->setProgram(ShaderManager::getShader("cubeShader"));
-  for(int i = -200; i < 200; i += 2){
-    for(int j = -200; j < 200; j += 2){
-      for(int k = -10; k < 10; k += 2){
-      cube1->add(i,j,0);
-      }
-    }
-  }
-  cube1->create();
-  //gameModelList[std::string("cube") + 
-    //std::to_string(i) + ":" + std::to_string(j)] = cube1;
-  gameModelList["cube1"]  = cube1;
+  //OctTree<myVec3> cubes;
+  //for(int i = 0; i < 150; i += 4){
+  //for(int j = 0; j < 150; j += 4){
+  //for(int k = 0; k < 150; k += 4){
+    //myVec3* v = new myVec3();
+    //v->x = rand()%1000 - 500;
+    //v->y = rand()%1000 - 500;
+    //v->z = rand()%1000 - 500;
+    //cubes.insert(v);
+  //}
+  //}
+  //}
 
-  //Cube* cube1 = new Cube();
-  //cube1->setProgram(ShaderManager::getShader("cubeShader"));
-  //cube1->create(2,2,2);
-  //gameModelList["cube1"] = cube1;
+  //std::vector<CubeCluster*> clusters = cubes.getChunkAsCubeCluster();
+  //int count = 0;
+  //for(auto c: clusters){
+    //c->setProgram(ShaderManager::getShader("cubeShader"));
+    //c->create();
+    //gameModelList[std::to_string(count)]  = c;
+    //count++;
+  //}
 }
 
 void ModelManager::update(){
