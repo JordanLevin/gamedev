@@ -1,1 +1,3 @@
-./WORLDDATA
+./WORLDDATA/*
+*.o
+.*.sw*

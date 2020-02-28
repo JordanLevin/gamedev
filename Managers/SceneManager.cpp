@@ -9,9 +9,9 @@ using namespace std::chrono;
 
 SceneManager::SceneManager(){
   glEnable(GL_DEPTH_TEST);
-  shaderManager.createProgram("vshader1.glsl",
-                              "fshader1.glsl",
-                              "colorShader");
+  //shaderManager.createProgram("vshader1.glsl",
+                              //"fshader1.glsl",
+                              //"colorShader");
   shaderManager.createProgram("cubevshader.glsl",
                               "fshader1.glsl",
                               "cubeShader");
