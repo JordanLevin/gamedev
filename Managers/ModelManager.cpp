@@ -2,10 +2,10 @@
 #include "ShaderManager.hpp"
 #include "ShaderManager.hpp"
 
-#include "../Rendering/Models/Cube.hpp"
 #include "../Rendering/Models/IndexCube.hpp"
 #include "../Rendering/Models/CubeCluster.hpp"
 #include "../Rendering/Models/World.hpp"
+#include "../Rendering/Models/Gui.hpp"
 
 #include "../Lib/OctTree.hpp"
 
@@ -31,10 +31,18 @@ const IGameObject& ModelManager::getModel(const std::string& modelName){
 void ModelManager::init(Camera* camera){
   World* world = new World();
   world->create(camera);
+  camera->setWorld(world);
   gameModelList["world"] = world;
+
+  //Gui* gui = new Gui(camera);
+  //gui->add(0,0,0,50,50,50,1,0,0);
+  //gui->setProgram(ShaderManager::getShader("lineShader"));
+  //gui->create();
+  //gameModelList["gui"] = gui;
+
   //IndexCube* cube = new IndexCube();
   //cube->setProgram(ShaderManager::getShader("cubeShader"));
-  //cube->create(0,0,0);
+  //cube->create(100,100,100);
   //gameModelList["cube"] = cube;
 
   //OctTree<myVec3> cubes;

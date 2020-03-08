@@ -73,6 +73,7 @@ void CubeCluster::add(float x, float y, float z){
 void CubeCluster::add(float x, float y, float z, float r, float g, float b){
   unsigned int s = allVertices.size();
 
+  std::vector<VertexFormat> vertices;
   std::vector<unsigned int> indices = { 
     0+s, 1+s, 2+s, 0+s, 2+s, 3+s, //front
     4+s, 5+s, 6+s, 4+s, 6+s, 7+s, //right
@@ -120,7 +121,6 @@ void CubeCluster::add(float x, float y, float z, float r, float g, float b){
 
   allIndices.insert(allIndices.end(), indices.begin(), indices.end());
 
-  std::vector<VertexFormat> vertices;
 
 
   //front
@@ -210,14 +210,16 @@ void CubeCluster::add(float x, float y, float z, float r, float g, float b){
   allVertices.insert(allVertices.end(), vertices.begin(), vertices.end());
 }
 
+void CubeCluster::remove(float x, float y, float z){
+  //find the vertices????????????????????????
+}
+
 void CubeCluster::update(){
 
 }
 
 void CubeCluster::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix){
-  //std::cout << "ind: " << allIndices.size() << " vert: " << allVertices.size() << std::endl;
   glUseProgram(program);
-  //glUniform3f(glGetUniformLocation(program, "rotation"),0,0,0);
   glm::vec3 light_dir = glm::normalize(glm::vec3(-1.0f, 1.0f, -1.0f));
   glUniform3f(glGetUniformLocation(program, "light_dir"),light_dir.x, light_dir.y, light_dir.z);
   glUniform4f(glGetUniformLocation(program, "light_color_in"),1.0f,1.0f,0.98f, 1.0f);

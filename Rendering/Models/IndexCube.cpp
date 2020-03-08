@@ -20,64 +20,89 @@ void IndexCube::create(float x, float y, float z){
 
   std::vector<VertexFormat> vertices;
   //front
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, -1.0+y, 1.0+z),
-                                  glm::vec4(0, 0, 1, 1)));
-  vertices.push_back(VertexFormat(glm::vec3( 1.0+x, -1.0+y, 1.0+z),
-                                  glm::vec4(1, 0, 1, 1)));
-  vertices.push_back(VertexFormat(glm::vec3( 1.0+x, 1.0+y, 1.0+z),
-                                  glm::vec4(1, 1, 1, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, 1.0+y, 1.0+z),
-                                  glm::vec4(0, 1, 1, 1)));
+  vertices.push_back({{-0.5f+x, -0.5f+y, 0.5f+z},
+      {1, 0, 0, 1},
+      {0.0f, 0.0f, 1.0f}});
+  vertices.push_back({{ 0.5f+x, -0.5f+y, 0.5f+z},
+      {1, 0, 0, 1},
+      {0.0f, 0.0f, 1.0f}});
+  vertices.push_back({{ 0.5f+x, 0.5f+y, 0.5f+z},
+      {1, 0, 0, 1},
+      {0.0f, 0.0f, 1.0f}});
+  vertices.push_back({{-0.5f+x, 0.5f+y, 0.5f+z},
+      {1, 0, 0, 1},
+      {0.0f, 0.0f, 1.0f}});
 
   //right
-  vertices.push_back(VertexFormat(glm::vec3(1.0+x, 1.0+y, 1.0+z),
-                                  glm::vec4(1, 1, 1, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(1.0+x, 1.0+y, -1.0+z),
-                                  glm::vec4(1, 1, 0, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(1.0+x, -1.0+y, -1.0+z),
-                                  glm::vec4(1, 0, 0, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(1.0+x, -1.0+y, 1.0+z),
-                                  glm::vec4(1, 0, 1, 1)));
+  vertices.push_back({{0.5f+x, 0.5f+y, 0.5f+z},
+      {1, 0, 0, 1},
+      {1.0f, 0.0f, 0.0f}});
+  vertices.push_back({{0.5f+x, 0.5f+y, -0.5f+z},
+      {1, 0, 0, 1},
+      {1.0f, 0.0f, 0.0f}});
+  vertices.push_back({{0.5f+x, -0.5f+y, -0.5f+z},
+      {1, 0, 0, 1},
+      {1.0f, 0.0f, 0.0f}});
+  vertices.push_back({{0.5f+x, -0.5f+y, 0.5f+z},
+      {1, 0, 0, 1},
+      {1.0f, 0.0f, 0.0f}});
 
   //back
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, -1.0+y, -1.0+z),
-                                  glm::vec4(0, 0, 0, 1)));
-  vertices.push_back(VertexFormat(glm::vec3( 1.0+x, -1.0+y, -1.0+z),
-                                  glm::vec4(1, 0, 0, 1)));
-  vertices.push_back(VertexFormat(glm::vec3( 1.0+x, 1.0+y, -1.0+z),
-                                  glm::vec4(1, 1, 0, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, 1.0+y, -1.0+z),
-                                  glm::vec4(0, 1, 0, 1)));
+  vertices.push_back({{-0.5f+x, -0.5f+y, -0.5f+z},
+      {1, 0, 0, 1},
+      {0.0f, 0.0f, -1.0f}});
+  vertices.push_back({{ 0.5f+x, -0.5f+y, -0.5f+z},
+      {1, 0, 0, 1},
+      {0.0f, 0.0f, -1.0f}});
+  vertices.push_back({{ 0.5f+x, 0.5f+y, -0.5f+z},
+      {1, 0, 0, 1},
+      {0.0f, 0.0f, -1.0f}});
+  vertices.push_back({{-0.5f+x, 0.5f+y, -0.5f+z},
+      {1, 0, 0, 1},
+      {0.0f, 0.0f, -1.0f}});
 
   //left
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, -1.0+y, -1.0+z),
-                                  glm::vec4(0, 0, 0, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, -1.0+y, 1.0+z),
-                                  glm::vec4(0, 0, 1, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, 1.0+y, 1.0+z),
-                                  glm::vec4(0, 1, 1, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, 1.0+y, -1.0+z),
-                                  glm::vec4(0, 1, 0, 1)));
+  vertices.push_back({{-0.5f+x, -0.5f+y, -0.5f+z},
+      {1, 0, 0, 1},
+      {-1.0f, 0.0f, 0.0f}});
+  vertices.push_back({{-0.5f+x, -0.5f+y, 0.5f+z},
+      {1, 0, 0, 1},
+      {-1.0f, 0.0f, 0.0f}});
+  vertices.push_back({{-0.5f+x, 0.5f+y, 0.5f+z},
+      {1, 0, 0, 1},
+      {-1.0f, 0.0f, 0.0f}});
+  vertices.push_back({{-0.5f+x, 0.5f+y, -0.5f+z},
+      {1, 0, 0, 1},
+      {-1.0f, 0.0f, 0.0f}});
 
   //upper
-  vertices.push_back(VertexFormat(glm::vec3( 1.0+x, 1.0+y, 1.0+z),
-                                  glm::vec4(1, 1, 1, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, 1.0+y, 1.0+z),
-                                  glm::vec4(0, 1, 1, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, 1.0+y, -1.0+z),
-                                  glm::vec4(0, 1, 0, 1)));
-  vertices.push_back(VertexFormat(glm::vec3( 1.0+x, 1.0+y, -1.0+z),
-                                  glm::vec4(1, 1, 0, 1)));
+  vertices.push_back({{ 0.5f+x, 0.5f+y, 0.5f+z},
+      {1, 0, 0, 1},
+      {0.0f, 1.0f, 0.0f}});
+  vertices.push_back({{-0.5f+x, 0.5f+y, 0.5f+z},
+      {1, 0, 0, 1},
+      {0.0f, 1.0f, 0.0f}});
+  vertices.push_back({{-0.5f+x, 0.5f+y, -0.5f+z},
+      {1, 0, 0, 1},
+      {0.0f, 1.0f, 0.0f}});
+  vertices.push_back({{ 0.5f+x, 0.5f+y, -0.5f+z},
+      {1, 0, 0, 1},
+      {0.0f, 1.0f, 0.0f}});
 
   //bottom
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, -1.0+y, -1.0+z),
-                                  glm::vec4(0, 0, 0, 1)));
-  vertices.push_back(VertexFormat(glm::vec3( 1.0+x, -1.0+y, -1.0+z),
-                                  glm::vec4(1, 0, 0, 1)));
-  vertices.push_back(VertexFormat(glm::vec3( 1.0+x, -1.0+y, 1.0+z),
-                                  glm::vec4(1, 0, 1, 1)));
-  vertices.push_back(VertexFormat(glm::vec3(-1.0+x, -1.0+y, 1.0+z),
-                                  glm::vec4(0, 0, 1, 1)));
+  vertices.push_back({{-0.5f+x, -0.5f+y, -0.5f+z},
+      {1, 0, 0, 1},
+      {0.0f, -1.0f, 0.0f}});
+  vertices.push_back({{ 0.5f+x, -0.5f+y, -0.5f+z},
+      {1, 0, 0, 1},
+      {0.0f, -1.0f, 0.0f}});
+  vertices.push_back({{ 0.5f+x, -0.5f+y, 0.5f+z},
+      {1, 0, 0, 1},
+      {0.0f, -1.0f, 0.0f}});
+  vertices.push_back({{-0.5f+x, -0.5f+y, 0.5f+z},
+      {1, 0, 0, 1},
+      {0.0f, -1.0f, 0.0f}});
+
 
   glGenBuffers(1, &vbo);
   glBindBuffer(GL_ARRAY_BUFFER, vbo);

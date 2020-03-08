@@ -147,6 +147,17 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
     }
   }
 }
+
+void World::breakBlock(const glm::vec3& location, const glm::vec3& direction){
+  //TODO
+  //glm::vec3 point = location;
+  //for(int i = 0; i < 5; i++){
+    //point += direction;
+    //IndexCube* chunk = chunkFromPoint(point);
+    //if(chunk)
+  //}
+}
+
 void World::update(){
 
 }

@@ -52,8 +52,10 @@ void InitGlut::init(const WindowInfo& window,
 
   glutKeyboardFunc(keyPress);
   glutMouseFunc(mousePress);
-  glutMotionFunc(mouseMove);
+  glutPassiveMotionFunc(mouseMove);
 
+
+  glutSetCursor(GLUT_CURSOR_NONE);
   glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);
 
   printOpenGLInfo(window, context);

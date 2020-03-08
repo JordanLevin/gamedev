@@ -9,9 +9,9 @@ using namespace std::chrono;
 
 SceneManager::SceneManager(){
   glEnable(GL_DEPTH_TEST);
-  //shaderManager.createProgram("vshader1.glsl",
+  //shaderManager.createProgram("linevshader.glsl",
                               //"fshader1.glsl",
-                              //"colorShader");
+                              //"lineShader");
   shaderManager.createProgram("cubevshader.glsl",
                               "fshader1.glsl",
                               "cubeShader");
@@ -40,20 +40,20 @@ void SceneManager::setCamera(const Camera& cam){
 
 void SceneManager::notifyBeginFrame(){
   frameStart = high_resolution_clock::now();
-  //modelManager.update();
+  modelManager.update();
 }
 
 void SceneManager::notifyDisplayFrame(){
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glClearColor(0.0, 0.0, 0.0, 1.0);
-  //modelManager.draw();
   modelManager.draw(projection_matrix, view_matrix);
+  modelManager.draw();
 }
 
 void SceneManager::notifyEndFrame(){
   auto end = high_resolution_clock::now();
   auto duration = ::duration_cast<milliseconds>(end - frameStart); 
-  std::cout << duration.count() << std::endl; 
+  //std::cout << duration.count() << std::endl; 
 }
 
 void SceneManager::notifyReshape(int width, int height, 

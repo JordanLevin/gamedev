@@ -1,8 +1,0 @@
-OK SO WE DOIN SOME DESIGN HERE:
-Issue: Camera, initglut, and scenemanager need to interact:
-
-Idea: SceneManger has a camera instance. Init glut has a scenemanager instance.
-So initglut could ask scenemanager for its camera.
-    New Issue: glut callbacks cant be members. Potential workaround: create func in initglut that delegate to camera
-
-This worked but theres still a bit too much of objects containing pointers to other objects

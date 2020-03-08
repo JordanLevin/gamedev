@@ -3,10 +3,9 @@
 
 #include <glm/glm.hpp>
 
-#include "../../Rendering/Models/CubeCluster.hpp"
 #include "../../Input/Camera.hpp"
+#include "../../Rendering/Models/CubeCluster.hpp"
 #include "../../Managers/ShaderManager.hpp"
-#include "../../Lib/OctTree.hpp"
 
 #include <vector>
 #include <map>
@@ -16,6 +15,8 @@
 
 #define MAX_X 1000
 #define MAX_Y 1000
+
+class Camera;
 
 struct Comparator{
   bool operator()(const glm::ivec2& a, const glm::ivec2& b)const noexcept
@@ -57,8 +58,7 @@ class World : public Model{
     CubeCluster* readChunk(int x, int y);
     virtual void draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix) override final;
     virtual void update() override final;
-    
-
+    void breakBlock(const glm::vec3& location, const glm::vec3& direction);
 };
 
 

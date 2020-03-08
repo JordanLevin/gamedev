@@ -14,7 +14,7 @@ class SceneManager: public IListener{
     ModelManager modelManager;
     glm::mat4 view_matrix;
     glm::mat4 projection_matrix;
-    Camera camera{&view_matrix};
+    Camera camera{&view_matrix, &projection_matrix};
     std::chrono::high_resolution_clock::time_point frameStart;
   public:
     SceneManager();
