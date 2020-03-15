@@ -113,17 +113,18 @@ void World::generate(int x, int z){
   }
   
   //Generate a new chunk using perlin noise
-  CubeCluster* c = new CubeCluster();
+  CubeCluster* c = new CubeCluster(x, z);
   c->setProgram(ShaderManager::getShader("cubeShader"));
+  //c->add(0,0,0);
   for(int row = x*16; row < x*16 + 16; row++){
     for(int col = z*16; col < z*16 + 16; col++){
       c->add(row,0,col);
       float height = noise.perlin((float)row/10.0, (float)col/10.0)*50;
       for(int h = 2; h < height; h++){
         if(h > 8)
-          c->add(row,h,col, 1.0f, 1.0f, 1.0f);
+          c->add(row,h,col, 2);
         else
-          c->add(row,h,col, 0.0f, 0.5f, 0.0f);
+          c->add(row,h,col, 1);
       }
     }
   }

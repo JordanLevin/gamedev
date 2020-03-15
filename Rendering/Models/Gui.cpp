@@ -9,12 +9,8 @@ void Gui::add(float x,float y,float z, float xf,float yf,float zf){
 }
 void Gui::add(float x,float y,float z, float xf,float yf,float zf, 
     float r, float g, float b){
-  vertices.push_back({
-      {x,y,z}, {r,g,b,1}, {0,0,0}
-      });
-  vertices.push_back({
-      {xf,yf,zf}, {r,g,b,1}, {0,0,0}
-      });
+  vertices.push_back({{x,y,z}, {r,g,b,1}});
+  vertices.push_back({{xf,yf,zf}, {r,g,b,1}});
 }
 
 void Gui::create(){

@@ -2,7 +2,6 @@
 #include "ShaderManager.hpp"
 #include "ShaderManager.hpp"
 
-#include "../Rendering/Models/IndexCube.hpp"
 #include "../Rendering/Models/CubeCluster.hpp"
 #include "../Rendering/Models/World.hpp"
 #include "../Rendering/Models/Gui.hpp"
