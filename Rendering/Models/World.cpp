@@ -113,14 +113,14 @@ void World::generate(int x, int z){
   }
   
   //Generate a new chunk using perlin noise
-  CubeCluster* c = new CubeCluster(x, z);
+  CubeCluster* c = new CubeCluster();
   c->setProgram(ShaderManager::getShader("cubeShader"));
   //c->add(0,0,0);
   for(int row = x*16; row < x*16 + 16; row++){
     for(int col = z*16; col < z*16 + 16; col++){
       c->add(row,0,col);
       float height = noise.perlin((float)row/10.0, (float)col/10.0)*50;
-      for(int h = 2; h < height; h++){
+      for(int h = 1; h < height; h++){
         if(h > 8)
           c->add(row,h,col, 2);
         else
@@ -139,6 +139,8 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
   int col_f = (camera->getZ()/16) + 8;
   for(int row = row_i; row < row_f; row++){
     for(int col = col_i; col < col_f; col++){
+  //for(int row = -1; row < 0; row++){
+    //for(int col = -1; col < 0; col++){
       if(cubes.count(glm::ivec2(row,col)) == 1)
         cubes[glm::ivec2(row,col)]->draw(projection_matrix, view_matrix);
       else{

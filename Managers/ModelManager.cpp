@@ -34,7 +34,11 @@ void ModelManager::init(Camera* camera){
   gameModelList["world"] = world;
 
   //Gui* gui = new Gui(camera);
-  //gui->add(0,0,0,50,50,50,1,0,0);
+  //for(int i = -512; i < 512; i += 16){
+    //for(int j = -512; j < 512; j += 16){
+      //gui->add(i,0,j, i,1000,j,1,0,0);
+    //}
+  //}
   //gui->setProgram(ShaderManager::getShader("lineShader"));
   //gui->create();
   //gameModelList["gui"] = gui;

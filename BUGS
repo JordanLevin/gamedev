@@ -1,0 +1,1 @@
+issue with mesh poly culling when looking from negative to positive z direction, happens on chunk boundaries

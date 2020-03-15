@@ -6,17 +6,15 @@
 #include <fstream>
 
 CubeCluster::CubeCluster(){
-
-}
-
-CubeCluster::CubeCluster(int chunk_x, int chunk_z){
+  occupiedVec.reserve(100'000);
 }
 
 CubeCluster::CubeCluster(std::string path){
-  //std::fstream read;
-  //read.open(path, std::ios::in);
-  //Serialize::deserialize(read, allVertices);
-  //Serialize::deserialize(read, allIndices);
+  std::fstream read;
+  read.open(path, std::ios::in);
+  Serialize::deserialize(read, cubes);
+  Serialize::deserialize(read, occupiedVec);
+  occupied = std::unordered_set(occupiedVec.begin(), occupiedVec.end());
 }
 
 uint32_t CubeCluster::getIndex(uint32_t x, uint32_t y, uint32_t z){
@@ -24,10 +22,10 @@ uint32_t CubeCluster::getIndex(uint32_t x, uint32_t y, uint32_t z){
 }
 
 void CubeCluster::writeChunk(std::string path){
-  //std::fstream write;
-  //write.open(path, std::ios::out);
-  //Serialize::serialize(write, allVertices);
-  //Serialize::serialize(write, allIndices);
+  std::fstream write;
+  write.open(path, std::ios::out);
+  Serialize::serialize(write, cubes);
+  Serialize::serialize(write, occupiedVec);
 }
 
 void CubeCluster::create(){
@@ -36,7 +34,7 @@ void CubeCluster::create(){
   GLuint vao;
   GLuint vbo;
   //GLuint ibo;
-  //GLuint nbo;
+  GLuint nbo;
 
   glGenVertexArrays(1, &vao);
   glBindVertexArray(vao);
@@ -54,10 +52,10 @@ void CubeCluster::create(){
       //sizeof(unsigned int) * allIndices.size(), &allIndices[0], GL_STATIC_DRAW);
 
   //Normal buffer
-  //glGenBuffers(1, &nbo);
-  //glBindBuffer(GL_ARRAY_BUFFER, nbo);
-  //glBufferData(GL_ARRAY_BUFFER,
-      //sizeof(VertexFormat) * data.size(), &data[0][0][0], GL_STATIC_DRAW);
+  glGenBuffers(1, &nbo);
+  glBindBuffer(GL_ARRAY_BUFFER, nbo);
+  glBufferData(GL_ARRAY_BUFFER,
+      sizeof(VertexFormat) * data.size(), &data[0], GL_STATIC_DRAW);
 
   glEnableVertexAttribArray(0);
   glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(VertexFormat),
@@ -65,15 +63,15 @@ void CubeCluster::create(){
   glEnableVertexAttribArray(1);
   glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(VertexFormat), 
       (void*)(offsetof(VertexFormat, VertexFormat::color)));
-  //glEnableVertexAttribArray(2);
-  //glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(VertexFormat),
-      //(void*)(offsetof(VertexFormat, VertexFormat::normal)));
+  glEnableVertexAttribArray(2);
+  glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(VertexFormat),
+      (void*)(offsetof(VertexFormat, VertexFormat::normal)));
   glBindVertexArray(0);
 
   this->vao = vao;
   this->vbos.push_back(vbo);
   //this->vbos.push_back(ibo);
-  //this->vbos.push_back(nbo);
+  this->vbos.push_back(nbo);
 }
 
 void CubeCluster::add(int x, int y, int z){
@@ -81,44 +79,21 @@ void CubeCluster::add(int x, int y, int z){
 }
 
 void CubeCluster::add(int x, int y, int z, int type){
-  //find x and z in chunk space coordinates
-  int x_c = std::abs(x)%16;
-  int z_c = std::abs(z)%16;
-  cubes[getIndex(x_c,y,z_c)] = {x,y,z,type};
-  occupied.insert(getIndex(x_c,y,z_c));
-  //transform worldspace coords into chunk space
-  //uint32_t x_c = x%16;
-  //uint32_t z_c = z%16;
-  //data[getIndex(x_c,y,z_c)].color[0] = r;
-  //data[getIndex(x_c,y,z_c)].color[1] = g;
-  //data[getIndex(x_c,y,z_c)].color[2] = b;
-  //uint32_t p1 = y*17*17 + x_c*17 + z_c;
-  //uint32_t p2 = y*17*17 + x_c*17 + z_c+1;
-  //uint32_t p3 = y*17*17 + (x_c+1)*17 + z_c;
-  //uint32_t p4 = y*17*17 + (x_c+1)*17 + z_c+1;
-  //uint32_t p5 = (y+1)*17*17 + x_c*17 + z_c;
-  //uint32_t p6 = (y+1)*17*17 + x_c*17 + z_c+1;
-  //uint32_t p7 = (y+1)*17*17 + (x_c+1)*17 + z_c;
-  //uint32_t p8 = (y+1)*17*17 + (x_c+1)*17 + z_c+1;
-
-  //std::cout << "DATAZ: " << 
-    //data[p1].position[2] << " " << 
-    //data[p2].position[2] << " " << std::endl;
-
-  //std::cout << x << " " << z << std::endl;
-  //std::cout << x_c << " " << z_c << std::endl;
-
-  //indices_used[getIndex(x_c,y,z_c)] = allIndices.size();
-
-  //std::vector<unsigned int> indices = { 
-    //p1, p2, p3, p2, p3, p4, //top
-    //p5, p6, p7, p6, p7, p8, //bottom
-    //p3, p4, p7, p4, p7, p8, //front
-    //p1, p2, p5, p2, p5, p6, //back
-    //p2, p4, p8, p2, p8, p6, //right
-    //p1, p3, p7, p1, p7, p5}; //left
-
-  //allIndices.insert(allIndices.end(), indices.begin(), indices.end());
+  //find x and z in chunk space coordinates, funky math is so negative and positive chunksuse same sytem
+  int cx;
+  int cz;
+  if(x < 0)
+    cx = 15 - (-x - 1)%16;
+  else
+    cx = x%16;
+  if(z < 0)
+    cz = 15 - (-z - 1)%16;
+  else
+    cz = z%16;
+  int ind = getIndex(cx, y, cz);
+  cubes[ind] = {x,y,z,type};
+  occupied.insert(ind);
+  occupiedVec.push_back(ind);
 }
 
 void CubeCluster::remove(int x, int y, int z){

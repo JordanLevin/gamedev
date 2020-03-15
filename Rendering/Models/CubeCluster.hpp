@@ -17,22 +17,15 @@
 
 class CubeCluster: public Model {
   private:
-    //std::vector<VertexFormat> allVertices;
-    //std::vector<unsigned int> allIndices;
-
-    //std::array<std::array<std::array<VertexFormat, 16>, 128>, 16> data;
-
     uint32_t getIndex(uint32_t x, uint32_t y, uint32_t z);
-    //std::vector<VertexFormat> data = std::vector<VertexFormat>(DATA_SIZE);
-    //std::vector<uint32_t> indices_used = std::vector<uint32_t>(DATA_SIZE);
+
     std::vector<VertexFormat> data;
     std::vector<Cube> cubes = std::vector<Cube>(DATA_SIZE);
     std::unordered_set<int> occupied;
-    //VertexFormat data[DATA_SIZE];
+    std::vector<int> occupiedVec;
 
   public: 
     CubeCluster();
-    CubeCluster(int chunk_x, int chunk_z);
     CubeCluster(std::string path);
     ~CubeCluster() = default;
 
