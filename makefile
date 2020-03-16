@@ -4,9 +4,9 @@ CC = g++
 LIBS = -lglut -lGL -lGLEW -lm
 
 all: ShaderManager.o main.o InitGlut.o InitGlew.o SceneManager.o ModelManager.o \
-	Model.o Camera.o CubeCluster.o World.o Gui.o Mesher.o
+	Model.o Camera.o CubeCluster.o World.o Gui.o Mesher.o ScreenGui.o
 	$(CC) main.o InitGlut.o InitGlew.o ShaderManager.o SceneManager.o Model.o\
-		ModelManager.o Camera.o CubeCluster.o World.o Gui.o Mesher.o \
+		ModelManager.o Camera.o CubeCluster.o World.o Gui.o Mesher.o ScreenGui.o \
 		-o main $(LIBS) $(CPPFLAGS)
 
 main.o: main.cpp
@@ -31,6 +31,9 @@ ModelManager.o: ./Managers/ModelManager.cpp ./Managers/ModelManager.hpp $(INITP)
 
 Gui.o: ./Rendering/Models/Gui.cpp ./Rendering/Models/Gui.hpp ./Input/Camera.hpp
 	$(CC) ./Rendering/Models/Gui.cpp -c $(CPPFLAGS)
+
+ScreenGui.o: ./Rendering/Models/ScreenGui.cpp ./Rendering/Models/ScreenGui.hpp
+	$(CC) ./Rendering/Models/ScreenGui.cpp -c $(CPPFLAGS)
 
 CubeCluster.o: ./Rendering/Models/CubeCluster.cpp ./Rendering/Models/CubeCluster.hpp ./Lib/Serialize.hpp
 	$(CC) ./Rendering/Models/CubeCluster.cpp -c $(CPPFLAGS)

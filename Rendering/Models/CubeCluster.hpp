@@ -18,6 +18,7 @@
 class CubeCluster: public Model {
   private:
     uint32_t getIndex(uint32_t x, uint32_t y, uint32_t z);
+    glm::vec3 coordsInChunk(int x, int y, int z);
 
     std::vector<VertexFormat> data;
     std::vector<Cube> cubes = std::vector<Cube>(DATA_SIZE);
@@ -33,7 +34,7 @@ class CubeCluster: public Model {
     void create();
     void add(int x, int y, int z);
     void add(int x, int y, int z, int type);
-    void remove(int x, int y, int z);
+    bool remove(int x, int y, int z);
     virtual void draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix) override final;
     virtual void update() override final;
 };

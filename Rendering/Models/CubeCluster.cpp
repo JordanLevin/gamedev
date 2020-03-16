@@ -4,6 +4,7 @@
 
 #include <string>
 #include <fstream>
+#include <algorithm>
 
 CubeCluster::CubeCluster(){
   occupiedVec.reserve(100'000);
@@ -15,6 +16,20 @@ CubeCluster::CubeCluster(std::string path){
   Serialize::deserialize(read, cubes);
   Serialize::deserialize(read, occupiedVec);
   occupied = std::unordered_set(occupiedVec.begin(), occupiedVec.end());
+}
+
+glm::vec3 CubeCluster::coordsInChunk(int x, int y, int z){
+  int cx;
+  int cz;
+  if(x < 0)
+    cx = 15 - (-x - 1)%16;
+  else
+    cx = x%16;
+  if(z < 0)
+    cz = 15 - (-z - 1)%16;
+  else
+    cz = z%16;
+  return glm::vec3(cx,y,cz);
 }
 
 uint32_t CubeCluster::getIndex(uint32_t x, uint32_t y, uint32_t z){
@@ -80,27 +95,22 @@ void CubeCluster::add(int x, int y, int z){
 
 void CubeCluster::add(int x, int y, int z, int type){
   //find x and z in chunk space coordinates, funky math is so negative and positive chunksuse same sytem
-  int cx;
-  int cz;
-  if(x < 0)
-    cx = 15 - (-x - 1)%16;
-  else
-    cx = x%16;
-  if(z < 0)
-    cz = 15 - (-z - 1)%16;
-  else
-    cz = z%16;
-  int ind = getIndex(cx, y, cz);
+  glm::vec3 coords = coordsInChunk(x,y,z);
+  int ind = getIndex(coords[0], coords[1], coords[2]);
   cubes[ind] = {x,y,z,type};
   occupied.insert(ind);
   occupiedVec.push_back(ind);
 }
 
-void CubeCluster::remove(int x, int y, int z){
-  //int x_c = x%16;
-  //int z_c = z%16;
-  //int i = indices_used[getIndex(x_c,y,z_c)];
-  
+bool CubeCluster::remove(int x, int y, int z){
+  glm::vec3 coords = coordsInChunk(x,y,z);
+  int i = getIndex(coords[0],coords[1],coords[2]);
+  if(occupied.count(i) != 1)
+    return false;
+  occupied.erase(i);
+  occupiedVec.erase(std::find(occupiedVec.begin(), occupiedVec.end(), i));
+  this->create();
+  return true;
 }
 
 void CubeCluster::update(){

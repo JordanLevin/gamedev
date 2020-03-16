@@ -5,6 +5,7 @@
 #include "../Rendering/Models/CubeCluster.hpp"
 #include "../Rendering/Models/World.hpp"
 #include "../Rendering/Models/Gui.hpp"
+#include "../Rendering/Models/ScreenGui.hpp"
 
 #include "../Lib/OctTree.hpp"
 
@@ -33,6 +34,13 @@ void ModelManager::init(Camera* camera){
   camera->setWorld(world);
   gameModelList["world"] = world;
 
+  ScreenGui* gui = new ScreenGui();
+  gui->add(0.0-0.03, 0, 0, 0.0+0.03, 0, 0, 0,0,1);
+  gui->add(0, 0.0-0.05, 0, 0, 0.0+0.05, 0, 0,0,1);
+  gui->setProgram(ShaderManager::getShader("simpleLineShader"));
+  gui->create();
+  gameModelList["gui"] = gui;
+
   //Gui* gui = new Gui(camera);
   //for(int i = -512; i < 512; i += 16){
     //for(int j = -512; j < 512; j += 16){
@@ -43,32 +51,6 @@ void ModelManager::init(Camera* camera){
   //gui->create();
   //gameModelList["gui"] = gui;
 
-  //IndexCube* cube = new IndexCube();
-  //cube->setProgram(ShaderManager::getShader("cubeShader"));
-  //cube->create(100,100,100);
-  //gameModelList["cube"] = cube;
-
-  //OctTree<myVec3> cubes;
-  //for(int i = 0; i < 150; i += 4){
-  //for(int j = 0; j < 150; j += 4){
-  //for(int k = 0; k < 150; k += 4){
-    //myVec3* v = new myVec3();
-    //v->x = rand()%1000 - 500;
-    //v->y = rand()%1000 - 500;
-    //v->z = rand()%1000 - 500;
-    //cubes.insert(v);
-  //}
-  //}
-  //}
-
-  //std::vector<CubeCluster*> clusters = cubes.getChunkAsCubeCluster();
-  //int count = 0;
-  //for(auto c: clusters){
-    //c->setProgram(ShaderManager::getShader("cubeShader"));
-    //c->create();
-    //gameModelList[std::to_string(count)]  = c;
-    //count++;
-  //}
 }
 
 void ModelManager::update(){

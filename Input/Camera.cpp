@@ -135,9 +135,11 @@ void Camera::mousePress(int button, int state, int x, int y){
   if (state == GLUT_DOWN){
     glm::vec3 window{1280/2,720/2,0};
     glm::vec4 viewport{0,0,1280,720};
-    glm::vec3 point = glm::unProject(window, *view_matrix, *projection_matrix, viewport);
+    glm::vec3 point = eyeVector;
+    //glm::vec3 point = glm::unProject(window, *view_matrix, *projection_matrix, viewport);
     //std::cout << point[0] << " " << point[1] << " " << point[2] << std::endl;
     glm::vec3 dir = getDirection();
-    //world->breakBlock(point, dir);
+    std::cout << dir[0] << " " << dir[1] << " " << dir[2] << std::endl;
+    world->breakBlock(point, dir);
   }
 }
