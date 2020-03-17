@@ -4,7 +4,6 @@
 #include <GL/glew.h>
 
 #include "Model.hpp"
-#include "../../Input/Camera.hpp"
 
 #include <stdarg.h>
 
@@ -12,10 +11,9 @@ class Gui: public Model {
   private:
 
   public: 
-    Gui(Camera* camera_);
+    Gui();
     ~Gui() = default;
 
-    Camera* camera;
     std::vector<VertexFormat> vertices;
 
     void add(float x,float y,float z, float xf,float yf,float zf);

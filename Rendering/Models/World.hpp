@@ -58,6 +58,7 @@ class World : public Model{
     CubeCluster* readChunk(int x, int y);
     virtual void draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix) override final;
     virtual void update() override final;
+    void selectBlock(const glm::vec3& location, const glm::vec3& direction);
     void breakBlock(const glm::vec3& location, const glm::vec3& direction);
 };
 

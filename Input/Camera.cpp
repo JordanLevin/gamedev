@@ -61,6 +61,7 @@ void Camera::updateView(){
   translate = glm::translate(translate, -eyeVector);
 
   *view_matrix = (rotate * translate);
+  //world->selectBlock(eyeVector, getDirection());
 }
 
 void Camera::keyPress(const unsigned char key, int x, int y){
@@ -133,13 +134,10 @@ void Camera::mouseMove(int x, int y){
 
 void Camera::mousePress(int button, int state, int x, int y){
   if (state == GLUT_DOWN){
-    glm::vec3 window{1280/2,720/2,0};
-    glm::vec4 viewport{0,0,1280,720};
     glm::vec3 point = eyeVector;
-    //glm::vec3 point = glm::unProject(window, *view_matrix, *projection_matrix, viewport);
-    //std::cout << point[0] << " " << point[1] << " " << point[2] << std::endl;
     glm::vec3 dir = getDirection();
-    std::cout << dir[0] << " " << dir[1] << " " << dir[2] << std::endl;
     world->breakBlock(point, dir);
+    //gui->add(point[0], point[1], point[2], point[0]+dir[0], point[1]+dir[1], point[2]+dir[2], 0.3, 1, 1);
+    //gui->create();
   }
 }

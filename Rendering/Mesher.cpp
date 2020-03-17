@@ -19,6 +19,8 @@ glm::vec4 Mesher::getColor(const Cube& c){
     return glm::vec4(1.0f,1.0f,1.0f,1.0f);
   if(c.type == 3)
     return glm::vec4(0.5f,0.5f,0.5f,1.0f);
+  if(c.type == 4)
+    return glm::vec4(0.3f,1.0f,1.0f,0.8f);
   return glm::vec4(1.0f,0.0f,0.0f,1.0f);
   
 }

@@ -113,6 +113,16 @@ bool CubeCluster::remove(int x, int y, int z){
   return true;
 }
 
+bool CubeCluster::edit(int x, int y, int z, int type){
+  glm::vec3 coords = coordsInChunk(x,y,z);
+  int i = getIndex(coords[0],coords[1],coords[2]);
+  if(occupied.count(i) != 1)
+    return false;
+  cubes[i].type = type;
+  this->create();
+  return true;
+}
+
 void CubeCluster::update(){
 
 }

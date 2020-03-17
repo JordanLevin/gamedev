@@ -1,7 +1,6 @@
 #include "Gui.hpp"
 
-Gui::Gui(Camera* camera_){
-  camera = camera_;
+Gui::Gui(){
 }
 
 void Gui::add(float x,float y,float z, float xf,float yf,float zf){

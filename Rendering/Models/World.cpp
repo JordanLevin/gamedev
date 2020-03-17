@@ -152,6 +152,28 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
 }
 
 
+void World::selectBlock(const glm::vec3& location, const glm::vec3& direction){
+  glm::vec3 point = location;
+  glm::vec3 dir = direction*glm::vec3(0.3f, 0.3f, 0.3f);
+  for(int i = 0; i < 15; i++){
+    //find points chunk
+    int x, z;
+    if(point[0] > 0.0f)
+      x = (int)point[0]/16;
+    else
+      x = (int)point[0]/16 - 1;
+    if(point[2] > 0.0f)
+      z = (int)point[2]/16;
+    else
+      z = (int)point[2]/16 - 1;
+    CubeCluster* chunk = cubes[glm::ivec2(x,z)];
+    if(chunk->edit(point[0], point[1], point[2], 4)){
+      break;
+    }
+    point += dir;
+  }
+}
+
 //TODO: THINGS GET FUNKY FOR NEGATIVE VALUES
 void World::breakBlock(const glm::vec3& location, const glm::vec3& direction){
   glm::vec3 point = location;
@@ -168,10 +190,7 @@ void World::breakBlock(const glm::vec3& location, const glm::vec3& direction){
     else
       z = (int)point[2]/16 - 1;
     CubeCluster* chunk = cubes[glm::ivec2(x,z)];
-    //chunk->add(point[0], point[1], point[2]);
-    if(chunk->remove(point[0], point[1], point[2])){
-      std::cout << x << " " << z << std::endl;
-      std::cout << "Block Broke\n";
+    if(chunk->remove(std::round(point[0]), std::round(point[1]), std::round(point[2]))){
       break;
     }
     point += dir;
