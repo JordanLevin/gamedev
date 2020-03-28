@@ -7,6 +7,7 @@ uniform mat4 projection_matrix, view_matrix;
 uniform vec4 light_color_in;
 uniform float light_power_in;
 uniform vec3 light_dir;
+uniform int wireframe;
 
 out vec4 color;
 out vec3 normal;
@@ -15,6 +16,8 @@ out float light_power;
 
 void main(){
   color = in_color;
+  if(wireframe == 1)
+    color = vec4(0,0,0,1);
   normal = in_normal;
   light_color = light_color_in;
   light_power = light_power_in;

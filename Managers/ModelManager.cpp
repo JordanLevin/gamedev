@@ -4,8 +4,9 @@
 
 #include "../Rendering/Models/CubeCluster.hpp"
 #include "../Rendering/Models/World.hpp"
-#include "../Rendering/Models/Gui.hpp"
 #include "../Rendering/Models/ScreenGui.hpp"
+#include "../Rendering/Gui/Gui.hpp"
+#include "../Rendering/Gui/GuiElement.hpp"
 
 #include "../Lib/OctTree.hpp"
 
@@ -34,23 +35,30 @@ void ModelManager::init(Camera* camera){
   camera->setWorld(world);
   gameModelList["world"] = world;
 
-  ScreenGui* sgui = new ScreenGui();
-  sgui->add(0.0-0.03, 0, 0, 0.0+0.03, 0, 0, 0,0,1);
-  sgui->add(0, 0.0-0.05, 0, 0, 0.0+0.05, 0, 0,0,1);
-  sgui->setProgram(ShaderManager::getShader("simpleLineShader"));
-  sgui->create();
-  gameModelList["sgui"] = sgui;
-
   Gui* gui = new Gui();
+  GuiElement* elem1 = new GuiElement(0,0,100,100,1.0f,0.0f,0.0f);
+  elem1->create();
+  elem1->setProgram(ShaderManager::getShader("guiShader"));
+  gui->add(*elem1);
+  gameModelList["gui"] = gui;
+
+  //ScreenGui* sgui = new ScreenGui();
+  //sgui->add(0.0-0.03, 0, 0, 0.0+0.03, 0, 0, 0,0,1);
+  //sgui->add(0, 0.0-0.05, 0, 0, 0.0+0.05, 0, 0,0,1);
+  //sgui->setProgram(ShaderManager::getShader("simpleLineShader"));
+  //sgui->create();
+  //gameModelList["sgui"] = sgui;
+
+  //Gui* gui = new Gui();
   //for(int i = -512; i < 512; i += 16){
     //for(int j = -512; j < 512; j += 16){
       //gui->add(i,0,j, i,1000,j,1,0,0);
     //}
   //}
-  gui->setProgram(ShaderManager::getShader("lineShader"));
-  gui->create();
-  gameModelList["gui"] = gui;
-  camera->gui = gui;
+  //gui->setProgram(ShaderManager::getShader("lineShader"));
+  //gui->create();
+  //gameModelList["gui"] = gui;
+  //camera->gui = gui;
 
 }
 

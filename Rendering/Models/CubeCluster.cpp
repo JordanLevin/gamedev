@@ -140,5 +140,11 @@ void CubeCluster::draw(const glm::mat4& projection_matrix, const glm::mat4& view
   glBindVertexArray(vao);
 
   //glDrawElements(GL_TRIANGLES, allIndices.size(), GL_UNSIGNED_INT, 0);
+  glUniform1i(glGetUniformLocation(program, "wireframe"),0);
+  glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+  glDrawArrays(GL_TRIANGLES, 0, data.size());
+  //Add wireframe lines around cubes
+  glUniform1i(glGetUniformLocation(program, "wireframe"),1);
+  glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
   glDrawArrays(GL_TRIANGLES, 0, data.size());
 }

@@ -11,7 +11,7 @@ SceneManager::SceneManager(){
   glEnable(GL_DEPTH_TEST);
   shaderManager.createProgram("simplelinevshader.glsl",
                               "fshader1.glsl",
-                              "simpleLineShader");
+                              "guiShader");
   shaderManager.createProgram("linevshader.glsl",
                               "fshader1.glsl",
                               "lineShader");
