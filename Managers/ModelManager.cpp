@@ -7,6 +7,7 @@
 #include "../Rendering/Models/ScreenGui.hpp"
 #include "../Rendering/Gui/Gui.hpp"
 #include "../Rendering/Gui/GuiElement.hpp"
+#include "../Rendering/Gui/TextElement.hpp"
 
 #include "../Lib/OctTree.hpp"
 
@@ -31,16 +32,26 @@ const IGameObject& ModelManager::getModel(const std::string& modelName){
 
 void ModelManager::init(Camera* camera){
   World* world = new World();
-  world->create(camera);
+  world->create();
+  world->setCamera(camera);
   camera->setWorld(world);
   gameModelList["world"] = world;
 
   Gui* gui = new Gui();
-  GuiElement* elem1 = new GuiElement(0,0,100,100,1.0f,0.0f,0.0f);
+  GuiElement* elem1 = new GuiElement(-1.0,-1.0,0.5,0.5,1.0f,0.0f,0.0f, nullptr);
+  GuiElement* elem2 = new GuiElement(0.4,0.4,0.05,0.05,0.0f,0.0f,1.0f, elem1);
   elem1->create();
   elem1->setProgram(ShaderManager::getShader("guiShader"));
-  gui->add(*elem1);
+  elem2->create();
+  elem2->setProgram(ShaderManager::getShader("guiShader"));
+  elem1->add(elem2);
+  gui->add(elem1);
+  Model* test = new TextElement(100,100, "woo text", elem1);
+  test->setProgram(ShaderManager::getShader("textShader"));
+  test->create();
+  elem1->add(test);
   gameModelList["gui"] = gui;
+  gui->enable();
 
   //ScreenGui* sgui = new ScreenGui();
   //sgui->add(0.0-0.03, 0, 0, 0.0+0.03, 0, 0, 0,0,1);

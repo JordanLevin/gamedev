@@ -8,7 +8,8 @@
 
 class Gui : public Model {
   private:
-    std::vector<GuiElement> elements;
+    bool enabled = false;
+    std::vector<Model*> elements;
   public:
     Gui() = default;
     ~Gui() = default;
@@ -16,7 +17,9 @@ class Gui : public Model {
     virtual void create();
     virtual void draw() override final;
     virtual void update() override final;
-    void add(const GuiElement& g);
+    void add(Model* g);
+    void enable();
+    void disable();
 
 };
 

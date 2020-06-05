@@ -5,4 +5,5 @@ raycast for block delete is often off: Fixed, issue with how integer values were
 OPEN:
 raycast can skip through block corners
 mem leak on remeshing
+Window resize does not properly fix the projection matrix
 

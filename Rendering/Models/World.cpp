@@ -7,6 +7,7 @@
 #include <string>
 #include <cmath>
 
+
 void NoiseGenerator::generateVectors(){
   gradient = std::vector<std::vector<std::vector<float>>>(MAX_X, 
       std::vector<std::vector<float>>(MAX_Y, std::vector<float>(2, 0.0)));
@@ -68,14 +69,17 @@ float NoiseGenerator::perlin(float x, float y) {
   return value;
 }
 
-void World::create(Camera* camera_){
-  camera = camera_;
+void World::create(){
   noise.generateVectors();
   for(int x = -8; x < 8; x++){
     for(int y = -8; y < 8; y++){
       generate(x, y);
     }
   }
+}
+
+void World::setCamera(Camera* camera_){
+  camera = camera_;
 }
 
 void World::writeChunk(int x, int z){

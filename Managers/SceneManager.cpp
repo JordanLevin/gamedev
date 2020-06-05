@@ -1,6 +1,7 @@
 #include "SceneManager.hpp"
 #include "ModelManager.hpp"
 #include "../Input/Camera.hpp"
+#include "../Rendering/Gui/Text.hpp"
 
 #include <chrono>
 #include <cmath>
@@ -8,7 +9,11 @@
 using namespace std::chrono;
 
 SceneManager::SceneManager(){
+  Text::init(); //setup characters for erndering, probably do elsewhere
   glEnable(GL_DEPTH_TEST);
+  shaderManager.createProgram("textvshader.glsl",
+                              "textfshader.glsl",
+                              "textShader");
   shaderManager.createProgram("simplelinevshader.glsl",
                               "fshader1.glsl",
                               "guiShader");
@@ -75,6 +80,5 @@ void SceneManager::notifyReshape(int width, int height,
   projection_matrix[2][2] = (-near1 - far1) / (near1 - far1);
   projection_matrix[2][3] = 1.0f;
   projection_matrix[3][2] = 2.0f * near1 * far1 / (near1 - far1);
-
 }
 

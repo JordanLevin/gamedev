@@ -3,6 +3,9 @@
 Model::~Model(){
   destroy();
 }
+void Model::create(){
+
+}
 void Model::draw(){
 
 }

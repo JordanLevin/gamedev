@@ -1,13 +1,15 @@
 INITP = ./Core/Init
 CPPFLAGS = -Wall -Wextra -pedantic -std=c++17 -Wno-unused-parameter -g #-pg
 CC = g++
-LIBS = -lglut -lGL -lGLEW -lm
+LIBS = -lglut -lGL -lGLEW -lm -lfreetype -I/usr/include/freetype2
 
 all: ShaderManager.o main.o InitGlut.o InitGlew.o SceneManager.o ModelManager.o \
-	Model.o Camera.o CubeCluster.o World.o Gui.o GuiElement.o Mesher.o ScreenGui.o
+	Model.o Camera.o CubeCluster.o World.o Gui.o GuiElement.o Mesher.o ScreenGui.o \
+	Text.o TextElement.o
 	$(CC) main.o InitGlut.o InitGlew.o ShaderManager.o SceneManager.o Model.o\
 		ModelManager.o Camera.o CubeCluster.o World.o Gui.o GuiElement.o Mesher.o ScreenGui.o \
-		-o main $(LIBS) $(CPPFLAGS)
+		Text.o TextElement.o \
+		-o main $(CPPFLAGS) $(LIBS)
 
 main.o: main.cpp
 	$(CC) main.cpp -c $(CPPFLAGS)
@@ -24,7 +26,7 @@ ShaderManager.o: ./Managers/ShaderManager.cpp ./Managers/ShaderManager.hpp
 	$(CC) ./Managers/ShaderManager.cpp -c $(CPPFLAGS)
 
 SceneManager.o: ./Managers/SceneManager.cpp ./Managers/SceneManager.hpp $(INITP)/IListener.hpp ./Input/Camera.hpp
-	$(CC) ./Managers/SceneManager.cpp -c $(CPPFLAGS)
+	$(CC) ./Managers/SceneManager.cpp -c $(CPPFLAGS) $(LIBS)
 
 ModelManager.o: ./Managers/ModelManager.cpp ./Managers/ModelManager.hpp $(INITP)/IListener.hpp ./Lib/OctTree.hpp
 	$(CC) ./Managers/ModelManager.cpp -c $(CPPFLAGS)
@@ -34,6 +36,12 @@ Gui.o: ./Rendering/Gui/Gui.cpp ./Rendering/Gui/Gui.hpp
 
 GuiElement.o: ./Rendering/Gui/GuiElement.cpp ./Rendering/Gui/GuiElement.hpp
 	$(CC) ./Rendering/Gui/GuiElement.cpp -c $(CPPFLAGS)
+
+TextElement.o: ./Rendering/Gui/TextElement.cpp ./Rendering/Gui/TextElement.hpp
+	$(CC) ./Rendering/Gui/TextElement.cpp -c $(CPPFLAGS) $(LIBS)
+
+Text.o: ./Rendering/Gui/Text.cpp ./Rendering/Gui/Text.hpp
+	$(CC) ./Rendering/Gui/Text.cpp -c $(CPPFLAGS) $(LIBS)
 
 ScreenGui.o: ./Rendering/Models/ScreenGui.cpp ./Rendering/Models/ScreenGui.hpp
 	$(CC) ./Rendering/Models/ScreenGui.cpp -c $(CPPFLAGS)

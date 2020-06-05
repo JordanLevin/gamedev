@@ -52,7 +52,8 @@ class World : public Model{
     World() = default;
     ~World() = default;
 
-    void create(Camera* camera_);
+    virtual void create() override final;
+    void setCamera(Camera* camera_);
     void generate(int x, int y);
     void writeChunk(int x, int y);
     CubeCluster* readChunk(int x, int y);

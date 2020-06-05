@@ -16,6 +16,7 @@ class Model: public IGameObject{
   public:
     Model() = default;
     virtual ~Model();
+    virtual void create();
     virtual void draw() override;
     virtual void draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix) override;
     virtual void update() override;
