@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Managers/ShaderManager.cpp
+ShaderManager.hpp
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Managers/ShaderManager.hpp
+GL/glew.h
+-
+GL/freeglut.h
+-
+iostream
+-
+fstream
+-
+vector
+-
+map
+-
+string
+-
+filesystem
+-
+
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Managers/ShaderManager.hpp
+GL/glew.h
+-
+GL/freeglut.h
+-
+iostream
+-
+string
+-
+map
+-
+

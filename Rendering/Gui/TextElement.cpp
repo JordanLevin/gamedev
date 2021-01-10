@@ -46,12 +46,11 @@ void TextElement::draw(){
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
   glUseProgram(program);
-  glm::mat4 projection = glm::ortho(0.0f, 1280.0f, 0.0f, 720.0f);
+  glm::mat4 projection = glm::ortho(0.0f, 1920.0f, 0.0f, 1080.0f);
   glUniformMatrix4fv(glGetUniformLocation(program, "projection"), 
       1, false, &projection[0][0]);
 
-  std::cout << x << " " << y << std::endl;
-  RenderText(x,y,1, glm::vec3{1,0,0});
+  RenderText(x,y,1, glm::vec3{1,1,0});
 
   glDisable(GL_BLEND);
 }

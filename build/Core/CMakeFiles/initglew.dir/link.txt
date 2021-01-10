@@ -1,0 +1,2 @@
+/usr/bin/ar qc libinitglew.a  CMakeFiles/initglew.dir/Init/InitGlew.cpp.o
+/usr/bin/ranlib libinitglew.a

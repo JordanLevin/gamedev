@@ -6,12 +6,14 @@
 #include <glm/glm.hpp>
 
 #include "../Rendering/Models/World.hpp"
+#include "../Rendering/Gui/Gui.hpp"
 //#include "../Rendering/Models/Gui.hpp"
 
 class World;
 
 class Camera {
   private:
+    //Gui* gui;
     World* world;
     glm::mat4* view_matrix;
     glm::mat4* projection_matrix;

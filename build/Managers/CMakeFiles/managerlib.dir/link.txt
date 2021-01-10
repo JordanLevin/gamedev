@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmanagerlib.a  CMakeFiles/managerlib.dir/ModelManager.cpp.o CMakeFiles/managerlib.dir/SceneManager.cpp.o CMakeFiles/managerlib.dir/ShaderManager.cpp.o
+/usr/bin/ranlib libmanagerlib.a

@@ -8,9 +8,10 @@
 
 class Gui : public Model {
   private:
-    bool enabled = false;
     std::vector<Model*> elements;
   public:
+    bool enabled = false;
+
     Gui() = default;
     ~Gui() = default;
 

@@ -1,0 +1,1 @@
+/usr/bin/g++    -rdynamic CMakeFiles/game.dir/main.cpp.o  -o game Core/libinit.a Input/libcamera.a Managers/libmanagerlib.a Rendering/librenderinglib.a -lglut -lGL -lGLEW -lm -lfreetype 

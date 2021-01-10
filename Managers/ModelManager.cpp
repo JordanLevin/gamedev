@@ -9,8 +9,6 @@
 #include "../Rendering/Gui/GuiElement.hpp"
 #include "../Rendering/Gui/TextElement.hpp"
 
-#include "../Lib/OctTree.hpp"
-
 #include <random>
 
 ModelManager::~ModelManager(){

@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/IGameObject.hpp
+VertexFormat.hpp
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/VertexFormat.hpp
+GL/glew.h
+-
+GL/freeglut.h
+-
+vector
+-
+iostream
+-
+
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/Model.hpp
+../IGameObject.hpp
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/IGameObject.hpp
+GL/glew.h
+-
+vector
+-
+
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/temp.cpp
+temp.hpp
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/temp.hpp
+
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/temp.hpp
+GL/glew.h
+-
+Model.hpp
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/Model.hpp
+stdarg.h
+-
+
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/VertexFormat.hpp
+glm/glm.hpp
+-
+

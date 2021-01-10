@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmodelmanager.a  CMakeFiles/modelmanager.dir/ModelManager.cpp.o
+/usr/bin/ranlib libmodelmanager.a

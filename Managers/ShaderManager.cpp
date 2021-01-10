@@ -19,7 +19,7 @@ std::string ShaderManager::readShader(const std::string& filename){
   if(!file.good())
   {
     std::cout<<"Can't read file "<<filename<<std::endl;
-    std::cout << "Path: " << std::filesystem::absolute(path) << std::endl;
+    //std::cout << "Path: " << std::filesystem::absolute(path) << std::endl;
     std::terminate();
   }
 

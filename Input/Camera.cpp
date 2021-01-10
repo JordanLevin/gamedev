@@ -133,11 +133,16 @@ void Camera::mouseMove(int x, int y){
 }
 
 void Camera::mousePress(int button, int state, int x, int y){
-  if (state == GLUT_DOWN){
-    glm::vec3 point = eyeVector;
-    glm::vec3 dir = getDirection();
-    world->breakBlock(point, dir);
-    //gui->add(point[0], point[1], point[2], point[0]+dir[0], point[1]+dir[1], point[2]+dir[2], 0.3, 1, 1);
-    //gui->create();
+  //if (gui->enabled) {
+    //gui->mousePress(button, state, x, y);
+  //}
+  //else {
+    if (state == GLUT_DOWN){
+      glm::vec3 point = eyeVector;
+      glm::vec3 dir = getDirection();
+      world->breakBlock(point, dir);
+      //gui->add(point[0], point[1], point[2], point[0]+dir[0], point[1]+dir[1], point[2]+dir[2], 0.3, 1, 1);
+      //gui->create();
+    //}
   }
 }
