@@ -7,13 +7,13 @@
 
 #include "../Rendering/Models/World.hpp"
 #include "../Rendering/Gui/Gui.hpp"
+#include "../Rendering/Gui/DGui.hpp"
 //#include "../Rendering/Models/Gui.hpp"
 
 class World;
 
 class Camera {
   private:
-    //Gui* gui;
     World* world;
     glm::mat4* view_matrix;
     glm::mat4* projection_matrix;
@@ -29,7 +29,7 @@ class Camera {
     float mult{1.0f};
 
   public: 
-    //Gui* gui;
+    DGui* gui;
     Camera(glm::mat4* view_matrix_, glm::mat4* projection_matrix_);
     void updateView();
     void keyPress(const unsigned char key, int x, int y);

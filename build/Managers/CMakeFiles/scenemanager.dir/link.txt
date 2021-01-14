@@ -1,2 +1,0 @@
-/usr/bin/ar qc libscenemanager.a  CMakeFiles/scenemanager.dir/SceneManager.cpp.o
-/usr/bin/ranlib libscenemanager.a

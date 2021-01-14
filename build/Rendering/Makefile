@@ -172,6 +172,33 @@ renderinglib/fast:
 	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build && $(MAKE) -f Rendering/CMakeFiles/renderinglib.dir/build.make Rendering/CMakeFiles/renderinglib.dir/build
 .PHONY : renderinglib/fast
 
+Gui/DGui.o: Gui/DGui.cpp.o
+
+.PHONY : Gui/DGui.o
+
+# target to build an object file
+Gui/DGui.cpp.o:
+	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build && $(MAKE) -f Rendering/CMakeFiles/renderinglib.dir/build.make Rendering/CMakeFiles/renderinglib.dir/Gui/DGui.cpp.o
+.PHONY : Gui/DGui.cpp.o
+
+Gui/DGui.i: Gui/DGui.cpp.i
+
+.PHONY : Gui/DGui.i
+
+# target to preprocess a source file
+Gui/DGui.cpp.i:
+	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build && $(MAKE) -f Rendering/CMakeFiles/renderinglib.dir/build.make Rendering/CMakeFiles/renderinglib.dir/Gui/DGui.cpp.i
+.PHONY : Gui/DGui.cpp.i
+
+Gui/DGui.s: Gui/DGui.cpp.s
+
+.PHONY : Gui/DGui.s
+
+# target to generate assembly for a file
+Gui/DGui.cpp.s:
+	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build && $(MAKE) -f Rendering/CMakeFiles/renderinglib.dir/build.make Rendering/CMakeFiles/renderinglib.dir/Gui/DGui.cpp.s
+.PHONY : Gui/DGui.cpp.s
+
 Gui/Gui.o: Gui/Gui.cpp.o
 
 .PHONY : Gui/Gui.o
@@ -388,6 +415,33 @@ Models/ScreenGui.cpp.s:
 	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build && $(MAKE) -f Rendering/CMakeFiles/renderinglib.dir/build.make Rendering/CMakeFiles/renderinglib.dir/Models/ScreenGui.cpp.s
 .PHONY : Models/ScreenGui.cpp.s
 
+Models/SingleCube.o: Models/SingleCube.cpp.o
+
+.PHONY : Models/SingleCube.o
+
+# target to build an object file
+Models/SingleCube.cpp.o:
+	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build && $(MAKE) -f Rendering/CMakeFiles/renderinglib.dir/build.make Rendering/CMakeFiles/renderinglib.dir/Models/SingleCube.cpp.o
+.PHONY : Models/SingleCube.cpp.o
+
+Models/SingleCube.i: Models/SingleCube.cpp.i
+
+.PHONY : Models/SingleCube.i
+
+# target to preprocess a source file
+Models/SingleCube.cpp.i:
+	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build && $(MAKE) -f Rendering/CMakeFiles/renderinglib.dir/build.make Rendering/CMakeFiles/renderinglib.dir/Models/SingleCube.cpp.i
+.PHONY : Models/SingleCube.cpp.i
+
+Models/SingleCube.s: Models/SingleCube.cpp.s
+
+.PHONY : Models/SingleCube.s
+
+# target to generate assembly for a file
+Models/SingleCube.cpp.s:
+	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build && $(MAKE) -f Rendering/CMakeFiles/renderinglib.dir/build.make Rendering/CMakeFiles/renderinglib.dir/Models/SingleCube.cpp.s
+.PHONY : Models/SingleCube.cpp.s
+
 Models/World.o: Models/World.cpp.o
 
 .PHONY : Models/World.o
@@ -455,6 +509,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... list_install_components"
 	@echo "... install"
+	@echo "... Gui/DGui.o"
+	@echo "... Gui/DGui.i"
+	@echo "... Gui/DGui.s"
 	@echo "... Gui/Gui.o"
 	@echo "... Gui/Gui.i"
 	@echo "... Gui/Gui.s"
@@ -479,6 +536,9 @@ help:
 	@echo "... Models/ScreenGui.o"
 	@echo "... Models/ScreenGui.i"
 	@echo "... Models/ScreenGui.s"
+	@echo "... Models/SingleCube.o"
+	@echo "... Models/SingleCube.i"
+	@echo "... Models/SingleCube.s"
 	@echo "... Models/World.o"
 	@echo "... Models/World.i"
 	@echo "... Models/World.s"

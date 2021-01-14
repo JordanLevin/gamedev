@@ -28,6 +28,7 @@ endif()
 # renderingcpps at Rendering/CMakeLists.txt:4 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/*.cpp")
 set(OLD_GLOB
+  "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/DGui.cpp"
   "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/Gui.cpp"
   "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/GuiElement.cpp"
   "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/Text.cpp"
@@ -36,6 +37,7 @@ set(OLD_GLOB
   "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/CubeCluster.cpp"
   "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/Model.cpp"
   "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/ScreenGui.cpp"
+  "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/SingleCube.cpp"
   "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/World.cpp"
   "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/temp.cpp"
   )
@@ -48,6 +50,7 @@ endif()
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/*.hpp")
 set(OLD_GLOB
   "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Cube.hpp"
+  "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/DGui.hpp"
   "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/Gui.hpp"
   "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/GuiElement.hpp"
   "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/Text.hpp"
@@ -57,6 +60,7 @@ set(OLD_GLOB
   "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/CubeCluster.hpp"
   "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/Model.hpp"
   "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/ScreenGui.hpp"
+  "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/SingleCube.hpp"
   "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/World.hpp"
   "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/temp.hpp"
   "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/VertexFormat.hpp"

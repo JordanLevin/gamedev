@@ -1,0 +1,901 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	440;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	443;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	446;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	449;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	453;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	455;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	457;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	461;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	464;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	467;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	472;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	475;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	478;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	483;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	486;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	489;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	492;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	425;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	428;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	431;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	434;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	438;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	440;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	442;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	446;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	449;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	452;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	457;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	460;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	463;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	468;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	471;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	474;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	477;"	d	file:
+ARRAY2D_H	Lib/octtree/array2d.h	19;"	d
+ARRAY_H	Lib/octtree/array.h	19;"	d
+Advance	Rendering/Gui/Text.hpp	/^    unsigned int Advance;    \/\/ Offset to advance to next glyph$/;"	m	struct:Character
+Aggregate	Lib/octtree/octree.h	/^    class Aggregate : public Node$/;"	c	class:Octree
+AggregateNode	Lib/octtree/octree.h	/^    enum NodeType { BranchNode, AggregateNode, LeafNode };$/;"	e	enum:Octree::NodeType
+Array	Lib/octtree/array.h	/^Array<T,N>::Array( const TinyVector<int,N>& sizes )$/;"	f	class:Array
+Array	Lib/octtree/array.h	/^Array<T,N>::Array()$/;"	f	class:Array
+Array	Lib/octtree/array.h	/^class Array$/;"	c
+Array2D	Lib/octtree/array2d.h	/^Array2D<T>::Array2D( const Array<T,2>& array )$/;"	f	class:Array2D
+Array2D	Lib/octtree/array2d.h	/^Array2D<T>::Array2D( int m, int n )$/;"	f	class:Array2D
+Array2D	Lib/octtree/array2d.h	/^Array2D<T>::Array2D()$/;"	f	class:Array2D
+Array2D	Lib/octtree/array2d.h	/^class Array2D : public Array<T,2>$/;"	c
+Bearing	Rendering/Gui/Text.hpp	/^    glm::ivec2   Bearing;    \/\/ Offset from baseline to left\/top of glyph$/;"	m	struct:Character
+BinaryNumericTraits	Lib/octtree/numtraits.h	/^class BinaryNumericTraits$/;"	c
+BinaryNumericTraits	Lib/octtree/numtraits.h	/^class BinaryNumericTraits<double, int>$/;"	c
+BinaryNumericTraits	Lib/octtree/numtraits.h	/^class BinaryNumericTraits<int, double>$/;"	c
+Bound	Lib/OctTree.hpp	/^struct Bound {$/;"	s
+Branch	Lib/octtree/octree.h	/^    class Branch : public Node$/;"	c	class:Octree
+BranchNode	Lib/octtree/octree.h	/^    enum NodeType { BranchNode, AggregateNode, LeafNode };$/;"	e	enum:Octree::NodeType
+CAMERA_H	Input/Camera.hpp	2;"	d
+CMAKE_BINARY_DIR	build/Core/Makefile	/^CMAKE_BINARY_DIR = \/home\/jordan\/Desktop\/ProgrammingStuff\/opengltest\/test1\/build$/;"	m
+CMAKE_BINARY_DIR	build/Input/Makefile	/^CMAKE_BINARY_DIR = \/home\/jordan\/Desktop\/ProgrammingStuff\/opengltest\/test1\/build$/;"	m
+CMAKE_BINARY_DIR	build/Makefile	/^CMAKE_BINARY_DIR = \/home\/jordan\/Desktop\/ProgrammingStuff\/opengltest\/test1\/build$/;"	m
+CMAKE_BINARY_DIR	build/Managers/Makefile	/^CMAKE_BINARY_DIR = \/home\/jordan\/Desktop\/ProgrammingStuff\/opengltest\/test1\/build$/;"	m
+CMAKE_BINARY_DIR	build/Rendering/Makefile	/^CMAKE_BINARY_DIR = \/home\/jordan\/Desktop\/ProgrammingStuff\/opengltest\/test1\/build$/;"	m
+CMAKE_COMMAND	build/Core/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_COMMAND	build/Input/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_COMMAND	build/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_COMMAND	build/Managers/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_COMMAND	build/Rendering/Makefile	/^CMAKE_COMMAND = \/usr\/bin\/cmake$/;"	m
+CMAKE_SOURCE_DIR	build/Core/Makefile	/^CMAKE_SOURCE_DIR = \/home\/jordan\/Desktop\/ProgrammingStuff\/opengltest\/test1$/;"	m
+CMAKE_SOURCE_DIR	build/Input/Makefile	/^CMAKE_SOURCE_DIR = \/home\/jordan\/Desktop\/ProgrammingStuff\/opengltest\/test1$/;"	m
+CMAKE_SOURCE_DIR	build/Makefile	/^CMAKE_SOURCE_DIR = \/home\/jordan\/Desktop\/ProgrammingStuff\/opengltest\/test1$/;"	m
+CMAKE_SOURCE_DIR	build/Managers/Makefile	/^CMAKE_SOURCE_DIR = \/home\/jordan\/Desktop\/ProgrammingStuff\/opengltest\/test1$/;"	m
+CMAKE_SOURCE_DIR	build/Rendering/Makefile	/^CMAKE_SOURCE_DIR = \/home\/jordan\/Desktop\/ProgrammingStuff\/opengltest\/test1$/;"	m
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	101;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	108;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	123;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	138;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	153;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	161;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	166;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	173;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	176;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	179;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	182;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	185;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	19;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	200;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	214;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	224;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	242;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	251;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	260;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	275;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	288;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	306;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	309;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	312;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	42;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	50;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	56;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	62;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	71;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	80;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	94;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	101;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	108;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	123;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	138;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	13;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	153;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	161;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	166;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	173;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	176;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	179;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	194;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	19;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	208;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	222;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	240;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	249;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	258;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	273;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	291;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	294;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	297;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	42;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	50;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	56;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	62;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	71;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	80;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	94;"	d	file:
+COMPILER_VERSION_INTERNAL	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	256;"	d	file:
+COMPILER_VERSION_INTERNAL	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	254;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	103;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	110;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	116;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	125;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	131;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	140;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	146;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	154;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	162;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	168;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	189;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	204;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	215;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	226;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	245;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	24;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	253;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	263;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	268;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	277;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	282;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	291;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	296;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	43;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	51;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	58;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	64;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	73;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	83;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	88;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	96;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	103;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	110;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	116;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	125;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	131;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	140;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	146;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	154;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	15;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	162;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	168;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	183;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	198;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	210;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	212;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	224;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	243;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	24;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	251;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	261;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	266;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	276;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	281;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	43;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	51;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	58;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	64;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	73;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	83;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	88;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	96;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	104;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	111;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	117;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	126;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	132;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	141;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	147;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	155;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	163;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	169;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	190;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	205;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	217;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	227;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	246;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	254;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	25;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	264;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	269;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	278;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	283;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	292;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	297;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	44;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	52;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	59;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	65;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	74;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	84;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	89;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	97;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	104;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	111;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	117;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	126;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	132;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	141;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	147;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	155;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	163;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	169;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	16;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	184;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	199;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	215;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	225;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	244;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	252;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	25;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	262;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	267;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	277;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	282;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	44;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	52;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	59;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	65;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	74;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	84;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	89;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	97;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	105;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	112;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	118;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	127;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	133;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	142;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	148;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	157;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	170;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	191;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	206;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	220;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	231;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	234;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	247;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	255;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	265;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	270;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	279;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	27;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	284;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	293;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	298;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	29;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	46;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	53;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	67;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	76;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	85;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	90;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	98;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	105;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	112;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	118;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	127;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	133;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	142;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	148;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	157;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	170;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	185;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	200;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	218;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	229;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	232;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	245;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	253;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	263;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	268;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	278;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	27;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	283;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	29;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	46;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	53;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	67;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	76;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	85;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	90;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	98;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	113;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	128;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	143;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	197;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	238;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	33;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	113;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	128;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	143;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	191;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	236;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	33;"	d	file:
+CONTEXTINFO_H	Core/Init/ContextInfo.hpp	2;"	d
+CUBECLUSTER_H	Rendering/Models/CubeCluster.hpp	2;"	d
+CUBE_H	Rendering/Cube.hpp	2;"	d
+CXX_STD	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	558;"	d	file:
+CXX_STD	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	560;"	d	file:
+C_DIALECT	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	575;"	d	file:
+C_DIALECT	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	577;"	d	file:
+C_DIALECT	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	580;"	d	file:
+C_DIALECT	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	582;"	d	file:
+C_DIALECT	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	584;"	d	file:
+Camera	Input/Camera.cpp	/^Camera::Camera(glm::mat4* view_matrix_, glm::mat4* projection_matrix_){$/;"	f	class:Camera
+Camera	Input/Camera.hpp	/^class Camera {$/;"	c
+Character	Rendering/Gui/Text.hpp	/^struct Character {$/;"	s
+Characters	Rendering/Gui/Text.cpp	/^std::map<char, Character> Text::Characters;$/;"	m	class:Text	file:
+Characters	Rendering/Gui/Text.hpp	/^  static std::map<char, Character> Characters;$/;"	m	struct:Text
+Comparator	Rendering/Models/World.hpp	/^struct Comparator{$/;"	s
+ContextInfo	Core/Init/ContextInfo.hpp	/^  ContextInfo(){$/;"	f	struct:ContextInfo
+ContextInfo	Core/Init/ContextInfo.hpp	/^  ContextInfo(int major, int minor, bool c)$/;"	f	struct:ContextInfo
+ContextInfo	Core/Init/ContextInfo.hpp	/^struct ContextInfo {$/;"	s
+Cube	Rendering/Cube.hpp	/^struct Cube {$/;"	s
+CubeCluster	Rendering/Models/CubeCluster.cpp	/^CubeCluster::CubeCluster(){$/;"	f	class:CubeCluster
+CubeCluster	Rendering/Models/CubeCluster.cpp	/^CubeCluster::CubeCluster(std::string path){$/;"	f	class:CubeCluster
+CubeCluster	Rendering/Models/CubeCluster.hpp	/^class CubeCluster: public Model {$/;"	c
+DATA_SIZE	Rendering/Models/CubeCluster.hpp	16;"	d
+DEBUG_OUTPUT_H	Core/Init/DebugOutput.hpp	2;"	d
+DEC	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	496;"	d	file:
+DEC	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	481;"	d	file:
+DebugOutput	Core/Init/DebugOutput.hpp	/^class DebugOutput{$/;"	c
+EQUALS	build/Core/Makefile	/^EQUALS = =$/;"	m
+EQUALS	build/Input/Makefile	/^EQUALS = =$/;"	m
+EQUALS	build/Makefile	/^EQUALS = =$/;"	m
+EQUALS	build/Managers/Makefile	/^EQUALS = =$/;"	m
+EQUALS	build/Rendering/Makefile	/^EQUALS = =$/;"	m
+FRAMEBUFFERINFO_H	Core/Init/FrameBufferInfo.hpp	2;"	d
+FrameBufferInfo	Core/Init/FrameBufferInfo.hpp	/^  FrameBufferInfo(){$/;"	f	struct:FrameBufferInfo
+FrameBufferInfo	Core/Init/FrameBufferInfo.hpp	/^  FrameBufferInfo(bool color, bool depth, bool stencil, bool msaa_){$/;"	f	struct:FrameBufferInfo
+FrameBufferInfo	Core/Init/FrameBufferInfo.hpp	/^struct FrameBufferInfo{$/;"	s
+GAMEMODELS_H	.old/GameModels.hpp	2;"	d
+GUIELEMENT_H	Rendering/Gui/GuiElement.hpp	2;"	d
+GUI_H	Rendering/Gui/Gui.hpp	2;"	d
+GUI_H	Rendering/Models/temp.hpp	2;"	d
+GameModels	.old/GameModels.cpp	/^GameModels::GameModels(){}$/;"	f	class:GameModels
+GameModels	.old/GameModels.hpp	/^class GameModels{$/;"	c
+Gui	Rendering/Gui/Gui.hpp	/^class Gui : public Model {$/;"	c
+Gui	Rendering/Models/temp.cpp	/^Gui::Gui(){$/;"	f	class:Gui
+Gui	Rendering/Models/temp.hpp	/^class Gui: public Model {$/;"	c
+GuiElement	Rendering/Gui/GuiElement.cpp	/^GuiElement::GuiElement(float x_, float y_, float width_, float height_, float r_, float g_, float b_, Model* parent){$/;"	f	class:GuiElement
+GuiElement	Rendering/Gui/GuiElement.hpp	/^class GuiElement : public Model{$/;"	c
+HEX	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	507;"	d	file:
+HEX	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	492;"	d	file:
+ID_VOID_MAIN	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
+IGAMEOBJECT_H	Rendering/IGameObject.hpp	2;"	d
+IGameObject	Rendering/IGameObject.hpp	/^class IGameObject{$/;"	c
+IListener	Core/Init/IListener.hpp	/^class IListener{$/;"	c
+INITGLEW_H	Core/Init/InitGlew.hpp	2;"	d
+INITGLUT_H	Core/Init/InitGlut.hpp	2;"	d
+InitGlew	Core/Init/InitGlew.hpp	/^struct InitGlew{$/;"	s
+InitGlut	Core/Init/InitGlut.hpp	/^class InitGlut{$/;"	c
+LISTENER_H	Core/Init/IListener.hpp	2;"	d
+Leaf	Lib/octtree/octree.h	/^    class Leaf : public Node$/;"	c	class:Octree
+LeafNode	Lib/octtree/octree.h	/^    enum NodeType { BranchNode, AggregateNode, LeafNode };$/;"	e	enum:Octree::NodeType
+M	Lib/octtree/array2d.h	/^int Array2D<T>::M() const$/;"	f	class:Array2D
+MAX_X	Rendering/Models/World.hpp	17;"	d
+MAX_Y	Rendering/Models/World.hpp	18;"	d
+MESHER_H	Rendering/Mesher.hpp	2;"	d
+MODELMANAGER_H	Managers/ModelManager.hpp	2;"	d
+MODEL_H	Rendering/Models/Model.hpp	2;"	d
+Mesher	Rendering/Mesher.hpp	/^class Mesher {$/;"	c
+Model	.old/GameModels.hpp	/^struct Model{$/;"	s
+Model	Rendering/Models/Model.hpp	/^class Model: public IGameObject{$/;"	c
+ModelManager	Managers/ModelManager.hpp	/^class ModelManager{$/;"	c
+N	Lib/octtree/array2d.h	/^int Array2D<T>::N() const$/;"	f	class:Array2D
+NUMTRAITS_H	Lib/octtree/numtraits.h	19;"	d
+Node	Lib/octtree/octree.h	/^    class Node$/;"	c	class:Octree
+NodeType	Lib/octtree/octree.h	/^    enum NodeType { BranchNode, AggregateNode, LeafNode };$/;"	g	class:Octree
+NoiseGenerator	Rendering/Models/World.hpp	/^struct NoiseGenerator{$/;"	s
+OCTREE_H	Lib/octtree/octree.h	19;"	d
+OCTTREE_HPP	Lib/OctTree.hpp	2;"	d
+OctTree	Lib/OctTree.hpp	/^    OctTree(OctTree* p):parent{p}{}$/;"	f	class:OctTree
+OctTree	Lib/OctTree.hpp	/^class OctTree{$/;"	c
+Octree	Lib/octtree/octree.h	/^class Octree$/;"	c
+OpResult	Lib/octtree/numtraits.h	/^    typedef T1 OpResult;$/;"	t	class:BinaryNumericTraits
+OpResult	Lib/octtree/numtraits.h	/^    typedef double OpResult;$/;"	t	class:BinaryNumericTraits
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	337;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	340;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	343;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	346;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	349;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	352;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	355;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	358;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	361;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	364;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	367;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	370;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	373;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	376;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	379;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	382;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	385;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	388;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	391;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	394;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	397;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	400;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	403;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	406;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	409;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	413;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	416;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	419;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	422;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	425;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	429;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	322;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	325;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	328;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	331;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	334;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	337;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	340;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	343;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	346;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	349;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	352;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	355;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	358;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	361;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	364;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	367;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	370;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	373;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	376;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	379;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	382;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	385;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	388;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	391;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	394;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	398;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	401;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	404;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	407;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	410;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	414;"	d	file:
+POINT3D_H	Lib/octtree/point3d.h	19;"	d
+Point3D	Lib/octtree/point3d.h	/^    Point3D( T x, T y, T z )$/;"	f	class:Point3D
+Point3D	Lib/octtree/point3d.h	/^    Point3D( const TinyVector<T,3>& v )$/;"	f	class:Point3D
+Point3D	Lib/octtree/point3d.h	/^    Point3D() {}$/;"	f	class:Point3D
+Point3D	Lib/octtree/point3d.h	/^class Point3D : public TinyVector<T,3>$/;"	c
+RM	build/Core/Makefile	/^RM = \/usr\/bin\/cmake -E remove -f$/;"	m
+RM	build/Input/Makefile	/^RM = \/usr\/bin\/cmake -E remove -f$/;"	m
+RM	build/Makefile	/^RM = \/usr\/bin\/cmake -E remove -f$/;"	m
+RM	build/Managers/Makefile	/^RM = \/usr\/bin\/cmake -E remove -f$/;"	m
+RM	build/Rendering/Makefile	/^RM = \/usr\/bin\/cmake -E remove -f$/;"	m
+RenderText	Rendering/Gui/TextElement.cpp	/^void TextElement::RenderText(float x, float y, float scale, glm::vec3 color)$/;"	f	class:TextElement
+SCENEMANAGER_H	Managers/SceneManager.hpp	2;"	d
+SCREENGUI_H	Rendering/Models/ScreenGui.hpp	2;"	d
+SERIALIZE_H	Lib/Serialize.hpp	2;"	d
+SHADERMANAGER_H	Managers/ShaderManager.hpp	2;"	d
+SHAREDDATA_H	Lib/octtree/shareddata.h	19;"	d
+SHELL	build/Core/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	build/Input/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	build/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	build/Managers/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	build/Rendering/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SIMULATE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	187;"	d	file:
+SIMULATE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	202;"	d	file:
+SIMULATE_ID	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	21;"	d	file:
+SIMULATE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	181;"	d	file:
+SIMULATE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	196;"	d	file:
+SIMULATE_ID	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	21;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	194;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	209;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	37;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	188;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	203;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	37;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	195;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	210;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	38;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	189;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	204;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	38;"	d	file:
+STRINGIFY	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	333;"	d	file:
+STRINGIFY	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	318;"	d	file:
+STRINGIFY_HELPER	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	332;"	d	file:
+STRINGIFY_HELPER	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	317;"	d	file:
+SUFFIXES	build/Core/Makefile	/^SUFFIXES =$/;"	m
+SUFFIXES	build/Input/Makefile	/^SUFFIXES =$/;"	m
+SUFFIXES	build/Makefile	/^SUFFIXES =$/;"	m
+SUFFIXES	build/Managers/Makefile	/^SUFFIXES =$/;"	m
+SUFFIXES	build/Rendering/Makefile	/^SUFFIXES =$/;"	m
+SceneManager	Managers/SceneManager.cpp	/^SceneManager::SceneManager(){$/;"	f	class:SceneManager
+SceneManager	Managers/SceneManager.hpp	/^class SceneManager: public IListener{$/;"	c
+ScreenGui	Rendering/Models/ScreenGui.hpp	/^class ScreenGui: public Model {$/;"	c
+Serialize	Lib/Serialize.hpp	/^class Serialize {$/;"	c
+ShaderManager	Managers/ShaderManager.hpp	/^class ShaderManager$/;"	c
+SharedData	Lib/octtree/shareddata.h	/^SharedData<T>::SharedData( T* data )$/;"	f	class:SharedData
+SharedData	Lib/octtree/shareddata.h	/^SharedData<T>::SharedData( const SharedData<T>& sharedData )$/;"	f	class:SharedData
+SharedData	Lib/octtree/shareddata.h	/^class SharedData$/;"	c
+Size	Rendering/Gui/Text.hpp	/^    glm::ivec2   Size;       \/\/ Size of glyph$/;"	m	struct:Character
+TEXTELEMENT_H	Rendering/Gui/TextElement.hpp	2;"	d
+TINYVECTOR_H	Lib/octtree/tinyvector.h	19;"	d
+Text	Rendering/Gui/Text.hpp	/^struct Text {$/;"	s
+TextElement	Rendering/Gui/TextElement.cpp	/^TextElement::TextElement(float x_, float y_, std::string text_, Model* parent){$/;"	f	class:TextElement
+TextElement	Rendering/Gui/TextElement.hpp	/^class TextElement : public Model {$/;"	c
+TextureID	Rendering/Gui/Text.hpp	/^    unsigned int TextureID;  \/\/ ID handle of the glyph texture$/;"	m	struct:Character
+TinyVector	Lib/octtree/tinyvector.h	/^TinyVector<T,N>::TinyVector( const T& value )$/;"	f	class:TinyVector
+TinyVector	Lib/octtree/tinyvector.h	/^TinyVector<T,N>::TinyVector( const TinyVector<T2,N>& v )$/;"	f	class:TinyVector
+TinyVector	Lib/octtree/tinyvector.h	/^TinyVector<T,N>::TinyVector()$/;"	f	class:TinyVector
+TinyVector	Lib/octtree/tinyvector.h	/^class TinyVector$/;"	c
+VERTEXFORMAT_H	Rendering/VertexFormat.hpp	2;"	d
+VertexFormat	Rendering/VertexFormat.hpp	/^struct VertexFormat{$/;"	s
+WINDOWINFO_H	Core/Init/WindowInfo.hpp	2;"	d
+WORLD_H	Rendering/Models/World.hpp	2;"	d
+WindowInfo	Core/Init/WindowInfo.hpp	/^  WindowInfo(){$/;"	f	struct:WindowInfo
+WindowInfo	Core/Init/WindowInfo.hpp	/^  WindowInfo(std::string n, int posxi, int posyi, int w, int h, bool reshape)$/;"	f	struct:WindowInfo
+WindowInfo	Core/Init/WindowInfo.hpp	/^struct WindowInfo{$/;"	s
+World	Rendering/Models/World.hpp	/^class World : public Model{$/;"	c
+_tmain	Lib/octtree/demo.cpp	/^int _tmain(int argc, _TCHAR* argv[])$/;"	f
+a	Lib/OctTree.hpp	/^  glm::vec3 a;$/;"	m	struct:Bound
+add	Rendering/Gui/Gui.cpp	/^void Gui::add(Model* g){$/;"	f	class:Gui
+add	Rendering/Gui/GuiElement.cpp	/^void GuiElement::add(Model* g){$/;"	f	class:GuiElement
+add	Rendering/Models/CubeCluster.cpp	/^void CubeCluster::add(int x, int y, int z){$/;"	f	class:CubeCluster
+add	Rendering/Models/CubeCluster.cpp	/^void CubeCluster::add(int x, int y, int z, int type){$/;"	f	class:CubeCluster
+add	Rendering/Models/ScreenGui.cpp	/^void ScreenGui::add(float x,float y,float z, float xf,float yf,float zf){$/;"	f	class:ScreenGui
+add	Rendering/Models/ScreenGui.cpp	/^void ScreenGui::add(float x,float y,float z, float xf,float yf,float zf, $/;"	f	class:ScreenGui
+add	Rendering/Models/temp.cpp	/^void Gui::add(float x,float y,float z, float xf,float yf,float zf){$/;"	f	class:Gui
+add	Rendering/Models/temp.cpp	/^void Gui::add(float x,float y,float z, float xf,float yf,float zf, $/;"	f	class:Gui
+aggregateSize_	Lib/octtree/octree.h	/^    static const int aggregateSize_ = AS;$/;"	m	class:Octree
+at	Lib/octtree/array.h	/^const T& Array<T,N>::at( const TinyVector<int,N>& indices ) const$/;"	f	class:Array
+at	Lib/octtree/array2d.h	/^const T& Array2D<T>::at( int i, int j ) const$/;"	f	class:Array2D
+at	Lib/octtree/tinyvector.h	/^    const T& at( int i ) const { return data_[i]; }$/;"	f	class:TinyVector
+b	Lib/OctTree.hpp	/^  glm::vec3 b;$/;"	m	struct:Bound
+b	Rendering/Gui/GuiElement.hpp	/^    float r, g, b;$/;"	m	class:GuiElement
+bound	Lib/OctTree.hpp	/^    Bound bound;$/;"	m	class:OctTree
+breakBlock	Rendering/Models/World.cpp	/^void World::breakBlock(const glm::vec3& location, const glm::vec3& direction){$/;"	f	class:World
+camera	Rendering/Models/World.hpp	/^    Camera* camera;$/;"	m	class:World
+children	Lib/octtree/octree.h	/^        Node* children[2][2][2];$/;"	m	class:Octree::Branch
+children	Rendering/Gui/GuiElement.hpp	/^    std::vector<Model*> children;$/;"	m	class:GuiElement
+chunk	Lib/OctTree.hpp	/^    std::vector<T*> chunk;$/;"	m	class:OctTree
+close	Core/Init/InitGlut.cpp	/^void InitGlut::close(){$/;"	f	class:InitGlut
+closeCallback	Core/Init/InitGlut.cpp	/^void InitGlut::closeCallback(){$/;"	f	class:InitGlut
+color	Rendering/VertexFormat.hpp	/^  float color[4];$/;"	m	struct:VertexFormat
+const	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	10;"	d	file:
+contextInfo	Core/Init/ContextInfo.hpp	/^  ContextInfo& operator=(const ContextInfo& contextInfo) = default;$/;"	m	struct:ContextInfo
+contextInfo	Core/Init/ContextInfo.hpp	/^  ContextInfo(const ContextInfo& contextInfo) = default;$/;"	m	struct:ContextInfo
+coordsInChunk	Rendering/Models/CubeCluster.cpp	/^glm::vec3 CubeCluster::coordsInChunk(int x, int y, int z){$/;"	f	class:CubeCluster
+core	Core/Init/ContextInfo.hpp	/^  bool core;$/;"	m	struct:ContextInfo
+create	Rendering/Gui/Gui.cpp	/^void Gui::create(){$/;"	f	class:Gui
+create	Rendering/Gui/GuiElement.cpp	/^void GuiElement::create(){$/;"	f	class:GuiElement
+create	Rendering/Gui/TextElement.cpp	/^void TextElement::create(){$/;"	f	class:TextElement
+create	Rendering/Models/CubeCluster.cpp	/^void CubeCluster::create(){$/;"	f	class:CubeCluster
+create	Rendering/Models/Model.cpp	/^void Model::create(){$/;"	f	class:Model
+create	Rendering/Models/ScreenGui.cpp	/^void ScreenGui::create(){$/;"	f	class:ScreenGui
+create	Rendering/Models/World.cpp	/^void World::create(){$/;"	f	class:World
+create	Rendering/Models/temp.cpp	/^void Gui::create(){$/;"	f	class:Gui
+createMesh	Rendering/Mesher.cpp	/^std::vector<VertexFormat> Mesher::createMesh(const std::vector<Cube>& chunk,$/;"	f	class:Mesher
+createProgram	Managers/ShaderManager.cpp	/^void ShaderManager::createProgram(const std::string& vertexShaderFilename,$/;"	f	class:ShaderManager
+createShader	Managers/ShaderManager.cpp	/^GLuint ShaderManager::createShader(GLenum shaderType, const std::string& source, $/;"	f	class:ShaderManager
+createTriangleModel	.old/GameModels.cpp	/^void GameModels::createTriangleModel(const std::string& gameModelName){$/;"	f	class:GameModels
+cubes	Rendering/Models/CubeCluster.hpp	/^    std::vector<Cube> cubes = std::vector<Cube>(DATA_SIZE);$/;"	m	class:CubeCluster
+cubes	Rendering/Models/World.hpp	/^    std::map<glm::ivec2, CubeCluster*, Comparator> cubes;$/;"	m	class:World
+cumprod	Lib/octtree/tinyvector.h	/^TinyVector<T,N> cumprod( const TinyVector<T,N>& v )$/;"	f
+data	Lib/octtree/tinyvector.h	/^    T* data() { return data_; }$/;"	f	class:TinyVector
+data	Lib/octtree/tinyvector.h	/^    const T* data() const { return data_; }$/;"	f	class:TinyVector
+data	Rendering/Models/CubeCluster.hpp	/^    std::vector<VertexFormat> data;$/;"	m	class:CubeCluster
+dataIndex	Lib/octtree/array.h	/^int Array<T,N>::dataIndex( const TinyVector<int,N>& indices ) const$/;"	f	class:Array
+data_	Lib/octtree/array.h	/^    SharedData<T> data_;$/;"	m	class:Array
+data_	Lib/octtree/shareddata.h	/^    T* data_;$/;"	m	class:SharedData
+data_	Lib/octtree/tinyvector.h	/^    T data_[N];$/;"	m	class:TinyVector
+deleteModel	.old/GameModels.cpp	/^void GameModels::deleteModel(const std::string& gameModelName){$/;"	f	class:GameModels
+deleteModel	Managers/ModelManager.cpp	/^void ModelManager::deleteModel(const std::string& modelName){$/;"	f	class:ModelManager
+deserialize	Lib/Serialize.hpp	/^      static std::istream& deserialize(std::istream& is, std::vector<POD>& v)$/;"	f	class:Serialize
+destroy	Rendering/Models/Model.cpp	/^void Model::destroy(){$/;"	f	class:Model
+disable	Rendering/Gui/Gui.cpp	/^void Gui::disable(){$/;"	f	class:Gui
+displayCallback	Core/Init/InitGlut.cpp	/^void InitGlut::displayCallback()$/;"	f	class:InitGlut
+dotGridGradient	Rendering/Models/World.cpp	/^float NoiseGenerator::dotGridGradient(int ix, int iy, float x, float y) {$/;"	f	class:NoiseGenerator
+draw	Managers/ModelManager.cpp	/^void ModelManager::draw(){$/;"	f	class:ModelManager
+draw	Managers/ModelManager.cpp	/^void ModelManager::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix){$/;"	f	class:ModelManager
+draw	Rendering/Gui/Gui.cpp	/^void Gui::draw(){$/;"	f	class:Gui
+draw	Rendering/Gui/GuiElement.cpp	/^void GuiElement::draw(){$/;"	f	class:GuiElement
+draw	Rendering/Gui/TextElement.cpp	/^void TextElement::draw(){$/;"	f	class:TextElement
+draw	Rendering/Models/CubeCluster.cpp	/^void CubeCluster::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix){$/;"	f	class:CubeCluster
+draw	Rendering/Models/Model.cpp	/^void Model::draw(){$/;"	f	class:Model
+draw	Rendering/Models/Model.cpp	/^void Model::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix){$/;"	f	class:Model
+draw	Rendering/Models/ScreenGui.cpp	/^void ScreenGui::draw(){$/;"	f	class:ScreenGui
+draw	Rendering/Models/World.cpp	/^void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix){$/;"	f	class:World
+draw	Rendering/Models/temp.cpp	/^void Gui::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix){$/;"	f	class:Gui
+edit	Rendering/Models/CubeCluster.cpp	/^bool CubeCluster::edit(int x, int y, int z, int type){$/;"	f	class:CubeCluster
+elements	Rendering/Gui/Gui.hpp	/^    std::vector<Model*> elements;$/;"	m	class:Gui
+emptyValue_	Lib/octtree/octree.h	/^    T emptyValue_;$/;"	m	class:Octree
+enable	Rendering/Gui/Gui.cpp	/^void Gui::enable(){$/;"	f	class:Gui
+enabled	Rendering/Gui/Gui.hpp	/^    bool enabled = false;$/;"	m	class:Gui
+enterFullscreen	Core/Init/InitGlut.cpp	/^void InitGlut::enterFullscreen(){$/;"	f	class:InitGlut
+eq	Lib/OctTree.hpp	12;"	d
+exitFullscreen	Core/Init/InitGlut.cpp	/^void InitGlut::exitFullscreen(){$/;"	f	class:InitGlut
+features	build/CMakeFiles/feature_tests.c	/^  const char features[] = {"\\n"$/;"	v
+features	build/CMakeFiles/feature_tests.cxx	/^  const char features[] = {"\\n"$/;"	v
+final	Rendering/Gui/Gui.hpp	/^    virtual void draw() override final;$/;"	m	class:Gui
+final	Rendering/Gui/Gui.hpp	/^    virtual void update() override final;$/;"	m	class:Gui
+final	Rendering/Gui/TextElement.hpp	/^    virtual void draw() override final;$/;"	m	class:TextElement
+final	Rendering/Gui/TextElement.hpp	/^    virtual void update() override final;$/;"	m	class:TextElement
+final	Rendering/Models/CubeCluster.hpp	/^    virtual void draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix) override final;$/;"	m	class:CubeCluster
+final	Rendering/Models/CubeCluster.hpp	/^    virtual void update() override final;$/;"	m	class:CubeCluster
+final	Rendering/Models/ScreenGui.hpp	/^    virtual void draw() override final;$/;"	m	class:ScreenGui
+final	Rendering/Models/ScreenGui.hpp	/^    virtual void update() override final;$/;"	m	class:ScreenGui
+final	Rendering/Models/World.hpp	/^    virtual void create() override final;$/;"	m	class:World
+final	Rendering/Models/World.hpp	/^    virtual void draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix) override final;$/;"	m	class:World
+final	Rendering/Models/World.hpp	/^    virtual void update() override final;$/;"	m	class:World
+final	Rendering/Models/temp.hpp	/^    virtual void draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix) override final;$/;"	m	class:Gui
+final	Rendering/Models/temp.hpp	/^    virtual void update() override final;$/;"	m	class:Gui
+flags	Core/Init/FrameBufferInfo.hpp	/^  unsigned int flags;$/;"	m	struct:FrameBufferInfo
+frameBufferInfo	Core/Init/FrameBufferInfo.hpp	/^  FrameBufferInfo& operator=(const FrameBufferInfo& frameBufferInfo) = default;$/;"	m	struct:FrameBufferInfo
+frameBufferInfo	Core/Init/FrameBufferInfo.hpp	/^  FrameBufferInfo(const FrameBufferInfo& frameBufferInfo) = default;$/;"	m	struct:FrameBufferInfo
+frameStart	Managers/SceneManager.hpp	/^    std::chrono::high_resolution_clock::time_point frameStart;$/;"	m	class:SceneManager
+g	Rendering/Gui/GuiElement.hpp	/^    float r, g, b;$/;"	m	class:GuiElement
+gameModelList	.old/GameModels.hpp	/^    std::map<std::string, Model> gameModelList;$/;"	m	class:GameModels
+gameModelList	Managers/ModelManager.hpp	/^    std::map<std::string, IGameObject*> gameModelList;$/;"	m	class:ModelManager
+generate	Rendering/Models/World.cpp	/^void World::generate(int x, int z){$/;"	f	class:World
+generateVectors	Rendering/Models/World.cpp	/^void NoiseGenerator::generateVectors(){$/;"	f	class:NoiseGenerator
+generated	Rendering/Models/World.hpp	/^    std::map<glm::ivec2, bool, Comparator> generated;$/;"	m	class:World
+get	Rendering/Models/CubeCluster.cpp	/^int CubeCluster::get(int x, int y, int z){$/;"	f	class:CubeCluster
+getCamera	Managers/SceneManager.cpp	/^Camera& SceneManager::getCamera(){$/;"	f	class:SceneManager
+getChunk	Lib/OctTree.hpp	/^    std::vector<T*> getChunk(){$/;"	f	class:OctTree
+getChunk	Rendering/Models/World.cpp	/^CubeCluster* World::getChunk(const glm::vec3& coords){$/;"	f	class:World
+getChunkAsCubeCluster	Lib/OctTree.hpp	/^    std::vector<CubeCluster*> getChunkAsCubeCluster(){$/;"	f	class:OctTree
+getChunkAsVector	Lib/OctTree.hpp	/^    std::vector<T*> getChunkAsVector(){$/;"	f	class:OctTree
+getColor	Rendering/Mesher.cpp	/^glm::vec4 Mesher::getColor(const Cube& c){$/;"	f	class:Mesher
+getDirection	Input/Camera.cpp	/^glm::vec3 Camera::getDirection(){$/;"	f	class:Camera
+getIndex	Rendering/Mesher.cpp	/^int Mesher::getIndex(int x, int y, int z){$/;"	f	class:Mesher
+getIndex	Rendering/Models/CubeCluster.cpp	/^uint32_t CubeCluster::getIndex(uint32_t x, uint32_t y, uint32_t z){$/;"	f	class:CubeCluster
+getMaxChunkSize	Lib/OctTree.hpp	/^    int getMaxChunkSize(){$/;"	f	class:OctTree
+getModel	.old/GameModels.cpp	/^unsigned int GameModels::getModel(const std::string& gameModelName){$/;"	f	class:GameModels
+getModel	Managers/ModelManager.cpp	/^const IGameObject& ModelManager::getModel(const std::string& modelName){$/;"	f	class:ModelManager
+getNearestNeighbors	Lib/OctTree.hpp	/^    std::vector<T*> getNearestNeighbors(float x, float y, float z, int n){$/;"	f	class:OctTree
+getShader	Managers/ShaderManager.cpp	/^GLuint ShaderManager::getShader(const std::string& shaderName){$/;"	f	class:ShaderManager
+getStringForSeverity	Core/Init/DebugOutput.hpp	/^    static std::string getStringForSeverity(GLenum severity)$/;"	f	class:DebugOutput
+getStringForSource	Core/Init/DebugOutput.hpp	/^    static std::string getStringForSource(GLenum source)$/;"	f	class:DebugOutput
+getStringForType	Core/Init/DebugOutput.hpp	/^    static std::string getStringForType(GLenum type)$/;"	f	class:DebugOutput
+getText	Rendering/Gui/GuiElement.cpp	/^std::string GuiElement::getText(){$/;"	f	class:GuiElement
+getText	Rendering/Gui/TextElement.cpp	/^std::string TextElement::getText(){$/;"	f	class:TextElement
+getVao	Rendering/Models/Model.cpp	/^GLuint Model::getVao() const {$/;"	f	class:Model
+getVbos	Rendering/Models/Model.cpp	/^const std::vector<GLuint>& Model::getVbos() const { $/;"	f	class:Model
+getViewMatrix	Managers/SceneManager.cpp	/^glm::mat4 SceneManager::getViewMatrix(){$/;"	f	class:SceneManager
+getX	Input/Camera.cpp	/^float Camera::getX(){$/;"	f	class:Camera
+getX	Lib/OctTree.hpp	/^  float getX(){return x;}$/;"	f	struct:myVec3
+getX	Rendering/Gui/GuiElement.cpp	/^float GuiElement::getX(){$/;"	f	class:GuiElement
+getX	Rendering/Gui/TextElement.cpp	/^float TextElement::getX(){$/;"	f	class:TextElement
+getY	Input/Camera.cpp	/^float Camera::getY(){$/;"	f	class:Camera
+getY	Lib/OctTree.hpp	/^  float getY(){return y;}$/;"	f	struct:myVec3
+getY	Rendering/Gui/GuiElement.cpp	/^float GuiElement::getY(){$/;"	f	class:GuiElement
+getY	Rendering/Gui/TextElement.cpp	/^float TextElement::getY(){$/;"	f	class:TextElement
+getZ	Input/Camera.cpp	/^float Camera::getZ(){$/;"	f	class:Camera
+getZ	Lib/OctTree.hpp	/^  float getZ(){return z;}$/;"	f	struct:myVec3
+gradient	Rendering/Models/World.hpp	/^  std::vector<std::vector<std::vector<float>>> gradient;$/;"	m	struct:NoiseGenerator
+height	Core/Init/WindowInfo.hpp	/^  int height;$/;"	m	struct:WindowInfo
+height	Rendering/Gui/GuiElement.hpp	/^    float width, height;$/;"	m	class:GuiElement
+idleCallback	Core/Init/InitGlut.cpp	/^void InitGlut::idleCallback(){$/;"	f	class:InitGlut
+info_arch	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_arch	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_compiler	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_compiler	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_cray	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	/^char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";$/;"	v
+info_cray	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";$/;"	v
+info_language_dialect_default	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	/^const char* info_language_dialect_default =$/;"	v
+info_language_dialect_default	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^const char* info_language_dialect_default = "INFO" ":" "dialect_default["$/;"	v
+info_platform	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_platform	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_simulate	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	/^char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";$/;"	v
+info_simulate	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";$/;"	v
+info_simulate_version	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	/^char const info_simulate_version[] = {$/;"	v
+info_simulate_version	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_simulate_version[] = {$/;"	v
+info_version	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	/^char const info_version[] = {$/;"	v
+info_version	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version[] = {$/;"	v
+info_version_internal	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	/^char const info_version_internal[] = {$/;"	v
+info_version_internal	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v
+init	Core/Init/InitGlew.cpp	/^void InitGlew::init(){$/;"	f	class:InitGlew
+init	Core/Init/InitGlut.cpp	/^void InitGlut::init(const WindowInfo& window,$/;"	f	class:InitGlut
+init	Managers/ModelManager.cpp	/^void ModelManager::init(Camera* camera){$/;"	f	class:ModelManager
+init	Rendering/Gui/Text.cpp	/^void Text::init(){$/;"	f	class:Text
+insert	Lib/OctTree.hpp	/^    void insert(T* val){$/;"	f	class:OctTree
+keyPress	Core/Init/InitGlut.cpp	/^void InitGlut::keyPress(const unsigned char key, int x, int y){$/;"	f	class:InitGlut
+keyPress	Input/Camera.cpp	/^void Camera::keyPress(const unsigned char key, int x, int y){$/;"	f	class:Camera
+leaf	Lib/OctTree.hpp	/^    bool leaf = true;$/;"	m	class:OctTree
+lerp	Rendering/Models/World.cpp	/^float NoiseGenerator::lerp(float a0, float a1, float w) {$/;"	f	class:NoiseGenerator
+listener	Core/Init/InitGlut.cpp	/^IListener* InitGlut::listener = nullptr;$/;"	m	class:InitGlut	file:
+listener	Core/Init/InitGlut.hpp	/^    static IListener* listener;$/;"	m	class:InitGlut
+main	Lib/Tests.cpp	/^int main(){$/;"	f
+main	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
+main	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
+main	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	build/CMakeFiles/feature_tests.c	/^int main(int argc, char** argv) { (void)argv; return features[argc]; }$/;"	f
+main	build/CMakeFiles/feature_tests.cxx	/^int main(int argc, char** argv) { (void)argv; return features[argc]; }$/;"	f
+main	main.cpp	/^int main(int argc, char **argv)$/;"	f
+major_version	Core/Init/ContextInfo.hpp	/^  int major_version, minor_version;$/;"	m	struct:ContextInfo
+max_chunk_size	Lib/OctTree.hpp	/^    int max_chunk_size = 256;$/;"	m	class:OctTree
+minor_version	Core/Init/ContextInfo.hpp	/^  int major_version, minor_version;$/;"	m	struct:ContextInfo
+modelManager	Managers/SceneManager.hpp	/^    ModelManager modelManager;$/;"	m	class:SceneManager
+mouseMove	Core/Init/InitGlut.cpp	/^void InitGlut::mouseMove(int x, int y){$/;"	f	class:InitGlut
+mouseMove	Input/Camera.cpp	/^void Camera::mouseMove(int x, int y){$/;"	f	class:Camera
+mousePress	Core/Init/InitGlut.cpp	/^void InitGlut::mousePress(int button, int state, int x, int y){$/;"	f	class:InitGlut
+mousePress	Input/Camera.cpp	/^void Camera::mousePress(int button, int state, int x, int y){$/;"	f	class:Camera
+msaa	Core/Init/FrameBufferInfo.hpp	/^  bool msaa;$/;"	m	struct:FrameBufferInfo
+myCallback	Core/Init/DebugOutput.hpp	/^    static void myCallback(GLenum source,$/;"	f	class:DebugOutput
+myVec3	Lib/OctTree.hpp	/^struct myVec3{$/;"	s
+name	Core/Init/WindowInfo.hpp	/^  std::string name;$/;"	m	struct:WindowInfo
+noise	Rendering/Models/World.hpp	/^    NoiseGenerator noise;$/;"	m	class:World
+norm	Lib/octtree/tinyvector.h	/^T norm( const TinyVector<T,N>& v )$/;"	f
+normal	Rendering/VertexFormat.hpp	/^  float normal[3];$/;"	m	struct:VertexFormat
+notifyBeginFrame	Managers/SceneManager.cpp	/^void SceneManager::notifyBeginFrame(){$/;"	f	class:SceneManager
+notifyDisplayFrame	Managers/SceneManager.cpp	/^void SceneManager::notifyDisplayFrame(){$/;"	f	class:SceneManager
+notifyEndFrame	Managers/SceneManager.cpp	/^void SceneManager::notifyEndFrame(){$/;"	f	class:SceneManager
+notifyReshape	Managers/SceneManager.cpp	/^void SceneManager::notifyReshape(int width, int height, $/;"	f	class:SceneManager
+occupied	Rendering/Models/CubeCluster.hpp	/^    std::unordered_set<int> occupied;$/;"	m	class:CubeCluster
+occupiedVec	Rendering/Models/CubeCluster.hpp	/^    std::vector<int> occupiedVec;$/;"	m	class:CubeCluster
+octants	Lib/OctTree.hpp	/^    std::array<OctTree<T>*, 8> octants;$/;"	m	class:OctTree
+offset_	Lib/octtree/array.h	/^    int offset_;$/;"	m	class:Array
+operator ()	Lib/octtree/array.h	/^T& Array<T,N>::operator() ( const TinyVector<int,N>& indices )$/;"	f	class:Array
+operator ()	Lib/octtree/array.h	/^const T& Array<T,N>::operator() ( const TinyVector<int,N>& indices ) const$/;"	f	class:Array
+operator ()	Lib/octtree/array2d.h	/^T& Array2D<T>::operator() ( int i, int j )$/;"	f	class:Array2D
+operator ()	Lib/octtree/array2d.h	/^const T& Array2D<T>::operator() ( int i, int j ) const$/;"	f	class:Array2D
+operator ()	Lib/octtree/tinyvector.h	/^    T& operator() ( int i ) { return data_[i]; }$/;"	f	class:TinyVector
+operator ()	Lib/octtree/tinyvector.h	/^    const T& operator() ( int i ) const { return at(i); }$/;"	f	class:TinyVector
+operator *	Lib/octtree/tinyvector.h	/^TinyVector< typename BinaryNumericTraits<T1,T2>::OpResult, N > operator* ($/;"	f
+operator *	Lib/octtree/tinyvector.h	/^TinyVector<T,N> operator* ( const T& x, TinyVector<T,N> v1 )$/;"	f
+operator *=	Lib/octtree/tinyvector.h	/^    void operator*= ( const T& x )$/;"	f	class:TinyVector
+operator *=	Lib/octtree/tinyvector.h	/^    void operator*= ( const TinyVector<T,N>& v )$/;"	f	class:TinyVector
+operator +	Lib/octtree/tinyvector.h	/^TinyVector< typename BinaryNumericTraits<T1,T2>::OpResult, N > operator+ ($/;"	f
+operator +=	Lib/octtree/tinyvector.h	/^    void operator+= ( const TinyVector<T,N>& v )$/;"	f	class:TinyVector
+operator -	Lib/octtree/tinyvector.h	/^TinyVector< typename BinaryNumericTraits<T1,T2>::OpResult, N > operator- ($/;"	f
+operator -=	Lib/octtree/tinyvector.h	/^    void operator-= ( const TinyVector<T,N>& v )$/;"	f	class:TinyVector
+operator /	Lib/octtree/tinyvector.h	/^TinyVector< typename BinaryNumericTraits<T1,T2>::OpResult, N > operator\/ ($/;"	f
+operator /=	Lib/octtree/tinyvector.h	/^    void operator\/= ( const T& x )$/;"	f	class:TinyVector
+operator =	Lib/octtree/shareddata.h	/^SharedData<T>& SharedData<T>::operator= ( SharedData<T> sharedData )$/;"	f	class:SharedData
+operator =	Lib/octtree/tinyvector.h	/^TinyVector<T,N>& TinyVector<T,N>::operator= ( const TinyVector<T2,N>& v )$/;"	f	class:TinyVector
+operator ==	Lib/OctTree.hpp	/^  bool operator==(const myVec3& other){$/;"	f	struct:myVec3
+operator []	Lib/octtree/shareddata.h	/^T& SharedData<T>::operator[] ( int i ) const$/;"	f	class:SharedData
+outlineBlock	Rendering/Models/World.cpp	/^void World::outlineBlock(const glm::vec3& location, const glm::vec3& direction){$/;"	f	class:World
+override	Rendering/Models/Model.hpp	/^    virtual GLuint getVao() const override;$/;"	m	class:Model
+override	Rendering/Models/Model.hpp	/^    virtual const std::vector<GLuint>& getVbos() const override;$/;"	m	class:Model
+override	Rendering/Models/Model.hpp	/^    virtual void destroy() override;$/;"	m	class:Model
+override	Rendering/Models/Model.hpp	/^    virtual void draw() override;$/;"	m	class:Model
+override	Rendering/Models/Model.hpp	/^    virtual void draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix) override;$/;"	m	class:Model
+override	Rendering/Models/Model.hpp	/^    virtual void setProgram(GLuint shaderName) override;$/;"	m	class:Model
+override	Rendering/Models/Model.hpp	/^    virtual void update() override;$/;"	m	class:Model
+parent	Lib/OctTree.hpp	/^    OctTree* parent = nullptr;$/;"	m	class:OctTree
+perlin	Rendering/Models/World.cpp	/^float NoiseGenerator::perlin(float x, float y) {$/;"	f	class:NoiseGenerator
+position	Rendering/VertexFormat.hpp	/^  float position[3];$/;"	m	struct:VertexFormat
+posx	Core/Init/WindowInfo.hpp	/^  int posx;$/;"	m	struct:WindowInfo
+posy	Core/Init/WindowInfo.hpp	/^  int posy;$/;"	m	struct:WindowInfo
+printOpenGLInfo	Core/Init/InitGlut.cpp	/^void InitGlut::printOpenGLInfo(const WindowInfo& window,$/;"	f	class:InitGlut
+printmat	Input/Camera.cpp	/^void printmat(glm::mat4& mat){$/;"	f
+prod	Lib/octtree/tinyvector.h	/^T prod( const TinyVector<T,N>& v )$/;"	f
+program	Rendering/Gui/GuiElement.hpp	/^    GLuint program;$/;"	m	class:GuiElement
+program	Rendering/Gui/TextElement.hpp	/^    GLuint program;$/;"	m	class:TextElement
+program	Rendering/Models/Model.hpp	/^    GLuint program;$/;"	m	class:Model
+programs	Managers/ShaderManager.cpp	/^std::map<std::string, GLuint> ShaderManager::programs; \/\/static definition$/;"	m	class:ShaderManager	file:
+programs	Managers/ShaderManager.hpp	/^    static std::map<std::string, GLuint> programs;$/;"	m	class:ShaderManager
+projection_matrix	Input/Camera.hpp	/^    glm::mat4* projection_matrix;$/;"	m	class:Camera
+projection_matrix	Managers/SceneManager.hpp	/^    glm::mat4 projection_matrix;$/;"	m	class:SceneManager
+qnxnto	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
+qnxnto	build/CMakeFiles/3.13.4/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
+r	Rendering/Gui/GuiElement.hpp	/^    float r, g, b;$/;"	m	class:GuiElement
+readChunk	Rendering/Models/World.cpp	/^CubeCluster* World::readChunk(int x, int z){$/;"	f	class:World
+readShader	Managers/ShaderManager.cpp	/^std::string ShaderManager::readShader(const std::string& filename){$/;"	f	class:ShaderManager
+refcount_	Lib/octtree/shareddata.h	/^    int* refcount_;$/;"	m	class:SharedData
+remove	Rendering/Models/CubeCluster.cpp	/^bool CubeCluster::remove(int x, int y, int z){$/;"	f	class:CubeCluster
+reshapable	Core/Init/WindowInfo.hpp	/^  bool reshapable;$/;"	m	struct:WindowInfo
+reshapeCallback	Core/Init/InitGlut.cpp	/^void InitGlut::reshapeCallback(int width, int height){$/;"	f	class:InitGlut
+root_	Lib/octtree/octree.h	/^    Node* root_;$/;"	m	class:Octree
+run	Core/Init/InitGlut.cpp	/^void InitGlut::run(){$/;"	f	class:InitGlut
+selectBlock	Rendering/Models/World.cpp	/^std::optional<glm::vec3> World::selectBlock(const glm::vec3& location, const glm::vec3& direction){$/;"	f	class:World
+serialize	Lib/Serialize.hpp	/^      static std::ostream& serialize(std::ostream& os, std::vector<POD> const& v)$/;"	f	class:Serialize
+setCamera	Managers/SceneManager.cpp	/^void SceneManager::setCamera(const Camera& cam){$/;"	f	class:SceneManager
+setCamera	Rendering/Models/World.cpp	/^void World::setCamera(Camera* camera_){$/;"	f	class:World
+setListener	Core/Init/InitGlut.cpp	/^void InitGlut::setListener(IListener* listener_){$/;"	f	class:InitGlut
+setMaxChunkSize	Lib/OctTree.hpp	/^    void setMaxChunkSize(int max_chunk_size_){$/;"	f	class:OctTree
+setProgram	Rendering/Gui/GuiElement.cpp	/^void GuiElement::setProgram(GLuint program_){$/;"	f	class:GuiElement
+setProgram	Rendering/Gui/TextElement.cpp	/^void TextElement::setProgram(GLuint program_){$/;"	f	class:TextElement
+setProgram	Rendering/Models/Model.cpp	/^void Model::setProgram(GLuint program_){$/;"	f	class:Model
+setText	Rendering/Gui/GuiElement.cpp	/^void GuiElement::setText(std::string text_){$/;"	f	class:GuiElement
+setText	Rendering/Gui/TextElement.cpp	/^void TextElement::setText(std::string text_){$/;"	f	class:TextElement
+setViewMatrix	Managers/SceneManager.cpp	/^void SceneManager::setViewMatrix(glm::mat4 view_matrix_){$/;"	f	class:SceneManager
+setWorld	Input/Camera.cpp	/^void Camera::setWorld(World* world_){$/;"	f	class:Camera
+setX	Rendering/Gui/GuiElement.cpp	/^void GuiElement::setX(float x_){$/;"	f	class:GuiElement
+setX	Rendering/Gui/TextElement.cpp	/^void TextElement::setX(float x_){$/;"	f	class:TextElement
+setY	Rendering/Gui/GuiElement.cpp	/^void GuiElement::setY(float y_){$/;"	f	class:GuiElement
+setY	Rendering/Gui/TextElement.cpp	/^void TextElement::setY(float y_){$/;"	f	class:TextElement
+shaderManager	Managers/SceneManager.hpp	/^    ShaderManager shaderManager;$/;"	m	class:SceneManager
+size	Lib/OctTree.hpp	/^    int size(){$/;"	f	class:OctTree
+size_	Lib/OctTree.hpp	/^    int size_ = 0;$/;"	m	class:OctTree
+size_	Lib/octtree/octree.h	/^    int size_;$/;"	m	class:Octree
+sizes	Lib/octtree/array.h	/^const TinyVector<int,N>& Array<T,N>::sizes() const$/;"	f	class:Array
+sizes_	Lib/octtree/array.h	/^    TinyVector<int,N> sizes_;$/;"	m	class:Array
+split	Lib/OctTree.hpp	/^    void split(){$/;"	f	class:OctTree
+strides_	Lib/octtree/array.h	/^    TinyVector<int,N> strides_;$/;"	m	class:Array
+subarray	Lib/octtree/array.h	/^Array<T,N> Array<T,N>::subarray( const TinyVector<int,N>& begin,$/;"	f	class:Array
+subarray	Lib/octtree/array2d.h	/^Array2D<T> Array2D<T>::subarray( int iBegin, int jBegin, int iEnd, int jEnd )$/;"	f	class:Array2D
+sum	Lib/octtree/tinyvector.h	/^T sum( const TinyVector<T,N>& v )$/;"	f
+swap	Lib/octtree/shareddata.h	/^void SharedData<T>::swap( SharedData<T>& sharedData )$/;"	f	class:SharedData
+testInsert	Lib/Tests.cpp	/^void testInsert(){$/;"	f
+text	Rendering/Gui/GuiElement.hpp	/^    std::string text;$/;"	m	class:GuiElement
+text	Rendering/Gui/TextElement.hpp	/^    std::string text;$/;"	m	class:TextElement
+type	Rendering/Cube.hpp	/^  int type;$/;"	m	struct:Cube
+update	Managers/ModelManager.cpp	/^void ModelManager::update(){$/;"	f	class:ModelManager
+update	Rendering/Gui/Gui.cpp	/^void Gui::update(){$/;"	f	class:Gui
+update	Rendering/Gui/GuiElement.cpp	/^void GuiElement::update(){$/;"	f	class:GuiElement
+update	Rendering/Gui/TextElement.cpp	/^void TextElement::update(){$/;"	f	class:TextElement
+update	Rendering/Models/CubeCluster.cpp	/^void CubeCluster::update(){$/;"	f	class:CubeCluster
+update	Rendering/Models/Model.cpp	/^void Model::update(){$/;"	f	class:Model
+update	Rendering/Models/ScreenGui.cpp	/^void ScreenGui::update(){$/;"	f	class:ScreenGui
+update	Rendering/Models/World.cpp	/^void World::update(){$/;"	f	class:World
+update	Rendering/Models/temp.cpp	/^void Gui::update(){$/;"	f	class:Gui
+updateView	Core/Init/InitGlut.cpp	/^void InitGlut::updateView(){$/;"	f	class:InitGlut
+updateView	Input/Camera.cpp	/^void Camera::updateView(){$/;"	f	class:Camera
+value_	Lib/octtree/octree.h	/^        T value_;$/;"	m	class:Octree::Leaf
+value_	Lib/octtree/octree.h	/^        T value_[AS][AS][AS];$/;"	m	class:Octree::Aggregate
+vao	.old/GameModels.hpp	/^  unsigned int vao;$/;"	m	struct:Model
+vao	Rendering/Gui/GuiElement.hpp	/^    GLuint vao;$/;"	m	class:GuiElement
+vao	Rendering/Gui/TextElement.hpp	/^    GLuint vao;$/;"	m	class:TextElement
+vao	Rendering/Models/Model.hpp	/^    GLuint vao;$/;"	m	class:Model
+vbos	.old/GameModels.hpp	/^  std::vector<unsigned int> vbos;$/;"	m	struct:Model
+vbos	Rendering/Gui/GuiElement.hpp	/^    std::vector<GLuint> vbos;$/;"	m	class:GuiElement
+vbos	Rendering/Gui/TextElement.hpp	/^    std::vector<GLuint> vbos;$/;"	m	class:TextElement
+vbos	Rendering/Models/Model.hpp	/^    std::vector<GLuint> vbos;$/;"	m	class:Model
+vertices	Rendering/Gui/GuiElement.hpp	/^    std::vector<VertexFormat> vertices;$/;"	m	class:GuiElement
+vertices	Rendering/Models/ScreenGui.hpp	/^    std::vector<VertexFormat> vertices;$/;"	m	class:ScreenGui
+vertices	Rendering/Models/temp.hpp	/^    std::vector<VertexFormat> vertices;$/;"	m	class:Gui
+view_matrix	Input/Camera.hpp	/^    glm::mat4* view_matrix;$/;"	m	class:Camera
+view_matrix	Managers/SceneManager.hpp	/^    glm::mat4 view_matrix;$/;"	m	class:SceneManager
+volatile	build/CMakeFiles/3.13.4/CompilerIdC/CMakeCCompilerId.c	11;"	d	file:
+width	Core/Init/WindowInfo.hpp	/^  int width;$/;"	m	struct:WindowInfo
+width	Rendering/Gui/GuiElement.hpp	/^    float width, height;$/;"	m	class:GuiElement
+windowInfo	Core/Init/InitGlut.cpp	/^WindowInfo InitGlut::windowInfo;$/;"	m	class:InitGlut	file:
+windowInfo	Core/Init/InitGlut.hpp	/^    static WindowInfo windowInfo;$/;"	m	class:InitGlut
+windowInfo	Core/Init/WindowInfo.hpp	/^  WindowInfo& operator=(const WindowInfo& windowInfo) = default;$/;"	m	struct:WindowInfo
+windowInfo	Core/Init/WindowInfo.hpp	/^  WindowInfo(const WindowInfo& windowInfo) = default;$/;"	m	struct:WindowInfo
+world	Input/Camera.hpp	/^    World* world;$/;"	m	class:Camera
+writeChunk	Rendering/Models/CubeCluster.cpp	/^void CubeCluster::writeChunk(std::string path){$/;"	f	class:CubeCluster
+writeChunk	Rendering/Models/World.cpp	/^void World::writeChunk(int x, int z){$/;"	f	class:World
+x	Lib/OctTree.hpp	/^    float x, y, z;$/;"	m	class:OctTree
+x	Lib/OctTree.hpp	/^  float x, y, z;$/;"	m	struct:myVec3
+x	Lib/octtree/point3d.h	/^    T& x() { return (*this)(0); }$/;"	f	class:Point3D
+x	Lib/octtree/point3d.h	/^    const T& x() const { return this->at(0); }$/;"	f	class:Point3D
+x	Rendering/Cube.hpp	/^  float x, y, z;$/;"	m	struct:Cube
+x	Rendering/Gui/GuiElement.hpp	/^    float x, y;$/;"	m	class:GuiElement
+y	Lib/OctTree.hpp	/^    float x, y, z;$/;"	m	class:OctTree
+y	Lib/OctTree.hpp	/^  float x, y, z;$/;"	m	struct:myVec3
+y	Lib/octtree/point3d.h	/^    T& y() { return (*this)(1); }$/;"	f	class:Point3D
+y	Lib/octtree/point3d.h	/^    const T& y() const { return this->at(1); }$/;"	f	class:Point3D
+y	Rendering/Cube.hpp	/^  float x, y, z;$/;"	m	struct:Cube
+y	Rendering/Gui/GuiElement.hpp	/^    float x, y;$/;"	m	class:GuiElement
+z	Lib/OctTree.hpp	/^    float x, y, z;$/;"	m	class:OctTree
+z	Lib/OctTree.hpp	/^  float x, y, z;$/;"	m	struct:myVec3
+z	Lib/octtree/point3d.h	/^    T& z() { return (*this)(2); }$/;"	f	class:Point3D
+z	Lib/octtree/point3d.h	/^    const T& z() const { return this->at(2); }$/;"	f	class:Point3D
+z	Rendering/Cube.hpp	/^  float x, y, z;$/;"	m	struct:Cube
+~Aggregate	Lib/octtree/octree.h	/^        ~Aggregate() {};$/;"	f	class:Octree::Aggregate
+~GameModels	.old/GameModels.cpp	/^GameModels::~GameModels(){$/;"	f	class:GameModels
+~IGameObject	Rendering/IGameObject.hpp	/^inline IGameObject::~IGameObject(){$/;"	f	class:IGameObject
+~IListener	Core/Init/IListener.hpp	/^inline IListener::~IListener(){$/;"	f	class:IListener
+~Leaf	Lib/octtree/octree.h	/^        ~Leaf() {};$/;"	f	class:Octree::Leaf
+~Model	Rendering/Models/Model.cpp	/^Model::~Model(){$/;"	f	class:Model
+~ModelManager	Managers/ModelManager.cpp	/^ModelManager::~ModelManager(){$/;"	f	class:ModelManager
+~Node	Lib/octtree/octree.h	/^        ~Node() {};$/;"	f	class:Octree::Node
+~ShaderManager	Managers/ShaderManager.cpp	/^ShaderManager::~ShaderManager(){$/;"	f	class:ShaderManager
+~SharedData	Lib/octtree/shareddata.h	/^SharedData<T>::~SharedData()$/;"	f	class:SharedData

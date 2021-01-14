@@ -6,36 +6,36 @@
 
 #IncludeRegexTransform: 
 
-/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/IGameObject.hpp
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Cube.hpp
+
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Mesher.cpp
+Mesher.hpp
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Mesher.hpp
 VertexFormat.hpp
 /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/VertexFormat.hpp
-GL/glew.h
--
-GL/freeglut.h
+Cube.hpp
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Cube.hpp
+glm/glm.hpp
 -
 vector
+-
+unordered_set
 -
 iostream
 -
+cstdlib
+-
 
-/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/Model.hpp
-../IGameObject.hpp
-/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/IGameObject.hpp
-GL/glew.h
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Mesher.hpp
+Cube.hpp
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Cube.hpp
+VertexFormat.hpp
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/VertexFormat.hpp
+glm/glm.hpp
 -
 vector
 -
-
-/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/temp.cpp
-temp.hpp
-/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/temp.hpp
-
-/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/temp.hpp
-GL/glew.h
--
-Model.hpp
-/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/Model.hpp
-stdarg.h
+unordered_set
 -
 
 /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/VertexFormat.hpp

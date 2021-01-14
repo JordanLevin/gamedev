@@ -51,23 +51,25 @@ void ModelManager::init(Camera* camera){
   gameModelList["gui"] = gui;
   gui->enable();
 
-  //ScreenGui* sgui = new ScreenGui();
-  //sgui->add(0.0-0.03, 0, 0, 0.0+0.03, 0, 0, 0,0,1);
-  //sgui->add(0, 0.0-0.05, 0, 0, 0.0+0.05, 0, 0,0,1);
-  //sgui->setProgram(ShaderManager::getShader("simpleLineShader"));
-  //sgui->create();
-  //gameModelList["sgui"] = sgui;
+  //old screenspace gui?
+  ScreenGui* sgui = new ScreenGui();
+  sgui->add(0.0-0.03, 0, 0, 0.0+0.03, 0, 0, 0,0,1);
+  sgui->add(0, 0.0-0.05, 0, 0, 0.0+0.05, 0, 0,0,1);
+  sgui->setProgram(ShaderManager::getShader("guiShader"));
+  sgui->create();
+  gameModelList["sgui"] = sgui;
 
-  //Gui* gui = new Gui();
+  //old worldspace gui for debugging
+  //DGui* dgui = new DGui();
   //for(int i = -512; i < 512; i += 16){
     //for(int j = -512; j < 512; j += 16){
-      //gui->add(i,0,j, i,1000,j,1,0,0);
+      //dgui->add(i,0,j, i,1000,j,1,0,0);
     //}
   //}
-  //gui->setProgram(ShaderManager::getShader("lineShader"));
-  //gui->create();
-  //gameModelList["gui"] = gui;
-  //camera->gui = gui;
+  //dgui->setProgram(ShaderManager::getShader("lineShader"));
+  //dgui->create();
+  //gameModelList["dgui"] = dgui;
+  //camera->gui = dgui;
 
 }
 

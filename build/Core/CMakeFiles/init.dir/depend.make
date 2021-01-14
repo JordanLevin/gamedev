@@ -17,11 +17,13 @@ Core/CMakeFiles/init.dir/Init/InitGlut.cpp.o: ../Managers/ModelManager.hpp
 Core/CMakeFiles/init.dir/Init/InitGlut.cpp.o: ../Managers/SceneManager.hpp
 Core/CMakeFiles/init.dir/Init/InitGlut.cpp.o: ../Managers/ShaderManager.hpp
 Core/CMakeFiles/init.dir/Init/InitGlut.cpp.o: ../Rendering/Cube.hpp
+Core/CMakeFiles/init.dir/Init/InitGlut.cpp.o: ../Rendering/Gui/DGui.hpp
 Core/CMakeFiles/init.dir/Init/InitGlut.cpp.o: ../Rendering/Gui/Gui.hpp
 Core/CMakeFiles/init.dir/Init/InitGlut.cpp.o: ../Rendering/Gui/GuiElement.hpp
 Core/CMakeFiles/init.dir/Init/InitGlut.cpp.o: ../Rendering/IGameObject.hpp
 Core/CMakeFiles/init.dir/Init/InitGlut.cpp.o: ../Rendering/Models/CubeCluster.hpp
 Core/CMakeFiles/init.dir/Init/InitGlut.cpp.o: ../Rendering/Models/Model.hpp
+Core/CMakeFiles/init.dir/Init/InitGlut.cpp.o: ../Rendering/Models/SingleCube.hpp
 Core/CMakeFiles/init.dir/Init/InitGlut.cpp.o: ../Rendering/Models/World.hpp
 Core/CMakeFiles/init.dir/Init/InitGlut.cpp.o: ../Rendering/VertexFormat.hpp
 

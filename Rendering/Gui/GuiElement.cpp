@@ -64,7 +64,8 @@ void GuiElement::draw(){
   }
   glUseProgram(program);
   glBindVertexArray(vao);
-  glDrawArrays(GL_TRIANGLES, 0, vertices.size());
+  //TODO figure out correct transparency issues later
+  //glDrawArrays(GL_TRIANGLES, 0, vertices.size());
 }
 void GuiElement::update(){
   for(Model* e: children){

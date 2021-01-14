@@ -5,6 +5,7 @@
 
 #include "../../Input/Camera.hpp"
 #include "../../Rendering/Models/CubeCluster.hpp"
+#include "../../Rendering/Models/SingleCube.hpp"
 #include "../../Managers/ShaderManager.hpp"
 
 #include <vector>
@@ -12,6 +13,7 @@
 #include <unordered_map>
 #include <utility>
 #include <iostream>
+#include <optional>
 
 #define MAX_X 1000
 #define MAX_Y 1000
@@ -45,6 +47,8 @@ class World : public Model{
     NoiseGenerator noise;
     //A map of coordinates to world chunks that are currently in memory
     std::map<glm::ivec2, CubeCluster*, Comparator> cubes;
+    //The outlined cube
+    SingleCube outlineCube;
     //A list of chunks that have been generated and saved in the world file
     std::map<glm::ivec2, bool, Comparator> generated;
 
@@ -57,10 +61,16 @@ class World : public Model{
     void generate(int x, int y);
     void writeChunk(int x, int y);
     CubeCluster* readChunk(int x, int y);
-    virtual void draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix) override final;
+    CubeCluster* getChunk(const glm::vec3& coords);
+    virtual void draw(const glm::mat4& projection_matrix,
+        const glm::mat4& view_matrix) override final;
     virtual void update() override final;
-    void selectBlock(const glm::vec3& location, const glm::vec3& direction);
+    float maxT(float f, bool dir);
+    std::optional<glm::vec3> selectBlock(const glm::vec3& location,
+        const glm::vec3& direction, int dist, bool exact);
     void breakBlock(const glm::vec3& location, const glm::vec3& direction);
+    void placeBlock(const glm::vec3& location, const glm::vec3& direction);
+    void outlineBlock(const glm::vec3& location, const glm::vec3& direction);
 };
 
 

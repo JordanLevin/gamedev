@@ -1,2 +1,0 @@
-/usr/bin/ar qc libinitglut.a  CMakeFiles/initglut.dir/Init/InitGlut.cpp.o
-/usr/bin/ranlib libinitglut.a

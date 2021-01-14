@@ -213,9 +213,6 @@ FREETYPE_LIBRARY_DEBUG:FILEPATH=FREETYPE_LIBRARY_DEBUG-NOTFOUND
 FREETYPE_LIBRARY_RELEASE:FILEPATH=/usr/lib/x86_64-linux-gnu/libfreetype.so
 
 //Path to a library.
-FS:FILEPATH=FS-NOTFOUND
-
-//Path to a library.
 GLEW:FILEPATH=/usr/lib/x86_64-linux-gnu/libGLEW.so
 
 //Path to a library.

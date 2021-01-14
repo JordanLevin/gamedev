@@ -5,11 +5,13 @@ Input/CMakeFiles/camera.dir/Camera.cpp.o: ../Input/Camera.cpp
 Input/CMakeFiles/camera.dir/Camera.cpp.o: ../Input/Camera.hpp
 Input/CMakeFiles/camera.dir/Camera.cpp.o: ../Managers/ShaderManager.hpp
 Input/CMakeFiles/camera.dir/Camera.cpp.o: ../Rendering/Cube.hpp
+Input/CMakeFiles/camera.dir/Camera.cpp.o: ../Rendering/Gui/DGui.hpp
 Input/CMakeFiles/camera.dir/Camera.cpp.o: ../Rendering/Gui/Gui.hpp
 Input/CMakeFiles/camera.dir/Camera.cpp.o: ../Rendering/Gui/GuiElement.hpp
 Input/CMakeFiles/camera.dir/Camera.cpp.o: ../Rendering/IGameObject.hpp
 Input/CMakeFiles/camera.dir/Camera.cpp.o: ../Rendering/Models/CubeCluster.hpp
 Input/CMakeFiles/camera.dir/Camera.cpp.o: ../Rendering/Models/Model.hpp
+Input/CMakeFiles/camera.dir/Camera.cpp.o: ../Rendering/Models/SingleCube.hpp
 Input/CMakeFiles/camera.dir/Camera.cpp.o: ../Rendering/Models/World.hpp
 Input/CMakeFiles/camera.dir/Camera.cpp.o: ../Rendering/VertexFormat.hpp
 

@@ -28,28 +28,31 @@ The CXX compiler identification is GNU, found in "/home/jordan/Desktop/Programmi
 Determining if the C compiler works passed with the following output:
 Change Dir: /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_f8ec0/fast"
-/usr/bin/make -f CMakeFiles/cmTC_f8ec0.dir/build.make CMakeFiles/cmTC_f8ec0.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_9a68c/fast"
 make[1]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_f8ec0.dir/testCCompiler.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_f8ec0.dir/testCCompiler.c.o   -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_f8ec0
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f8ec0.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_f8ec0.dir/testCCompiler.c.o  -o cmTC_f8ec0 
+/usr/bin/make -f CMakeFiles/cmTC_9a68c.dir/build.make CMakeFiles/cmTC_9a68c.dir/build
+make[2]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9a68c.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_9a68c.dir/testCCompiler.c.o   -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_9a68c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9a68c.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_9a68c.dir/testCCompiler.c.o  -o cmTC_9a68c 
+make[2]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_0da4e/fast"
-/usr/bin/make -f CMakeFiles/cmTC_0da4e.dir/build.make CMakeFiles/cmTC_0da4e.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_7fcc2/fast"
 make[1]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_0da4e.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_0da4e.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.13/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_0da4e
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0da4e.dir/link.txt --verbose=1
-/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_0da4e.dir/CMakeCCompilerABI.c.o  -o cmTC_0da4e 
+/usr/bin/make -f CMakeFiles/cmTC_7fcc2.dir/build.make CMakeFiles/cmTC_7fcc2.dir/build
+make[2]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7fcc2.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_7fcc2.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.13/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_7fcc2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7fcc2.dir/link.txt --verbose=1
+/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_7fcc2.dir/CMakeCCompilerABI.c.o  -o cmTC_7fcc2 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper
@@ -61,9 +64,10 @@ Thread model: posix
 gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_0da4e' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccqTTjyl.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_0da4e /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_0da4e.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_0da4e' '-mtune=generic' '-march=x86-64'
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_7fcc2' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccrMLrCf.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_7fcc2 /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_7fcc2.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_7fcc2' '-mtune=generic' '-march=x86-64'
+make[2]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 
 
@@ -71,14 +75,15 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_0da4e/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_0da4e.dir/build.make CMakeFiles/cmTC_0da4e.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_7fcc2/fast"]
   ignore line: [make[1]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_0da4e.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_0da4e.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.13/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_0da4e]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0da4e.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_0da4e.dir/CMakeCCompilerABI.c.o  -o cmTC_0da4e ]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_7fcc2.dir/build.make CMakeFiles/cmTC_7fcc2.dir/build]
+  ignore line: [make[2]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_7fcc2.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_7fcc2.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.13/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_7fcc2]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7fcc2.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_7fcc2.dir/CMakeCCompilerABI.c.o  -o cmTC_7fcc2 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper]
@@ -90,13 +95,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_0da4e' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccqTTjyl.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_0da4e /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_0da4e.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_7fcc2' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccrMLrCf.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_7fcc2 /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_7fcc2.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccqTTjyl.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccrMLrCf.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -115,7 +120,7 @@ Parsed C implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_0da4e] ==> ignore
+    arg [cmTC_7fcc2] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o] ==> ignore
@@ -127,7 +132,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/8/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/8/../../..]
-    arg [CMakeFiles/cmTC_0da4e.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_7fcc2.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--push-state] ==> ignore
     arg [--as-needed] ==> ignore
@@ -159,14 +164,16 @@ Parsed C implicit link information from above output:
 Detecting C [-std=c11] compiler features compiled with the following output:
 Change Dir: /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_ac612/fast"
-/usr/bin/make -f CMakeFiles/cmTC_ac612.dir/build.make CMakeFiles/cmTC_ac612.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_c3f3e/fast"
 make[1]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_ac612.dir/feature_tests.c.o
-/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_ac612.dir/feature_tests.c.o   -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_ac612
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ac612.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_ac612.dir/feature_tests.c.o  -o cmTC_ac612 
+/usr/bin/make -f CMakeFiles/cmTC_c3f3e.dir/build.make CMakeFiles/cmTC_c3f3e.dir/build
+make[2]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c3f3e.dir/feature_tests.c.o
+/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_c3f3e.dir/feature_tests.c.o   -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_c3f3e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c3f3e.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_c3f3e.dir/feature_tests.c.o  -o cmTC_c3f3e 
+make[2]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 
 
@@ -179,14 +186,16 @@ make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/tes
 Detecting C [-std=c99] compiler features compiled with the following output:
 Change Dir: /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_248f4/fast"
-/usr/bin/make -f CMakeFiles/cmTC_248f4.dir/build.make CMakeFiles/cmTC_248f4.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_69efa/fast"
 make[1]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_248f4.dir/feature_tests.c.o
-/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_248f4.dir/feature_tests.c.o   -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_248f4
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_248f4.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_248f4.dir/feature_tests.c.o  -o cmTC_248f4 
+/usr/bin/make -f CMakeFiles/cmTC_69efa.dir/build.make CMakeFiles/cmTC_69efa.dir/build
+make[2]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_69efa.dir/feature_tests.c.o
+/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_69efa.dir/feature_tests.c.o   -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_69efa
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_69efa.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_69efa.dir/feature_tests.c.o  -o cmTC_69efa 
+make[2]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 
 
@@ -199,14 +208,16 @@ make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/tes
 Detecting C [-std=c90] compiler features compiled with the following output:
 Change Dir: /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_5a6d8/fast"
-/usr/bin/make -f CMakeFiles/cmTC_5a6d8.dir/build.make CMakeFiles/cmTC_5a6d8.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_1f75a/fast"
 make[1]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_5a6d8.dir/feature_tests.c.o
-/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_5a6d8.dir/feature_tests.c.o   -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_5a6d8
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5a6d8.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_5a6d8.dir/feature_tests.c.o  -o cmTC_5a6d8 
+/usr/bin/make -f CMakeFiles/cmTC_1f75a.dir/build.make CMakeFiles/cmTC_1f75a.dir/build
+make[2]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1f75a.dir/feature_tests.c.o
+/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_1f75a.dir/feature_tests.c.o   -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_1f75a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1f75a.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_1f75a.dir/feature_tests.c.o  -o cmTC_1f75a 
+make[2]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 
 
@@ -217,28 +228,31 @@ make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/tes
 Determining if the CXX compiler works passed with the following output:
 Change Dir: /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_f24a2/fast"
-/usr/bin/make -f CMakeFiles/cmTC_f24a2.dir/build.make CMakeFiles/cmTC_f24a2.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_15aa6/fast"
 make[1]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_f24a2.dir/testCXXCompiler.cxx.o
-/usr/bin/g++     -o CMakeFiles/cmTC_f24a2.dir/testCXXCompiler.cxx.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_f24a2
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f24a2.dir/link.txt --verbose=1
-/usr/bin/g++       -rdynamic CMakeFiles/cmTC_f24a2.dir/testCXXCompiler.cxx.o  -o cmTC_f24a2 
+/usr/bin/make -f CMakeFiles/cmTC_15aa6.dir/build.make CMakeFiles/cmTC_15aa6.dir/build
+make[2]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_15aa6.dir/testCXXCompiler.cxx.o
+/usr/bin/g++     -o CMakeFiles/cmTC_15aa6.dir/testCXXCompiler.cxx.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_15aa6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_15aa6.dir/link.txt --verbose=1
+/usr/bin/g++       -rdynamic CMakeFiles/cmTC_15aa6.dir/testCXXCompiler.cxx.o  -o cmTC_15aa6 
+make[2]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_8738c/fast"
-/usr/bin/make -f CMakeFiles/cmTC_8738c.dir/build.make CMakeFiles/cmTC_8738c.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_23870/fast"
 make[1]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_8738c.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/g++     -o CMakeFiles/cmTC_8738c.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.13/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_8738c
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8738c.dir/link.txt --verbose=1
-/usr/bin/g++      -v -rdynamic CMakeFiles/cmTC_8738c.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_8738c 
+/usr/bin/make -f CMakeFiles/cmTC_23870.dir/build.make CMakeFiles/cmTC_23870.dir/build
+make[2]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_23870.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/g++     -o CMakeFiles/cmTC_23870.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.13/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_23870
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_23870.dir/link.txt --verbose=1
+/usr/bin/g++      -v -rdynamic CMakeFiles/cmTC_23870.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_23870 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/g++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper
@@ -250,9 +264,10 @@ Thread model: posix
 gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_8738c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/cc6nWK2H.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_8738c /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_8738c.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_8738c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_23870' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccyk5nKK.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_23870 /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_23870.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_23870' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+make[2]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 
 
@@ -260,14 +275,15 @@ Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_8738c/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_8738c.dir/build.make CMakeFiles/cmTC_8738c.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_23870/fast"]
   ignore line: [make[1]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building CXX object CMakeFiles/cmTC_8738c.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/g++     -o CMakeFiles/cmTC_8738c.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.13/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_8738c]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8738c.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/g++      -v -rdynamic CMakeFiles/cmTC_8738c.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_8738c ]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_23870.dir/build.make CMakeFiles/cmTC_23870.dir/build]
+  ignore line: [make[2]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_23870.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/g++     -o CMakeFiles/cmTC_23870.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.13/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_23870]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_23870.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/g++      -v -rdynamic CMakeFiles/cmTC_23870.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_23870 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/g++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper]
@@ -279,13 +295,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 8.3.0 (Ubuntu 8.3.0-6ubuntu1) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/8/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/8/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_8738c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/cc6nWK2H.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_8738c /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_8738c.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_23870' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/8/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper -plugin-opt=-fresolution=/tmp/ccyk5nKK.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_23870 /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/8 -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/8/../../.. CMakeFiles/cmTC_23870.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/8/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/8/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/cc6nWK2H.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccyk5nKK.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -304,7 +320,7 @@ Parsed CXX implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_8738c] ==> ignore
+    arg [cmTC_23870] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/8/crtbeginS.o] ==> ignore
@@ -316,7 +332,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/8/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/8/../../..]
-    arg [CMakeFiles/cmTC_8738c.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_23870.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -344,14 +360,16 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++2a] compiler features compiled with the following output:
 Change Dir: /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_94de7/fast"
-/usr/bin/make -f CMakeFiles/cmTC_94de7.dir/build.make CMakeFiles/cmTC_94de7.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_ff0a5/fast"
 make[1]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_94de7.dir/feature_tests.cxx.o
-/usr/bin/g++    -std=c++2a -o CMakeFiles/cmTC_94de7.dir/feature_tests.cxx.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_94de7
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_94de7.dir/link.txt --verbose=1
-/usr/bin/g++       -rdynamic CMakeFiles/cmTC_94de7.dir/feature_tests.cxx.o  -o cmTC_94de7 
+/usr/bin/make -f CMakeFiles/cmTC_ff0a5.dir/build.make CMakeFiles/cmTC_ff0a5.dir/build
+make[2]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_ff0a5.dir/feature_tests.cxx.o
+/usr/bin/g++    -std=c++2a -o CMakeFiles/cmTC_ff0a5.dir/feature_tests.cxx.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_ff0a5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ff0a5.dir/link.txt --verbose=1
+/usr/bin/g++       -rdynamic CMakeFiles/cmTC_ff0a5.dir/feature_tests.cxx.o  -o cmTC_ff0a5 
+make[2]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 
 
@@ -417,14 +435,16 @@ make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/tes
 Detecting CXX [-std=c++17] compiler features compiled with the following output:
 Change Dir: /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_6a733/fast"
-/usr/bin/make -f CMakeFiles/cmTC_6a733.dir/build.make CMakeFiles/cmTC_6a733.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_9989f/fast"
 make[1]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_6a733.dir/feature_tests.cxx.o
-/usr/bin/g++    -std=c++17 -o CMakeFiles/cmTC_6a733.dir/feature_tests.cxx.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_6a733
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6a733.dir/link.txt --verbose=1
-/usr/bin/g++       -rdynamic CMakeFiles/cmTC_6a733.dir/feature_tests.cxx.o  -o cmTC_6a733 
+/usr/bin/make -f CMakeFiles/cmTC_9989f.dir/build.make CMakeFiles/cmTC_9989f.dir/build
+make[2]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_9989f.dir/feature_tests.cxx.o
+/usr/bin/g++    -std=c++17 -o CMakeFiles/cmTC_9989f.dir/feature_tests.cxx.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_9989f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9989f.dir/link.txt --verbose=1
+/usr/bin/g++       -rdynamic CMakeFiles/cmTC_9989f.dir/feature_tests.cxx.o  -o cmTC_9989f 
+make[2]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 
 
@@ -490,14 +510,16 @@ make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/tes
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
 Change Dir: /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_4ea9a/fast"
-/usr/bin/make -f CMakeFiles/cmTC_4ea9a.dir/build.make CMakeFiles/cmTC_4ea9a.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_07d7a/fast"
 make[1]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_4ea9a.dir/feature_tests.cxx.o
-/usr/bin/g++    -std=c++14 -o CMakeFiles/cmTC_4ea9a.dir/feature_tests.cxx.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_4ea9a
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4ea9a.dir/link.txt --verbose=1
-/usr/bin/g++       -rdynamic CMakeFiles/cmTC_4ea9a.dir/feature_tests.cxx.o  -o cmTC_4ea9a 
+/usr/bin/make -f CMakeFiles/cmTC_07d7a.dir/build.make CMakeFiles/cmTC_07d7a.dir/build
+make[2]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_07d7a.dir/feature_tests.cxx.o
+/usr/bin/g++    -std=c++14 -o CMakeFiles/cmTC_07d7a.dir/feature_tests.cxx.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_07d7a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_07d7a.dir/link.txt --verbose=1
+/usr/bin/g++       -rdynamic CMakeFiles/cmTC_07d7a.dir/feature_tests.cxx.o  -o cmTC_07d7a 
+make[2]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 
 
@@ -563,14 +585,16 @@ make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/tes
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
 Change Dir: /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_b7333/fast"
-/usr/bin/make -f CMakeFiles/cmTC_b7333.dir/build.make CMakeFiles/cmTC_b7333.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_2a2c4/fast"
 make[1]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_b7333.dir/feature_tests.cxx.o
-/usr/bin/g++    -std=c++11 -o CMakeFiles/cmTC_b7333.dir/feature_tests.cxx.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_b7333
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b7333.dir/link.txt --verbose=1
-/usr/bin/g++       -rdynamic CMakeFiles/cmTC_b7333.dir/feature_tests.cxx.o  -o cmTC_b7333 
+/usr/bin/make -f CMakeFiles/cmTC_2a2c4.dir/build.make CMakeFiles/cmTC_2a2c4.dir/build
+make[2]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_2a2c4.dir/feature_tests.cxx.o
+/usr/bin/g++    -std=c++11 -o CMakeFiles/cmTC_2a2c4.dir/feature_tests.cxx.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_2a2c4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2a2c4.dir/link.txt --verbose=1
+/usr/bin/g++       -rdynamic CMakeFiles/cmTC_2a2c4.dir/feature_tests.cxx.o  -o cmTC_2a2c4 
+make[2]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 
 
@@ -636,14 +660,16 @@ make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/tes
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
 Change Dir: /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_13530/fast"
-/usr/bin/make -f CMakeFiles/cmTC_13530.dir/build.make CMakeFiles/cmTC_13530.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_29e4d/fast"
 make[1]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_13530.dir/feature_tests.cxx.o
-/usr/bin/g++    -std=c++98 -o CMakeFiles/cmTC_13530.dir/feature_tests.cxx.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_13530
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_13530.dir/link.txt --verbose=1
-/usr/bin/g++       -rdynamic CMakeFiles/cmTC_13530.dir/feature_tests.cxx.o  -o cmTC_13530 
+/usr/bin/make -f CMakeFiles/cmTC_29e4d.dir/build.make CMakeFiles/cmTC_29e4d.dir/build
+make[2]: Entering directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_29e4d.dir/feature_tests.cxx.o
+/usr/bin/g++    -std=c++98 -o CMakeFiles/cmTC_29e4d.dir/feature_tests.cxx.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_29e4d
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_29e4d.dir/link.txt --verbose=1
+/usr/bin/g++       -rdynamic CMakeFiles/cmTC_29e4d.dir/feature_tests.cxx.o  -o cmTC_29e4d 
+make[2]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 make[1]: Leaving directory '/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles/CMakeTmp'
 
 

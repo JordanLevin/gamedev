@@ -18,10 +18,15 @@
 class CubeCluster: public Model {
   private:
     uint32_t getIndex(uint32_t x, uint32_t y, uint32_t z);
+    //convert global coordinates to chunk coordinates (?)
     glm::vec3 coordsInChunk(int x, int y, int z);
 
+    //Mesh data to render
     std::vector<VertexFormat> data;
+    std::vector<VertexFormat> selectedCube;
+    //Actual entire chunk of cubes
     std::vector<Cube> cubes = std::vector<Cube>(DATA_SIZE);
+    //Occupied cubes for the mesher to use
     std::unordered_set<int> occupied;
     std::vector<int> occupiedVec;
 
@@ -36,6 +41,7 @@ class CubeCluster: public Model {
     void add(int x, int y, int z, int type);
     bool remove(int x, int y, int z);
     bool edit(int x, int y, int z, int type);
+    int get(int x, int y, int z);
     virtual void draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix) override final;
     virtual void update() override final;
 };

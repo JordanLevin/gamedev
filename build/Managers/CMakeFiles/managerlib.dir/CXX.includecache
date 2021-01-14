@@ -19,6 +19,8 @@ glm/glm.hpp
 /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/World.hpp
 ../Rendering/Gui/Gui.hpp
 /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/Gui.hpp
+../Rendering/Gui/DGui.hpp
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/DGui.hpp
 
 /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Managers/ModelManager.cpp
 ModelManager.hpp
@@ -78,26 +80,6 @@ ModelManager.hpp
 chrono
 -
 
-/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Managers/ShaderManager.cpp
-ShaderManager.hpp
-/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Managers/ShaderManager.hpp
-GL/glew.h
--
-GL/freeglut.h
--
-iostream
--
-fstream
--
-vector
--
-map
--
-string
--
-filesystem
--
-
 /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Managers/ShaderManager.hpp
 GL/glew.h
 -
@@ -111,6 +93,14 @@ map
 -
 
 /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Cube.hpp
+
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/DGui.hpp
+GL/glew.h
+-
+../Models/Model.hpp
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/Model.hpp
+stdarg.h
+-
 
 /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/Gui.hpp
 GuiElement.hpp
@@ -206,6 +196,26 @@ Model.hpp
 stdarg.h
 -
 
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/SingleCube.hpp
+GL/glew.h
+-
+glm/glm.hpp
+-
+Model.hpp
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/Model.hpp
+../Cube.hpp
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Cube.hpp
+../VertexFormat.hpp
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/VertexFormat.hpp
+stdarg.h
+-
+string
+-
+array
+-
+unordered_set
+-
+
 /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/World.hpp
 glm/glm.hpp
 -
@@ -213,6 +223,8 @@ glm/glm.hpp
 /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Input/Camera.hpp
 ../../Rendering/Models/CubeCluster.hpp
 /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/CubeCluster.hpp
+../../Rendering/Models/SingleCube.hpp
+/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/SingleCube.hpp
 ../../Managers/ShaderManager.hpp
 /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Managers/ShaderManager.hpp
 vector
@@ -224,6 +236,8 @@ unordered_map
 utility
 -
 iostream
+-
+optional
 -
 
 /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/VertexFormat.hpp

@@ -22,14 +22,11 @@ void main(){
   light_color = light_color_in;
   light_power = light_power_in;
 
-  float cosTheta = clamp(dot(normal, light_dir), 0, 1);
-
   vec3 AmbientColor = vec3(0.2,0.2,0.2) * color.xyz;
   color = vec4(
       //Ambient lighting
       AmbientColor + 
-      //Diffuse lighting
-      color.xyz * light_color.xyz * light_power * cosTheta, 1);
+      color.xyz * light_color.xyz * (abs(normal.x) * 0.7 + abs(normal.y) * 0.8 + abs(normal.z) * 0.6), 1);
 
   gl_Position = projection_matrix * view_matrix * 
     vec4(in_position, 1);

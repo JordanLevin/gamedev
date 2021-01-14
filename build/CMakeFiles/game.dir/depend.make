@@ -12,11 +12,13 @@ CMakeFiles/game.dir/main.cpp.o: ../Managers/ModelManager.hpp
 CMakeFiles/game.dir/main.cpp.o: ../Managers/SceneManager.hpp
 CMakeFiles/game.dir/main.cpp.o: ../Managers/ShaderManager.hpp
 CMakeFiles/game.dir/main.cpp.o: ../Rendering/Cube.hpp
+CMakeFiles/game.dir/main.cpp.o: ../Rendering/Gui/DGui.hpp
 CMakeFiles/game.dir/main.cpp.o: ../Rendering/Gui/Gui.hpp
 CMakeFiles/game.dir/main.cpp.o: ../Rendering/Gui/GuiElement.hpp
 CMakeFiles/game.dir/main.cpp.o: ../Rendering/IGameObject.hpp
 CMakeFiles/game.dir/main.cpp.o: ../Rendering/Models/CubeCluster.hpp
 CMakeFiles/game.dir/main.cpp.o: ../Rendering/Models/Model.hpp
+CMakeFiles/game.dir/main.cpp.o: ../Rendering/Models/SingleCube.hpp
 CMakeFiles/game.dir/main.cpp.o: ../Rendering/Models/World.hpp
 CMakeFiles/game.dir/main.cpp.o: ../Rendering/VertexFormat.hpp
 CMakeFiles/game.dir/main.cpp.o: ../main.cpp

@@ -44,6 +44,7 @@ endif()
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES
     "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Cube.hpp"
+    "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/DGui.hpp"
     "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/Gui.hpp"
     "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/GuiElement.hpp"
     "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/Text.hpp"
@@ -53,6 +54,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/CubeCluster.hpp"
     "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/Model.hpp"
     "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/ScreenGui.hpp"
+    "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/SingleCube.hpp"
     "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/World.hpp"
     "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/temp.hpp"
     "/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/VertexFormat.hpp"

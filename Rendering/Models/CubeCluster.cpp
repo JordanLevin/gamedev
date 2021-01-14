@@ -123,6 +123,14 @@ bool CubeCluster::edit(int x, int y, int z, int type){
   return true;
 }
 
+int CubeCluster::get(int x, int y, int z){
+  glm::vec3 coords = coordsInChunk(x,y,z);
+  int i = getIndex(coords[0],coords[1],coords[2]);
+  if(occupied.count(i) != 1)
+    return 0;
+  return 1;
+}
+
 void CubeCluster::update(){
 
 }

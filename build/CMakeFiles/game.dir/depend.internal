@@ -13,11 +13,13 @@ CMakeFiles/game.dir/main.cpp.o
  /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Managers/SceneManager.hpp
  /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Managers/ShaderManager.hpp
  /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Cube.hpp
+ /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/DGui.hpp
  /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/Gui.hpp
  /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/GuiElement.hpp
  /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/IGameObject.hpp
  /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/CubeCluster.hpp
  /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/Model.hpp
+ /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/SingleCube.hpp
  /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/World.hpp
  /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/VertexFormat.hpp
  /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/main.cpp

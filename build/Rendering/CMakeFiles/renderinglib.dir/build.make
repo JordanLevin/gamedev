@@ -57,9 +57,22 @@ include Rendering/CMakeFiles/renderinglib.dir/progress.make
 # Include the compile flags for this target's objects.
 include Rendering/CMakeFiles/renderinglib.dir/flags.make
 
+Rendering/CMakeFiles/renderinglib.dir/Gui/DGui.cpp.o: Rendering/CMakeFiles/renderinglib.dir/flags.make
+Rendering/CMakeFiles/renderinglib.dir/Gui/DGui.cpp.o: ../Rendering/Gui/DGui.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Gui/DGui.cpp.o"
+	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/renderinglib.dir/Gui/DGui.cpp.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/DGui.cpp
+
+Rendering/CMakeFiles/renderinglib.dir/Gui/DGui.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/renderinglib.dir/Gui/DGui.cpp.i"
+	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/DGui.cpp > CMakeFiles/renderinglib.dir/Gui/DGui.cpp.i
+
+Rendering/CMakeFiles/renderinglib.dir/Gui/DGui.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/renderinglib.dir/Gui/DGui.cpp.s"
+	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/DGui.cpp -o CMakeFiles/renderinglib.dir/Gui/DGui.cpp.s
+
 Rendering/CMakeFiles/renderinglib.dir/Gui/Gui.cpp.o: Rendering/CMakeFiles/renderinglib.dir/flags.make
 Rendering/CMakeFiles/renderinglib.dir/Gui/Gui.cpp.o: ../Rendering/Gui/Gui.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Gui/Gui.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Gui/Gui.cpp.o"
 	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/renderinglib.dir/Gui/Gui.cpp.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/Gui.cpp
 
 Rendering/CMakeFiles/renderinglib.dir/Gui/Gui.cpp.i: cmake_force
@@ -72,7 +85,7 @@ Rendering/CMakeFiles/renderinglib.dir/Gui/Gui.cpp.s: cmake_force
 
 Rendering/CMakeFiles/renderinglib.dir/Gui/GuiElement.cpp.o: Rendering/CMakeFiles/renderinglib.dir/flags.make
 Rendering/CMakeFiles/renderinglib.dir/Gui/GuiElement.cpp.o: ../Rendering/Gui/GuiElement.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Gui/GuiElement.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Gui/GuiElement.cpp.o"
 	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/renderinglib.dir/Gui/GuiElement.cpp.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/GuiElement.cpp
 
 Rendering/CMakeFiles/renderinglib.dir/Gui/GuiElement.cpp.i: cmake_force
@@ -85,7 +98,7 @@ Rendering/CMakeFiles/renderinglib.dir/Gui/GuiElement.cpp.s: cmake_force
 
 Rendering/CMakeFiles/renderinglib.dir/Gui/Text.cpp.o: Rendering/CMakeFiles/renderinglib.dir/flags.make
 Rendering/CMakeFiles/renderinglib.dir/Gui/Text.cpp.o: ../Rendering/Gui/Text.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Gui/Text.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Gui/Text.cpp.o"
 	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/renderinglib.dir/Gui/Text.cpp.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/Text.cpp
 
 Rendering/CMakeFiles/renderinglib.dir/Gui/Text.cpp.i: cmake_force
@@ -98,7 +111,7 @@ Rendering/CMakeFiles/renderinglib.dir/Gui/Text.cpp.s: cmake_force
 
 Rendering/CMakeFiles/renderinglib.dir/Gui/TextElement.cpp.o: Rendering/CMakeFiles/renderinglib.dir/flags.make
 Rendering/CMakeFiles/renderinglib.dir/Gui/TextElement.cpp.o: ../Rendering/Gui/TextElement.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Gui/TextElement.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Gui/TextElement.cpp.o"
 	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/renderinglib.dir/Gui/TextElement.cpp.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Gui/TextElement.cpp
 
 Rendering/CMakeFiles/renderinglib.dir/Gui/TextElement.cpp.i: cmake_force
@@ -111,7 +124,7 @@ Rendering/CMakeFiles/renderinglib.dir/Gui/TextElement.cpp.s: cmake_force
 
 Rendering/CMakeFiles/renderinglib.dir/Mesher.cpp.o: Rendering/CMakeFiles/renderinglib.dir/flags.make
 Rendering/CMakeFiles/renderinglib.dir/Mesher.cpp.o: ../Rendering/Mesher.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Mesher.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Mesher.cpp.o"
 	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/renderinglib.dir/Mesher.cpp.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Mesher.cpp
 
 Rendering/CMakeFiles/renderinglib.dir/Mesher.cpp.i: cmake_force
@@ -124,7 +137,7 @@ Rendering/CMakeFiles/renderinglib.dir/Mesher.cpp.s: cmake_force
 
 Rendering/CMakeFiles/renderinglib.dir/Models/CubeCluster.cpp.o: Rendering/CMakeFiles/renderinglib.dir/flags.make
 Rendering/CMakeFiles/renderinglib.dir/Models/CubeCluster.cpp.o: ../Rendering/Models/CubeCluster.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Models/CubeCluster.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Models/CubeCluster.cpp.o"
 	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/renderinglib.dir/Models/CubeCluster.cpp.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/CubeCluster.cpp
 
 Rendering/CMakeFiles/renderinglib.dir/Models/CubeCluster.cpp.i: cmake_force
@@ -137,7 +150,7 @@ Rendering/CMakeFiles/renderinglib.dir/Models/CubeCluster.cpp.s: cmake_force
 
 Rendering/CMakeFiles/renderinglib.dir/Models/Model.cpp.o: Rendering/CMakeFiles/renderinglib.dir/flags.make
 Rendering/CMakeFiles/renderinglib.dir/Models/Model.cpp.o: ../Rendering/Models/Model.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Models/Model.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Models/Model.cpp.o"
 	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/renderinglib.dir/Models/Model.cpp.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/Model.cpp
 
 Rendering/CMakeFiles/renderinglib.dir/Models/Model.cpp.i: cmake_force
@@ -150,7 +163,7 @@ Rendering/CMakeFiles/renderinglib.dir/Models/Model.cpp.s: cmake_force
 
 Rendering/CMakeFiles/renderinglib.dir/Models/ScreenGui.cpp.o: Rendering/CMakeFiles/renderinglib.dir/flags.make
 Rendering/CMakeFiles/renderinglib.dir/Models/ScreenGui.cpp.o: ../Rendering/Models/ScreenGui.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Models/ScreenGui.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Models/ScreenGui.cpp.o"
 	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/renderinglib.dir/Models/ScreenGui.cpp.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/ScreenGui.cpp
 
 Rendering/CMakeFiles/renderinglib.dir/Models/ScreenGui.cpp.i: cmake_force
@@ -161,9 +174,22 @@ Rendering/CMakeFiles/renderinglib.dir/Models/ScreenGui.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/renderinglib.dir/Models/ScreenGui.cpp.s"
 	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/ScreenGui.cpp -o CMakeFiles/renderinglib.dir/Models/ScreenGui.cpp.s
 
+Rendering/CMakeFiles/renderinglib.dir/Models/SingleCube.cpp.o: Rendering/CMakeFiles/renderinglib.dir/flags.make
+Rendering/CMakeFiles/renderinglib.dir/Models/SingleCube.cpp.o: ../Rendering/Models/SingleCube.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Models/SingleCube.cpp.o"
+	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/renderinglib.dir/Models/SingleCube.cpp.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/SingleCube.cpp
+
+Rendering/CMakeFiles/renderinglib.dir/Models/SingleCube.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/renderinglib.dir/Models/SingleCube.cpp.i"
+	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/SingleCube.cpp > CMakeFiles/renderinglib.dir/Models/SingleCube.cpp.i
+
+Rendering/CMakeFiles/renderinglib.dir/Models/SingleCube.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/renderinglib.dir/Models/SingleCube.cpp.s"
+	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/SingleCube.cpp -o CMakeFiles/renderinglib.dir/Models/SingleCube.cpp.s
+
 Rendering/CMakeFiles/renderinglib.dir/Models/World.cpp.o: Rendering/CMakeFiles/renderinglib.dir/flags.make
 Rendering/CMakeFiles/renderinglib.dir/Models/World.cpp.o: ../Rendering/Models/World.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Models/World.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Models/World.cpp.o"
 	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/renderinglib.dir/Models/World.cpp.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/World.cpp
 
 Rendering/CMakeFiles/renderinglib.dir/Models/World.cpp.i: cmake_force
@@ -176,7 +202,7 @@ Rendering/CMakeFiles/renderinglib.dir/Models/World.cpp.s: cmake_force
 
 Rendering/CMakeFiles/renderinglib.dir/Models/temp.cpp.o: Rendering/CMakeFiles/renderinglib.dir/flags.make
 Rendering/CMakeFiles/renderinglib.dir/Models/temp.cpp.o: ../Rendering/Models/temp.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Models/temp.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object Rendering/CMakeFiles/renderinglib.dir/Models/temp.cpp.o"
 	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && /usr/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/renderinglib.dir/Models/temp.cpp.o -c /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/Rendering/Models/temp.cpp
 
 Rendering/CMakeFiles/renderinglib.dir/Models/temp.cpp.i: cmake_force
@@ -189,6 +215,7 @@ Rendering/CMakeFiles/renderinglib.dir/Models/temp.cpp.s: cmake_force
 
 # Object files for target renderinglib
 renderinglib_OBJECTS = \
+"CMakeFiles/renderinglib.dir/Gui/DGui.cpp.o" \
 "CMakeFiles/renderinglib.dir/Gui/Gui.cpp.o" \
 "CMakeFiles/renderinglib.dir/Gui/GuiElement.cpp.o" \
 "CMakeFiles/renderinglib.dir/Gui/Text.cpp.o" \
@@ -197,12 +224,14 @@ renderinglib_OBJECTS = \
 "CMakeFiles/renderinglib.dir/Models/CubeCluster.cpp.o" \
 "CMakeFiles/renderinglib.dir/Models/Model.cpp.o" \
 "CMakeFiles/renderinglib.dir/Models/ScreenGui.cpp.o" \
+"CMakeFiles/renderinglib.dir/Models/SingleCube.cpp.o" \
 "CMakeFiles/renderinglib.dir/Models/World.cpp.o" \
 "CMakeFiles/renderinglib.dir/Models/temp.cpp.o"
 
 # External object files for target renderinglib
 renderinglib_EXTERNAL_OBJECTS =
 
+Rendering/librenderinglib.a: Rendering/CMakeFiles/renderinglib.dir/Gui/DGui.cpp.o
 Rendering/librenderinglib.a: Rendering/CMakeFiles/renderinglib.dir/Gui/Gui.cpp.o
 Rendering/librenderinglib.a: Rendering/CMakeFiles/renderinglib.dir/Gui/GuiElement.cpp.o
 Rendering/librenderinglib.a: Rendering/CMakeFiles/renderinglib.dir/Gui/Text.cpp.o
@@ -211,11 +240,12 @@ Rendering/librenderinglib.a: Rendering/CMakeFiles/renderinglib.dir/Mesher.cpp.o
 Rendering/librenderinglib.a: Rendering/CMakeFiles/renderinglib.dir/Models/CubeCluster.cpp.o
 Rendering/librenderinglib.a: Rendering/CMakeFiles/renderinglib.dir/Models/Model.cpp.o
 Rendering/librenderinglib.a: Rendering/CMakeFiles/renderinglib.dir/Models/ScreenGui.cpp.o
+Rendering/librenderinglib.a: Rendering/CMakeFiles/renderinglib.dir/Models/SingleCube.cpp.o
 Rendering/librenderinglib.a: Rendering/CMakeFiles/renderinglib.dir/Models/World.cpp.o
 Rendering/librenderinglib.a: Rendering/CMakeFiles/renderinglib.dir/Models/temp.cpp.o
 Rendering/librenderinglib.a: Rendering/CMakeFiles/renderinglib.dir/build.make
 Rendering/librenderinglib.a: Rendering/CMakeFiles/renderinglib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX static library librenderinglib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX static library librenderinglib.a"
 	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && $(CMAKE_COMMAND) -P CMakeFiles/renderinglib.dir/cmake_clean_target.cmake
 	cd /home/jordan/Desktop/ProgrammingStuff/opengltest/test1/build/Rendering && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/renderinglib.dir/link.txt --verbose=$(VERBOSE)
 

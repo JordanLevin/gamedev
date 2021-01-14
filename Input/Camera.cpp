@@ -23,11 +23,11 @@ Camera::Camera(glm::mat4* view_matrix_, glm::mat4* projection_matrix_){
 }
 
 glm::vec3 Camera::getDirection(){
-  return glm::vec3(
-    (*view_matrix)[0][2],
-    (*view_matrix)[1][2],
-    (*view_matrix)[2][2]
-  );
+  return glm::normalize(glm::vec3(
+        (*view_matrix)[0][2],
+        (*view_matrix)[1][2],
+        (*view_matrix)[2][2]
+        ));
 }
 
 float Camera::getX(){
@@ -61,7 +61,7 @@ void Camera::updateView(){
   translate = glm::translate(translate, -eyeVector);
 
   *view_matrix = (rotate * translate);
-  //world->selectBlock(eyeVector, getDirection());
+  world->outlineBlock(eyeVector, getDirection());
 }
 
 void Camera::keyPress(const unsigned char key, int x, int y){
@@ -129,20 +129,28 @@ void Camera::mouseMove(int x, int y){
     mousePosition.y = 720/2;
     glutWarpPointer(1280/2,720/2);
   }
+
+  glm::vec3 point = eyeVector;
+  glm::vec3 dir = getDirection();
+
   updateView();
 }
 
 void Camera::mousePress(int button, int state, int x, int y){
   //if (gui->enabled) {
-    //gui->mousePress(button, state, x, y);
+  //gui->mousePress(button, state, x, y);
   //}
-  //else {
-    if (state == GLUT_DOWN){
-      glm::vec3 point = eyeVector;
-      glm::vec3 dir = getDirection();
-      world->breakBlock(point, dir);
-      //gui->add(point[0], point[1], point[2], point[0]+dir[0], point[1]+dir[1], point[2]+dir[2], 0.3, 1, 1);
-      //gui->create();
+  if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN){
+    glm::vec3 point = eyeVector;
+    glm::vec3 dir = getDirection();
+    world->breakBlock(point, dir);
+    //gui->add(point[0], point[1], point[2], point[0]+dir[0], point[1]+dir[1], point[2]+dir[2], 0.3, 1, 1);
+    //gui->create();
     //}
-  }
+}
+else if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN){
+  glm::vec3 point = eyeVector;
+  glm::vec3 dir = getDirection();
+  world->placeBlock(point, dir);
+}
 }

@@ -6,6 +6,7 @@
 #include <fstream>
 #include <string>
 #include <cmath>
+#include <optional>
 
 
 void NoiseGenerator::generateVectors(){
@@ -70,6 +71,7 @@ float NoiseGenerator::perlin(float x, float y) {
 }
 
 void World::create(){
+  outlineCube.setProgram(ShaderManager::getShader("cubeShader"));
   noise.generateVectors();
   for(int x = -8; x < 8; x++){
     for(int y = -8; y < 8; y++){
@@ -115,7 +117,7 @@ void World::generate(int x, int z){
     cubes[coords] = readChunk(x,z);
     return;
   }
-  
+
   //Generate a new chunk using perlin noise
   CubeCluster* c = new CubeCluster();
   c->setProgram(ShaderManager::getShader("cubeShader"));
@@ -143,8 +145,6 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
   int col_f = (camera->getZ()/16) + 8;
   for(int row = row_i; row < row_f; row++){
     for(int col = col_i; col < col_f; col++){
-  //for(int row = -1; row < 0; row++){
-    //for(int col = -1; col < 0; col++){
       if(cubes.count(glm::ivec2(row,col)) == 1)
         cubes[glm::ivec2(row,col)]->draw(projection_matrix, view_matrix);
       else{
@@ -153,52 +153,181 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
       }
     }
   }
+  outlineCube.create();
+  outlineCube.draw(projection_matrix, view_matrix);
 }
 
+//offset ceil/floor func, for dealing with how voxels are offset by 0.5
+float World::maxT(float f, bool dir){
+  if(dir)
+    return std::ceil(f+0.5) - (f + 0.5);
+  else
+    return (f - 0.5) - std::floor(f - 0.5);
+}
 
-void World::selectBlock(const glm::vec3& location, const glm::vec3& direction){
+//POTENTIAL ISSUE, this does not work at the axis, potentially related to the cube
+//coordinates overlapping
+std::optional<glm::vec3> World::selectBlock(const glm::vec3& location, const glm::vec3& direction, int dist, bool exact){
   glm::vec3 point = location;
-  glm::vec3 dir = direction*glm::vec3(0.3f, 0.3f, 0.3f);
-  for(int i = 0; i < 15; i++){
-    //find points chunk
-    int x, z;
-    if(point[0] > 0.0f)
-      x = (int)point[0]/16;
-    else
-      x = (int)point[0]/16 - 1;
-    if(point[2] > 0.0f)
-      z = (int)point[2]/16;
-    else
-      z = (int)point[2]/16 - 1;
-    CubeCluster* chunk = cubes[glm::ivec2(x,z)];
-    if(chunk->edit(point[0], point[1], point[2], 4)){
-      break;
+  //http://www.cse.yorku.ca/~amana/research/grid.pdf ray cast algo
+  float tMaxX, tMaxY, tMaxZ;
+  float stepx = (direction[0]> 0)*2-1;
+  float stepy = (direction[1]> 0)*2-1;
+  float stepz = (direction[2]> 0)*2-1;
+  float tDeltaX = abs(1.0/direction[0]);
+  float tDeltaY = abs(1.0/direction[1]);
+  float tDeltaZ = abs(1.0/direction[2]);
+  tMaxX = maxT(point[0], direction[0] > 0)/std::abs(direction[0]);
+  tMaxY = maxT(point[1], direction[1] > 0)/std::abs(direction[1]);
+  tMaxZ = maxT(point[2], direction[2] > 0)/std::abs(direction[2]);
+
+  for(;;){
+    //std::cout << "wooo\n" << point[0] << " "<<  point[1] <<" " << point[2] << std::endl;
+    //std::cout << "ts\n" << tMaxX << " "<<  tMaxY <<" " << tMaxZ << std::endl;
+    if(std::abs(glm::length(point-location)) > dist){
+      return std::nullopt;
     }
-    point += dir;
+    if(tMaxX < tMaxY) 
+    {
+      if(tMaxX < tMaxZ) 
+      {
+        point[0] = point[0]  + stepx;
+        tMaxX= tMaxX + tDeltaX;
+      } else  
+      {
+        point[2]= point[2] + stepz;
+        tMaxZ= tMaxZ + tDeltaZ;
+      }
+    } 
+    else  {
+      if(tMaxY < tMaxZ) {
+        point[1]= point[1] + stepy;
+        tMaxY= tMaxY + tDeltaY;
+      } else  
+      {
+        point[2]= point[2] + stepz;
+        tMaxZ= tMaxZ + tDeltaZ;
+      }
+    }
+
+    //find points chunk and check if non empty
+    CubeCluster* chunk = getChunk(point);
+    glm::vec3 ret = glm::vec3(std::round(point[0]), std::round(point[1]), std::round(point[2]));
+    if(chunk->get(ret[0], ret[1], ret[2])){
+      if(!exact)
+        return ret;
+      else
+        return point;
+    }
   }
 }
 
-//TODO: THINGS GET FUNKY FOR NEGATIVE VALUES
 void World::breakBlock(const glm::vec3& location, const glm::vec3& direction){
-  glm::vec3 point = location;
-  glm::vec3 dir = direction*glm::vec3(0.3f, 0.3f, 0.3f);
-  for(int i = 0; i < 15; i++){
-    //find points chunk
-    int x, z;
-    if(point[0] > 0.0f)
-      x = (int)point[0]/16;
-    else
-      x = (int)point[0]/16 - 1;
-    if(point[2] > 0.0f)
-      z = (int)point[2]/16;
-    else
-      z = (int)point[2]/16 - 1;
-    CubeCluster* chunk = cubes[glm::ivec2(x,z)];
-    if(chunk->remove(std::round(point[0]), std::round(point[1]), std::round(point[2]))){
-      break;
-    }
-    point += dir;
+  auto block = selectBlock(location, direction, 5, false);
+  if(!block)
+    return;
+  auto blockVal = block.value();
+  CubeCluster* chunk = getChunk(blockVal);
+  chunk->remove(blockVal[0], blockVal[1], blockVal[2]);
+  outlineBlock(location, direction);
+}
+
+void World::placeBlock(const glm::vec3& location, const glm::vec3& direction){
+  auto block = selectBlock(location, direction, 5, false);
+  if(!block)
+    return;
+  auto blockVal = block.value();
+  float stepx = (direction[0]> 0)*2-1;
+  float stepy = (direction[1]> 0)*2-1;
+  float stepz = (direction[2]> 0)*2-1;
+  bool usex = false;
+  bool usey = false;
+  bool usez = false;
+  //Determine the amount to scale direction to reach the x,y,z planes at the target voxel
+  float tMaxX = std::abs((location[0]-blockVal[0] + 0.5*(stepx))/direction[0]);
+  float tMaxY = std::abs((location[1]-blockVal[1] + 0.5*(stepy))/direction[1]);
+  float tMaxZ = std::abs((location[2]-blockVal[2] + 0.5*(stepz))/direction[2]);
+
+  //Attempt to try all 3 T values, the idea is to throw away the values where
+  //the point reached isnt actually on the surface of the target voxel
+
+  //std::cout << "tvals: " << tMaxX << " " << tMaxY << " " << tMaxZ << std::endl;
+  //std::cout << "blockvals: " << blockVal[0] << " " << blockVal[1] << " " << blockVal[2] << std::endl;
+  glm::vec3 temp = location;
+  temp += direction*tMaxX;
+  if(std::round(temp[1]) == blockVal[1] && std::round(temp[2]) == blockVal[2]){
+    //std::cout << "temp: " << temp[0] << " " << temp[1] << " " << temp[2] << std::endl;
+    usex = true;
   }
+  temp = location;
+  temp += direction*tMaxY;
+  if(std::round(temp[0]) == blockVal[0] && std::round(temp[2]) == blockVal[2]){
+    //std::cout << "temp: " << temp[0] << " " << temp[1] << " " << temp[2] << std::endl;
+    usey = true;
+  }
+  temp = location;
+  temp += direction*tMaxZ;
+  if(std::round(temp[0]) == blockVal[0] && std::round(temp[1]) == blockVal[1]){
+    usez = true;
+    //std::cout << "temp: " << temp[0] << " " << temp[1] << " " << temp[2] << std::endl;
+  }
+
+  //There can theoretically be multiple candidates if the camera is between the 2 opposing
+  //faces of the voxel (this results in the ray hitting a face that isnt actually visible)
+  //TODO there must be a better way to handle this issue
+  if(usex && usey){
+    if(tMaxX < tMaxY)
+      blockVal[0] -= stepx;
+    else
+      blockVal[1] -= stepy;
+  }
+  else if(usey && usez){
+    if(tMaxY < tMaxZ)
+      blockVal[1] -= stepy;
+    else
+      blockVal[2] -= stepz;
+  }
+  else if(usex && usez){
+    if(tMaxX < tMaxZ)
+      blockVal[0] -= stepx;
+    else
+      blockVal[2] -= stepz;
+  }
+  else if(usex)
+    blockVal[0] -= stepx;
+  else if(usey)
+    blockVal[1] -= stepy;
+  else if(usez)
+    blockVal[2] -= stepz;
+  //std::cout << "after: " << blockVal[0] << " " << blockVal[1] << " " << blockVal[2] << std::endl;
+  CubeCluster* chunk = getChunk(blockVal);
+  chunk->add(std::round(blockVal[0]), std::round(blockVal[1]), std::round(blockVal[2]), 5);
+  chunk->create();
+  outlineBlock(location, direction);
+}
+
+void World::outlineBlock(const glm::vec3& location, const glm::vec3& direction){
+  auto block = selectBlock(location, direction, 5, false);
+  if(!block){
+    outlineCube.set(-1,-1,-1);
+    return;
+  }
+  auto blockVal = block.value();
+  outlineCube.set(blockVal[0], blockVal[1], blockVal[2]);
+}
+
+CubeCluster* World::getChunk(const glm::vec3& coords){
+  int x, z;
+  if(coords[0] > 0.0f)
+    x = (int)coords[0]/16;
+  else
+    x = (int)coords[0]/16 - 1;
+  if(coords[2] > 0.0f)
+    z = (int)coords[2]/16;
+  else
+    z = (int)coords[2]/16 - 1;
+  CubeCluster* chunk = cubes[glm::ivec2(x,z)];
+  return chunk;
 }
 
 void World::update(){

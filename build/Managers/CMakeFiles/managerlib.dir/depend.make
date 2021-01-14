@@ -6,6 +6,7 @@ Managers/CMakeFiles/managerlib.dir/ModelManager.cpp.o: ../Managers/ModelManager.
 Managers/CMakeFiles/managerlib.dir/ModelManager.cpp.o: ../Managers/ModelManager.hpp
 Managers/CMakeFiles/managerlib.dir/ModelManager.cpp.o: ../Managers/ShaderManager.hpp
 Managers/CMakeFiles/managerlib.dir/ModelManager.cpp.o: ../Rendering/Cube.hpp
+Managers/CMakeFiles/managerlib.dir/ModelManager.cpp.o: ../Rendering/Gui/DGui.hpp
 Managers/CMakeFiles/managerlib.dir/ModelManager.cpp.o: ../Rendering/Gui/Gui.hpp
 Managers/CMakeFiles/managerlib.dir/ModelManager.cpp.o: ../Rendering/Gui/GuiElement.hpp
 Managers/CMakeFiles/managerlib.dir/ModelManager.cpp.o: ../Rendering/Gui/TextElement.hpp
@@ -13,6 +14,7 @@ Managers/CMakeFiles/managerlib.dir/ModelManager.cpp.o: ../Rendering/IGameObject.
 Managers/CMakeFiles/managerlib.dir/ModelManager.cpp.o: ../Rendering/Models/CubeCluster.hpp
 Managers/CMakeFiles/managerlib.dir/ModelManager.cpp.o: ../Rendering/Models/Model.hpp
 Managers/CMakeFiles/managerlib.dir/ModelManager.cpp.o: ../Rendering/Models/ScreenGui.hpp
+Managers/CMakeFiles/managerlib.dir/ModelManager.cpp.o: ../Rendering/Models/SingleCube.hpp
 Managers/CMakeFiles/managerlib.dir/ModelManager.cpp.o: ../Rendering/Models/World.hpp
 Managers/CMakeFiles/managerlib.dir/ModelManager.cpp.o: ../Rendering/VertexFormat.hpp
 
@@ -23,12 +25,14 @@ Managers/CMakeFiles/managerlib.dir/SceneManager.cpp.o: ../Managers/SceneManager.
 Managers/CMakeFiles/managerlib.dir/SceneManager.cpp.o: ../Managers/SceneManager.hpp
 Managers/CMakeFiles/managerlib.dir/SceneManager.cpp.o: ../Managers/ShaderManager.hpp
 Managers/CMakeFiles/managerlib.dir/SceneManager.cpp.o: ../Rendering/Cube.hpp
+Managers/CMakeFiles/managerlib.dir/SceneManager.cpp.o: ../Rendering/Gui/DGui.hpp
 Managers/CMakeFiles/managerlib.dir/SceneManager.cpp.o: ../Rendering/Gui/Gui.hpp
 Managers/CMakeFiles/managerlib.dir/SceneManager.cpp.o: ../Rendering/Gui/GuiElement.hpp
 Managers/CMakeFiles/managerlib.dir/SceneManager.cpp.o: ../Rendering/Gui/Text.hpp
 Managers/CMakeFiles/managerlib.dir/SceneManager.cpp.o: ../Rendering/IGameObject.hpp
 Managers/CMakeFiles/managerlib.dir/SceneManager.cpp.o: ../Rendering/Models/CubeCluster.hpp
 Managers/CMakeFiles/managerlib.dir/SceneManager.cpp.o: ../Rendering/Models/Model.hpp
+Managers/CMakeFiles/managerlib.dir/SceneManager.cpp.o: ../Rendering/Models/SingleCube.hpp
 Managers/CMakeFiles/managerlib.dir/SceneManager.cpp.o: ../Rendering/Models/World.hpp
 Managers/CMakeFiles/managerlib.dir/SceneManager.cpp.o: ../Rendering/VertexFormat.hpp
 Managers/CMakeFiles/managerlib.dir/SceneManager.cpp.o: /usr/include/freetype2/freetype/config/ftheader.h
