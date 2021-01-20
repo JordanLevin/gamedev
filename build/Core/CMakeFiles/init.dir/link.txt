@@ -1,2 +1,0 @@
-/usr/bin/ar qc libinit.a  CMakeFiles/init.dir/Init/InitGlew.cpp.o CMakeFiles/init.dir/Init/InitGlut.cpp.o
-/usr/bin/ranlib libinit.a

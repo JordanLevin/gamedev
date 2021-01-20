@@ -43,9 +43,12 @@ void CubeCluster::writeChunk(std::string path){
   Serialize::serialize(write, occupiedVec);
 }
 
-void CubeCluster::create(){
+void CubeCluster::createMesh(){
   this->data = Mesher::createMesh(cubes, occupied);
+  d_ready = 1;
+}
 
+void CubeCluster::createGL(){
   GLuint vao;
   GLuint vbo;
   //GLuint ibo;
@@ -87,6 +90,12 @@ void CubeCluster::create(){
   this->vbos.push_back(vbo);
   //this->vbos.push_back(ibo);
   this->vbos.push_back(nbo);
+  d_ready = 2;
+}
+
+void CubeCluster::create(){
+  createMesh();
+  createGL();
 }
 
 void CubeCluster::add(int x, int y, int z){
@@ -149,10 +158,5 @@ void CubeCluster::draw(const glm::mat4& projection_matrix, const glm::mat4& view
 
   //glDrawElements(GL_TRIANGLES, allIndices.size(), GL_UNSIGNED_INT, 0);
   glUniform1i(glGetUniformLocation(program, "wireframe"),0);
-  //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
   glDrawArrays(GL_TRIANGLES, 0, data.size());
-  //Add wireframe lines around cubes
-  //glUniform1i(glGetUniformLocation(program, "wireframe"),1);
-  //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-  //glDrawArrays(GL_TRIANGLES, 0, data.size());
 }

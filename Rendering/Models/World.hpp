@@ -12,8 +12,12 @@
 #include <map>
 #include <unordered_map>
 #include <utility>
+#include <list>
 #include <iostream>
 #include <optional>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
 
 #define MAX_X 1000
 #define MAX_Y 1000
@@ -31,26 +35,52 @@ struct Comparator{
   }
 };
 
-struct NoiseGenerator{
-  // Precomputed (or otherwise) gradient vectors at each grid node
-  std::vector<std::vector<std::vector<float>>> gradient;
+class PerlinNoise
+{
+    static const unsigned tableSize = 256;
+    static const unsigned tableSizeMask = tableSize - 1;
+    std::array<glm::vec2, tableSize> gradients;
+    unsigned permutationTable[tableSize * 2];
 
-  void generateVectors();
-  float lerp(float a0, float a1, float w);
-  float dotGridGradient(int ix, int iy, float x, float y);
-  float perlin(float x, float y);
+
+    /* inline */
+    int hash(const int &x, const int &y) const
+    { return permutationTable[permutationTable[x] + y]; }
+    float lerp(float a0, float a1, float w) const {
+      return (1.0f - w)*a0 + w*a1;
+    }
+    float smoothstep(const float &t) const
+    {
+        return t * t * (3 - 2 * t);
+    }
+
+  public:
+    float eval(const glm::vec2 &p) const;
+    PerlinNoise();
 };
 
 class World : public Model{
   private:
     Camera* camera;
-    NoiseGenerator noise;
+    //NoiseGenerator noise;
+    PerlinNoise noise;
     //A map of coordinates to world chunks that are currently in memory
     std::map<glm::ivec2, CubeCluster*, Comparator> cubes;
     //The outlined cube
     SingleCube outlineCube;
     //A list of chunks that have been generated and saved in the world file
     std::map<glm::ivec2, bool, Comparator> generated;
+
+    void generateChunks(int thread);
+    int d_render_dist = 10;
+    std::list<glm::ivec2> d_erased_q; // chunk coords safe to deallocate
+    std::list<glm::ivec2> d_write_q; // chunk coords to write to disk
+    std::list<glm::ivec2> d_needed_q; //chunk coords we need to genreate
+    std::list<std::pair<glm::ivec2, CubeCluster*>> d_generated_q; // chunks that got generated
+    std::array<std::thread, 3> d_world_gen;
+    //std::thread d_world_gen;
+    std::mutex d_mtx;
+    std::condition_variable cv;
 
   public:
     World() = default;

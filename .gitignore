@@ -1,3 +1,4 @@
-./WORLDDATA/*
-*.o
+WORLDDATA
+build
+tags
 .*.sw*

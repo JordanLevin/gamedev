@@ -15,13 +15,17 @@ int Mesher::getIndex(int x, int y, int z){
 
 glm::vec4 Mesher::getColor(const Cube& c){
   if(c.type == 1)
-    return glm::vec4(0.0f,1.0f,0.0f,1.0f);
+    return glm::vec4(0.066f, 0.396f, 0.043f, 1.0f);
   if(c.type == 2)
     return glm::vec4(1.0f,1.0f,1.0f,1.0f);
   if(c.type == 3)
     return glm::vec4(0.5f,0.5f,0.5f,1.0f);
   if(c.type == 4)
     return glm::vec4(0.3f,1.0f,1.0f,0.8f);
+  if(c.type == 6)
+    return glm::vec4(0.909, 0.843, 0.172, 1.0f); // yellow
+  if(c.type == 7)
+    return glm::vec4(0.094, 0.141, 0.725, 1.0f); // blue
   return glm::vec4(std::rand()/(float)RAND_MAX,std::rand()/(float)RAND_MAX,std::rand()/(float)RAND_MAX,1.0f);
   
 }

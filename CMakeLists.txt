@@ -22,9 +22,10 @@ find_library(GLUT glut)
 find_library(OPENGL GL)
 find_library(GLEW GLEW)
 find_library(MATH m)
+find_library(PTHREAD pthread)
 
 
-target_link_libraries(game ${GLUT} ${OPENGL} ${GLEW} ${MATH} ${FREETYPE_LIBRARIES})
+target_link_libraries(game ${PTHREAD} ${GLUT} ${OPENGL} ${GLEW} ${MATH} ${FREETYPE_LIBRARIES})
 
 add_definitions(${GCC_FLAGS})
 
