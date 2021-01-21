@@ -33,7 +33,7 @@ class CubeCluster: public Model {
   public: 
     CubeCluster();
     CubeCluster(std::string path);
-    ~CubeCluster() = default;
+    ~CubeCluster();
 
     int d_ready = 0;
     void writeChunk(std::string path);

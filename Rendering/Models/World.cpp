@@ -89,6 +89,7 @@ void World::generateChunks(int thread){
         break;
       }
       const glm::ivec2& coords = d_write_q.front();
+      std::cout << "writing " << coords.x << " " << coords.y << std::endl;
       d_write_q.pop_front();
       d_mtx.unlock();
       writeChunk(coords.x, coords.y);
@@ -238,6 +239,12 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
       }
   }
   }
+  for(const auto& val: cubes){
+    if(val.first.x > row_f + 2 || val.first.x < row_i - 2 ||
+        val.first.y > col_f + 2 || val.first.y < col_i - 2){
+      d_write_q.push_back(val.first);
+    }
+  }
   d_mtx.unlock();
 
   //Signal worldgen threads if chunks need to be loaded or unloaded
@@ -254,7 +261,9 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
     const glm::ivec2& coords = d_erased_q.front();
     d_erased_q.pop_front();
     auto it = cubes.find(coords);
+    std::cout << "SHOULD delete " << coords.x << " " << coords.y << std::endl;
     if(it != cubes.end()){
+      std::cout << "deleting " << coords.x << " " << coords.y << std::endl;
       delete it->second;
       cubes.erase(it);
     }

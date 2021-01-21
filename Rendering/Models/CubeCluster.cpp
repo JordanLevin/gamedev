@@ -10,12 +10,18 @@ CubeCluster::CubeCluster(){
   occupiedVec.reserve(100'000);
 }
 
+
 CubeCluster::CubeCluster(std::string path){
   std::fstream read;
   read.open(path, std::ios::in);
   Serialize::deserialize(read, cubes);
   Serialize::deserialize(read, occupiedVec);
   occupied = std::unordered_set(occupiedVec.begin(), occupiedVec.end());
+}
+
+CubeCluster::~CubeCluster(){
+  glDeleteBuffers(this->vbos.size(), this->vbos.data());
+  glDeleteVertexArrays(1, &(this->vao));
 }
 
 glm::vec3 CubeCluster::coordsInChunk(int x, int y, int z){
