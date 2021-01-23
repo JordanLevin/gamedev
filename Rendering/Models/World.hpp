@@ -73,8 +73,8 @@ class World : public Model{
 
     void generateChunks(int thread);
     int d_render_dist = 10;
-    std::list<glm::ivec2> d_erased_q; // chunk coords safe to deallocate
-    std::list<glm::ivec2> d_write_q; // chunk coords to write to disk
+    std::list<std::pair<glm::ivec2, CubeCluster*>> d_erased_q; // chunk coords safe to deallocate
+    std::list<std::pair<glm::ivec2, CubeCluster*>> d_write_q; // chunk coords to write to disk
     std::list<glm::ivec2> d_needed_q; //chunk coords we need to genreate
     std::list<std::pair<glm::ivec2, CubeCluster*>> d_generated_q; // chunks that got generated
     std::array<std::thread, 3> d_world_gen;
@@ -89,7 +89,7 @@ class World : public Model{
     virtual void create() override final;
     void setCamera(Camera* camera_);
     void generate(int x, int y);
-    void writeChunk(int x, int y);
+    void writeChunk(std::pair<glm::ivec2, CubeCluster*> chunk);
     CubeCluster* readChunk(int x, int y);
     CubeCluster* getChunk(const glm::vec3& coords);
     virtual void draw(const glm::mat4& projection_matrix,

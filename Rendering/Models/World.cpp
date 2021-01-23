@@ -83,31 +83,28 @@ void World::generateChunks(int thread){
     cv.wait(lock);
 
     while(true){
-      //d_mtx.lock(); cv automatically locks?
       if(d_write_q.empty()){
-        d_mtx.unlock();
         break;
       }
-      const glm::ivec2& coords = d_write_q.front();
-      std::cout << "writing " << coords.x << " " << coords.y << std::endl;
+      const auto chunk = d_write_q.front();
+      std::cout << "writing " << chunk.first.x << " " << chunk.first.y << std::endl;
       d_write_q.pop_front();
-      d_mtx.unlock();
-      writeChunk(coords.x, coords.y);
-      d_mtx.lock();
-      d_erased_q.push_back(coords);
-      d_mtx.unlock();
+      lock.unlock();
+      writeChunk(chunk);
+      lock.lock();
+      d_erased_q.push_back(chunk);
     }
 
     while(true){
-        d_mtx.lock();
         if(d_needed_q.empty()){
-          d_mtx.unlock();
+          lock.unlock();
           break;
         }
         const glm::ivec2& coords = d_needed_q.front();
         d_needed_q.pop_front();
-        d_mtx.unlock();
+        lock.unlock();
         generate(coords.x, coords.y);
+        lock.lock();
     }
 
   }
@@ -185,19 +182,13 @@ void World::setCamera(Camera* camera_){
   camera = camera_;
 }
 
-void World::writeChunk(int x, int z){
-  glm::ivec2 coords(x,z);
-  std::string path = std::string("WORLDDATA/") + std::to_string(x) + "_" + std::to_string(z);
-  d_mtx.lock();
-  auto it = cubes.find(coords);
-  d_mtx.unlock();
-  if(it != cubes.end()){
-    it->second->writeChunk(path);
+void World::writeChunk(std::pair<glm::ivec2, CubeCluster*> chunk){
+  std::string path = std::string("WORLDDATA/") + std::to_string(chunk.first.x) 
+    + "_" + std::to_string(chunk.first.y);
+    chunk.second->writeChunk(path);
     d_mtx.lock();
-    generated[coords] = true;
+    generated[chunk.first] = true;
     d_mtx.unlock();
-  }
-  //delete cubes[coords];
 }
 CubeCluster* World::readChunk(int x, int z){
   std::string path = std::string("WORLDDATA/") + std::to_string(x) + "_" + std::to_string(z);
@@ -221,7 +212,7 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
   }
   d_mtx.lock();
   while(!d_generated_q.empty()){
-    const auto& elem = d_generated_q.front();
+    const auto elem = d_generated_q.front();
     d_generated_q.pop_front();
     cubes[elem.first] = elem.second;
   }
@@ -239,10 +230,15 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
       }
   }
   }
-  for(const auto& val: cubes){
-    if(val.first.x > row_f + 2 || val.first.x < row_i - 2 ||
-        val.first.y > col_f + 2 || val.first.y < col_i - 2){
-      d_write_q.push_back(val.first);
+  auto it = cubes.begin();
+  while(it != cubes.end()){
+    if(it->first.x > row_f + 2 || it->first.x < row_i - 2 ||
+        it->first.y > col_f + 2 || it->first.y < col_i - 2){
+      d_write_q.push_back(*it);
+      it = cubes.erase(cubes.find(it->first));
+    }
+    else{
+      it++;
     }
   }
   d_mtx.unlock();
@@ -258,15 +254,10 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
 
   d_mtx.lock();
   while(!d_erased_q.empty()){
-    const glm::ivec2& coords = d_erased_q.front();
+    const auto chunk = d_erased_q.front();
     d_erased_q.pop_front();
-    auto it = cubes.find(coords);
-    std::cout << "SHOULD delete " << coords.x << " " << coords.y << std::endl;
-    if(it != cubes.end()){
-      std::cout << "deleting " << coords.x << " " << coords.y << std::endl;
-      delete it->second;
-      cubes.erase(it);
-    }
+    std::cout << "deleting " << chunk.first.x << " " << chunk.first.y << std::endl;
+    delete chunk.second;
   }
   d_mtx.unlock();
   outlineCube.create();
