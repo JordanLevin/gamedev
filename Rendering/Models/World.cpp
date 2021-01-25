@@ -10,10 +10,11 @@
 #include <thread>
 #include <random>
 #include <utility>
+#include <time.h>
 
 PerlinNoise::PerlinNoise()
 {
-  unsigned seed = 2016;
+  unsigned seed = (int)time(NULL);
   std::mt19937 generator(seed);
   std::uniform_real_distribution distribution;
   auto dice = std::bind(distribution, generator);
@@ -73,16 +74,15 @@ float PerlinNoise::eval(const glm::vec2 &p) const
   return lerp(a, b, v);
 }
 
-
-void World::generateChunks(int thread){
+void World::deleteChunks(int thread){
+  std::unique_lock<std::mutex> lock(d_mtx_delete);
   while(true){
     if(!camera){
       continue;
     }
-    std::unique_lock<std::mutex> lock(d_mtx);
     cv.wait(lock);
 
-    while(true){
+    for(int i = 0; i < 10; i++){
       if(d_write_q.empty()){
         break;
       }
@@ -94,19 +94,31 @@ void World::generateChunks(int thread){
       lock.lock();
       d_erased_q.push_back(chunk);
     }
+  }
+}
+
+void World::generateChunks(int thread){
+  std::unique_lock<std::mutex> lock(d_mtx_create);
+  while(true){
+    if(!camera){
+      continue;
+    }
+    cv.wait(lock);
 
     while(true){
         if(d_needed_q.empty()){
-          lock.unlock();
           break;
         }
         const glm::ivec2& coords = d_needed_q.front();
         d_needed_q.pop_front();
+        //In case we've moved far enough that this chunk isnt needed, prevent multiple unloading/loading
+        //if(!should_generate(coords)){
+          //continue;
+        //}
         lock.unlock();
         generate(coords.x, coords.y);
         lock.lock();
     }
-
   }
 }
 
@@ -114,19 +126,19 @@ void World::generate(int x, int z){
   glm::ivec2 coords(x,z);
 
   //Check if this chunk was already generated and saved
-  d_mtx.lock();
-  if(cubes.count(coords) == 1){
-    d_mtx.unlock();
-    return;
-  }
+  d_mtx_create.lock();
+  //if(cubes.count(coords) == 1){
+    //d_mtx_create.unlock();
+    //return;
+  //}
   bool found = generated.find(coords) != generated.end();
-  d_mtx.unlock();
+  d_mtx_create.unlock();
   if(found){
     CubeCluster* c = readChunk(x,z);
-    d_mtx.lock();
+    d_mtx_create.lock();
     //cubes[coords] = c;
     d_generated_q.push_back(std::make_pair(coords, c));
-    d_mtx.unlock();
+    d_mtx_create.unlock();
     return;
   }
 
@@ -139,6 +151,8 @@ void World::generate(int x, int z){
       c->add(row,0,col);
       c->add(row,1,col);
       float height = noise.eval(glm::vec2((float)row/100.0, (float)col/100.0))*4;
+      height += noise.eval(glm::vec2((float)row/60.0, (float)col/100.0))*4;
+      height += noise.eval(glm::vec2((float)row/70.0, (float)col/100.0))*4;
       //height += noise.eval(glm::vec2((float)row/15.0, (float)col/15.0))*0.5;
       height += noise.eval(glm::vec2((float)row/10.0, (float)col/10.0))*0.5;
       height += noise.eval(glm::vec2((float)row/30.0, (float)col/30.0))*2;
@@ -162,16 +176,22 @@ void World::generate(int x, int z){
   }
   std::cout << x << " " << z << std::endl;
   c->createMesh();
-  d_mtx.lock();
+  d_mtx_create.lock();
   d_generated_q.push_back(std::make_pair(coords, c));
-  d_mtx.unlock();
+  d_mtx_create.unlock();
 }
 
 void World::create(){
   outlineCube.setProgram(ShaderManager::getShader("cubeShader"));
-  for(int i = 0; i < d_world_gen.size(); i++){
-    d_world_gen[i] = std::thread(&World::generateChunks, this, i);
-    //d_world_gen[i].detach();
+  int max_threads = 4;
+  int gen_threads = (int)(max_threads-1)/2;
+  for(int i = 0; i < gen_threads; i++){
+    d_world_gen.push_back(std::thread(&World::generateChunks, this, i));
+    d_world_gen[i].detach();
+  }
+  for(int i = 0; i < max_threads-gen_threads-1; i++){
+    d_world_gen.push_back(std::thread(&World::deleteChunks, this, i));
+    d_world_gen[i+gen_threads].detach();
   }
   //d_world_gen = std::thread(&World::generateChunks, this, 1);
   //d_world_gen.detach();
@@ -186,9 +206,6 @@ void World::writeChunk(std::pair<glm::ivec2, CubeCluster*> chunk){
   std::string path = std::string("WORLDDATA/") + std::to_string(chunk.first.x) 
     + "_" + std::to_string(chunk.first.y);
     chunk.second->writeChunk(path);
-    d_mtx.lock();
-    generated[chunk.first] = true;
-    d_mtx.unlock();
 }
 CubeCluster* World::readChunk(int x, int z){
   std::string path = std::string("WORLDDATA/") + std::to_string(x) + "_" + std::to_string(z);
@@ -205,12 +222,11 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
   int col_f = (camera->getZ()/16) + d_render_dist;
   std::vector<CubeCluster*> ready;
 
-  //Wow this bit is key, in rare cases like initial world gen the draw loop goes
-  //too fast for the chunk loading threads and infinite chunks are marked as needed
-  while(d_generated_q.size() > 100){
-    //do nothing
-  }
-  d_mtx.lock();
+  //std::cout << "Erased: " << d_erased_q.size() << std::endl;
+  //std::cout << "write: " << d_write_q.size() << std::endl;
+  //std::cout << "needed: " << d_needed_q.size() << std::endl;
+  //std::cout << "generated: " << d_generated_q.size() << std::endl;
+
   while(!d_generated_q.empty()){
     const auto elem = d_generated_q.front();
     d_generated_q.pop_front();
@@ -218,30 +234,38 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
   }
   for(int row = row_i; row < row_f; row++){
     for(int col = col_i; col < col_f; col++){
-      if(cubes.count(glm::ivec2(row,col)) == 1){
-        CubeCluster* c = cubes.at(glm::ivec2(row,col));
-        ready.push_back(c);
-        if(c->d_ready == 1)
-          c->createGL();
+      glm::ivec2 coords(row, col);
+      if(cubes.count(coords) == 1){
+        CubeCluster* c = cubes.at(coords);
+        if(c != nullptr){
+          ready.push_back(c);
+          if(c->d_ready == 1)
+            c->createGL();
+        }
       }
       else{
-        d_needed_q.push_back(glm::ivec2(row, col));
-        continue;
+        d_mtx_create.lock();
+        //std::cout << "ADDING TO NEEDED\n";
+        d_needed_q.push_back(coords);
+        cubes[coords] = nullptr;
+        d_mtx_create.unlock();
       }
   }
   }
+  d_mtx_delete.lock();
   auto it = cubes.begin();
   while(it != cubes.end()){
     if(it->first.x > row_f + 2 || it->first.x < row_i - 2 ||
         it->first.y > col_f + 2 || it->first.y < col_i - 2){
-      d_write_q.push_back(*it);
+      if(it->second)
+        d_write_q.push_back(*it);
       it = cubes.erase(cubes.find(it->first));
     }
     else{
       it++;
     }
   }
-  d_mtx.unlock();
+  d_mtx_delete.unlock();
 
   //Signal worldgen threads if chunks need to be loaded or unloaded
   if(!d_needed_q.empty() || !d_write_q.empty()){
@@ -252,14 +276,14 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
     chunk->draw(projection_matrix, view_matrix);
   }
 
-  d_mtx.lock();
+  d_mtx_delete.lock();
   while(!d_erased_q.empty()){
     const auto chunk = d_erased_q.front();
     d_erased_q.pop_front();
     std::cout << "deleting " << chunk.first.x << " " << chunk.first.y << std::endl;
     delete chunk.second;
   }
-  d_mtx.unlock();
+  d_mtx_delete.unlock();
   outlineCube.create();
   outlineCube.draw(projection_matrix, view_matrix);
 
@@ -413,6 +437,8 @@ void World::placeBlock(const glm::vec3& location, const glm::vec3& direction){
     blockVal[2] -= stepz;
   //std::cout << "after: " << blockVal[0] << " " << blockVal[1] << " " << blockVal[2] << std::endl;
   CubeCluster* chunk = getChunk(blockVal);
+  if(!chunk)
+    return;
   chunk->add(std::round(blockVal[0]), std::round(blockVal[1]), std::round(blockVal[2]), 5);
   chunk->create();
   outlineBlock(location, direction);
@@ -438,8 +464,13 @@ CubeCluster* World::getChunk(const glm::vec3& coords){
     z = (int)coords[2]/16;
   else
     z = (int)coords[2]/16 - 1;
-  CubeCluster* chunk = cubes.at(glm::ivec2(x,z));
-  return chunk;
+  try{
+    CubeCluster* chunk = cubes.at(glm::ivec2(x,z));
+    return chunk;
+  }
+  catch (const std::exception& e){
+  }
+  return nullptr;
 }
 
 void World::update(){

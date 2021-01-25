@@ -72,14 +72,16 @@ class World : public Model{
     std::map<glm::ivec2, bool, Comparator> generated;
 
     void generateChunks(int thread);
+    void deleteChunks(int thread);
     int d_render_dist = 10;
     std::list<std::pair<glm::ivec2, CubeCluster*>> d_erased_q; // chunk coords safe to deallocate
     std::list<std::pair<glm::ivec2, CubeCluster*>> d_write_q; // chunk coords to write to disk
     std::list<glm::ivec2> d_needed_q; //chunk coords we need to genreate
     std::list<std::pair<glm::ivec2, CubeCluster*>> d_generated_q; // chunks that got generated
-    std::array<std::thread, 3> d_world_gen;
+    std::vector<std::thread> d_world_gen;
     //std::thread d_world_gen;
-    std::mutex d_mtx;
+    std::mutex d_mtx_create;
+    std::mutex d_mtx_delete;
     std::condition_variable cv;
 
   public:
