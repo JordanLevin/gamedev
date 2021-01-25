@@ -87,7 +87,7 @@ void World::deleteChunks(int thread){
         break;
       }
       const auto chunk = d_write_q.front();
-      std::cout << "writing " << chunk.first.x << " " << chunk.first.y << std::endl;
+      //std::cout << "writing " << chunk.first.x << " " << chunk.first.y << std::endl;
       d_write_q.pop_front();
       lock.unlock();
       writeChunk(chunk);
@@ -280,7 +280,7 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
   while(!d_erased_q.empty()){
     const auto chunk = d_erased_q.front();
     d_erased_q.pop_front();
-    std::cout << "deleting " << chunk.first.x << " " << chunk.first.y << std::endl;
+    //std::cout << "deleting " << chunk.first.x << " " << chunk.first.y << std::endl;
     delete chunk.second;
   }
   d_mtx_delete.unlock();
