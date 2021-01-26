@@ -111,10 +111,6 @@ void World::generateChunks(int thread){
         }
         const glm::ivec2& coords = d_needed_q.front();
         d_needed_q.pop_front();
-        //In case we've moved far enough that this chunk isnt needed, prevent multiple unloading/loading
-        //if(!should_generate(coords)){
-          //continue;
-        //}
         lock.unlock();
         generate(coords.x, coords.y);
         lock.lock();
@@ -127,35 +123,30 @@ void World::generate(int x, int z){
 
   //Check if this chunk was already generated and saved
   d_mtx_create.lock();
-  //if(cubes.count(coords) == 1){
-    //d_mtx_create.unlock();
-    //return;
-  //}
   bool found = generated.find(coords) != generated.end();
   d_mtx_create.unlock();
   if(found){
     CubeCluster* c = readChunk(x,z);
     d_mtx_create.lock();
-    //cubes[coords] = c;
     d_generated_q.push_back(std::make_pair(coords, c));
     d_mtx_create.unlock();
     return;
   }
 
   //Generate a new chunk using perlin noise
-  CubeCluster* c = new CubeCluster();
+  CubeCluster* c = new CubeCluster(x, 0, z);
   c->setProgram(ShaderManager::getShader("cubeShader"));
   //c->add(0,0,0);
   for(int row = x*16; row < x*16 + 16; row++){
     for(int col = z*16; col < z*16 + 16; col++){
       c->add(row,0,col);
       c->add(row,1,col);
-      float height = noise.eval(glm::vec2((float)row/100.0, (float)col/100.0))*4;
+      float height = noise.eval(glm::vec2((float)row/100.0, (float)col/100.0))*15;
       height += noise.eval(glm::vec2((float)row/60.0, (float)col/100.0))*4;
       height += noise.eval(glm::vec2((float)row/70.0, (float)col/100.0))*4;
       //height += noise.eval(glm::vec2((float)row/15.0, (float)col/15.0))*0.5;
-      height += noise.eval(glm::vec2((float)row/10.0, (float)col/10.0))*0.5;
-      height += noise.eval(glm::vec2((float)row/30.0, (float)col/30.0))*2;
+      height += noise.eval(glm::vec2((float)row/10.0, (float)col/10.0))*1;
+      height += noise.eval(glm::vec2((float)row/30.0, (float)col/30.0))*3;
       height += 7;
       height = std::max((int)height, 3);
       if(height > 127)
@@ -209,7 +200,7 @@ void World::writeChunk(std::pair<glm::ivec2, CubeCluster*> chunk){
 }
 CubeCluster* World::readChunk(int x, int z){
   std::string path = std::string("WORLDDATA/") + std::to_string(x) + "_" + std::to_string(z);
-  CubeCluster* c = new CubeCluster(path);
+  CubeCluster* c = new CubeCluster(path, x, 0, z);
   c->setProgram(ShaderManager::getShader("cubeShader"));
   c->createMesh();
   return c;
@@ -292,9 +283,9 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
 //offset ceil/floor func, for dealing with how voxels are offset by 0.5
 float World::maxT(float f, bool dir){
   if(dir)
-    return std::ceil(f+0.5) - (f + 0.5);
+    return std::ceil(f) - (f);
   else
-    return (f - 0.5) - std::floor(f - 0.5);
+    return (f) - std::floor(f);
 }
 
 //POTENTIAL ISSUE, this does not work at the axis, potentially related to the cube

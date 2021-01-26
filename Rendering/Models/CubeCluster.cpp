@@ -5,13 +5,30 @@
 #include <string>
 #include <fstream>
 #include <algorithm>
+#include <time.h>
 
-CubeCluster::CubeCluster(){
-  occupiedVec.reserve(100'000);
+CubeCluster::CubeCluster(int x, int y, int z){
+  d_x = x;
+  d_y = y;
+  d_z = z;
+  occupiedVec.reserve(DATA_SIZE);
+  model_matrix = 
+   {{1,0,0,0}, 
+    {0,1,0,0}, 
+    {0,0,1,0}, 
+    {x*16,0,z*16,1}};
 }
 
 
-CubeCluster::CubeCluster(std::string path){
+CubeCluster::CubeCluster(std::string path, int x, int y, int z){
+  d_x = x;
+  d_y = y;
+  d_z = z;
+  model_matrix = 
+   {{1,0,0,0}, 
+    {0,1,0,0}, 
+    {0,0,1,0}, 
+    {x*16,0,z*16,1}};
   std::fstream read;
   read.open(path, std::ios::in);
   Serialize::deserialize(read, cubes);
@@ -109,10 +126,27 @@ void CubeCluster::add(int x, int y, int z){
 }
 
 void CubeCluster::add(int x, int y, int z, int type){
-  //find x and z in chunk space coordinates, funky math is so negative and positive chunksuse same sytem
-  glm::vec3 coords = coordsInChunk(x,y,z);
-  int ind = getIndex(coords[0], coords[1], coords[2]);
-  cubes[ind] = {x,y,z,type};
+  
+  //With the new chunk coordinate system we shift negatives by 1 so instead of being [-16,-1]
+  //theyre [-15,0], this fixes an off by 1 issue with the modulus, after this we ensure coordinates
+  //ad in chunk space [0,15] and flip coordinates in negative chunks
+  //We also add 0.5 so chunk corners are on integers, this hopefully will reduce other issues
+  if(d_x < 0){
+    x += 1;
+    x = 15 - std::abs(x%16);
+  }
+  else
+    x = std::abs(x%16);
+  if(d_z < 0){
+    z += 1;
+    z = 15 - std::abs(z%16);
+  }
+  else
+    z = std::abs(z%16);
+  //y = std::abs(y%16);
+
+  int ind = getIndex(x, y, z);
+  cubes[ind] = {(float)x+0.5,(float)y+0.5,(float)z+0.5,type};
   occupied.insert(ind);
   occupiedVec.push_back(ind);
 }
@@ -151,16 +185,20 @@ void CubeCluster::update(){
 }
 
 void CubeCluster::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix){
+  //model_matrix[1][0] = std::sin((float)n++/100.0); //lmao just for fun
   glUseProgram(program);
   glm::vec3 light_dir = glm::normalize(glm::vec3(-1.0f, 1.0f, -1.0f));
   glUniform3f(glGetUniformLocation(program, "light_dir"),light_dir.x, light_dir.y, light_dir.z);
   glUniform4f(glGetUniformLocation(program, "light_color_in"),1.0f,1.0f,0.98f, 1.0f);
   glUniform1f(glGetUniformLocation(program, "light_power_in"),1.5f);
+  glUniformMatrix4fv(glGetUniformLocation(program, "model_matrix"),
+      1, false, &model_matrix[0][0]);
   glUniformMatrix4fv(glGetUniformLocation(program, "view_matrix"),
       1, false, &view_matrix[0][0]);
   glUniformMatrix4fv(glGetUniformLocation(program, "projection_matrix"), 
       1, false, &projection_matrix[0][0]);
   glBindVertexArray(vao);
+  //print_m(model_matrix);
 
   //glDrawElements(GL_TRIANGLES, allIndices.size(), GL_UNSIGNED_INT, 0);
   glUniform1i(glGetUniformLocation(program, "wireframe"),0);

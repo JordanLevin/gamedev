@@ -29,10 +29,14 @@ class CubeCluster: public Model {
     //Occupied cubes for the mesher to use
     std::unordered_set<int> occupied;
     std::vector<int> occupiedVec;
+    int n = 0; //lmao just for fun
+    int d_x, d_y, d_z;
+
+    glm::mat4 model_matrix;
 
   public: 
-    CubeCluster();
-    CubeCluster(std::string path);
+    CubeCluster(int x, int y, int z);
+    CubeCluster(std::string path, int x, int y, int z);
     ~CubeCluster();
 
     int d_ready = 0;

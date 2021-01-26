@@ -35,16 +35,16 @@ std::vector<VertexFormat> Mesher::createMesh(const std::vector<Cube>& chunk,
   std::vector<VertexFormat> ret;
   for(int i: occupied){
     //this funky cx cz math is to make sure relative and positive blocks are tracked the same way
-    int cx;
-    int cz;
-    if(chunk[i].x < 0)
-      cx = 15 - ((int)-chunk[i].x - 1)%16;
-    else
-      cx = (int)chunk[i].x%16;
-    if(chunk[i].z < 0)
-      cz = 15 - ((int)-chunk[i].z - 1)%16;
-    else
-      cz = (int)chunk[i].z%16;
+    int cx = chunk[i].x;
+    int cz = chunk[i].z;
+    //if(chunk[i].x < 0)
+      //cx = 15 - ((int)-chunk[i].x - 1)%16;
+    //else
+      //cx = (int)chunk[i].x%16;
+    //if(chunk[i].z < 0)
+      //cz = 15 - ((int)-chunk[i].z - 1)%16;
+    //else
+      //cz = (int)chunk[i].z%16;
     int cy = chunk[i].y;
     int topN = getIndex(cx, cy+1, cz);
     int bottomN = getIndex(cx, cy-1, cz);

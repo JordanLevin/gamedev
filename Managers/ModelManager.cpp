@@ -60,16 +60,16 @@ void ModelManager::init(Camera* camera){
   gameModelList["sgui"] = sgui;
 
   //old worldspace gui for debugging
-  //DGui* dgui = new DGui();
-  //for(int i = -512; i < 512; i += 16){
-    //for(int j = -512; j < 512; j += 16){
-      //dgui->add(i,0,j, i,1000,j,1,0,0);
-    //}
-  //}
-  //dgui->setProgram(ShaderManager::getShader("lineShader"));
-  //dgui->create();
-  //gameModelList["dgui"] = dgui;
-  //camera->gui = dgui;
+  DGui* dgui = new DGui();
+  for(int i = -512; i < 512; i += 16){
+    for(int j = -512; j < 512; j += 16){
+      dgui->add(i,0,j, i,1000,j,1,0,0);
+    }
+  }
+  dgui->setProgram(ShaderManager::getShader("lineShader"));
+  dgui->create();
+  gameModelList["dgui"] = dgui;
+  camera->gui = dgui;
 
 }
 

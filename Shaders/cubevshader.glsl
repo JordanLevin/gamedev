@@ -3,7 +3,7 @@ layout(location = 0) in vec3 in_position;
 layout(location = 1) in vec4 in_color;
 layout(location = 2) in vec3 in_normal;
 
-uniform mat4 projection_matrix, view_matrix;
+uniform mat4 projection_matrix, view_matrix, model_matrix;
 uniform vec4 light_color_in;
 uniform float light_power_in;
 uniform vec3 light_dir;
@@ -28,6 +28,6 @@ void main(){
       AmbientColor + 
       color.xyz * light_color.xyz * (abs(normal.x) * 0.7 + abs(normal.y) * 0.8 + abs(normal.z) * 0.6), 1);
 
-  gl_Position = projection_matrix * view_matrix * 
+  gl_Position = projection_matrix * view_matrix * model_matrix * 
     vec4(in_position, 1);
 }

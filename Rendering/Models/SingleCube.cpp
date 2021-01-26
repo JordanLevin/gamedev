@@ -33,7 +33,7 @@ void SingleCube::create(){
 }
 
 void SingleCube::set(int x, int y, int z){
-  cube = {x,y,z,-1};
+  cube = {x,y,z,4};
   //std::vector<Cube> outline;
   //std::unordered_set<int> occ{1};
   //outline.push_back({x,y,z,-1});
