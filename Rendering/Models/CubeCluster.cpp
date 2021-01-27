@@ -41,22 +41,30 @@ CubeCluster::~CubeCluster(){
   glDeleteVertexArrays(1, &(this->vao));
 }
 
-glm::vec3 CubeCluster::coordsInChunk(int x, int y, int z){
-  int cx;
-  int cz;
-  if(x < 0)
-    cx = 15 - (-x - 1)%16;
+//With the new chunk coordinate system we shift negatives by 1 so instead of being [-16,-1]
+//theyre [-15,0], this fixes an off by 1 issue with the modulus, after this we ensure coordinates
+//ad in chunk space [0,15] and flip coordinates in negative chunks
+glm::vec3 CubeCluster::coordsInChunk(const glm::vec3& coord){
+  int x = coord[0];
+  int y = coord[1];
+  int z = coord[2];
+  if(d_x < 0){
+    x += 1;
+    x = 15 - std::abs(x%16);
+  }
   else
-    cx = x%16;
-  if(z < 0)
-    cz = 15 - (-z - 1)%16;
+    x = std::abs(x%16);
+  if(d_z < 0){
+    z += 1;
+    z = 15 - std::abs(z%16);
+  }
   else
-    cz = z%16;
-  return glm::vec3(cx,y,cz);
+    z = std::abs(z%16);
+  return glm::vec3(x,y,z);
 }
 
-uint32_t CubeCluster::getIndex(uint32_t x, uint32_t y, uint32_t z){
-  return y*16*16 + x*16 + z;
+uint32_t CubeCluster::getIndex(const glm::vec3& coords){
+  return coords[1]*16*16 + coords[0]*16 + coords[2];
 }
 
 void CubeCluster::writeChunk(std::string path){
@@ -127,33 +135,19 @@ void CubeCluster::add(int x, int y, int z){
 
 void CubeCluster::add(int x, int y, int z, int type){
   
-  //With the new chunk coordinate system we shift negatives by 1 so instead of being [-16,-1]
-  //theyre [-15,0], this fixes an off by 1 issue with the modulus, after this we ensure coordinates
-  //ad in chunk space [0,15] and flip coordinates in negative chunks
-  //We also add 0.5 so chunk corners are on integers, this hopefully will reduce other issues
-  if(d_x < 0){
-    x += 1;
-    x = 15 - std::abs(x%16);
-  }
-  else
-    x = std::abs(x%16);
-  if(d_z < 0){
-    z += 1;
-    z = 15 - std::abs(z%16);
-  }
-  else
-    z = std::abs(z%16);
-  //y = std::abs(y%16);
+  glm::vec3 coord(x,y,z);
+  glm::vec3 chunk_coord = coordsInChunk(coord);
 
-  int ind = getIndex(x, y, z);
-  cubes[ind] = {(float)x+0.5,(float)y+0.5,(float)z+0.5,type};
+  int ind = getIndex(chunk_coord);
+  //We add 0.5 so chunk corners are on integers, this hopefully will reduce other issues
+  cubes[ind] = {chunk_coord[0]+0.5,chunk_coord[1]+0.5,chunk_coord[2]+0.5,type};
   occupied.insert(ind);
   occupiedVec.push_back(ind);
 }
 
 bool CubeCluster::remove(int x, int y, int z){
-  glm::vec3 coords = coordsInChunk(x,y,z);
-  int i = getIndex(coords[0],coords[1],coords[2]);
+  glm::vec3 coords = coordsInChunk(glm::vec3(x,y,z));
+  int i = getIndex(coords);
   if(occupied.count(i) != 1)
     return false;
   occupied.erase(i);
@@ -163,8 +157,8 @@ bool CubeCluster::remove(int x, int y, int z){
 }
 
 bool CubeCluster::edit(int x, int y, int z, int type){
-  glm::vec3 coords = coordsInChunk(x,y,z);
-  int i = getIndex(coords[0],coords[1],coords[2]);
+  glm::vec3 coords = coordsInChunk(glm::vec3(x,y,z));
+  int i = getIndex(coords);
   if(occupied.count(i) != 1)
     return false;
   cubes[i].type = type;
@@ -173,8 +167,8 @@ bool CubeCluster::edit(int x, int y, int z, int type){
 }
 
 int CubeCluster::get(int x, int y, int z){
-  glm::vec3 coords = coordsInChunk(x,y,z);
-  int i = getIndex(coords[0],coords[1],coords[2]);
+  glm::vec3 coords = coordsInChunk(glm::vec3(x,y,z));
+  int i = getIndex(coords);
   if(occupied.count(i) != 1)
     return 0;
   return 1;

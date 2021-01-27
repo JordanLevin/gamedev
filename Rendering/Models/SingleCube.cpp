@@ -33,7 +33,7 @@ void SingleCube::create(){
 }
 
 void SingleCube::set(int x, int y, int z){
-  cube = {x,y,z,4};
+  cube = {x+0.5,y+0.5,z+0.5,4};
   //std::vector<Cube> outline;
   //std::unordered_set<int> occ{1};
   //outline.push_back({x,y,z,-1});
@@ -45,11 +45,19 @@ void SingleCube::update(){
 }
 
 void SingleCube::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix){
+  glm::mat4 model_matrix = {
+    {1,0,0,0},
+    {0,1,0,0},
+    {0,0,1,0},
+    {0,0,0,1}
+  };
   glUseProgram(program);
   glm::vec3 light_dir = glm::normalize(glm::vec3(-1.0f, 1.0f, -1.0f));
   glUniform3f(glGetUniformLocation(program, "light_dir"),light_dir.x, light_dir.y, light_dir.z);
   glUniform4f(glGetUniformLocation(program, "light_color_in"),1.0f,1.0f,0.98f, 1.0f);
   glUniform1f(glGetUniformLocation(program, "light_power_in"),1.5f);
+  glUniformMatrix4fv(glGetUniformLocation(program, "model_matrix"),
+      1, false, &model_matrix[0][0]);
   glUniformMatrix4fv(glGetUniformLocation(program, "view_matrix"),
       1, false, &view_matrix[0][0]);
   glUniformMatrix4fv(glGetUniformLocation(program, "projection_matrix"), 

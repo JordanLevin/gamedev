@@ -339,7 +339,7 @@ std::optional<glm::vec3> World::selectBlock(const glm::vec3& location, const glm
       //chunk may not exist due to multithreading
       return std::nullopt;
     }
-    glm::vec3 ret = glm::vec3(std::round(point[0]), std::round(point[1]), std::round(point[2]));
+    glm::vec3 ret = glm::vec3(std::floor(point[0]), std::floor(point[1]), std::floor(point[2]));
     if(chunk->get(ret[0], ret[1], ret[2])){
       if(!exact)
         return ret;
@@ -355,6 +355,7 @@ void World::breakBlock(const glm::vec3& location, const glm::vec3& direction){
     return;
   auto blockVal = block.value();
   CubeCluster* chunk = getChunk(blockVal);
+  std::cout << "CHUNK: " << chunk->d_x << " " << chunk->d_z << std::endl;
   chunk->remove(blockVal[0], blockVal[1], blockVal[2]);
   outlineBlock(location, direction);
 }
@@ -371,9 +372,9 @@ void World::placeBlock(const glm::vec3& location, const glm::vec3& direction){
   bool usey = false;
   bool usez = false;
   //Determine the amount to scale direction to reach the x,y,z planes at the target voxel
-  float tMaxX = std::abs((location[0]-blockVal[0] + 0.5*(stepx))/direction[0]);
-  float tMaxY = std::abs((location[1]-blockVal[1] + 0.5*(stepy))/direction[1]);
-  float tMaxZ = std::abs((location[2]-blockVal[2] + 0.5*(stepz))/direction[2]);
+  float tMaxX = std::abs((location[0]-blockVal[0] + (stepx))/direction[0]);
+  float tMaxY = std::abs((location[1]-blockVal[1] + (stepy))/direction[1]);
+  float tMaxZ = std::abs((location[2]-blockVal[2] + (stepz))/direction[2]);
 
   //Attempt to try all 3 T values, the idea is to throw away the values where
   //the point reached isnt actually on the surface of the target voxel
@@ -382,19 +383,19 @@ void World::placeBlock(const glm::vec3& location, const glm::vec3& direction){
   //std::cout << "blockvals: " << blockVal[0] << " " << blockVal[1] << " " << blockVal[2] << std::endl;
   glm::vec3 temp = location;
   temp += direction*tMaxX;
-  if(std::round(temp[1]) == blockVal[1] && std::round(temp[2]) == blockVal[2]){
+  if(std::floor(temp[1]) == blockVal[1] && std::floor(temp[2]) == blockVal[2]){
     //std::cout << "temp: " << temp[0] << " " << temp[1] << " " << temp[2] << std::endl;
     usex = true;
   }
   temp = location;
   temp += direction*tMaxY;
-  if(std::round(temp[0]) == blockVal[0] && std::round(temp[2]) == blockVal[2]){
+  if(std::floor(temp[0]) == blockVal[0] && std::floor(temp[2]) == blockVal[2]){
     //std::cout << "temp: " << temp[0] << " " << temp[1] << " " << temp[2] << std::endl;
     usey = true;
   }
   temp = location;
   temp += direction*tMaxZ;
-  if(std::round(temp[0]) == blockVal[0] && std::round(temp[1]) == blockVal[1]){
+  if(std::floor(temp[0]) == blockVal[0] && std::floor(temp[1]) == blockVal[1]){
     usez = true;
     //std::cout << "temp: " << temp[0] << " " << temp[1] << " " << temp[2] << std::endl;
   }
@@ -430,7 +431,7 @@ void World::placeBlock(const glm::vec3& location, const glm::vec3& direction){
   CubeCluster* chunk = getChunk(blockVal);
   if(!chunk)
     return;
-  chunk->add(std::round(blockVal[0]), std::round(blockVal[1]), std::round(blockVal[2]), 5);
+  chunk->add(std::floor(blockVal[0]), std::floor(blockVal[1]), std::floor(blockVal[2]), 5);
   chunk->create();
   outlineBlock(location, direction);
 }
@@ -447,11 +448,11 @@ void World::outlineBlock(const glm::vec3& location, const glm::vec3& direction){
 
 CubeCluster* World::getChunk(const glm::vec3& coords){
   int x, z;
-  if(coords[0] > 0.0f)
+  if(coords[0] >= 0.0f)
     x = (int)coords[0]/16;
   else
     x = (int)coords[0]/16 - 1;
-  if(coords[2] > 0.0f)
+  if(coords[2] >= 0.0f)
     z = (int)coords[2]/16;
   else
     z = (int)coords[2]/16 - 1;

@@ -17,9 +17,9 @@
 
 class CubeCluster: public Model {
   private:
-    uint32_t getIndex(uint32_t x, uint32_t y, uint32_t z);
+    uint32_t getIndex(const glm::vec3& coord);
     //convert global coordinates to chunk coordinates (?)
-    glm::vec3 coordsInChunk(int x, int y, int z);
+    glm::vec3 coordsInChunk(const glm::vec3& coord);
 
     //Mesh data to render
     std::vector<VertexFormat> data;
@@ -30,11 +30,11 @@ class CubeCluster: public Model {
     std::unordered_set<int> occupied;
     std::vector<int> occupiedVec;
     int n = 0; //lmao just for fun
-    int d_x, d_y, d_z;
 
-    glm::mat4 model_matrix;
 
   public: 
+    int d_x, d_y, d_z;
+    glm::mat4 model_matrix;
     CubeCluster(int x, int y, int z);
     CubeCluster(std::string path, int x, int y, int z);
     ~CubeCluster();
