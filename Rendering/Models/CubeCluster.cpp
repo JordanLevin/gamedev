@@ -92,7 +92,7 @@ void CubeCluster::createGL(){
   glGenBuffers(1, &vbo);
   glBindBuffer(GL_ARRAY_BUFFER, vbo);
   glBufferData(GL_ARRAY_BUFFER, 
-      sizeof(VertexFormat) * data.size(), &data[0], GL_STATIC_DRAW);
+      sizeof(uint32_t) * data.size(), &data[0], GL_STATIC_DRAW);
 
   //Index buffer
   //glGenBuffers(1, &ibo);
@@ -101,26 +101,26 @@ void CubeCluster::createGL(){
       //sizeof(unsigned int) * allIndices.size(), &allIndices[0], GL_STATIC_DRAW);
 
   //Normal buffer
-  glGenBuffers(1, &nbo);
-  glBindBuffer(GL_ARRAY_BUFFER, nbo);
-  glBufferData(GL_ARRAY_BUFFER,
-      sizeof(VertexFormat) * data.size(), &data[0], GL_STATIC_DRAW);
+  //glGenBuffers(1, &nbo);
+  //glBindBuffer(GL_ARRAY_BUFFER, nbo);
+  //glBufferData(GL_ARRAY_BUFFER,
+      //sizeof(uint32_t) * data.size(), &data[0], GL_STATIC_DRAW);
 
   glEnableVertexAttribArray(0);
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(VertexFormat),
+  glVertexAttribPointer(0, 1, GL_INT, GL_FALSE, sizeof(uint32_t),
       (void*)0);
-  glEnableVertexAttribArray(1);
-  glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(VertexFormat), 
-      (void*)(offsetof(VertexFormat, VertexFormat::color)));
-  glEnableVertexAttribArray(2);
-  glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(VertexFormat),
-      (void*)(offsetof(VertexFormat, VertexFormat::normal)));
+  //glEnableVertexAttribArray(1);
+  //glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(uint32_t), 
+      //(void*)(offsetof(uint32_t, uint32_t::color)));
+  //glEnableVertexAttribArray(2);
+  //glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(uint32_t),
+      //(void*)(offsetof(uint32_t, uint32_t::normal)));
   glBindVertexArray(0);
 
   this->vao = vao;
   this->vbos.push_back(vbo);
   //this->vbos.push_back(ibo);
-  this->vbos.push_back(nbo);
+  //this->vbos.push_back(nbo);
   d_ready = 2;
 }
 

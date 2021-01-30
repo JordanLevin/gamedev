@@ -8,6 +8,7 @@
 #include <unordered_set>
 #include <iostream>
 #include <cstdlib>
+#include <bitset>
 
 int Mesher::getIndex(int x, int y, int z){
   return y*16*16 + x*16 + z;
@@ -27,12 +28,27 @@ glm::vec4 Mesher::getColor(const Cube& c){
   if(c.type == 7)
     return glm::vec4(0.094, 0.141, 0.725, 1.0f); // blue
   return glm::vec4(std::rand()/(float)RAND_MAX,std::rand()/(float)RAND_MAX,std::rand()/(float)RAND_MAX,1.0f);
-  
 }
 
-std::vector<VertexFormat> Mesher::createMesh(const std::vector<Cube>& chunk,
+//Compress a vertex into a uint32, assume that all coordinates are in chunkspace (<16)
+uint32_t Mesher::compressVertex(VertexFormat in, uint8_t type){
+  uint32_t ret = 0;
+  //add coords
+  ret |= ((int)(in.position[0]) & 0b1111);
+  ret |= (((int)(in.position[1]) >> 4) & 0b1111);
+  ret |= (((int)(in.position[2]) >> 8) & 0b1111);
+  //add colors, lets just give a type and do colors in the shader
+  ret |= ((type >> 12) & 0b1111);
+  //add normals
+  uint8_t norm = ((int)in.normal[0] << 0) | ((int)in.normal[1] << 1) | ((int)in.normal[2] << 2);
+  ret |= ((norm & 0b111) << 16);
+
+  return ret;
+}
+
+std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
     const std::unordered_set<int>& occupied){
-  std::vector<VertexFormat> ret;
+  std::vector<uint32_t> ret;
   for(int i: occupied){
     //this funky cx cz math is to make sure relative and positive blocks are tracked the same way
     int cx = chunk[i].x;
@@ -60,94 +76,96 @@ std::vector<VertexFormat> Mesher::createMesh(const std::vector<Cube>& chunk,
     float c2 = color[2];
     float c3 = color[3];
     if(occupied.count(topN) == 0 || cy == 127){
-      ret.push_back({{curr.x-0.5f, curr.y+0.5f, curr.z-0.5f},
-        {c0, c1, c2, c3},{0,1,0}});
-      ret.push_back({{curr.x+0.5f, curr.y+0.5f, curr.z-0.5f},
-        {c0, c1, c2, c3},{0,1,0}});
-      ret.push_back({{curr.x+0.5f, curr.y+0.5f, curr.z+0.5f},
-        {c0, c1, c2, c3},{0,1,0}});
+      ret.push_back(compressVertex({{curr.x-0.5f, curr.y+0.5f, curr.z-0.5f},
+        {c0, c1, c2, c3},{0,1,0}}, curr.type));
+      ret.push_back(compressVertex({{curr.x+0.5f, curr.y+0.5f, curr.z-0.5f},
+        {c0, c1, c2, c3},{0,1,0}}, curr.type));
+      ret.push_back(compressVertex({{curr.x+0.5f, curr.y+0.5f, curr.z+0.5f},
+        {c0, c1, c2, c3},{0,1,0}}, curr.type));
 
-      ret.push_back({{curr.x+0.5f, curr.y+0.5f, curr.z+0.5f},
-        {c0, c1, c2, c3},{0,1,0}});
-      ret.push_back({{curr.x-0.5f, curr.y+0.5f, curr.z-0.5f},
-        {c0, c1, c2, c3},{0,1,0}});
-      ret.push_back({{curr.x-0.5f, curr.y+0.5f, curr.z+0.5f},
-        {c0, c1, c2, c3},{0,1,0}});
+      ret.push_back(compressVertex({{curr.x+0.5f, curr.y+0.5f, curr.z+0.5f},
+        {c0, c1, c2, c3},{0,1,0}}, curr.type));
+      ret.push_back(compressVertex({{curr.x-0.5f, curr.y+0.5f, curr.z-0.5f},
+        {c0, c1, c2, c3},{0,1,0}}, curr.type));
+      ret.push_back(compressVertex({{curr.x-0.5f, curr.y+0.5f, curr.z+0.5f},
+        {c0, c1, c2, c3},{0,1,0}}, curr.type));
+      std::bitset<32> tmp{ret[0]};
+      std::cout << tmp << std::endl;
     }
     if(occupied.count(bottomN) == 0 || cy == 0){
-      ret.push_back({{curr.x-0.5f, curr.y-0.5f, curr.z-0.5f},
-        {c0, c1, c2, c3},{0,-1,0}});
-      ret.push_back({{curr.x+0.5f, curr.y-0.5f, curr.z-0.5f},
-        {c0, c1, c2, c3},{0,-1,0}});
-      ret.push_back({{curr.x+0.5f, curr.y-0.5f, curr.z+0.5f},
-        {c0, c1, c2, c3},{0,-1,0}});
+      ret.push_back(compressVertex({{curr.x-0.5f, curr.y-0.5f, curr.z-0.5f},
+        {c0, c1, c2, c3},{0,-1,0}}, curr.type));
+      ret.push_back(compressVertex({{curr.x+0.5f, curr.y-0.5f, curr.z-0.5f},
+        {c0, c1, c2, c3},{0,-1,0}}, curr.type));
+      ret.push_back(compressVertex({{curr.x+0.5f, curr.y-0.5f, curr.z+0.5f},
+        {c0, c1, c2, c3},{0,-1,0}}, curr.type));
 
-      ret.push_back({{curr.x+0.5f, curr.y-0.5f, curr.z+0.5f},
-        {c0, c1, c2, c3},{0,-1,0}});
-      ret.push_back({{curr.x-0.5f, curr.y-0.5f, curr.z-0.5f},
-        {c0, c1, c2, c3},{0,-1,0}});
-      ret.push_back({{curr.x-0.5f, curr.y-0.5f, curr.z+0.5f},
-        {c0, c1, c2, c3},{0,-1,0}});
+      ret.push_back(compressVertex({{curr.x+0.5f, curr.y-0.5f, curr.z+0.5f},
+        {c0, c1, c2, c3},{0,-1,0}}, curr.type));
+      ret.push_back(compressVertex({{curr.x-0.5f, curr.y-0.5f, curr.z-0.5f},
+        {c0, c1, c2, c3},{0,-1,0}}, curr.type));
+      ret.push_back(compressVertex({{curr.x-0.5f, curr.y-0.5f, curr.z+0.5f},
+        {c0, c1, c2, c3},{0,-1,0}}, curr.type));
     }
     if(occupied.count(leftN) == 0 || cx == 0 || cx == 15){
-      ret.push_back({{curr.x-0.5f, curr.y+0.5f, curr.z+0.5f},
-        {c0, c1, c2, c3},{-1,0,0}});
-      ret.push_back({{curr.x-0.5f, curr.y+0.5f, curr.z-0.5f},
-        {c0, c1, c2, c3},{-1,0,0}});
-      ret.push_back({{curr.x-0.5f, curr.y-0.5f, curr.z-0.5f},
-        {c0, c1, c2, c3},{-1,0,0}});
+      ret.push_back(compressVertex({{curr.x-0.5f, curr.y+0.5f, curr.z+0.5f},
+        {c0, c1, c2, c3},{-1,0,0}}, curr.type));
+      ret.push_back(compressVertex({{curr.x-0.5f, curr.y+0.5f, curr.z-0.5f},
+        {c0, c1, c2, c3},{-1,0,0}}, curr.type));
+      ret.push_back(compressVertex({{curr.x-0.5f, curr.y-0.5f, curr.z-0.5f},
+        {c0, c1, c2, c3},{-1,0,0}}, curr.type));
 
-      ret.push_back({{curr.x-0.5f, curr.y-0.5f, curr.z-0.5f},
-        {c0, c1, c2, c3},{-1,0,0}});
-      ret.push_back({{curr.x-0.5f, curr.y+0.5f, curr.z+0.5f},
-        {c0, c1, c2, c3},{-1,0,0}});
-      ret.push_back({{curr.x-0.5f, curr.y-0.5f, curr.z+0.5f},
-        {c0, c1, c2, c3},{-1,0,0}});
+      ret.push_back(compressVertex({{curr.x-0.5f, curr.y-0.5f, curr.z-0.5f},
+        {c0, c1, c2, c3},{-1,0,0}}, curr.type));
+      ret.push_back(compressVertex({{curr.x-0.5f, curr.y+0.5f, curr.z+0.5f},
+        {c0, c1, c2, c3},{-1,0,0}}, curr.type));
+      ret.push_back(compressVertex({{curr.x-0.5f, curr.y-0.5f, curr.z+0.5f},
+        {c0, c1, c2, c3},{-1,0,0}}, curr.type));
     }
     if(occupied.count(rightN) == 0 || cx == 0 || cx == 15){
-      ret.push_back({{curr.x+0.5f, curr.y+0.5f, curr.z+0.5f},
-        {c0, c1, c2, c3},{1,0,0}});
-      ret.push_back({{curr.x+0.5f, curr.y+0.5f, curr.z-0.5f},
-        {c0, c1, c2, c3},{1,0,0}});
-      ret.push_back({{curr.x+0.5f, curr.y-0.5f, curr.z-0.5f},
-        {c0, c1, c2, c3},{1,0,0}});
+      ret.push_back(compressVertex({{curr.x+0.5f, curr.y+0.5f, curr.z+0.5f},
+        {c0, c1, c2, c3},{1,0,0}}, curr.type));
+      ret.push_back(compressVertex({{curr.x+0.5f, curr.y+0.5f, curr.z-0.5f},
+        {c0, c1, c2, c3},{1,0,0}}, curr.type));
+      ret.push_back(compressVertex({{curr.x+0.5f, curr.y-0.5f, curr.z-0.5f},
+        {c0, c1, c2, c3},{1,0,0}}, curr.type));
 
-      ret.push_back({{curr.x+0.5f, curr.y-0.5f, curr.z-0.5f},
-        {c0, c1, c2, c3},{1,0,0}});
-      ret.push_back({{curr.x+0.5f, curr.y+0.5f, curr.z+0.5f},
-        {c0, c1, c2, c3},{1,0,0}});
-      ret.push_back({{curr.x+0.5f, curr.y-0.5f, curr.z+0.5f},
-        {c0, c1, c2, c3},{1,0,0}});
+      ret.push_back(compressVertex({{curr.x+0.5f, curr.y-0.5f, curr.z-0.5f},
+        {c0, c1, c2, c3},{1,0,0}}, curr.type));
+      ret.push_back(compressVertex({{curr.x+0.5f, curr.y+0.5f, curr.z+0.5f},
+        {c0, c1, c2, c3},{1,0,0}}, curr.type));
+      ret.push_back(compressVertex({{curr.x+0.5f, curr.y-0.5f, curr.z+0.5f},
+        {c0, c1, c2, c3},{1,0,0}}, curr.type));
     }
     if(occupied.count(frontN) == 0 || cz == 0 || cz == 15){
-      ret.push_back({{curr.x+0.5f, curr.y+0.5f, curr.z+0.5f},
-        {c0, c1, c2, c3},{0,0,1}});
-      ret.push_back({{curr.x+0.5f, curr.y-0.5f, curr.z+0.5f},
-        {c0, c1, c2, c3},{0,0,1}});
-      ret.push_back({{curr.x-0.5f, curr.y-0.5f, curr.z+0.5f},
-        {c0, c1, c2, c3},{0,0,1}});
+      ret.push_back(compressVertex({{curr.x+0.5f, curr.y+0.5f, curr.z+0.5f},
+        {c0, c1, c2, c3},{0,0,1}}, curr.type));
+      ret.push_back(compressVertex({{curr.x+0.5f, curr.y-0.5f, curr.z+0.5f},
+        {c0, c1, c2, c3},{0,0,1}}, curr.type));
+      ret.push_back(compressVertex({{curr.x-0.5f, curr.y-0.5f, curr.z+0.5f},
+        {c0, c1, c2, c3},{0,0,1}}, curr.type));
 
-      ret.push_back({{curr.x-0.5f, curr.y-0.5f, curr.z+0.5f},
-        {c0, c1, c2, c3},{0,0,1}});
-      ret.push_back({{curr.x+0.5f, curr.y+0.5f, curr.z+0.5f},
-        {c0, c1, c2, c3},{0,0,1}});
-      ret.push_back({{curr.x-0.5f, curr.y+0.5f, curr.z+0.5f},
-        {c0, c1, c2, c3},{0,0,1}});
+      ret.push_back(compressVertex({{curr.x-0.5f, curr.y-0.5f, curr.z+0.5f},
+        {c0, c1, c2, c3},{0,0,1}}, curr.type));
+      ret.push_back(compressVertex({{curr.x+0.5f, curr.y+0.5f, curr.z+0.5f},
+        {c0, c1, c2, c3},{0,0,1}}, curr.type));
+      ret.push_back(compressVertex({{curr.x-0.5f, curr.y+0.5f, curr.z+0.5f},
+        {c0, c1, c2, c3},{0,0,1}}, curr.type));
     }
     if(occupied.count(backN) == 0 || cz == 0 || cz == 15){
-      ret.push_back({{curr.x+0.5f, curr.y+0.5f, curr.z-0.5f},
-        {c0, c1, c2, c3},{0,0,-1}});
-      ret.push_back({{curr.x+0.5f, curr.y-0.5f, curr.z-0.5f},
-        {c0, c1, c2, c3},{0,0,-1}});
-      ret.push_back({{curr.x-0.5f, curr.y-0.5f, curr.z-0.5f},
-        {c0, c1, c2, c3},{0,0,-1}});
+      ret.push_back(compressVertex({{curr.x+0.5f, curr.y+0.5f, curr.z-0.5f},
+        {c0, c1, c2, c3},{0,0,-1}}, curr.type));
+      ret.push_back(compressVertex({{curr.x+0.5f, curr.y-0.5f, curr.z-0.5f},
+        {c0, c1, c2, c3},{0,0,-1}}, curr.type));
+      ret.push_back(compressVertex({{curr.x-0.5f, curr.y-0.5f, curr.z-0.5f},
+        {c0, c1, c2, c3},{0,0,-1}}, curr.type));
 
-      ret.push_back({{curr.x-0.5f, curr.y-0.5f, curr.z-0.5f},
-        {c0, c1, c2, c3},{0,0,-1}});
-      ret.push_back({{curr.x+0.5f, curr.y+0.5f, curr.z-0.5f},
-        {c0, c1, c2, c3},{0,0,-1}});
-      ret.push_back({{curr.x-0.5f, curr.y+0.5f, curr.z-0.5f},
-        {c0, c1, c2, c3},{0,0,-1}});
+      ret.push_back(compressVertex({{curr.x-0.5f, curr.y-0.5f, curr.z-0.5f},
+        {c0, c1, c2, c3},{0,0,-1}}, curr.type));
+      ret.push_back(compressVertex({{curr.x+0.5f, curr.y+0.5f, curr.z-0.5f},
+        {c0, c1, c2, c3},{0,0,-1}}, curr.type));
+      ret.push_back(compressVertex({{curr.x-0.5f, curr.y+0.5f, curr.z-0.5f},
+        {c0, c1, c2, c3},{0,0,-1}}, curr.type));
     }
   }
   return ret;

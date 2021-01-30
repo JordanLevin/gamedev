@@ -22,7 +22,7 @@ class CubeCluster: public Model {
     glm::vec3 coordsInChunk(const glm::vec3& coord);
 
     //Mesh data to render
-    std::vector<VertexFormat> data;
+    std::vector<uint32_t> data;
     std::vector<VertexFormat> selectedCube;
     //Actual entire chunk of cubes
     std::vector<Cube> cubes = std::vector<Cube>(DATA_SIZE);

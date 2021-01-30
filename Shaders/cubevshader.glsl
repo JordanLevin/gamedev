@@ -1,7 +1,8 @@
 #version 430 core 
-layout(location = 0) in vec3 in_position;
-layout(location = 1) in vec4 in_color;
-layout(location = 2) in vec3 in_normal;
+layout(location = 0) in uint vdata;
+//#layout(location = 0) in vec3 in_position;
+//#layout(location = 1) in vec4 in_color;
+//#layout(location = 2) in vec3 in_normal;
 
 uniform mat4 projection_matrix, view_matrix, model_matrix;
 uniform vec4 light_color_in;
@@ -14,19 +15,58 @@ out vec3 normal;
 out vec4 light_color;
 out float light_power;
 
+vec4 getColor(uint type){
+  if(type == 1)
+    return vec4(0.066f, 0.396f, 0.043f, 1.0f);
+  if(type == 2)
+    return vec4(1.0f,1.0f,1.0f,1.0f);
+  if(type == 3)
+    return vec4(0.5f,0.5f,0.5f,1.0f);
+  if(type == 4)
+    return vec4(0.3f,1.0f,1.0f,0.8f);
+  if(type == 6)
+    return vec4(0.909, 0.843, 0.172, 1.0f); // yellow
+  if(type == 7)
+    return vec4(0.094, 0.141, 0.725, 1.0f); // blue
+  return vec4(0.294, 0.141, 0.725, 1.0f); // idk
+}
+
+//#VERTEX FORMAT: 
+//# n n n c c c c z z z z y y y y x x x x
+
+vec3 extractPos(uint vert){
+  uint x = vert & 15u;
+  uint y = (vert >> 4) & 15u;
+  uint z = (vert >> 8) & 15u;
+  return vec3(float(x),float(y),float(z));
+}
+
+vec4 extractCol(uint vert){
+  uint col = (vert >> 12) & 15u;
+  return getColor(col);
+}
+
+vec3 extractNorm(uint vert){
+  uint norm = (vert >> 16) & 7u;
+  return vec3( float(norm & 1u) , float(norm >> 1 & 1u), float(norm >> 2 & 1u)); 
+}
+
 void main(){
-  color = in_color;
+  vec4 in_color = extractCol(vdata);
+  vec3 in_position = extractPos(vdata);
+  //vec3 normal = extractNorm(vdata);
+  vec3 normal = vec3(1,0,0);
+
   if(wireframe == 1)
     color = vec4(0,0,0,1);
-  normal = in_normal;
   light_color = light_color_in;
   light_power = light_power_in;
 
-  vec3 AmbientColor = vec3(0.2,0.2,0.2) * color.xyz;
+  vec3 AmbientColor = vec3(0.2,0.2,0.2) * in_color.xyz;
   color = vec4(
       //Ambient lighting
       AmbientColor + 
-      color.xyz * light_color.xyz * (abs(normal.x) * 0.7 + abs(normal.y) * 0.8 + abs(normal.z) * 0.6), 1);
+      in_color.xyz * light_color.xyz * (abs(normal.x) * 0.7 + abs(normal.y) * 0.8 + abs(normal.z) * 0.6), 1);
 
   gl_Position = projection_matrix * view_matrix * model_matrix * 
     vec4(in_position, 1);

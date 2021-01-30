@@ -5,7 +5,7 @@
 #include <algorithm>
 
 void SingleCube::create(){
-  this->data = Mesher::createMesh({cube}, {0});
+  //this->data = Mesher::createMesh({cube}, {0});
 
   GLuint vao;
   GLuint vbo;
