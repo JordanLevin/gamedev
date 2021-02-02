@@ -14,6 +14,7 @@ out vec4 color;
 out vec3 normal;
 out vec4 light_color;
 out float light_power;
+out uint temp;
 
 vec4 getColor(uint type){
   if(type == 1)
@@ -32,30 +33,30 @@ vec4 getColor(uint type){
 }
 
 //#VERTEX FORMAT: 
-//# n n n c c c c z z z z y y y y x x x x
+//# n n n c c c c z z z z z y y y y y y y x x x x x
 
 vec3 extractPos(uint vert){
-  uint x = vert & 15u;
-  uint y = (vert >> 4) & 15u;
-  uint z = (vert >> 8) & 15u;
-  return vec3(float(x),float(y),float(z));
+  float x = float(vert & 31u);
+  float y = float((vert >> 5) & 127u);
+  float z = float((vert >> 12) & 31u);
+  return vec3(x,y,z);
 }
 
 vec4 extractCol(uint vert){
-  uint col = (vert >> 12) & 15u;
+  uint col = (vert >> 17) & 15u;
   return getColor(col);
 }
 
 vec3 extractNorm(uint vert){
-  uint norm = (vert >> 16) & 7u;
+  uint norm = (vert >> 21) & 7u;
   return vec3( float(norm & 1u) , float(norm >> 1 & 1u), float(norm >> 2 & 1u)); 
 }
 
 void main(){
-  vec4 in_color = extractCol(vdata);
+  temp = vdata;
   vec3 in_position = extractPos(vdata);
-  //vec3 normal = extractNorm(vdata);
-  vec3 normal = vec3(1,0,0);
+  vec4 in_color = extractCol(vdata);
+  vec3 normal = extractNorm(vdata);
 
   if(wireframe == 1)
     color = vec4(0,0,0,1);

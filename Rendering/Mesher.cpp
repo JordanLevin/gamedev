@@ -7,8 +7,8 @@
 #include <vector>
 #include <unordered_set>
 #include <iostream>
-#include <cstdlib>
 #include <bitset>
+#include <cstdlib>
 
 int Mesher::getIndex(int x, int y, int z){
   return y*16*16 + x*16 + z;
@@ -32,17 +32,20 @@ glm::vec4 Mesher::getColor(const Cube& c){
 
 //Compress a vertex into a uint32, assume that all coordinates are in chunkspace (<16)
 uint32_t Mesher::compressVertex(VertexFormat in, uint8_t type){
+  //std::cout << in.position[0] << "  " << in.position[1] << " " << in.position[2] << std::endl;
   uint32_t ret = 0;
-  //add coords
-  ret |= ((int)(in.position[0]) & 0b1111);
-  ret |= (((int)(in.position[1]) >> 4) & 0b1111);
-  ret |= (((int)(in.position[2]) >> 8) & 0b1111);
+  //add coords, WE NEED AN EXTRA BIT BECAUSE 16 CUBES = 17 VERTEX POSSIBILITIES
+  ret |= ((int)(in.position[0]) & 0b11111);
+  ret |= (((int)(in.position[1]) & 0b1111111) << 5); //WHATEVER JUST USE 7 BITS HERE FOR NOW CUZ Y COORD IS WEIRD
+  ret |= (((int)(in.position[2]) & 0b11111) << 12);
   //add colors, lets just give a type and do colors in the shader
-  ret |= ((type >> 12) & 0b1111);
+  ret |= ((type & 0b1111) << 17);
   //add normals
   uint8_t norm = ((int)in.normal[0] << 0) | ((int)in.normal[1] << 1) | ((int)in.normal[2] << 2);
-  ret |= ((norm & 0b111) << 16);
+  ret |= ((norm & 0b111) << 21);
 
+  //std::bitset<32> tmp{ret};
+  //std::cout << tmp << std::endl;
   return ret;
 }
 
@@ -89,8 +92,6 @@ std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
         {c0, c1, c2, c3},{0,1,0}}, curr.type));
       ret.push_back(compressVertex({{curr.x-0.5f, curr.y+0.5f, curr.z+0.5f},
         {c0, c1, c2, c3},{0,1,0}}, curr.type));
-      std::bitset<32> tmp{ret[0]};
-      std::cout << tmp << std::endl;
     }
     if(occupied.count(bottomN) == 0 || cy == 0){
       ret.push_back(compressVertex({{curr.x-0.5f, curr.y-0.5f, curr.z-0.5f},

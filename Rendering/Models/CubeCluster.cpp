@@ -107,8 +107,7 @@ void CubeCluster::createGL(){
       //sizeof(uint32_t) * data.size(), &data[0], GL_STATIC_DRAW);
 
   glEnableVertexAttribArray(0);
-  glVertexAttribPointer(0, 1, GL_INT, GL_FALSE, sizeof(uint32_t),
-      (void*)0);
+  glVertexAttribIPointer(0, 1, GL_UNSIGNED_INT, sizeof(uint32_t), (void*)0);
   //glEnableVertexAttribArray(1);
   //glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(uint32_t), 
       //(void*)(offsetof(uint32_t, uint32_t::color)));
