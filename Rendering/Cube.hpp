@@ -1,9 +1,11 @@
 #ifndef CUBE_H
 #define CUBE_H
 
+#include <cstdint>
+
 struct Cube {
-  float x, y, z;
-  int type;
+  uint8_t x, y, z;
+  uint8_t type;
 };
 
 #endif

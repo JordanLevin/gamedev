@@ -133,35 +133,36 @@ void World::generate(int x, int z){
     return;
   }
 
-  //Generate a new chunk using perlin noise
   CubeCluster* c = new CubeCluster(x, 0, z);
   c->setProgram(ShaderManager::getShader("cubeShader"));
   //c->add(0,0,0);
-  for(int row = x*16; row < x*16 + 16; row++){
-    for(int col = z*16; col < z*16 + 16; col++){
-      c->add(row,0,col);
-      c->add(row,1,col);
-      float height = noise.eval(glm::vec2((float)row/100.0, (float)col/100.0))*15;
-      height += noise.eval(glm::vec2((float)row/60.0, (float)col/100.0))*4;
-      height += noise.eval(glm::vec2((float)row/70.0, (float)col/100.0))*4;
-      //height += noise.eval(glm::vec2((float)row/15.0, (float)col/15.0))*0.5;
-      height += noise.eval(glm::vec2((float)row/10.0, (float)col/10.0))*1;
-      height += noise.eval(glm::vec2((float)row/30.0, (float)col/30.0))*3;
+  for(int row = 0; row < 16; row++){
+    for(int col = 0; col < 16; col++){
+      c->addChunkSpace(row,0,col, 3);
+      c->addChunkSpace(row,1,col, 3);
+      int rowWorld = x*16 + row;
+      int colWorld = z*16 + col;
+      //overlap use varying perlin noise frequencies
+      float height = noise.eval(glm::vec2((float)rowWorld/100.0, (float)colWorld/100.0))*30;
+      height += noise.eval(glm::vec2((float)rowWorld/60.0, (float)colWorld/100.0))*4;
+      height += noise.eval(glm::vec2((float)rowWorld/70.0, (float)colWorld/100.0))*4;
+      height += noise.eval(glm::vec2((float)rowWorld/30.0, (float)colWorld/30.0))*3;
+      height += noise.eval(glm::vec2((float)rowWorld/10.0, (float)colWorld/10.0))*1.1;
       height += 7;
       height = std::max((int)height, 3);
       if(height > 127)
         continue;
       for(int h = 1; h < height; h++){
         if(h < 3)
-          c->add(row,h,col, 7);
+          c->addChunkSpace(row,h,col, 7);
         else if(h > 30)
-          c->add(row,h,col, 2);
+          c->addChunkSpace(row,h,col, 2);
         else if(h > 15)
-          c->add(row,h,col,3);
+          c->addChunkSpace(row,h,col,3);
         else if(h == 3)
-          c->add(row,h,col,6);
+          c->addChunkSpace(row,h,col,6);
         else
-          c->add(row,h,col, 1);
+          c->addChunkSpace(row,h,col, 1);
       }
     }
   }

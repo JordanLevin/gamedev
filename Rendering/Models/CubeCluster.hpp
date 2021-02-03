@@ -46,6 +46,7 @@ class CubeCluster: public Model {
     void createGL();
     void add(int x, int y, int z);
     void add(int x, int y, int z, int type);
+    void addChunkSpace(uint8_t x, uint8_t y, uint8_t z, uint8_t type);
     bool remove(int x, int y, int z);
     bool edit(int x, int y, int z, int type);
     int get(int x, int y, int z);

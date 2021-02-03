@@ -138,8 +138,14 @@ void CubeCluster::add(int x, int y, int z, int type){
   glm::vec3 chunk_coord = coordsInChunk(coord);
 
   int ind = getIndex(chunk_coord);
-  //We add 0.5 so chunk corners are on integers, this hopefully will reduce other issues
-  cubes[ind] = {chunk_coord[0]+0.5,chunk_coord[1]+0.5,chunk_coord[2]+0.5,type};
+  cubes[ind] = {chunk_coord[0],chunk_coord[1],chunk_coord[2],type};
+  occupied.insert(ind);
+  occupiedVec.push_back(ind);
+}
+
+void CubeCluster::addChunkSpace(uint8_t x, uint8_t y, uint8_t z, uint8_t type){
+  int ind = getIndex(glm::vec3(x,y,z));
+  cubes[ind] = {x,y,z,type};
   occupied.insert(ind);
   occupiedVec.push_back(ind);
 }
