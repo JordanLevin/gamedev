@@ -152,6 +152,7 @@ void CubeCluster::addChunkSpace(uint8_t x, uint8_t y, uint8_t z, uint8_t type){
 
 bool CubeCluster::remove(int x, int y, int z){
   glm::vec3 coords = coordsInChunk(glm::vec3(x,y,z));
+  std::cout << "REMOVE: " << coords[0] << " " << coords[2] << std::endl;
   int i = getIndex(coords);
   if(occupied.count(i) != 1)
     return false;

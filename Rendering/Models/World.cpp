@@ -150,8 +150,8 @@ void World::generate(int x, int z){
       height += noise.eval(glm::vec2((float)rowWorld/10.0, (float)colWorld/10.0))*1.1;
       height += 7;
       height = std::max((int)height, 3);
-      if(height > 127)
-        continue;
+      height = std::min((int)height, 127);
+        
       for(int h = 1; h < height; h++){
         if(h < 3)
           c->addChunkSpace(row,h,col, 7);
@@ -185,8 +185,6 @@ void World::create(){
     d_world_gen.push_back(std::thread(&World::deleteChunks, this, i));
     d_world_gen[i+gen_threads].detach();
   }
-  //d_world_gen = std::thread(&World::generateChunks, this, 1);
-  //d_world_gen.detach();
   //noise.generateVectors();
 }
 
@@ -355,9 +353,11 @@ void World::breakBlock(const glm::vec3& location, const glm::vec3& direction){
   if(!block)
     return;
   auto blockVal = block.value();
+  std::cout << "BREAKBLOCK: " << blockVal[0] << " " << blockVal[1] << " "  << blockVal[2] << std::endl;
   CubeCluster* chunk = getChunk(blockVal);
   std::cout << "CHUNK: " << chunk->d_x << " " << chunk->d_z << std::endl;
-  chunk->remove(blockVal[0], blockVal[1], blockVal[2]);
+  bool res = chunk->remove(blockVal[0], blockVal[1], blockVal[2]);
+  std::cout << res << std::endl;
   outlineBlock(location, direction);
 }
 
@@ -447,21 +447,26 @@ void World::outlineBlock(const glm::vec3& location, const glm::vec3& direction){
   outlineCube.set(blockVal[0], blockVal[1], blockVal[2]);
 }
 
+/**Convert world coordinates to coordinates of chunk that voxel is in
+  *chunk 1,1 contains voxels 0,0 through 15,15
+  *chunk -1,-1 contains voxels -1,-1 through -16,-16
+  */
 CubeCluster* World::getChunk(const glm::vec3& coords){
   int x, z;
   if(coords[0] >= 0.0f)
-    x = (int)coords[0]/16;
+    x = std::floor(coords[0])/16;
   else
-    x = (int)coords[0]/16 - 1;
+    x = std::floor(coords[0]+1)/16 - 1;
   if(coords[2] >= 0.0f)
-    z = (int)coords[2]/16;
+    z = std::floor(coords[2])/16;
   else
-    z = (int)coords[2]/16 - 1;
+    z = std::floor(coords[2]+1)/16 - 1;
   try{
     CubeCluster* chunk = cubes.at(glm::ivec2(x,z));
     return chunk;
   }
   catch (const std::exception& e){
+    std::cout << "getChunk failed: x: " << x << " z: " << z <<std::endl;
   }
   return nullptr;
 }
