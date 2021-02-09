@@ -80,6 +80,11 @@ void CubeCluster::createMesh(){
 }
 
 void CubeCluster::createGL(){
+  //Cleanup buffers on remesh, well this segfaults, probably a threading issue sooo
+  //if(!this->vbos.empty()){
+    //this->~CubeCluster();
+  //}
+
   GLuint vao;
   GLuint vbo;
   //GLuint ibo;

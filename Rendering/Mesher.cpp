@@ -53,7 +53,6 @@ std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
     const std::unordered_set<int>& occupied){
   std::vector<uint32_t> ret;
   for(int i: occupied){
-    //this funky cx cz math is to make sure relative and positive blocks are tracked the same way
     int cx = chunk[i].x;
     int cz = chunk[i].z;
     int cy = chunk[i].y;
@@ -106,7 +105,7 @@ std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
       ret.push_back(compressVertex({{currx-0.5f, curry-0.5f, currz+0.5f},
         {c0, c1, c2, c3},{0,-1,0}}, curr.type));
     }
-    if(occupied.count(leftN) == 0 || cx == 0 || cx == 15){
+    if(occupied.count(leftN) == 0 || cx == 0){
       ret.push_back(compressVertex({{currx-0.5f, curry+0.5f, currz+0.5f},
         {c0, c1, c2, c3},{-1,0,0}}, curr.type));
       ret.push_back(compressVertex({{currx-0.5f, curry+0.5f, currz-0.5f},
@@ -121,7 +120,7 @@ std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
       ret.push_back(compressVertex({{currx-0.5f, curry-0.5f, currz+0.5f},
         {c0, c1, c2, c3},{-1,0,0}}, curr.type));
     }
-    if(occupied.count(rightN) == 0 || cx == 0 || cx == 15){
+    if(occupied.count(rightN) == 0 || cx == 15){
       ret.push_back(compressVertex({{currx+0.5f, curry+0.5f, currz+0.5f},
         {c0, c1, c2, c3},{1,0,0}}, curr.type));
       ret.push_back(compressVertex({{currx+0.5f, curry+0.5f, currz-0.5f},
@@ -136,7 +135,7 @@ std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
       ret.push_back(compressVertex({{currx+0.5f, curry-0.5f, currz+0.5f},
         {c0, c1, c2, c3},{1,0,0}}, curr.type));
     }
-    if(occupied.count(frontN) == 0 || cz == 0 || cz == 15){
+    if(occupied.count(frontN) == 0 || cz == 15){
       ret.push_back(compressVertex({{currx+0.5f, curry+0.5f, currz+0.5f},
         {c0, c1, c2, c3},{0,0,1}}, curr.type));
       ret.push_back(compressVertex({{currx+0.5f, curry-0.5f, currz+0.5f},
@@ -151,7 +150,7 @@ std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
       ret.push_back(compressVertex({{currx-0.5f, curry+0.5f, currz+0.5f},
         {c0, c1, c2, c3},{0,0,1}}, curr.type));
     }
-    if(occupied.count(backN) == 0 || cz == 0 || cz == 15){
+    if(occupied.count(backN) == 0 || cz == 0){
       ret.push_back(compressVertex({{currx+0.5f, curry+0.5f, currz-0.5f},
         {c0, c1, c2, c3},{0,0,-1}}, curr.type));
       ret.push_back(compressVertex({{currx+0.5f, curry-0.5f, currz-0.5f},
