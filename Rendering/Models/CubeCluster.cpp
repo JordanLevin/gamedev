@@ -1,4 +1,5 @@
 #include "CubeCluster.hpp"
+#include "World.hpp"
 #include "../../Lib/Serialize.hpp"
 #include "../Mesher.hpp"
 
@@ -74,8 +75,9 @@ void CubeCluster::writeChunk(std::string path){
   Serialize::serialize(write, occupiedVec);
 }
 
-void CubeCluster::createMesh(){
-  this->data = Mesher::createMesh(cubes, occupied);
+void CubeCluster::createMesh(World* world){
+  d_world = world;
+  this->data = Mesher::createMesh(cubes, occupied, world, d_x, d_z);
   d_ready = 1;
 }
 
@@ -128,8 +130,9 @@ void CubeCluster::createGL(){
   d_ready = 2;
 }
 
-void CubeCluster::create(){
-  createMesh();
+void CubeCluster::create(World* world){
+  d_world = world;
+  createMesh(world);
   createGL();
 }
 
@@ -155,6 +158,10 @@ void CubeCluster::addChunkSpace(uint8_t x, uint8_t y, uint8_t z, uint8_t type){
   occupiedVec.push_back(ind);
 }
 
+void CubeCluster::remeshNeighbors(int x, int y, int z){
+  //TODO
+}
+
 bool CubeCluster::remove(int x, int y, int z){
   glm::vec3 coords = coordsInChunk(glm::vec3(x,y,z));
   std::cout << "REMOVE: " << coords[0] << " " << coords[2] << std::endl;
@@ -163,7 +170,8 @@ bool CubeCluster::remove(int x, int y, int z){
     return false;
   occupied.erase(i);
   occupiedVec.erase(std::find(occupiedVec.begin(), occupiedVec.end(), i));
-  this->create();
+  this->create(d_world);
+  remeshNeighbors(x,y,z);
   return true;
 }
 
@@ -173,7 +181,8 @@ bool CubeCluster::edit(int x, int y, int z, int type){
   if(occupied.count(i) != 1)
     return false;
   cubes[i].type = type;
-  this->create();
+  this->create(d_world);
+  remeshNeighbors(x,y,z);
   return true;
 }
 

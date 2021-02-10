@@ -62,7 +62,6 @@ class PerlinNoise
 class World : public Model{
   private:
     Camera* camera;
-    //NoiseGenerator noise;
     PerlinNoise noise;
     //A map of coordinates to world chunks that are currently in memory
     std::map<glm::ivec2, CubeCluster*, Comparator> cubes;
@@ -73,13 +72,12 @@ class World : public Model{
 
     void generateChunks(int thread);
     void deleteChunks(int thread);
-    int d_render_dist = 30;
+    int d_render_dist = 10;
     std::list<std::pair<glm::ivec2, CubeCluster*>> d_erased_q; // chunk coords safe to deallocate
     std::list<std::pair<glm::ivec2, CubeCluster*>> d_write_q; // chunk coords to write to disk
     std::list<glm::ivec2> d_needed_q; //chunk coords we need to genreate
     std::list<std::pair<glm::ivec2, CubeCluster*>> d_generated_q; // chunks that got generated
     std::vector<std::thread> d_world_gen;
-    //std::thread d_world_gen;
     std::mutex d_mtx_create;
     std::mutex d_mtx_delete;
     std::condition_variable cv;
@@ -90,10 +88,11 @@ class World : public Model{
 
     virtual void create() override final;
     void setCamera(Camera* camera_);
-    void generate(int x, int y);
+    CubeCluster* generate(int x, int y);
     void writeChunk(std::pair<glm::ivec2, CubeCluster*> chunk);
     CubeCluster* readChunk(int x, int y);
-    CubeCluster* getChunk(const glm::vec3& coords);
+    CubeCluster* getChunkFromWorldSpace(const glm::vec3& coords) const;
+    CubeCluster* getChunk(const glm::ivec3& coords) const;
     virtual void draw(const glm::mat4& projection_matrix,
         const glm::mat4& view_matrix) override final;
     virtual void update() override final;

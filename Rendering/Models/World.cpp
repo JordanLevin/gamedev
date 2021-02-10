@@ -105,6 +105,7 @@ void World::generateChunks(int thread){
     }
     cv.wait(lock);
 
+    std::list<CubeCluster*> chunks_generated;
     while(true){
         if(d_needed_q.empty()){
           break;
@@ -112,13 +113,20 @@ void World::generateChunks(int thread){
         const glm::ivec2& coords = d_needed_q.front();
         d_needed_q.pop_front();
         lock.unlock();
-        generate(coords.x, coords.y);
+        CubeCluster* c = generate(coords.x, coords.y);
+        chunks_generated.push_back(c);
         lock.lock();
     }
+    //Dont create mesh until after generating to allow for the inter chunk vertex culling
+    lock.unlock();
+    for(CubeCluster* c: chunks_generated){
+      c->createMesh(this);
+    }
+    lock.lock();
   }
 }
 
-void World::generate(int x, int z){
+CubeCluster* World::generate(int x, int z){
   glm::ivec2 coords(x,z);
 
   //Check if this chunk was already generated and saved
@@ -130,7 +138,7 @@ void World::generate(int x, int z){
     d_mtx_create.lock();
     d_generated_q.push_back(std::make_pair(coords, c));
     d_mtx_create.unlock();
-    return;
+    return c;
   }
 
   CubeCluster* c = new CubeCluster(x, 0, z);
@@ -167,10 +175,10 @@ void World::generate(int x, int z){
     }
   }
   std::cout << x << " " << z << std::endl;
-  c->createMesh();
   d_mtx_create.lock();
   d_generated_q.push_back(std::make_pair(coords, c));
   d_mtx_create.unlock();
+  return c;
 }
 
 void World::create(){
@@ -201,7 +209,7 @@ CubeCluster* World::readChunk(int x, int z){
   std::string path = std::string("WORLDDATA/") + std::to_string(x) + "_" + std::to_string(z);
   CubeCluster* c = new CubeCluster(path, x, 0, z);
   c->setProgram(ShaderManager::getShader("cubeShader"));
-  c->createMesh();
+  c->createMesh(this);
   return c;
 }
 
@@ -228,9 +236,12 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
       if(cubes.count(coords) == 1){
         CubeCluster* c = cubes.at(coords);
         if(c != nullptr){
-          ready.push_back(c);
-          if(c->d_ready == 1)
+          if(c->d_ready == 1){
             c->createGL();
+          }
+          if(c->d_ready == 2){
+            ready.push_back(c);
+          }
         }
       }
       else{
@@ -333,7 +344,7 @@ std::optional<glm::vec3> World::selectBlock(const glm::vec3& location, const glm
     }
 
     //find points chunk and check if non empty
-    CubeCluster* chunk = getChunk(point);
+    CubeCluster* chunk = getChunkFromWorldSpace(point);
     if(!chunk){
       //chunk may not exist due to multithreading
       return std::nullopt;
@@ -354,7 +365,7 @@ void World::breakBlock(const glm::vec3& location, const glm::vec3& direction){
     return;
   auto blockVal = block.value();
   std::cout << "BREAKBLOCK: " << blockVal[0] << " " << blockVal[1] << " "  << blockVal[2] << std::endl;
-  CubeCluster* chunk = getChunk(blockVal);
+  CubeCluster* chunk = getChunkFromWorldSpace(blockVal);
   std::cout << "CHUNK: " << chunk->d_x << " " << chunk->d_z << std::endl;
   bool res = chunk->remove(blockVal[0], blockVal[1], blockVal[2]);
   std::cout << res << std::endl;
@@ -429,11 +440,11 @@ void World::placeBlock(const glm::vec3& location, const glm::vec3& direction){
   else if(usez)
     blockVal[2] -= stepz;
   //std::cout << "after: " << blockVal[0] << " " << blockVal[1] << " " << blockVal[2] << std::endl;
-  CubeCluster* chunk = getChunk(blockVal);
+  CubeCluster* chunk = getChunkFromWorldSpace(blockVal);
   if(!chunk)
     return;
   chunk->add(std::floor(blockVal[0]), std::floor(blockVal[1]), std::floor(blockVal[2]), 5);
-  chunk->create();
+  chunk->create(this);
   outlineBlock(location, direction);
 }
 
@@ -451,7 +462,7 @@ void World::outlineBlock(const glm::vec3& location, const glm::vec3& direction){
   *chunk 1,1 contains voxels 0,0 through 15,15
   *chunk -1,-1 contains voxels -1,-1 through -16,-16
   */
-CubeCluster* World::getChunk(const glm::vec3& coords){
+CubeCluster* World::getChunkFromWorldSpace(const glm::vec3& coords) const{
   int x, z;
   if(coords[0] >= 0.0f)
     x = std::floor(coords[0])/16;
@@ -466,9 +477,25 @@ CubeCluster* World::getChunk(const glm::vec3& coords){
     return chunk;
   }
   catch (const std::exception& e){
-    std::cout << "getChunk failed: x: " << x << " z: " << z <<std::endl;
+    std::cout << "getChunkFromWorldSpace failed: x: " << x << " z: " << z <<std::endl;
   }
   return nullptr;
+}
+
+/**
+  * Return a chunk from chunk coordinates (vec3 for future conversion to 3d chunk coords)
+  */
+CubeCluster* World::getChunk(const glm::ivec3& coords) const{
+  try{
+    CubeCluster* chunk = cubes.at(glm::ivec2(coords[0],coords[2]));
+    return chunk;
+  }
+  catch (const std::exception& e){
+    //This fails often during efficient meshing
+    //std::cout << "getChunk failed: chunkX: " << coords[0] << " chunkZ: " << coords[2] <<std::endl;
+  }
+  return nullptr;
+
 }
 
 void World::update(){

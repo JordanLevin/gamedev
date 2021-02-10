@@ -3,6 +3,7 @@
 
 #include "Cube.hpp"
 #include "VertexFormat.hpp"
+#include "Models/World.hpp"
 
 #include <glm/glm.hpp>
 
@@ -21,7 +22,7 @@ class Mesher {
     ~Mesher() = default;
 
     static std::vector<uint32_t> createMesh(const std::vector<Cube>& chunk,
-        const std::unordered_set<int>& occupied);
+        const std::unordered_set<int>& occupied, const World* world, int chunkX, int chunkZ);
     static uint32_t compressVertex(VertexFormat in, uint8_t type);
 
 };
