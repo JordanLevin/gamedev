@@ -118,8 +118,10 @@ void World::generateChunks(int thread){
         lock.lock();
     }
     //Dont create mesh until after generating to allow for the inter chunk vertex culling
+    //ISSUE: race condition with chunks being deleted between mesh creation and initial gen
     lock.unlock();
     for(CubeCluster* c: chunks_generated){
+      //std::cout << "Creating mesh for " << c << std::endl;
       c->createMesh(this);
     }
     lock.lock();
@@ -278,11 +280,19 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
   }
 
   d_mtx_delete.lock();
-  while(!d_erased_q.empty()){
-    const auto chunk = d_erased_q.front();
-    d_erased_q.pop_front();
-    //std::cout << "deleting " << chunk.first.x << " " << chunk.first.y << std::endl;
-    delete chunk.second;
+  //while(!d_erased_q.empty()){
+  auto it1 = d_erased_q.begin();
+  while(it1 != d_erased_q.end()){
+    const auto& chunk = *it1;
+    if(chunk.second->d_ready == 2){
+      std::cout << "deleting " << chunk.first.x << " " << chunk.first.y << std::endl;
+      //std::cout << "deleting " << chunk.second << std::endl;
+      delete chunk.second;
+      it1 = d_erased_q.erase(it1);
+    }
+    else{
+      it1++;
+    }
   }
   d_mtx_delete.unlock();
   outlineCube.create();

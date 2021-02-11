@@ -116,9 +116,6 @@ std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
             renderVertices = false;
           }
         }
-        else{
-          renderVertices = false;
-        }
       }
 
       if(renderVertices){
@@ -146,9 +143,6 @@ std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
           if(rightChunk->getOccupied().count(rightChunkIndex) != 0){
             renderVertices = false;
           }
-        }
-        else{
-          renderVertices = false;
         }
       }
 
@@ -178,9 +172,6 @@ std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
             renderVertices = false;
           }
         }
-        else{
-          renderVertices = false;
-        }
       }
 
       if(renderVertices){
@@ -208,9 +199,6 @@ std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
           if(neighborChunk->getOccupied().count(neighborChunkIndex) != 0){
             renderVertices = false;
           }
-        }
-        else{
-          renderVertices = false;
         }
       }
 

@@ -76,6 +76,7 @@ void CubeCluster::writeChunk(std::string path){
 }
 
 void CubeCluster::createMesh(World* world){
+  std::cout << "CREATE MESH " << d_x << " " << d_y << std::endl;
   d_world = world;
   this->data = Mesher::createMesh(cubes, occupied, world, d_x, d_z);
   d_ready = 1;
@@ -158,8 +159,34 @@ void CubeCluster::addChunkSpace(uint8_t x, uint8_t y, uint8_t z, uint8_t type){
   occupiedVec.push_back(ind);
 }
 
+/**
+  *
+  */
 void CubeCluster::remeshNeighbors(int x, int y, int z){
   //TODO
+  glm::vec3 coordsC = coordsInChunk(glm::vec3(x,y,z));
+  if(coordsC[0] == 15){
+    CubeCluster* c = d_world->getChunkFromWorldSpace(glm::vec3(x+1,y,z));
+    c->create(d_world);
+  }
+  if(coordsC[0] == 0){
+    CubeCluster* c = d_world->getChunkFromWorldSpace(glm::vec3(x-1,y,z));
+    c->create(d_world);
+  }
+  //if(coordsC[1] == 15){
+    //CubeCluster* c = world->getChunkFromWorldSpace(x,y-1,z);
+  //}
+  //if(coordsC[1] == 0){
+    //CubeCluster* c = world->getChunkFromWorldSpace(x,y+1,z);
+  //}
+  if(coordsC[2] == 15){
+    CubeCluster* c = d_world->getChunkFromWorldSpace(glm::vec3(x,y,z+1));
+    c->create(d_world);
+  }
+  if(coordsC[2] == 0){
+    CubeCluster* c = d_world->getChunkFromWorldSpace(glm::vec3(x,y,z-1));
+    c->create(d_world);
+  }
 }
 
 bool CubeCluster::remove(int x, int y, int z){
