@@ -16,7 +16,7 @@ add_subdirectory(Input)
 
 add_executable(game main.cpp)
 
-target_link_libraries(game init camera managerlib renderinglib)
+target_link_libraries(game init playerlib managerlib renderinglib)
 
 find_library(GLUT glut)
 find_library(OPENGL GL)

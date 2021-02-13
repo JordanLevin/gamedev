@@ -2,8 +2,11 @@ cmake_minimum_required(VERSION 2.8)
 
 project(input)
 
-add_library(camera STATIC Camera.cpp)
+file(GLOB_RECURSE playercpps CONFIGURE_DEPENDS "*.cpp")
+file(GLOB_RECURSE playerhpps CONFIGURE_DEPENDS "*.hpp")
 
-install(TARGETS camera DESTINATION lib)
+add_library(playerlib STATIC ${playercpps})
 
-install(FILES Camera.hpp DESTINATION include)
+install(TARGETS playerlib DESTINATION lib)
+
+install(FILES ${playerhpps} DESTINATION include)

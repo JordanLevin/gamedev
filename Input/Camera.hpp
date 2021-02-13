@@ -11,12 +11,14 @@
 //#include "../Rendering/Models/Gui.hpp"
 
 class World;
+class Player;
 
 class Camera {
-  private:
-    World* world;
-    glm::mat4* view_matrix;
-    glm::mat4* projection_matrix;
+  public: 
+    World* world = nullptr;
+    Player* d_player = nullptr;
+    glm::mat4* view_matrix = nullptr;
+    glm::mat4* projection_matrix = nullptr;
     glm::vec3 eyeVector{0,50,0};
     glm::vec2 mousePosition{0,0};
     bool isMousePressed{false};
@@ -28,17 +30,17 @@ class Camera {
     float mouseYSensitivity{.01};
     float mult{1.0f};
 
-  public: 
     DGui* gui;
     Camera(glm::mat4* view_matrix_, glm::mat4* projection_matrix_);
     void updateView();
-    void keyPress(const unsigned char key, int x, int y);
-    void mouseMove(int x, int y);
-    void mousePress(int button, int state, int x, int y);
     float getX();
     float getY();
     float getZ();
     glm::vec3 getDirection();
     void setWorld(World* world_);
+    void setPlayer(Player* player_);
+    void keyPress(const unsigned char key, int x, int y);
+    void mouseMove(int x, int y);
+    void mousePress(int button, int state, int x, int y);
 };
 #endif

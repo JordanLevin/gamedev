@@ -369,6 +369,14 @@ std::optional<glm::vec3> World::selectBlock(const glm::vec3& location, const glm
   }
 }
 
+bool World::blockExists(const glm::vec3& coords) const{
+  CubeCluster* chunk = getChunkFromWorldSpace(coords);
+  if(!chunk)
+    return false;
+  bool exists = chunk->get(coords[0], coords[1], coords[2]);
+  return exists;
+}
+
 void World::breakBlock(const glm::vec3& location, const glm::vec3& direction){
   auto block = selectBlock(location, direction, 5, false);
   if(!block)

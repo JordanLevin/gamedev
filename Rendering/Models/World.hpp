@@ -91,6 +91,7 @@ class World : public Model{
     CubeCluster* generate(int x, int y);
     void writeChunk(std::pair<glm::ivec2, CubeCluster*> chunk);
     CubeCluster* readChunk(int x, int y);
+    bool blockExists(const glm::vec3& coords) const;
     CubeCluster* getChunkFromWorldSpace(const glm::vec3& coords) const;
     CubeCluster* getChunk(const glm::ivec3& coords) const;
     virtual void draw(const glm::mat4& projection_matrix,

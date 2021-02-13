@@ -54,7 +54,7 @@ class CubeCluster: public Model {
     void remeshNeighbors(int x, int y, int z);
     bool remove(int x, int y, int z);
     bool edit(int x, int y, int z, int type);
-    int get(int x, int y, int z);
+    bool get(int x, int y, int z);
     virtual void draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix) override final;
     virtual void update() override final;
 

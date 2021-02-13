@@ -7,6 +7,8 @@
 
 #include <iostream>
 
+#include "Player.hpp"
+
 void printmat(glm::mat4& mat){
   for(int i = 0; i < 4; i++){
     for(int j = 0; j < 4; j++){
@@ -42,6 +44,9 @@ float Camera::getZ(){
 
 void Camera::setWorld(World* world_){
   world = world_;
+}
+void Camera::setPlayer(Player* player_){
+  d_player = player_;
 }
 
 void Camera::updateView(){
@@ -98,7 +103,8 @@ void Camera::keyPress(const unsigned char key, int x, int y){
   const float speed = 0.12f;
 
   //make forward vector negative to look forward
-  eyeVector += (-dz * forward + dx* strafe) * speed;
+  glm::vec3 velocity = (-dz * forward + dx* strafe) * speed;
+  d_player->setVel(velocity);
 
   std::cout << " x: " << eyeVector[0] << " y: " << eyeVector[1] << " z: " << eyeVector[2] << std::endl;
 
@@ -146,11 +152,11 @@ void Camera::mousePress(int button, int state, int x, int y){
     world->breakBlock(point, dir);
     //gui->add(point[0], point[1], point[2], point[0]+dir[0], point[1]+dir[1], point[2]+dir[2], 0.3, 1, 1);
     //gui->create();
-    //}
+  }
+  else if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN){
+    glm::vec3 point = eyeVector;
+    glm::vec3 dir = getDirection();
+    world->placeBlock(point, dir);
+  }
 }
-else if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN){
-  glm::vec3 point = eyeVector;
-  glm::vec3 dir = getDirection();
-  world->placeBlock(point, dir);
-}
-}
+

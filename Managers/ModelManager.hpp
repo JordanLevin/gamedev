@@ -4,12 +4,15 @@
 #include "ShaderManager.hpp"
 #include "../Rendering/IGameObject.hpp"
 #include "../Input/Camera.hpp"
+#include "../Input/PhysicsObject.hpp"
 
 #include <map>
+#include <list>
 
 class ModelManager{
   private:
     std::map<std::string, IGameObject*> gameModelList;
+    std::list<PhysicsObject*> physicsObjects;
 
   public:
     ModelManager() = default;

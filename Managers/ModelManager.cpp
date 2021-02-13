@@ -8,6 +8,8 @@
 #include "../Rendering/Gui/Gui.hpp"
 #include "../Rendering/Gui/GuiElement.hpp"
 #include "../Rendering/Gui/TextElement.hpp"
+#include "../Input/Player.hpp"
+#include "../Input/PhysicsObject.hpp"
 
 #include <random>
 
@@ -32,8 +34,12 @@ void ModelManager::init(Camera* camera){
   World* world = new World();
   world->create();
   world->setCamera(camera);
+  Player* player = new Player(world, camera);
   camera->setWorld(world);
+  camera->setPlayer(player);
   gameModelList["world"] = world;
+
+  physicsObjects.push_back(player);
 
   Gui* gui = new Gui();
   GuiElement* elem1 = new GuiElement(-1.0,-1.0,0.5,0.5,1.0f,0.0f,0.0f, nullptr);
@@ -76,6 +82,9 @@ void ModelManager::init(Camera* camera){
 void ModelManager::update(){
   for(auto& model: gameModelList){
     model.second->update();
+  }
+  for(PhysicsObject* object: physicsObjects){
+    object->physicsUpdate();
   }
 }
 
