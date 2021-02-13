@@ -1,4 +1,7 @@
 #include "Player.hpp"
+
+#include <cmath>
+
 #include "Camera.hpp"
 #include "../Rendering/Models/World.hpp"
 
@@ -25,12 +28,15 @@ void Player::incZ(float z){
   d_pos[2] += z;
 }
 bool Player::willCollide(){
-  glm::vec3 temp = d_pos + d_vel - glm::vec3{0,1,0};
+  glm::vec3 temp = d_pos + d_vel - glm::vec3{0,0.5,0};
   bool exists = d_world->blockExists(temp);
   return exists;
 }
 
 void Player::physicsUpdate(){
+  if(d_world->blockExists(d_pos)){
+    d_pos[1] = std::ceil(d_pos[1]+0.001);
+  }
   if(willCollide()){
     d_vel = {0,0,0};
     return;
