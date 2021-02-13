@@ -1,9 +1,11 @@
 FIXED:
 issue with mesh poly culling when looking from negative to positive z direction, happens on chunk boundaries: fixed, issue with how chunk space coords were calculated
 raycast for block delete is often off: Fixed, issue with how integer values were rounded, needs to be accounted that block edges are at .5 mark rather than integer vals
+raycast can skip through block corners: Used an algorithm from a paper that always hits
 
 OPEN:
-raycast can skip through block corners
+selection block isnt being rendered properly after coord system changes
+placing blocks no longer works after coord system changes
 mem leak on remeshing
 Window resize does not properly fix the projection matrix
 
