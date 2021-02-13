@@ -10,3 +10,4 @@ add_library(renderinglib STATIC ${renderingcpps})
 install(TARGETS renderinglib DESTINATION lib)
 
 install(FILES ${renderinghpps} DESTINATION include)
+
