@@ -104,6 +104,9 @@ void Camera::keyPress(const unsigned char key, int x, int y){
 
   //make forward vector negative to look forward
   glm::vec3 velocity = (-dz * forward + dx* strafe) * speed;
+  if(!flying){
+    velocity[1] = 0;
+  }
   d_player->setVel(velocity);
 
   std::cout << " x: " << eyeVector[0] << " y: " << eyeVector[1] << " z: " << eyeVector[2] << std::endl;

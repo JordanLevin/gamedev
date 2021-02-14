@@ -29,6 +29,7 @@ class Camera {
     float mouseXSensitivity{.01};
     float mouseYSensitivity{.01};
     float mult{1.0f};
+    bool flying = false;
 
     DGui* gui;
     Camera(glm::mat4* view_matrix_, glm::mat4* projection_matrix_);

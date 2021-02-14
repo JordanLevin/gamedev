@@ -10,6 +10,20 @@ Player::Player(World* world, Camera* camera):
   d_world{world},
   d_camera{camera}
 {
+  syncAABB();
+}
+
+void Player::syncAABB(){
+  d_AABB = {
+    glm::vec3{d_pos[0]-0.3,d_pos[1]-0.3,d_pos[2]-0.3},
+    glm::vec3{d_pos[0]-0.3,d_pos[1]-0.3,d_pos[2]+0.3},
+    glm::vec3{d_pos[0]-0.3,d_pos[1]+0.3,d_pos[2]-0.3},
+    glm::vec3{d_pos[0]-0.3,d_pos[1]+0.3,d_pos[2]+0.3},
+    glm::vec3{d_pos[0]+0.3,d_pos[1]-0.3,d_pos[2]-0.3},
+    glm::vec3{d_pos[0]+0.3,d_pos[1]-0.3,d_pos[2]+0.3},
+    glm::vec3{d_pos[0]+0.3,d_pos[1]+0.3,d_pos[2]-0.3},
+    glm::vec3{d_pos[0]+0.3,d_pos[1]+0.3,d_pos[2]+0.3}
+  };
 }
 
 void Player::syncCamera(){
@@ -28,8 +42,11 @@ void Player::incZ(float z){
   d_pos[2] += z;
 }
 bool Player::willCollide(){
-  glm::vec3 temp = d_pos + d_vel - glm::vec3{0,0.5,0};
-  bool exists = d_world->blockExists(temp);
+  bool exists = false;
+  for(const auto& point: d_AABB){
+    glm::vec3 temp = point + d_vel;
+    exists |= d_world->blockExists(temp);
+  }
   return exists;
 }
 
@@ -39,12 +56,16 @@ void Player::physicsUpdate(){
   }
   if(willCollide()){
     d_vel = {0,0,0};
-    return;
   }
+  d_vel += d_acc;
   d_pos += d_vel;
   d_vel -= (glm::vec3(0.1,0.1,0.1)*d_vel);
   d_vel[1] -= 0.1;
+  syncAABB();
   syncCamera();
+}
+void Player::setAcc(const glm::vec3& acc){
+  d_acc = acc;
 }
 void Player::setPos(const glm::vec3& pos){
   d_pos = pos;
@@ -52,5 +73,7 @@ void Player::setPos(const glm::vec3& pos){
 }
 void Player::setVel(const glm::vec3& vel){
   d_vel = vel;
-  syncCamera();
+}
+void Player::incVel(const glm::vec3& vel){
+  d_vel += vel;
 }
