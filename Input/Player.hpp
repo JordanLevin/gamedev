@@ -12,8 +12,8 @@ class Camera;
 
 class Player : public PhysicsObject {
   private:
-    World* d_world = nullptr;
-    Camera* d_camera = nullptr;
+    World* d_world;
+    Camera* d_camera;
     std::mutex d_player_mtx;
 
   public:
@@ -28,8 +28,8 @@ class Player : public PhysicsObject {
 
     void physicsUpdate() override;
     void setAcc(const glm::vec3& acc)/*override*/;
-    void setPos(const glm::vec3& pos) override;
-    void setVel(const glm::vec3& vel) override;
+    void setPos(const glm::vec3& pos) ;
+    //void setVel(const glm::vec3& vel) override;
     void incVel(const glm::vec3& vel)/*override*/;
 };
 

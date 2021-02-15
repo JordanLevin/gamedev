@@ -1,6 +1,8 @@
 #ifndef PHYSICSOBJECT_H
 #define PHYSICSOBJECT_H
 
+#include <glm/glm.hpp>
+
 #include <array>
 
 class PhysicsObject {
@@ -15,8 +17,8 @@ class PhysicsObject {
     PhysicsObject() = default;
     virtual ~PhysicsObject() = default;
     virtual void physicsUpdate() = 0;
-    virtual void setPos(const glm::vec3& pos) = 0;
-    virtual void setVel(const glm::vec3& vel) = 0;
+    //virtual void setVel(const glm::vec3& vel) = 0;
+    //virtual void setPos(const glm::vec3& pos) = 0;
 
 };
 

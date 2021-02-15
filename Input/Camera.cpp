@@ -107,7 +107,7 @@ void Camera::keyPress(const unsigned char key, int x, int y){
   if(!flying){
     velocity[1] = 0;
   }
-  d_player->setVel(velocity);
+  //d_player->setVel(velocity);
 
   std::cout << " x: " << eyeVector[0] << " y: " << eyeVector[1] << " z: " << eyeVector[2] << std::endl;
 

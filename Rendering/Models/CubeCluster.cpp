@@ -147,7 +147,7 @@ void CubeCluster::add(int x, int y, int z, int type){
   glm::vec3 chunk_coord = coordsInChunk(coord);
 
   int ind = getIndex(chunk_coord);
-  cubes[ind] = {chunk_coord[0],chunk_coord[1],chunk_coord[2],type};
+  cubes[ind] = {(uint8_t)chunk_coord[0],(uint8_t)chunk_coord[1],(uint8_t)chunk_coord[2],(uint8_t)type};
   occupied.insert(ind);
   occupiedVec.push_back(ind);
 }

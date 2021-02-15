@@ -2,14 +2,14 @@
 
 #include <cmath>
 
-#include "Camera.hpp"
 #include "../Rendering/Models/World.hpp"
+#include "Camera.hpp"
 
 
-Player::Player(World* world, Camera* camera):
-  d_world{world},
-  d_camera{camera}
+Player::Player(World* world, Camera* camera): PhysicsObject()
 {
+  d_world = world;
+  d_camera = camera;
   syncAABB();
 }
 
@@ -71,9 +71,9 @@ void Player::setPos(const glm::vec3& pos){
   d_pos = pos;
   syncCamera();
 }
-void Player::setVel(const glm::vec3& vel){
-  d_vel = vel;
-}
+//void Player::setVel(const glm::vec3& vel){
+  //d_vel = vel;
+//}
 void Player::incVel(const glm::vec3& vel){
   d_vel += vel;
 }
