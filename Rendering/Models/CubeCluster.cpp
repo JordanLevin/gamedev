@@ -34,7 +34,7 @@ CubeCluster::CubeCluster(std::string path, int x, int y, int z){
   read.open(path, std::ios::in);
   Serialize::deserialize(read, cubes);
   Serialize::deserialize(read, occupiedVec);
-  occupied = std::unordered_set(occupiedVec.begin(), occupiedVec.end());
+  occupied = std::unordered_set<int>(occupiedVec.begin(), occupiedVec.end());
 }
 
 CubeCluster::~CubeCluster(){

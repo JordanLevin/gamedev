@@ -15,11 +15,12 @@ std::map<std::string, GLuint> ShaderManager::programs; //static definition
 std::string ShaderManager::readShader(const std::string& filename){
   std::string shaderCode;
   std::string path = std::string("Shaders/") + filename;
-  std::ifstream file(path, std::ios::in);
-  if(!file.good())
+  std::ifstream file { path };
+  if(!file)
   {
     std::cout<<"Can't read file "<<filename<<std::endl;
-    //std::cout << "Path: " << std::filesystem::absolute(path) << std::endl;
+    std::cout << "Path: " << std::filesystem::absolute(path) << std::endl;
+    std::cout << "fs cur wd path: " << std::filesystem::current_path() << std::endl;
     std::terminate();
   }
 
