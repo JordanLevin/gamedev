@@ -21,7 +21,8 @@ class InitGlut{
     static void reshapeCallback(int width, int height);
     static void closeCallback();
     static void updateView();
-    static void keyPress(const unsigned char key, int x, int y);
+    static void keyDown(const unsigned char key, int x, int y);
+    static void keyUp(const unsigned char key, int x, int y);
     static void mouseMove(int x, int y);
     static void mousePress(int button, int state, int x, int y);
 

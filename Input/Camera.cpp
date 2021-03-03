@@ -69,53 +69,11 @@ void Camera::updateView(){
   world->outlineBlock(eyeVector, getDirection());
 }
 
-void Camera::keyPress(const unsigned char key, int x, int y){
-  if(key == 'f'){
-    if(mult != 20)
-      mult = 20;
-    else
-      mult = 1;
-  }
-  float dx = 0;
-  float dz = 0;
-  float dy = 0;
-  switch (key){
-    case 'w':
-      dz = -2*mult;
-      break;
-    case 's':
-      dz = 2*mult;
-      break;
-    case 'a':
-      dx = -2*mult;
-      break;
-    case 'd':
-      dx = 2*mult;
-      break;
-    case ' ':
-      dy = 1;
-      break;
-    default:
-      break;
-  }
-
-  glm::mat4& mat = *view_matrix;
-  glm::vec3 forward(mat[0][2], mat[1][2], mat[2][2]);
-  glm::vec3 strafe(mat[0][0], mat[1][0], mat[2][0]);
-  //std::cout << mat[0][2] << " " << mat[1][2] << " " << mat[2][2] << std::endl;
-
-  const float speed = 0.12f;
-
-  //make forward vector negative to look forward
-  glm::vec3 velocity = (-dz * forward + dx* strafe) * speed;
-  if(!flying){
-    velocity[1] = dy;
-  }
-  d_player->setVel(velocity);
-
-  std::cout << " x: " << eyeVector[0] << " y: " << eyeVector[1] << " z: " << eyeVector[2] << std::endl;
-
-  updateView();
+void Camera::keyUp(const unsigned char key, int x, int y){
+  d_player->d_keys.erase(key);
+}
+void Camera::keyDown(const unsigned char key, int x, int y){
+  d_player->d_keys.insert(key);
 }
 
 void Camera::mouseMove(int x, int y){

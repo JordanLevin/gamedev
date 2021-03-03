@@ -29,7 +29,6 @@ class Camera {
     float mouseXSensitivity{.01};
     float mouseYSensitivity{.01};
     float mult{1.0f};
-    bool flying = false;
 
     DGui* gui;
     Camera(glm::mat4* view_matrix_, glm::mat4* projection_matrix_);
@@ -40,7 +39,8 @@ class Camera {
     glm::vec3 getDirection();
     void setWorld(World* world_);
     void setPlayer(Player* player_);
-    void keyPress(const unsigned char key, int x, int y);
+    void keyDown(const unsigned char key, int x, int y);
+    void keyUp(const unsigned char key, int x, int y);
     void mouseMove(int x, int y);
     void mousePress(int button, int state, int x, int y);
 };

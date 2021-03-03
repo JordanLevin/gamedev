@@ -7,7 +7,7 @@
 
 class PhysicsObject {
   public:
-    glm::vec3 d_acc = {0,0,0};
+    glm::vec3 d_acc = {0,-0.2,0};
     glm::vec3 d_vel = {0,0,0};
     glm::vec3 d_pos = {0,50,0};
 

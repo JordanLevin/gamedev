@@ -50,10 +50,12 @@ void InitGlut::init(const WindowInfo& window,
   glutDisplayFunc(displayCallback);
   glutReshapeFunc(reshapeCallback);
 
-  glutKeyboardFunc(keyPress);
+  glutKeyboardFunc(keyDown);
+  glutKeyboardUpFunc(keyUp);
   glutMouseFunc(mousePress);
   glutPassiveMotionFunc(mouseMove);
 
+  glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
 
   glutSetCursor(GLUT_CURSOR_NONE);
   glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS);
@@ -111,8 +113,12 @@ void InitGlut::updateView(){
   dynamic_cast<SceneManager*>(listener)->getCamera().updateView();
 }
 
-void InitGlut::keyPress(const unsigned char key, int x, int y){
-  dynamic_cast<SceneManager*>(listener)->getCamera().keyPress(key, x, y);
+void InitGlut::keyDown(const unsigned char key, int x, int y){
+  dynamic_cast<SceneManager*>(listener)->getCamera().keyDown(key, x, y);
+}
+
+void InitGlut::keyUp(const unsigned char key, int x, int y){
+  dynamic_cast<SceneManager*>(listener)->getCamera().keyUp(key, x, y);
 }
 
 void InitGlut::mouseMove(int x, int y){

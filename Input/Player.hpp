@@ -4,6 +4,7 @@
 #include <glm/glm.hpp>
 
 #include <mutex>
+#include <set>
 
 #include "PhysicsObject.hpp"
 
@@ -17,8 +18,11 @@ class Player : public PhysicsObject {
     std::mutex d_player_mtx;
     bool d_on_ground = false;
     float d_height = 0.5;
+    bool d_flying = false;
 
   public:
+    std::set<uint8_t> d_keys;
+
     Player(World* world, Camera* camera);
     ~Player() = default;
     void syncCamera();
@@ -27,13 +31,18 @@ class Player : public PhysicsObject {
     void incY(float y);
     void incZ(float z);
     bool willCollide(const glm::vec3& vel);
-    glm::vec3 calculateSlide();
+    /**
+      * Calculate the vector to slide the player to avoid overlapping with the world
+      */
+    glm::vec3 calculateSlide(const glm::vec3& vel);
 
     void physicsUpdate() override;
     void setAcc(const glm::vec3& acc)override;
     void setPos(const glm::vec3& pos)override;
     void setVel(const glm::vec3& vel)override;
     void incVel(const glm::vec3& vel)override;
+
+    void inputUpdate();
 };
 
 #endif
