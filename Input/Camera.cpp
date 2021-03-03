@@ -76,8 +76,9 @@ void Camera::keyPress(const unsigned char key, int x, int y){
     else
       mult = 1;
   }
-  float dx =0;
-  float dz =0;
+  float dx = 0;
+  float dz = 0;
+  float dy = 0;
   switch (key){
     case 'w':
       dz = -2*mult;
@@ -90,6 +91,9 @@ void Camera::keyPress(const unsigned char key, int x, int y){
       break;
     case 'd':
       dx = 2*mult;
+      break;
+    case ' ':
+      dy = 1;
       break;
     default:
       break;
@@ -105,9 +109,9 @@ void Camera::keyPress(const unsigned char key, int x, int y){
   //make forward vector negative to look forward
   glm::vec3 velocity = (-dz * forward + dx* strafe) * speed;
   if(!flying){
-    velocity[1] = 0;
+    velocity[1] = dy;
   }
-  //d_player->setVel(velocity);
+  d_player->setVel(velocity);
 
   std::cout << " x: " << eyeVector[0] << " y: " << eyeVector[1] << " z: " << eyeVector[2] << std::endl;
 

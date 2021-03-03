@@ -17,8 +17,10 @@ class PhysicsObject {
     PhysicsObject() = default;
     virtual ~PhysicsObject() = default;
     virtual void physicsUpdate() = 0;
-    //virtual void setVel(const glm::vec3& vel) = 0;
-    //virtual void setPos(const glm::vec3& pos) = 0;
+    virtual void setVel(const glm::vec3& vel) = 0;
+    virtual void setPos(const glm::vec3& pos) = 0;
+    virtual void setAcc(const glm::vec3& acc) = 0;
+    virtual void incVel(const glm::vec3& vel) = 0;
 
 };
 

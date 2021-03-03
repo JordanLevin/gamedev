@@ -5,7 +5,7 @@ project(input)
 file(GLOB_RECURSE playercpps CONFIGURE_DEPENDS "*.cpp")
 file(GLOB_RECURSE playerhpps CONFIGURE_DEPENDS "*.hpp")
 
-add_library(playerlib STATIC ${playercpps})
+add_library(playerlib OBJECT ${playercpps})
 
 install(TARGETS playerlib DESTINATION lib)
 

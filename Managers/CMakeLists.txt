@@ -5,7 +5,7 @@ project(managers)
 file(GLOB_RECURSE managercpps CONFIGURE_DEPENDS "*.cpp")
 file(GLOB_RECURSE managerhpps CONFIGURE_DEPENDS "*.hpp")
 
-add_library(managerlib STATIC ${managercpps})
+add_library(managerlib OBJECT ${managercpps})
 
 install(TARGETS managerlib DESTINATION lib)
 
