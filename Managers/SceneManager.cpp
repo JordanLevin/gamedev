@@ -23,6 +23,9 @@ SceneManager::SceneManager(){
   shaderManager.createProgram("cubevshader.glsl",
                               "fshader1.glsl",
                               "cubeShader");
+  shaderManager.createProgram("uncompressedcubevshader.glsl",
+                              "fshader1.glsl",
+                              "cubeShader2");
   view_matrix = glm::mat4(1.0f, 0.0f, 0.0f, 0.0f,
       0.0f, 1.0f, 0.0f, 0.0f,
       0.0f, 0.0f, -1.0f, 0.0f,

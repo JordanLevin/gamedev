@@ -159,11 +159,7 @@ void CubeCluster::addChunkSpace(uint8_t x, uint8_t y, uint8_t z, uint8_t type){
   occupiedVec.push_back(ind);
 }
 
-/**
-  *
-  */
 void CubeCluster::remeshNeighbors(int x, int y, int z){
-  //TODO
   glm::vec3 coordsC = coordsInChunk(glm::vec3(x,y,z));
   if(coordsC[0] == 15){
     CubeCluster* c = d_world->getChunkFromWorldSpace(glm::vec3(x+1,y,z));

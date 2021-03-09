@@ -184,7 +184,7 @@ CubeCluster* World::generate(int x, int z){
 }
 
 void World::create(){
-  outlineCube.setProgram(ShaderManager::getShader("cubeShader"));
+  outlineCube.setProgram(ShaderManager::getShader("cubeShader2"));
   int max_threads = 4;
   int gen_threads = (int)(max_threads-1)/2;
   for(int i = 0; i < gen_threads; i++){
@@ -373,7 +373,7 @@ bool World::blockExists(const glm::vec3& coords) const{
   CubeCluster* chunk = getChunkFromWorldSpace(coords);
   if(!chunk)
     return false;
-  bool exists = chunk->get(coords[0], coords[1], coords[2]);
+  bool exists = chunk->get(std::floor(coords[0]), std::floor(coords[1]), std::floor(coords[2]));
   return exists;
 }
 

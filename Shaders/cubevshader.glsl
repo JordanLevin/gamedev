@@ -1,8 +1,5 @@
 #version 430 core 
 layout(location = 0) in uint vdata;
-//#layout(location = 0) in vec3 in_position;
-//#layout(location = 1) in vec4 in_color;
-//#layout(location = 2) in vec3 in_normal;
 
 uniform mat4 projection_matrix, view_matrix, model_matrix;
 uniform vec4 light_color_in;

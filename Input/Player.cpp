@@ -13,6 +13,13 @@ Player::Player(World* world, Camera* camera): PhysicsObject()
   syncAABB();
 }
 
+void Player::printPhys(std::string msg){
+  std::cout << msg << std::endl;
+  std::cout << "POS x: " << d_pos[0] << " y: " << d_pos[1] << " z: " << d_pos[2] << "  " << 
+               "VEL x: " << d_vel[0] << " y: " << d_vel[1] << " z: " << d_vel[2] <<
+               "| g: " << d_on_ground << std::endl;
+}
+
 void Player::syncAABB(){
   d_AABB = {
     glm::vec3{d_pos[0]-0.3,d_pos[1]-d_height,d_pos[2]-0.3},
@@ -57,6 +64,7 @@ glm::vec3 Player::calculateSlide(const glm::vec3& vel){
     glm::vec3 temp = point + vel;
     glm::vec3 temp2 = point;
     if(d_world->blockExists(temp)){
+      std::cout << "collide: " << temp[0] << " " << temp[1] << " " << temp[2] << std::endl;
       temp2[0] += vel[0];
       if(!d_world->blockExists(temp2)){
         res[0] = vel[0];
@@ -71,17 +79,11 @@ glm::vec3 Player::calculateSlide(const glm::vec3& vel){
       if(!d_world->blockExists(temp2)){
         res[2] = vel[2];
       }
-      //temp[0] -= vel[0];
-      //if(!d_world->blockExists(temp)){
-        //res[2] = vel[2];
-      //}
-      //temp[0] += vel[0];
-      //temp[2] -= vel[2];
-      //if(!d_world->blockExists(temp)){
-        //res[0] = vel[0];
-      //}
       exists = true;
       break;
+    }
+    else{
+      std::cout << "no collide: " << temp[0] << " " << temp[1] << " " << temp[2] << std::endl;
     }
   }
 
@@ -94,42 +96,35 @@ glm::vec3 Player::calculateSlide(const glm::vec3& vel){
 
 void Player::physicsUpdate(){
   inputUpdate();
-  std::cout << "PLAYER x: " << d_pos[0] << " y: " << d_pos[1] << " z: " << d_pos[2] <<
-               "VEL x: " << d_vel[0] << " y: " << d_vel[1] << " z: " << d_vel[2] <<
-               "| g: " << d_on_ground << std::endl;
   d_vel += d_acc;
-
+  printPhys("After update");
   //Calculate collision for this frame and update pos
   if(willCollide(d_vel)){
     d_vel = calculateSlide(d_vel);
   }
-  std::cout << "PLAYER x: " << d_pos[0] << " y: " << d_pos[1] << " z: " << d_pos[2] <<
-               "VEL x: " << d_vel[0] << " y: " << d_vel[1] << " z: " << d_vel[2] <<
-               "| g: " << d_on_ground << std::endl;
+  printPhys("After slide");
   d_pos += d_vel;
+  syncAABB();
+  syncCamera();
 
   //Update velocity for the next frame, unsure if this is the correct order
   d_vel -= (glm::vec3(0.1,0.1,0.1)*d_vel); //friction
   //as velocity approaches 0 make it exactly 0 to avoid clipping
-  if(d_vel[0] < 0.001)
+  if(std::abs(d_vel[0]) < 0.001)
     d_vel[0] = 0;
-  if(d_vel[1] < 0.001)
+  if(std::abs(d_vel[1]) < 0.001)
     d_vel[1] = 0;
-  if(d_vel[2] < 0.001)
+  if(std::abs(d_vel[2]) < 0.001)
     d_vel[2] = 0;
   //if(!d_on_ground){
     //d_vel[1] -= 0.3;
   //}
-  while(willCollide(glm::vec3(0,0,0))){
-    d_pos[1] = std::ceil(d_pos[1]-d_height + 0.001) + d_height;
-    syncAABB();
-  }
+  //while(willCollide(glm::vec3(0,0,0))){
+    //d_pos[1] = std::ceil(d_pos[1]-d_height + 0.001) + d_height;
+    //syncAABB();
+  //}
   d_on_ground = d_world->blockExists(glm::vec3(d_pos[0], d_pos[1]-.001, d_pos[2]));
-  syncAABB();
-  syncCamera();
-  std::cout << "PLAYER x: " << d_pos[0] << " y: " << d_pos[1] << " z: " << d_pos[2] <<
-               "VEL x: " << d_vel[0] << " y: " << d_vel[1] << " z: " << d_vel[2] <<
-               "| g: " << d_on_ground << std::endl;
+  printPhys("End update");
 }
 void Player::setAcc(const glm::vec3& acc){
   d_acc = acc;
@@ -151,6 +146,7 @@ void Player::inputUpdate(){
   float dx = 0;
   float dz = 0;
   float dy = 0;
+  //dz = -2;
   dz = -2*mult*d_keys.count('w') + 2*mult*d_keys.count('s');
   dx = -2*mult*d_keys.count('a') + 2*mult*d_keys.count('d');
   dy = 1*mult*d_keys.count(' ');
@@ -160,14 +156,11 @@ void Player::inputUpdate(){
   glm::vec3 strafe(mat[0][0], mat[1][0], mat[2][0]);
   //std::cout << mat[0][2] << " " << mat[1][2] << " " << mat[2][2] << std::endl;
 
-  const float speed = 0.12f;
+  const float speed = 0.02;
 
   //make forward vector negative to look forward
-  glm::vec3 velocity = (-dz * forward + dx* strafe) * speed;
+  glm::vec3 acc = (-dz * forward + dx* strafe) * speed;
   if(!d_flying)
-    velocity[1] = 0;
-  if(d_on_ground){
-    velocity[1] += dy;
-  }
-  setVel(velocity);
+    acc[1] = -0.0098;
+  setAcc(acc);
 }

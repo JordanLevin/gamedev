@@ -51,7 +51,11 @@ uint32_t Mesher::compressVertex(VertexFormat in, uint8_t type){
 }
 
 std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
-    const std::unordered_set<int>& occupied, const World* world, int chunkX, int chunkZ){
+    const std::unordered_set<int>& occupied, 
+    const World* world, 
+    int chunkX, 
+    int chunkZ)
+{
   std::vector<uint32_t> ret;
   for(int i: occupied){
     int cx = chunk[i].x;
@@ -217,6 +221,127 @@ std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
       ret.push_back(compressVertex({{currx-0.5f, curry+0.5f, currz-0.5f},
         {c0, c1, c2, c3},{0,0,-1}}, curr.type));
       }
+    }
+  }
+  return ret;
+}
+
+std::vector<VertexFormat> Mesher::createUncompressedMesh(const std::vector<Cube>& chunk,
+    const std::unordered_set<int>& occupied)
+{
+  std::vector<VertexFormat> ret;
+  for(int i: occupied){
+    int cx = chunk[i].x;
+    int cz = chunk[i].z;
+    int cy = chunk[i].y;
+    int topN = getIndex(cx, cy+1, cz);
+    int bottomN = getIndex(cx, cy-1, cz);
+    int leftN =  getIndex(cx-1, cy, cz);
+    int rightN =  getIndex(cx+1, cy, cz);
+    int frontN =  getIndex(cx, cy, cz+1);
+    int backN =  getIndex(cx, cy, cz-1);
+    const Cube& curr = chunk[i];
+    glm::vec4 color = getColor(curr);
+    float c0 = color[0];
+    float c1 = color[1];
+    float c2 = color[2];
+    float c3 = color[3];
+
+    //We add 0.5 so chunk corners are on integers, this hopefully will reduce other issues (this was moved from cubecluster to compress cubes from 16 bytes to 4 bytes)
+    float currx = curr.x + 0.5;
+    float curry = curr.y + 0.5;
+    float currz = curr.z + 0.5;
+
+    //Generate vertices for sides that are open to air
+    if(occupied.count(topN) == 0 || cy == 127){
+      ret.push_back({{currx-0.5f, curry+0.5f, currz-0.5f},
+        {c0, c1, c2, c3},{0,1,0}});
+      ret.push_back({{currx+0.5f, curry+0.5f, currz-0.5f},
+        {c0, c1, c2, c3},{0,1,0}});
+      ret.push_back({{currx+0.5f, curry+0.5f, currz+0.5f},
+        {c0, c1, c2, c3},{0,1,0}});
+
+      ret.push_back({{currx+0.5f, curry+0.5f, currz+0.5f},
+        {c0, c1, c2, c3},{0,1,0}});
+      ret.push_back({{currx-0.5f, curry+0.5f, currz-0.5f},
+        {c0, c1, c2, c3},{0,1,0}});
+      ret.push_back({{currx-0.5f, curry+0.5f, currz+0.5f},
+        {c0, c1, c2, c3},{0,1,0}});
+    }
+    if(occupied.count(bottomN) == 0 || cy == 0){
+      ret.push_back({{currx-0.5f, curry-0.5f, currz-0.5f},
+        {c0, c1, c2, c3},{0,-1,0}});
+      ret.push_back({{currx+0.5f, curry-0.5f, currz-0.5f},
+        {c0, c1, c2, c3},{0,-1,0}});
+      ret.push_back({{currx+0.5f, curry-0.5f, currz+0.5f},
+        {c0, c1, c2, c3},{0,-1,0}});
+
+      ret.push_back({{currx+0.5f, curry-0.5f, currz+0.5f},
+        {c0, c1, c2, c3},{0,-1,0}});
+      ret.push_back({{currx-0.5f, curry-0.5f, currz-0.5f},
+        {c0, c1, c2, c3},{0,-1,0}});
+      ret.push_back({{currx-0.5f, curry-0.5f, currz+0.5f},
+        {c0, c1, c2, c3},{0,-1,0}});
+    }
+    if(occupied.count(leftN) == 0 || cx == 0){
+      ret.push_back({{currx-0.5f, curry+0.5f, currz+0.5f},
+        {c0, c1, c2, c3},{-1,0,0}});
+      ret.push_back({{currx-0.5f, curry+0.5f, currz-0.5f},
+        {c0, c1, c2, c3},{-1,0,0}});
+      ret.push_back({{currx-0.5f, curry-0.5f, currz-0.5f},
+        {c0, c1, c2, c3},{-1,0,0}});
+
+      ret.push_back({{currx-0.5f, curry-0.5f, currz-0.5f},
+        {c0, c1, c2, c3},{-1,0,0}});
+      ret.push_back({{currx-0.5f, curry+0.5f, currz+0.5f},
+        {c0, c1, c2, c3},{-1,0,0}});
+      ret.push_back({{currx-0.5f, curry-0.5f, currz+0.5f},
+        {c0, c1, c2, c3},{-1,0,0}});
+    }
+    if(occupied.count(rightN) == 0 || cx == 15){
+        ret.push_back({{currx+0.5f, curry+0.5f, currz+0.5f},
+          {c0, c1, c2, c3},{1,0,0}});
+        ret.push_back({{currx+0.5f, curry+0.5f, currz-0.5f},
+          {c0, c1, c2, c3},{1,0,0}});
+        ret.push_back({{currx+0.5f, curry-0.5f, currz-0.5f},
+          {c0, c1, c2, c3},{1,0,0}});
+
+        ret.push_back({{currx+0.5f, curry-0.5f, currz-0.5f},
+          {c0, c1, c2, c3},{1,0,0}});
+        ret.push_back({{currx+0.5f, curry+0.5f, currz+0.5f},
+          {c0, c1, c2, c3},{1,0,0}});
+        ret.push_back({{currx+0.5f, curry-0.5f, currz+0.5f},
+          {c0, c1, c2, c3},{1,0,0}});
+    }
+    if(occupied.count(frontN) == 0 || cz == 15){
+      ret.push_back({{currx+0.5f, curry+0.5f, currz+0.5f},
+        {c0, c1, c2, c3},{0,0,1}});
+      ret.push_back({{currx+0.5f, curry-0.5f, currz+0.5f},
+        {c0, c1, c2, c3},{0,0,1}});
+      ret.push_back({{currx-0.5f, curry-0.5f, currz+0.5f},
+        {c0, c1, c2, c3},{0,0,1}});
+
+      ret.push_back({{currx-0.5f, curry-0.5f, currz+0.5f},
+        {c0, c1, c2, c3},{0,0,1}});
+      ret.push_back({{currx+0.5f, curry+0.5f, currz+0.5f},
+        {c0, c1, c2, c3},{0,0,1}});
+      ret.push_back({{currx-0.5f, curry+0.5f, currz+0.5f},
+        {c0, c1, c2, c3},{0,0,1}});
+    }
+    if(occupied.count(backN) == 0 || cz == 0){
+      ret.push_back({{currx+0.5f, curry+0.5f, currz-0.5f},
+        {c0, c1, c2, c3},{0,0,-1}});
+      ret.push_back({{currx+0.5f, curry-0.5f, currz-0.5f},
+        {c0, c1, c2, c3},{0,0,-1}});
+      ret.push_back({{currx-0.5f, curry-0.5f, currz-0.5f},
+        {c0, c1, c2, c3},{0,0,-1}});
+
+      ret.push_back({{currx-0.5f, curry-0.5f, currz-0.5f},
+        {c0, c1, c2, c3},{0,0,-1}});
+      ret.push_back({{currx+0.5f, curry+0.5f, currz-0.5f},
+        {c0, c1, c2, c3},{0,0,-1}});
+      ret.push_back({{currx-0.5f, curry+0.5f, currz-0.5f},
+        {c0, c1, c2, c3},{0,0,-1}});
     }
   }
   return ret;

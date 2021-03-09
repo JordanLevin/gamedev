@@ -20,6 +20,11 @@ class Player : public PhysicsObject {
     float d_height = 0.5;
     bool d_flying = false;
 
+    /**
+      * Debug funcs
+      */
+    void printPhys(std::string msg);
+
   public:
     std::set<uint8_t> d_keys;
 

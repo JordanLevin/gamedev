@@ -21,6 +21,8 @@ class Mesher {
     Mesher() = default;
     ~Mesher() = default;
 
+    static std::vector<VertexFormat> createUncompressedMesh(const std::vector<Cube>& chunk,
+        const std::unordered_set<int>& occupied);
     static std::vector<uint32_t> createMesh(const std::vector<Cube>& chunk,
         const std::unordered_set<int>& occupied, const World* world, int chunkX, int chunkZ);
     static uint32_t compressVertex(VertexFormat in, uint8_t type);
