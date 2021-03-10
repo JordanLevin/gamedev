@@ -9,7 +9,7 @@ struct Cube {
 };
 
 struct WorldCube {
-  int x, y, z;
+  float x, y, z;
   uint8_t type;
 };
 

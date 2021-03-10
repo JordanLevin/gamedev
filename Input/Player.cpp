@@ -14,6 +14,7 @@ Player::Player(World* world, Camera* camera): PhysicsObject()
 }
 
 void Player::printPhys(std::string msg){
+  return;
   std::cout << msg << std::endl;
   std::cout << "POS x: " << d_pos[0] << " y: " << d_pos[1] << " z: " << d_pos[2] << "  " << 
                "VEL x: " << d_vel[0] << " y: " << d_vel[1] << " z: " << d_vel[2] <<
@@ -64,7 +65,7 @@ glm::vec3 Player::calculateSlide(const glm::vec3& vel){
     glm::vec3 temp = point + vel;
     glm::vec3 temp2 = point;
     if(d_world->blockExists(temp)){
-      std::cout << "collide: " << temp[0] << " " << temp[1] << " " << temp[2] << std::endl;
+      //std::cout << "collide: " << temp[0] << " " << temp[1] << " " << temp[2] << std::endl;
       temp2[0] += vel[0];
       if(!d_world->blockExists(temp2)){
         res[0] = vel[0];
@@ -83,7 +84,7 @@ glm::vec3 Player::calculateSlide(const glm::vec3& vel){
       break;
     }
     else{
-      std::cout << "no collide: " << temp[0] << " " << temp[1] << " " << temp[2] << std::endl;
+      //std::cout << "no collide: " << temp[0] << " " << temp[1] << " " << temp[2] << std::endl;
     }
   }
 

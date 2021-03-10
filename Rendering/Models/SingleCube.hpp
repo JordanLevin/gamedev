@@ -16,10 +16,9 @@
 class SingleCube: public Model {
   private:
     std::vector<VertexFormat> data;
-    //Actual entire chunk of cubes
-    WorldCube cube;
 
   public: 
+    WorldCube cube;
     SingleCube() = default;
     ~SingleCube() = default;
 
