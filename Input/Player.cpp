@@ -75,20 +75,20 @@ void Player::physicsUpdate(){
   inputUpdate();
   d_vel += d_acc;
   printPhys("After update");
-  //Calculate collision for this frame and update pos
   if(willCollide(d_vel)){
     auto x_vel = glm::vec3(d_vel[0], 0, 0);
     auto y_vel = glm::vec3(0, d_vel[1], 0);
     auto z_vel = glm::vec3(0, 0, d_vel[2]);
     d_vel = calculateSlide(x_vel) + calculateSlide(y_vel) + calculateSlide(z_vel);
   }
+  d_on_ground = std::abs(d_vel[1]) < 0.0001;
   printPhys("After slide");
   d_pos += d_vel;
   syncAABB();
   syncCamera();
 
   //Update velocity for the next frame, unsure if this is the correct order
-  d_vel -= (glm::vec3(0.1,0.1,0.1)*d_vel); //friction
+  d_vel -= (glm::vec3(0.2,0.1,0.2)*d_vel); //friction
   //as velocity approaches 0 make it exactly 0 to avoid clipping
   if(std::abs(d_vel[0]) < 0.001)
     d_vel[0] = 0;
@@ -96,14 +96,6 @@ void Player::physicsUpdate(){
     d_vel[1] = 0;
   if(std::abs(d_vel[2]) < 0.001)
     d_vel[2] = 0;
-  //if(!d_on_ground){
-    //d_vel[1] -= 0.3;
-  //}
-  //while(willCollide(glm::vec3(0,0,0))){
-    //d_pos[1] = std::ceil(d_pos[1]-d_height + 0.001) + d_height;
-    //syncAABB();
-  //}
-  d_on_ground = d_world->blockExists(glm::vec3(d_pos[0], d_pos[1]-.001, d_pos[2]));
   printPhys("End update");
 }
 void Player::setAcc(const glm::vec3& acc){
@@ -129,7 +121,7 @@ void Player::inputUpdate(){
   //dz = -2;
   dz = -2*mult*d_keys.count('w') + 2*mult*d_keys.count('s');
   dx = -2*mult*d_keys.count('a') + 2*mult*d_keys.count('d');
-  dy = 1*mult*d_keys.count(' ');
+  dy = 0.4*mult*d_keys.count(' ');
 
   glm::mat4& mat = *(d_camera->view_matrix);
   glm::vec3 forward(mat[0][2], mat[1][2], mat[2][2]);
@@ -140,7 +132,11 @@ void Player::inputUpdate(){
 
   //make forward vector negative to look forward
   glm::vec3 acc = (-dz * forward + dx* strafe) * speed;
-  if(!d_flying)
-    acc[1] = -0.0098;
+  if(!d_flying){
+    acc[1] = 3*-0.0098;
+    if(d_on_ground){
+      acc[1] += dy;
+    }
+  }
   setAcc(acc);
 }
