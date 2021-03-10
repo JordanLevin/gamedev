@@ -14,7 +14,6 @@ Player::Player(World* world, Camera* camera): PhysicsObject()
 }
 
 void Player::printPhys(std::string msg){
-  return;
   std::cout << msg << std::endl;
   std::cout << "POS x: " << d_pos[0] << " y: " << d_pos[1] << " z: " << d_pos[2] << "  " << 
                "VEL x: " << d_vel[0] << " y: " << d_vel[1] << " z: " << d_vel[2] <<
@@ -57,42 +56,19 @@ bool Player::willCollide(const glm::vec3& vel){
   }
   return exists;
 }
-
 glm::vec3 Player::calculateSlide(const glm::vec3& vel){
   bool exists = false;
   glm::vec3 res(0,0,0);
   for(const auto& point: d_AABB){
     glm::vec3 temp = point + vel;
-    glm::vec3 temp2 = point;
     if(d_world->blockExists(temp)){
-      //std::cout << "collide: " << temp[0] << " " << temp[1] << " " << temp[2] << std::endl;
-      temp2[0] += vel[0];
-      if(!d_world->blockExists(temp2)){
-        res[0] = vel[0];
-      }
-      temp2[0] -= vel[0];
-      temp2[1] += vel[1];
-      if(!d_world->blockExists(temp2)){
-        res[1] = vel[1];
-      }
-      temp2[1] -= vel[1];
-      temp2[2] += vel[2];
-      if(!d_world->blockExists(temp2)){
-        res[2] = vel[2];
-      }
       exists = true;
       break;
     }
-    else{
-      //std::cout << "no collide: " << temp[0] << " " << temp[1] << " " << temp[2] << std::endl;
-    }
   }
-
-  if(!exists){
+  if(!exists)
     return vel;
-  }
   return res;
-
 }
 
 void Player::physicsUpdate(){
@@ -101,7 +77,10 @@ void Player::physicsUpdate(){
   printPhys("After update");
   //Calculate collision for this frame and update pos
   if(willCollide(d_vel)){
-    d_vel = calculateSlide(d_vel);
+    auto x_vel = glm::vec3(d_vel[0], 0, 0);
+    auto y_vel = glm::vec3(0, d_vel[1], 0);
+    auto z_vel = glm::vec3(0, 0, d_vel[2]);
+    d_vel = calculateSlide(x_vel) + calculateSlide(y_vel) + calculateSlide(z_vel);
   }
   printPhys("After slide");
   d_pos += d_vel;
