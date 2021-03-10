@@ -226,7 +226,7 @@ std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
   return ret;
 }
 
-std::vector<VertexFormat> Mesher::createUncompressedMesh(const std::vector<Cube>& chunk,
+std::vector<VertexFormat> Mesher::createUncompressedMesh(const std::vector<WorldCube>& chunk,
     const std::unordered_set<int>& occupied)
 {
   std::vector<VertexFormat> ret;
@@ -240,8 +240,9 @@ std::vector<VertexFormat> Mesher::createUncompressedMesh(const std::vector<Cube>
     int rightN =  getIndex(cx+1, cy, cz);
     int frontN =  getIndex(cx, cy, cz+1);
     int backN =  getIndex(cx, cy, cz-1);
-    const Cube& curr = chunk[i];
-    glm::vec4 color = getColor(curr);
+    const WorldCube& curr = chunk[i];
+    //glm::vec4 color = getColor(curr);
+    glm::vec4 color = {1,1,1,1};
     float c0 = color[0];
     float c1 = color[1];
     float c2 = color[2];

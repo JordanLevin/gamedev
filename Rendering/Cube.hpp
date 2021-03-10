@@ -8,4 +8,9 @@ struct Cube {
   uint8_t type;
 };
 
+struct WorldCube {
+  int x, y, z;
+  uint8_t type;
+};
+
 #endif
