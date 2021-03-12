@@ -27,7 +27,7 @@ glm::vec4 Mesher::getColor(const Cube& c){
   if(c.type == 6)
     return glm::vec4(0.909, 0.843, 0.172, 1.0f); // yellow
   if(c.type == 7)
-    return glm::vec4(0.094, 0.141, 0.725, 1.0f); // blue
+    return glm::vec4(0.094, 0.141, 0.725, 0.8f); // blue
   return glm::vec4(std::rand()/(float)RAND_MAX,std::rand()/(float)RAND_MAX,std::rand()/(float)RAND_MAX,1.0f);
 }
 

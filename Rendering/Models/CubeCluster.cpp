@@ -222,7 +222,6 @@ void CubeCluster::update(){
 }
 
 void CubeCluster::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix){
-  //model_matrix[1][0] = std::sin((float)n++/100.0); //lmao just for fun
   glUseProgram(program);
   glm::vec3 light_dir = glm::normalize(glm::vec3(-1.0f, 1.0f, -1.0f));
   glUniform3f(glGetUniformLocation(program, "light_dir"),light_dir.x, light_dir.y, light_dir.z);
@@ -235,9 +234,11 @@ void CubeCluster::draw(const glm::mat4& projection_matrix, const glm::mat4& view
   glUniformMatrix4fv(glGetUniformLocation(program, "projection_matrix"), 
       1, false, &projection_matrix[0][0]);
   glBindVertexArray(vao);
-  //print_m(model_matrix);
 
-  //glDrawElements(GL_TRIANGLES, allIndices.size(), GL_UNSIGNED_INT, 0);
   glUniform1i(glGetUniformLocation(program, "wireframe"),0);
+
+  glEnable(GL_BLEND); //Enable blending.
+  glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //Set blending function.
   glDrawArrays(GL_TRIANGLES, 0, data.size());
+  glDisable(GL_BLEND); 
 }

@@ -25,7 +25,7 @@ vec4 getColor(uint type){
   if(type == 6)
     return vec4(0.909, 0.843, 0.172, 1.0f); // yellow
   if(type == 7)
-    return vec4(0.094, 0.141, 0.725, 1.0f); // blue
+    return vec4(0.094, 0.141, 0.725, 0.8f); // blue
   return vec4(0.294, 0.141, 0.725, 1.0f); // idk
 }
 
@@ -64,7 +64,7 @@ void main(){
   color = vec4(
       //Ambient lighting
       AmbientColor + 
-      in_color.xyz * light_color.xyz * (abs(normal.x) * 0.7 + abs(normal.y) * 0.8 + abs(normal.z) * 0.6), 1);
+      in_color.xyz * light_color.xyz * (abs(normal.x) * 0.7 + abs(normal.y) * 0.8 + abs(normal.z) * 0.6), in_color.a);
 
   gl_Position = projection_matrix * view_matrix * model_matrix * 
     vec4(in_position, 1);
