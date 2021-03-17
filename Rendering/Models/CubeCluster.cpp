@@ -12,7 +12,7 @@ CubeCluster::CubeCluster(int x, int y, int z){
   d_x = x;
   d_y = y;
   d_z = z;
-  occupiedVec.reserve(DATA_SIZE);
+  //occupiedVec.reserve(DATA_SIZE);
   model_matrix = 
    {{1,0,0,0}, 
     {0,1,0,0}, 
@@ -32,9 +32,12 @@ CubeCluster::CubeCluster(std::string path, int x, int y, int z){
     {x*16,0,z*16,1}};
   std::fstream read;
   read.open(path, std::ios::in);
-  Serialize::deserialize(read, cubes);
-  Serialize::deserialize(read, occupiedVec);
-  occupied = std::unordered_set(occupiedVec.begin(), occupiedVec.end());
+  Serialize::deserialize(read, d_cubes);
+  Serialize::deserialize(read, d_occupiedVecOpaque);
+  Serialize::deserialize(read, d_occupiedVecTransparent);
+  d_occupiedOpaque = std::unordered_set(d_occupiedVecOpaque.begin(), d_occupiedVecOpaque.end());
+  d_occupiedTransparent = 
+    std::unordered_set(d_occupiedVecTransparent.begin(), d_occupiedVecTransparent.end());
 }
 
 CubeCluster::~CubeCluster(){
@@ -71,14 +74,19 @@ uint32_t CubeCluster::getIndex(const glm::vec3& coords){
 void CubeCluster::writeChunk(std::string path){
   std::fstream write;
   write.open(path, std::ios::out);
-  Serialize::serialize(write, cubes);
-  Serialize::serialize(write, occupiedVec);
+  Serialize::serialize(write, d_cubes);
+  Serialize::serialize(write, d_occupiedVecOpaque);
+  Serialize::serialize(write, d_occupiedVecTransparent);
 }
 
 void CubeCluster::createMesh(World* world){
   std::cout << "CREATE MESH " << d_x << " " << d_y << std::endl;
   d_world = world;
-  this->data = Mesher::createMesh(cubes, occupied, world, d_x, d_z);
+  d_opaqueMesh = Mesher::createMesh(d_cubes, d_occupiedOpaque, world, d_x, d_z, false);
+  d_transparentMesh = Mesher::createMesh(d_cubes, d_occupiedTransparent, world, d_x, d_z, true);
+  //TEMP TEST
+  d_osz = d_opaqueMesh.size();
+  d_opaqueMesh.insert(d_opaqueMesh.end(), d_transparentMesh.begin(), d_transparentMesh.end());
   d_ready = 1;
 }
 
@@ -90,6 +98,7 @@ void CubeCluster::createGL(){
 
   GLuint vao;
   GLuint vbo;
+  GLuint vbo1;
   //GLuint ibo;
   GLuint nbo;
 
@@ -100,7 +109,10 @@ void CubeCluster::createGL(){
   glGenBuffers(1, &vbo);
   glBindBuffer(GL_ARRAY_BUFFER, vbo);
   glBufferData(GL_ARRAY_BUFFER, 
-      sizeof(uint32_t) * data.size(), &data[0], GL_STATIC_DRAW);
+      sizeof(uint32_t) * d_opaqueMesh.size(), &d_opaqueMesh[0], GL_STATIC_DRAW);
+
+  //glBufferData(GL_ARRAY_BUFFER, 
+      //sizeof(uint32_t) * d_transparentMesh.size(), &d_transparentMesh[0], GL_STATIC_DRAW);
 
   //Index buffer
   //glGenBuffers(1, &ibo);
@@ -126,6 +138,7 @@ void CubeCluster::createGL(){
 
   this->vao = vao;
   this->vbos.push_back(vbo);
+  this->vbos.push_back(vbo1);
   //this->vbos.push_back(ibo);
   //this->vbos.push_back(nbo);
   d_ready = 2;
@@ -147,16 +160,28 @@ void CubeCluster::add(int x, int y, int z, int type){
   glm::vec3 chunk_coord = coordsInChunk(coord);
 
   int ind = getIndex(chunk_coord);
-  cubes[ind] = {(uint8_t)chunk_coord[0],(uint8_t)chunk_coord[1],(uint8_t)chunk_coord[2],(uint8_t)type};
-  occupied.insert(ind);
-  occupiedVec.push_back(ind);
+  d_cubes[ind] = {(uint8_t)chunk_coord[0],(uint8_t)chunk_coord[1],(uint8_t)chunk_coord[2],(uint8_t)type};
+  if(type == 7) {//check a transparent set later
+    d_occupiedTransparent.insert(ind);
+    d_occupiedVecTransparent.push_back(ind);
+  }
+  else{
+    d_occupiedOpaque.insert(ind);
+    d_occupiedVecOpaque.push_back(ind);
+  }
 }
 
 void CubeCluster::addChunkSpace(uint8_t x, uint8_t y, uint8_t z, uint8_t type){
   int ind = getIndex(glm::vec3(x,y,z));
-  cubes[ind] = {x,y,z,type};
-  occupied.insert(ind);
-  occupiedVec.push_back(ind);
+  d_cubes[ind] = {x,y,z,type};
+  if(type == 7) {//check a transparent set later
+    d_occupiedTransparent.insert(ind);
+    d_occupiedVecTransparent.push_back(ind);
+  }
+  else{
+    d_occupiedOpaque.insert(ind);
+    d_occupiedVecOpaque.push_back(ind);
+  }
 }
 
 void CubeCluster::remeshNeighbors(int x, int y, int z){
@@ -189,10 +214,19 @@ bool CubeCluster::remove(int x, int y, int z){
   glm::vec3 coords = coordsInChunk(glm::vec3(x,y,z));
   std::cout << "REMOVE: " << coords[0] << " " << coords[2] << std::endl;
   int i = getIndex(coords);
-  if(occupied.count(i) != 1)
+  std::cout << "COUNT: " << d_occupiedOpaque.count(i) << " " << d_occupiedTransparent.count(i) << std::endl;
+  if(d_occupiedOpaque.count(i) != 1 && d_occupiedTransparent.count(i) != 1)
     return false;
-  occupied.erase(i);
-  occupiedVec.erase(std::find(occupiedVec.begin(), occupiedVec.end(), i));
+  if(d_occupiedOpaque.count(i) == 1){
+    d_occupiedOpaque.erase(i);
+    d_occupiedVecOpaque.erase(
+        std::find(d_occupiedVecOpaque.begin(), d_occupiedVecOpaque.end(), i));
+  }
+  else{
+    d_occupiedTransparent.erase(i);
+    d_occupiedVecTransparent.erase(
+        std::find(d_occupiedVecTransparent.begin(), d_occupiedVecTransparent.end(), i));
+  }
   this->create(d_world);
   remeshNeighbors(x,y,z);
   return true;
@@ -201,9 +235,9 @@ bool CubeCluster::remove(int x, int y, int z){
 bool CubeCluster::edit(int x, int y, int z, int type){
   glm::vec3 coords = coordsInChunk(glm::vec3(x,y,z));
   int i = getIndex(coords);
-  if(occupied.count(i) != 1)
+  if(d_occupiedOpaque.count(i) != 1 && d_occupiedTransparent.count(i) != 1)
     return false;
-  cubes[i].type = type;
+  d_cubes[i].type = type;
   this->create(d_world);
   remeshNeighbors(x,y,z);
   return true;
@@ -212,7 +246,7 @@ bool CubeCluster::edit(int x, int y, int z, int type){
 bool CubeCluster::get(int x, int y, int z){
   glm::vec3 coords = coordsInChunk(glm::vec3(x,y,z));
   int i = getIndex(coords);
-  if(occupied.count(i) != 1)
+  if(d_occupiedOpaque.count(i) != 1 && d_occupiedTransparent.count(i) != 1)
     return false;
   return true;
 }
@@ -237,8 +271,30 @@ void CubeCluster::draw(const glm::mat4& projection_matrix, const glm::mat4& view
 
   glUniform1i(glGetUniformLocation(program, "wireframe"),0);
 
+  glDrawArrays(GL_TRIANGLES, 0, d_osz);
+  //glEnable(GL_BLEND); //Enable blending.
+  //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //Set blending function.
+  //glDrawArrays(GL_TRIANGLES, 0, d_transparentMesh.size());
+  //glDisable(GL_BLEND); 
+}
+
+void CubeCluster::drawTransparent(const glm::mat4& projection_matrix, const glm::mat4& view_matrix){
+  glm::vec3 light_dir = glm::normalize(glm::vec3(-1.0f, 1.0f, -1.0f));
+  glUniform3f(glGetUniformLocation(program, "light_dir"),light_dir.x, light_dir.y, light_dir.z);
+  glUniform4f(glGetUniformLocation(program, "light_color_in"),1.0f,1.0f,0.98f, 1.0f);
+  glUniform1f(glGetUniformLocation(program, "light_power_in"),1.5f);
+  glUniformMatrix4fv(glGetUniformLocation(program, "model_matrix"),
+      1, false, &model_matrix[0][0]);
+  glUniformMatrix4fv(glGetUniformLocation(program, "view_matrix"),
+      1, false, &view_matrix[0][0]);
+  glUniformMatrix4fv(glGetUniformLocation(program, "projection_matrix"), 
+      1, false, &projection_matrix[0][0]);
+  glBindVertexArray(vao);
+
+  glUniform1i(glGetUniformLocation(program, "wireframe"),0);
   glEnable(GL_BLEND); //Enable blending.
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //Set blending function.
-  glDrawArrays(GL_TRIANGLES, 0, data.size());
+  glDrawArrays(GL_TRIANGLES, d_osz, d_transparentMesh.size());
+  //glDrawArrays(GL_TRIANGLES, 0, d_transparentMesh.size());
   glDisable(GL_BLEND); 
 }

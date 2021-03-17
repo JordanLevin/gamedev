@@ -50,12 +50,47 @@ uint32_t Mesher::compressVertex(VertexFormat in, uint8_t type){
   return ret;
 }
 
+bool Mesher::renderBoundaryVertices(
+    World* world, 
+    int chunkX, 
+    int chunkZ, 
+    int cubeX, 
+    int cubeY, 
+    int cubeZ, 
+    bool transparent)
+{
+  bool ret = true;
+  CubeCluster* neighborChunk = world->getChunk(
+      glm::ivec3(chunkX, 0, chunkZ));
+  //potentially load neighborchunk here??
+  //if(neighborChunk == nullptr){
+    //neighborChunk = world->generate(chunkX, chunkZ);
+  //}
+  if(neighborChunk){
+    int neighborChunkIndex = getIndex(cubeX, cubeY, cubeZ);
+    if(transparent){
+      if(neighborChunk->getOccupiedO().count(neighborChunkIndex) != 0
+          || neighborChunk->getOccupiedT().count(neighborChunkIndex) != 0){
+        ret = false;
+      }
+    }
+    else{
+      if(neighborChunk->getOccupiedO().count(neighborChunkIndex) != 0){
+        ret = false;
+      }
+    }
+  }
+  return ret;
+}
+
 std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
     const std::unordered_set<int>& occupied, 
-    const World* world, 
+    World* world, 
     int chunkX, 
-    int chunkZ)
+    int chunkZ,
+    bool transparent)
 {
+  //std::cout << "OCCUPIED SIZE " << occupied.size() << std::endl;
   std::vector<uint32_t> ret;
   for(int i: occupied){
     int cx = chunk[i].x;
@@ -113,13 +148,7 @@ std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
     if(occupied.count(leftN) == 0 || cx == 0){
       bool renderVertices = true;
       if(cx == 0){
-        CubeCluster* neighborChunk = world->getChunk(glm::ivec3(chunkX-1, 0, chunkZ));
-        if(neighborChunk){
-          int neighborChunkIndex = getIndex(15, cy, cz);
-          if(neighborChunk->getOccupied().count(neighborChunkIndex) != 0){
-            renderVertices = false;
-          }
-        }
+        renderVertices = renderBoundaryVertices(world, chunkX-1, chunkZ, 15, cy, cz, transparent);
       }
 
       if(renderVertices){
@@ -141,13 +170,7 @@ std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
     if(occupied.count(rightN) == 0 || cx == 15){
       bool renderVertices = true;
       if(cx == 15){
-        CubeCluster* rightChunk = world->getChunk(glm::ivec3(chunkX+1, 0, chunkZ));
-        if(rightChunk){
-          int rightChunkIndex = getIndex(0, cy, cz);
-          if(rightChunk->getOccupied().count(rightChunkIndex) != 0){
-            renderVertices = false;
-          }
-        }
+        renderVertices = renderBoundaryVertices(world, chunkX+1, chunkZ, 0, cy, cz, transparent);
       }
 
       if(renderVertices){
@@ -169,13 +192,7 @@ std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
     if(occupied.count(frontN) == 0 || cz == 15){
       bool renderVertices = true;
       if(cz == 15){
-        CubeCluster* neighborChunk = world->getChunk(glm::ivec3(chunkX, 0, chunkZ+1));
-        if(neighborChunk){
-          int neighborChunkIndex = getIndex(cx, cy, 0);
-          if(neighborChunk->getOccupied().count(neighborChunkIndex) != 0){
-            renderVertices = false;
-          }
-        }
+        renderVertices = renderBoundaryVertices(world, chunkX, chunkZ+1, cx, cy, 0, transparent);
       }
 
       if(renderVertices){
@@ -197,13 +214,7 @@ std::vector<uint32_t> Mesher::createMesh(const std::vector<Cube>& chunk,
     if(occupied.count(backN) == 0 || cz == 0){
       bool renderVertices = true;
       if(cz == 0){
-        CubeCluster* neighborChunk = world->getChunk(glm::ivec3(chunkX, 0, chunkZ-1));
-        if(neighborChunk){
-          int neighborChunkIndex = getIndex(cx, cy, 15);
-          if(neighborChunk->getOccupied().count(neighborChunkIndex) != 0){
-            renderVertices = false;
-          }
-        }
+        renderVertices = renderBoundaryVertices(world, chunkX, chunkZ-1, cx, cy, 15, transparent);
       }
 
       if(renderVertices){

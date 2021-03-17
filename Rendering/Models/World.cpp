@@ -10,6 +10,7 @@
 #include <thread>
 #include <random>
 #include <utility>
+#include <algorithm>
 #include <time.h>
 
 PerlinNoise::PerlinNoise()
@@ -131,9 +132,14 @@ void World::generateChunks(int thread){
 CubeCluster* World::generate(int x, int z){
   glm::ivec2 coords(x,z);
 
-  //Check if this chunk was already generated and saved
+  //Check if this chunk was already generated and saved 
+  //TODO this will need work
   d_mtx_create.lock();
   bool found = generated.find(coords) != generated.end();
+  //if someone else already genreated the chunk return it
+  //if(CubeCluster* chunk = cubes.at(glm::ivec2(x,z))){
+    //return chunk;
+  //}
   d_mtx_create.unlock();
   if(found){
     CubeCluster* c = readChunk(x,z);
@@ -145,11 +151,10 @@ CubeCluster* World::generate(int x, int z){
 
   CubeCluster* c = new CubeCluster(x, 0, z);
   c->setProgram(ShaderManager::getShader("cubeShader"));
-  //c->add(0,0,0);
   for(int row = 0; row < 16; row++){
     for(int col = 0; col < 16; col++){
       c->addChunkSpace(row,0,col, 3);
-      c->addChunkSpace(row,1,col, 3);
+      //c->addChunkSpace(row,1,col, 3);
       int rowWorld = x*16 + row;
       int colWorld = z*16 + col;
       //overlap use varying perlin noise frequencies
@@ -158,18 +163,18 @@ CubeCluster* World::generate(int x, int z){
       height += noise.eval(glm::vec2((float)rowWorld/70.0, (float)colWorld/100.0))*4;
       height += noise.eval(glm::vec2((float)rowWorld/30.0, (float)colWorld/30.0))*3;
       height += noise.eval(glm::vec2((float)rowWorld/10.0, (float)colWorld/10.0))*1.1;
-      height += 7;
-      height = std::max((int)height, 3);
+      height += 10;
+      height = std::max((int)height, 9);
       height = std::min((int)height, 127);
         
       for(int h = 1; h < height; h++){
-        if(h < 3)
+        if(height < 10)
           c->addChunkSpace(row,h,col, 7);
-        else if(h > 30)
+        else if(h > 40)
           c->addChunkSpace(row,h,col, 2);
-        else if(h > 15)
+        else if(h > 20)
           c->addChunkSpace(row,h,col,3);
-        else if(h == 3)
+        else if(h <= 3)
           c->addChunkSpace(row,h,col,6);
         else
           c->addChunkSpace(row,h,col, 1);
@@ -275,8 +280,18 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
     cv.notify_all(); 
   }
 
+  auto comp = [this](CubeCluster* a, CubeCluster* b){
+    auto a_loc = glm::vec2(a->d_x, a->d_z);
+    auto b_loc = glm::vec2(b->d_x, b->d_z);
+    auto cam_loc = glm::vec2(this->camera->getX(), this->camera->getY());
+    return glm::length(cam_loc - a_loc) > glm::length(cam_loc - b_loc);
+  };
+  std::make_heap(ready.begin(), ready.end(), comp);
   for(CubeCluster* chunk: ready){
     chunk->draw(projection_matrix, view_matrix);
+  }
+  for(CubeCluster* chunk: ready){
+    chunk->drawTransparent(projection_matrix, view_matrix);
   }
 
   d_mtx_delete.lock();

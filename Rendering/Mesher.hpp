@@ -24,8 +24,19 @@ class Mesher {
     static std::vector<VertexFormat> createUncompressedMesh(const std::vector<WorldCube>& chunk,
         const std::unordered_set<int>& occupied);
     static std::vector<uint32_t> createMesh(const std::vector<Cube>& chunk,
-        const std::unordered_set<int>& occupied, const World* world, int chunkX, int chunkZ);
+        const std::unordered_set<int>& occupied, 
+        World* world, 
+        int chunkX, 
+        int chunkZ,
+        bool transparent);
     static uint32_t compressVertex(VertexFormat in, uint8_t type);
+    static bool renderBoundaryVertices(World* world, 
+        int chunkX, 
+        int chunkZ, 
+        int cubeX, 
+        int cubeY, 
+        int cubeZ, 
+        bool transparent);
 
 };
 

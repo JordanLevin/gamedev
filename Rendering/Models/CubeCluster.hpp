@@ -19,7 +19,6 @@ class World;
 
 class CubeCluster: public Model {
   private:
-    //Efficient meshing unfortunately requires a world pointer :(
     World* d_world;
 
     uint32_t getIndex(const glm::vec3& coord);
@@ -27,14 +26,19 @@ class CubeCluster: public Model {
     glm::vec3 coordsInChunk(const glm::vec3& coord);
 
     //Mesh data to render
-    std::vector<uint32_t> data;
-    std::vector<VertexFormat> selectedCube;
+    std::vector<uint32_t> d_opaqueMesh;
+    std::vector<uint32_t> d_transparentMesh;
+    int d_osz;
+
     //Actual entire chunk of cubes
-    std::vector<Cube> cubes = std::vector<Cube>(DATA_SIZE);
-    //Occupied cubes for the mesher to use
-    std::unordered_set<int> occupied;
-    std::vector<int> occupiedVec;
-    int n = 0; //lmao just for fun
+    std::vector<Cube> d_cubes = std::vector<Cube>(DATA_SIZE);
+
+    //Occupied cubes for the mesher to use, separate meshes are needed for transparent
+    //due to how opengl works, itll be easiest to treat them totally separate
+    std::unordered_set<int> d_occupiedOpaque;
+    std::vector<int> d_occupiedVecOpaque;
+    std::unordered_set<int> d_occupiedTransparent;
+    std::vector<int> d_occupiedVecTransparent;
 
   public: 
     int d_x, d_y, d_z;
@@ -55,11 +59,16 @@ class CubeCluster: public Model {
     bool remove(int x, int y, int z);
     bool edit(int x, int y, int z, int type);
     bool get(int x, int y, int z);
+    void drawTransparent(const glm::mat4& projection_matrix, const glm::mat4& view_matrix);
     virtual void draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix) override final;
     virtual void update() override final;
 
-    const std::unordered_set<int>& getOccupied() const{
-      return occupied;
+    //this is used for culling so only opaque matters
+    const std::unordered_set<int>& getOccupiedO() const{
+      return d_occupiedOpaque;
+    }
+    const std::unordered_set<int>& getOccupiedT() const{
+      return d_occupiedTransparent;
     }
 };
 

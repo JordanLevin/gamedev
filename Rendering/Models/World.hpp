@@ -72,7 +72,7 @@ class World : public Model{
 
     void generateChunks(int thread);
     void deleteChunks(int thread);
-    int d_render_dist = 15;
+    int d_render_dist = 10;
     std::list<std::pair<glm::ivec2, CubeCluster*>> d_erased_q; // chunk coords safe to deallocate
     std::list<std::pair<glm::ivec2, CubeCluster*>> d_write_q; // chunk coords to write to disk
     std::list<glm::ivec2> d_needed_q; //chunk coords we need to genreate
