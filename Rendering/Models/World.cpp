@@ -139,8 +139,8 @@ void World::generateChunks(int thread){
         d_needed_q.pop_front();
         lock.unlock();
         CubeCluster* c = generate(coords.x, coords.y);
-        d_generated_q.push_back(std::make_pair(coords, c));
         lock.lock();
+        d_generated_q.push_back(std::make_pair(coords, c));
     }
   }
 }
@@ -195,7 +195,7 @@ CubeCluster* World::generate(int x, int z){
       }
     }
   }
-  std::cout << x << " " << z << std::endl;
+  std::cout << "GENERATING " << x << " " << z << std::endl;
   c->d_ready = 0;
   return c;
 }
@@ -233,7 +233,7 @@ CubeCluster* World::readChunk(int x, int z){
   std::string path = std::string("WORLDDATA/") + std::to_string(x) + "_" + std::to_string(z);
   CubeCluster* c = new CubeCluster(path, x, 0, z);
   c->setProgram(ShaderManager::getShader("cubeShader"));
-  c->createMesh(this);
+  //c->createMesh(this);
   return c;
 }
 
@@ -256,6 +256,7 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
     const auto elem = d_generated_q.front();
     d_generated_q.pop_front();
     d_generated2_q.push_back(elem);
+    std::cout << "SETTING " << elem.first.x << " " << elem.first.y << " " << elem.second << std::endl;
     cubes[elem.first] = elem.second;
   }
   d_mtx_create.unlock();
@@ -295,6 +296,9 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
     }
   }
   d_mtx_mesh.unlock();
+  for(auto it: cubes){
+    std::cout << it.first[0] << " " << it.first[1] << " " << it.second << std::endl;
+  }
   for(int row = row_i; row < row_f; row++){
     for(int col = col_i; col < col_f; col++){
       glm::ivec2 coords(row, col);
@@ -311,7 +315,7 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
       }
       else{
         d_mtx_create.lock();
-        //std::cout << "ADDING TO NEEDED\n";
+        std::cout << "ADDING TO NEEDED " << coords.x << " " << coords.y << std::endl;
         d_needed_q.push_back(coords);
         cubes[coords] = nullptr;
         d_mtx_create.unlock();
@@ -353,13 +357,11 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
   }
 
   d_mtx_delete.lock();
-  //while(!d_erased_q.empty()){
   auto it1 = d_erased_q.begin();
   while(it1 != d_erased_q.end()){
     const auto& chunk = *it1;
     if(chunk.second->d_ready == 2){
       std::cout << "deleting " << chunk.first.x << " " << chunk.first.y << std::endl;
-      //std::cout << "deleting " << chunk.second << std::endl;
       delete chunk.second;
       it1 = d_erased_q.erase(it1);
     }
