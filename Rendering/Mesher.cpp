@@ -62,10 +62,6 @@ bool Mesher::renderBoundaryVertices(
   bool ret = true;
   CubeCluster* neighborChunk = world->getChunk(
       glm::ivec3(chunkX, 0, chunkZ));
-  //potentially load neighborchunk here??
-  //if(neighborChunk == nullptr){
-    //neighborChunk = world->generate(chunkX, chunkZ);
-  //}
   if(neighborChunk){
     int neighborChunkIndex = getIndex(cubeX, cubeY, cubeZ);
     if(transparent){

@@ -80,7 +80,7 @@ void CubeCluster::writeChunk(std::string path){
 }
 
 void CubeCluster::createMesh(World* world){
-  std::cout << "CREATE MESH " << d_x << " " << d_y << std::endl;
+  std::cout << "CREATE MESH " << d_x << " " << d_z << std::endl;
   d_world = world;
   d_opaqueMesh = Mesher::createMesh(d_cubes, d_occupiedOpaque, world, d_x, d_z, false);
   d_transparentMesh = Mesher::createMesh(d_cubes, d_occupiedTransparent, world, d_x, d_z, true);

@@ -47,7 +47,7 @@ class CubeCluster: public Model {
     CubeCluster(std::string path, int x, int y, int z);
     ~CubeCluster();
 
-    int d_ready = 0;
+    int d_ready = -1;
     void writeChunk(std::string path);
     void create(World* world);
     void createMesh(World* world);

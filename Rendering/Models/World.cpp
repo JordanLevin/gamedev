@@ -98,6 +98,31 @@ void World::deleteChunks(int thread){
   }
 }
 
+void World::generateMeshes(){
+  std::unique_lock<std::mutex> lock(d_mtx_mesh);
+  while(true){
+    if(!camera){
+      continue;
+    }
+    cv.wait(lock);
+
+    std::list<CubeCluster*> chunks;
+    while(true){
+        if(d_needmesh_q.empty()){
+          break;
+        }
+        auto chunk = d_needmesh_q.front();
+        CubeCluster* c = chunk.second;
+        d_needmesh_q.pop_front();
+        lock.unlock();
+        c->createMesh(this);
+        d_meshed_q.push_back(chunk);
+        lock.lock();
+    }
+  }
+
+}
+
 void World::generateChunks(int thread){
   std::unique_lock<std::mutex> lock(d_mtx_create);
   while(true){
@@ -106,7 +131,6 @@ void World::generateChunks(int thread){
     }
     cv.wait(lock);
 
-    std::list<CubeCluster*> chunks_generated;
     while(true){
         if(d_needed_q.empty()){
           break;
@@ -115,17 +139,9 @@ void World::generateChunks(int thread){
         d_needed_q.pop_front();
         lock.unlock();
         CubeCluster* c = generate(coords.x, coords.y);
-        chunks_generated.push_back(c);
+        d_generated_q.push_back(std::make_pair(coords, c));
         lock.lock();
     }
-    //Dont create mesh until after generating to allow for the inter chunk vertex culling
-    //ISSUE: race condition with chunks being deleted between mesh creation and initial gen
-    lock.unlock();
-    for(CubeCluster* c: chunks_generated){
-      //std::cout << "Creating mesh for " << c << std::endl;
-      c->createMesh(this);
-    }
-    lock.lock();
   }
 }
 
@@ -137,15 +153,13 @@ CubeCluster* World::generate(int x, int z){
   d_mtx_create.lock();
   bool found = generated.find(coords) != generated.end();
   //if someone else already genreated the chunk return it
-  //if(CubeCluster* chunk = cubes.at(glm::ivec2(x,z))){
-    //return chunk;
+  //if(cubes.find(coords)){
+    //d_mtx_create.unlock();
+    //return cubes.at(coords);
   //}
   d_mtx_create.unlock();
   if(found){
     CubeCluster* c = readChunk(x,z);
-    d_mtx_create.lock();
-    d_generated_q.push_back(std::make_pair(coords, c));
-    d_mtx_create.unlock();
     return c;
   }
 
@@ -182,9 +196,7 @@ CubeCluster* World::generate(int x, int z){
     }
   }
   std::cout << x << " " << z << std::endl;
-  d_mtx_create.lock();
-  d_generated_q.push_back(std::make_pair(coords, c));
-  d_mtx_create.unlock();
+  c->d_ready = 0;
   return c;
 }
 
@@ -192,15 +204,20 @@ void World::create(){
   outlineCube.setProgram(ShaderManager::getShader("cubeShader2"));
   int max_threads = 4;
   int gen_threads = (int)(max_threads-1)/2;
+  int mesh_threads = std::min(max_threads-gen_threads-1, 1);
+  int write_threads = std::min(max_threads-gen_threads-mesh_threads-1, 1);
   for(int i = 0; i < gen_threads; i++){
     d_world_gen.push_back(std::thread(&World::generateChunks, this, i));
     d_world_gen[i].detach();
   }
-  for(int i = 0; i < max_threads-gen_threads-1; i++){
-    d_world_gen.push_back(std::thread(&World::deleteChunks, this, i));
+  for(int i = 0; i < mesh_threads; i++){
+    d_world_gen.push_back(std::thread(&World::generateMeshes, this));
     d_world_gen[i+gen_threads].detach();
   }
-  //noise.generateVectors();
+  for(int i = 0; i < write_threads; i++){
+    d_world_gen.push_back(std::thread(&World::deleteChunks, this, i));
+    d_world_gen[i+gen_threads+mesh_threads].detach();
+  }
 }
 
 void World::setCamera(Camera* camera_){
@@ -227,16 +244,57 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
   int col_f = (camera->getZ()/16) + d_render_dist;
   std::vector<CubeCluster*> ready;
 
-  //std::cout << "Erased: " << d_erased_q.size() << std::endl;
-  //std::cout << "write: " << d_write_q.size() << std::endl;
-  //std::cout << "needed: " << d_needed_q.size() << std::endl;
-  //std::cout << "generated: " << d_generated_q.size() << std::endl;
+  std::cout << "Erased: " << d_erased_q.size() << std::endl;
+  std::cout << "write: " << d_write_q.size() << std::endl;
+  std::cout << "needed: " << d_needed_q.size() << std::endl;
+  std::cout << "generated: " << d_generated_q.size() << std::endl;
+  std::cout << "generated2: " << d_generated2_q.size() << std::endl;
+  std::cout << "needmesh: " << d_needmesh_q.size() << std::endl;
 
+  d_mtx_create.lock();
   while(!d_generated_q.empty()){
     const auto elem = d_generated_q.front();
     d_generated_q.pop_front();
+    d_generated2_q.push_back(elem);
     cubes[elem.first] = elem.second;
   }
+  d_mtx_create.unlock();
+  d_mtx_mesh.lock();
+  auto it2 = d_generated2_q.begin();
+  while(it2 != d_generated2_q.end()){
+    //Need to verify chunks are both in cubes AND not null..kinda a mess
+    auto chunk1it = cubes.find(glm::ivec2(it2->first[0]+1, it2->first[1]));
+    auto chunk2it = cubes.find(glm::ivec2(it2->first[0]-1, it2->first[1]));
+    auto chunk3it = cubes.find(glm::ivec2(it2->first[0], it2->first[1]+1));
+    auto chunk4it = cubes.find(glm::ivec2(it2->first[0], it2->first[1]-1));
+
+    bool chunk1 = false;
+    bool chunk2 = false;
+    bool chunk3 = false;
+    bool chunk4 = false;
+    if(chunk1it != cubes.end()){
+      chunk1 = chunk1it->second != nullptr;
+    }
+    if(chunk2it != cubes.end()){
+      chunk2 = chunk2it->second != nullptr;
+    }
+    if(chunk3it != cubes.end()){
+      chunk3 = chunk3it->second != nullptr;
+    }
+    if(chunk4it != cubes.end()){
+      chunk4 = chunk4it->second != nullptr;
+    }
+
+    if(chunk1 && chunk2 && chunk3 && chunk4){
+      std::cout << "REQUESTING MESH " << it2->first[0] << " " << it2->first[1] << std::endl;
+      d_needmesh_q.push_back(*it2);
+      it2 = d_generated2_q.erase(it2);
+    }
+    else{
+      it2++;
+    }
+  }
+  d_mtx_mesh.unlock();
   for(int row = row_i; row < row_f; row++){
     for(int col = col_i; col < col_f; col++){
       glm::ivec2 coords(row, col);
