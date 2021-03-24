@@ -87,7 +87,7 @@ void World::deleteChunks(int thread){
       if(d_write_q.empty()){
         break;
       }
-      const auto chunk = d_write_q.front();
+      const std::pair<glm::ivec2, CubeCluster*> chunk = d_write_q.front();
       //std::cout << "writing " << chunk.first.x << " " << chunk.first.y << std::endl;
       d_write_q.pop_front();
       lock.unlock();
@@ -111,7 +111,7 @@ void World::generateMeshes(){
         if(d_needmesh_q.empty()){
           break;
         }
-        auto chunk = d_needmesh_q.front();
+        std::pair<glm::ivec2, CubeCluster*> chunk = d_needmesh_q.front();
         CubeCluster* c = chunk.second;
         d_needmesh_q.pop_front();
         lock.unlock();
@@ -135,7 +135,7 @@ void World::generateChunks(int thread){
         if(d_needed_q.empty()){
           break;
         }
-        const glm::ivec2& coords = d_needed_q.front();
+        const glm::ivec2 coords = d_needed_q.front();
         d_needed_q.pop_front();
         lock.unlock();
         CubeCluster* c = generate(coords.x, coords.y);
@@ -253,7 +253,7 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
 
   d_mtx_create.lock();
   while(!d_generated_q.empty()){
-    const auto elem = d_generated_q.front();
+    const std::pair<glm::ivec2, CubeCluster*> elem = d_generated_q.front();
     d_generated_q.pop_front();
     d_generated2_q.push_back(elem);
     std::cout << "SETTING " << elem.first.x << " " << elem.first.y << " " << elem.second << std::endl;
