@@ -82,7 +82,7 @@ class World : public Model{
     void generateMeshes();
     void generateChunks(int thread);
     void deleteChunks(int thread);
-    int d_render_dist = 10;
+    int d_render_dist = 16;
     //TODO add guarantees for each queue
     // chunk coords safe to deallocate
     std::list<std::pair<glm::ivec2, CubeCluster*>> d_erased_q; 

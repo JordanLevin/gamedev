@@ -48,6 +48,14 @@ void PhysicsObject::physicsUpdate(){
   d_prePhysics();
   d_vel += d_acc;
   //printPhys("After update");
+
+  //Handle if the player ends up clipped into a block, kinda hacky for now
+  while(willCollide(glm::vec3(0,0,0))){
+      d_pos[1] = std::ceil(d_pos[1] + 0.001)+0.001;
+      syncAABB();
+  }
+
+  //Handle collisions so the player slides nicely
   if(willCollide(d_vel)){
     auto x_vel = glm::vec3(d_vel[0], 0, 0);
     auto y_vel = glm::vec3(0, d_vel[1], 0);

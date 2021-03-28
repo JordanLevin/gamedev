@@ -296,9 +296,9 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
     }
   }
   d_mtx_mesh.unlock();
-  for(auto it: cubes){
-    std::cout << it.first[0] << " " << it.first[1] << " " << it.second << std::endl;
-  }
+  //for(auto it: cubes){
+    //std::cout << it.first[0] << " " << it.first[1] << " " << it.second << std::endl;
+  //}
   for(int row = row_i; row < row_f; row++){
     for(int col = col_i; col < col_f; col++){
       glm::ivec2 coords(row, col);
@@ -383,8 +383,6 @@ float World::maxT(float f, bool dir){
     return (f) - std::floor(f);
 }
 
-//POTENTIAL ISSUE, this does not work at the axis, potentially related to the cube
-//coordinates overlapping
 std::optional<glm::vec3> World::selectBlock(const glm::vec3& location, const glm::vec3& direction, int dist, bool exact){
   glm::vec3 point = location;
   //http://www.cse.yorku.ca/~amana/research/grid.pdf ray cast algo
@@ -466,79 +464,64 @@ void World::breakBlock(const glm::vec3& location, const glm::vec3& direction){
 }
 
 void World::placeBlock(const glm::vec3& location, const glm::vec3& direction){
-  auto block = selectBlock(location, direction, 5, false);
-  if(!block)
-    return;
-  auto blockVal = block.value();
+  glm::vec3 point = location;
+  glm::vec3 prev = location;
+  float dist= 5;
+
+  float tMaxX, tMaxY, tMaxZ;
   float stepx = (direction[0]> 0)*2-1;
   float stepy = (direction[1]> 0)*2-1;
   float stepz = (direction[2]> 0)*2-1;
-  bool usex = false;
-  bool usey = false;
-  bool usez = false;
-  //Determine the amount to scale direction to reach the x,y,z planes at the target voxel
-  float tMaxX = std::abs((location[0]-blockVal[0] + (stepx))/direction[0]);
-  float tMaxY = std::abs((location[1]-blockVal[1] + (stepy))/direction[1]);
-  float tMaxZ = std::abs((location[2]-blockVal[2] + (stepz))/direction[2]);
+  float tDeltaX = abs(1.0/direction[0]);
+  float tDeltaY = abs(1.0/direction[1]);
+  float tDeltaZ = abs(1.0/direction[2]);
+  tMaxX = maxT(point[0], direction[0] > 0)/std::abs(direction[0]);
+  tMaxY = maxT(point[1], direction[1] > 0)/std::abs(direction[1]);
+  tMaxZ = maxT(point[2], direction[2] > 0)/std::abs(direction[2]);
 
-  //Attempt to try all 3 T values, the idea is to throw away the values where
-  //the point reached isnt actually on the surface of the target voxel
+  for(;;){
+    prev = point;
+    if(std::abs(glm::length(point-location)) > dist){
+      return;
+    }
+    if(tMaxX < tMaxY) 
+    {
+      if(tMaxX < tMaxZ) 
+      {
+        point[0] = point[0]  + stepx;
+        tMaxX= tMaxX + tDeltaX;
+      } else  
+      {
+        point[2]= point[2] + stepz;
+        tMaxZ= tMaxZ + tDeltaZ;
+      }
+    } 
+    else  {
+      if(tMaxY < tMaxZ) {
+        point[1]= point[1] + stepy;
+        tMaxY= tMaxY + tDeltaY;
+      } else  
+      {
+        point[2]= point[2] + stepz;
+        tMaxZ= tMaxZ + tDeltaZ;
+      }
+    }
 
-  //std::cout << "tvals: " << tMaxX << " " << tMaxY << " " << tMaxZ << std::endl;
-  //std::cout << "blockvals: " << blockVal[0] << " " << blockVal[1] << " " << blockVal[2] << std::endl;
-  glm::vec3 temp = location;
-  temp += direction*tMaxX;
-  if(std::floor(temp[1]) == blockVal[1] && std::floor(temp[2]) == blockVal[2]){
-    //std::cout << "temp: " << temp[0] << " " << temp[1] << " " << temp[2] << std::endl;
-    usex = true;
+    //find points chunk and check if non empty
+    CubeCluster* chunk = getChunkFromWorldSpace(point);
+    if(!chunk){
+      //chunk may not exist due to multithreading
+      return;
+    }
+    glm::vec3 ret = glm::vec3(std::floor(point[0]), std::floor(point[1]), std::floor(point[2]));
+    if(chunk->get(ret[0], ret[1], ret[2])){
+      CubeCluster* pchunk = getChunkFromWorldSpace(prev);
+      pchunk->add(std::floor(prev[0]), std::floor(prev[1]), std::floor(prev[2]), 5);
+      pchunk->create(this);
+      outlineBlock(location, direction);
+      return;
+    }
   }
-  temp = location;
-  temp += direction*tMaxY;
-  if(std::floor(temp[0]) == blockVal[0] && std::floor(temp[2]) == blockVal[2]){
-    //std::cout << "temp: " << temp[0] << " " << temp[1] << " " << temp[2] << std::endl;
-    usey = true;
-  }
-  temp = location;
-  temp += direction*tMaxZ;
-  if(std::floor(temp[0]) == blockVal[0] && std::floor(temp[1]) == blockVal[1]){
-    usez = true;
-    //std::cout << "temp: " << temp[0] << " " << temp[1] << " " << temp[2] << std::endl;
-  }
-
-  //There can theoretically be multiple candidates if the camera is between the 2 opposing
-  //faces of the voxel (this results in the ray hitting a face that isnt actually visible)
-  //TODO there must be a better way to handle this issue
-  if(usex && usey){
-    if(tMaxX < tMaxY)
-      blockVal[0] -= stepx;
-    else
-      blockVal[1] -= stepy;
-  }
-  else if(usey && usez){
-    if(tMaxY < tMaxZ)
-      blockVal[1] -= stepy;
-    else
-      blockVal[2] -= stepz;
-  }
-  else if(usex && usez){
-    if(tMaxX < tMaxZ)
-      blockVal[0] -= stepx;
-    else
-      blockVal[2] -= stepz;
-  }
-  else if(usex)
-    blockVal[0] -= stepx;
-  else if(usey)
-    blockVal[1] -= stepy;
-  else if(usez)
-    blockVal[2] -= stepz;
-  //std::cout << "after: " << blockVal[0] << " " << blockVal[1] << " " << blockVal[2] << std::endl;
-  CubeCluster* chunk = getChunkFromWorldSpace(blockVal);
-  if(!chunk)
-    return;
-  chunk->add(std::floor(blockVal[0]), std::floor(blockVal[1]), std::floor(blockVal[2]), 5);
-  chunk->create(this);
-  outlineBlock(location, direction);
 }
 
 void World::outlineBlock(const glm::vec3& location, const glm::vec3& direction){
