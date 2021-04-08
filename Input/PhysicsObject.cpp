@@ -1,10 +1,21 @@
 #include "PhysicsObject.hpp"
+#include "../Lib/Logger.hpp"
+
+SET_LOG_CATEGORY("PHYSICS");
 
 PhysicsObject::PhysicsObject(std::function<void()> prePhysics,
     std::function<void()> postPhysics):
   d_prePhysics{prePhysics},
   d_postPhysics{postPhysics}
 {
+}
+
+void PhysicsObject::printPhys(std::string msg){
+  LOG_DEBUG(msg);
+  std::cout << msg << std::endl;
+  std::cout << "POS x: " << d_pos[0] << " y: " << d_pos[1] << " z: " << d_pos[2] << "  " << 
+               "VEL x: " << d_vel[0] << " y: " << d_vel[1] << " z: " << d_vel[2] <<
+               "| g: " << d_on_ground << std::endl;
 }
 
 void PhysicsObject::syncAABB(){

@@ -5,6 +5,7 @@
 
 #include "../Rendering/Models/World.hpp"
 #include "Camera.hpp"
+#include "../Lib/Logger.hpp"
 
 
 Player::Player(World* world, Camera* camera): PhysicsObject(
@@ -15,12 +16,6 @@ Player::Player(World* world, Camera* camera): PhysicsObject(
   d_camera = camera;
 }
 
-void Player::printPhys(std::string msg){
-  std::cout << msg << std::endl;
-  std::cout << "POS x: " << d_pos[0] << " y: " << d_pos[1] << " z: " << d_pos[2] << "  " << 
-               "VEL x: " << d_vel[0] << " y: " << d_vel[1] << " z: " << d_vel[2] <<
-               "| g: " << d_on_ground << std::endl;
-}
 
 void Player::syncCamera(){
   //d_player_mtx.lock();

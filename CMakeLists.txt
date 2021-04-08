@@ -13,6 +13,7 @@ add_subdirectory(Managers)
 add_subdirectory(Core)
 add_subdirectory(Rendering)
 add_subdirectory(Input)
+add_subdirectory(Lib)
 
 add_executable(game main.cpp)
 

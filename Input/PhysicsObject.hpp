@@ -34,6 +34,7 @@ class PhysicsObject {
 
     bool willCollide(const glm::vec3& vel);
     glm::vec3 calculateSlide(const glm::vec3& vel);
+    void printPhys(std::string msg);
     void syncAABB();
 
 };

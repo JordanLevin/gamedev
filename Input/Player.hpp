@@ -17,10 +17,6 @@ class Player : public PhysicsObject {
     std::mutex d_player_mtx;
     bool d_flying = false;
 
-    /**
-      * Debug funcs
-      */
-    void printPhys(std::string msg);
 
   public:
     std::set<uint8_t> d_keys;
