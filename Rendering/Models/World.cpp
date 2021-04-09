@@ -13,6 +13,10 @@
 #include <algorithm>
 #include <time.h>
 
+#include "../../Lib/Logger.hpp"
+
+SET_LOG_CATEGORY("WORLD");
+
 PerlinNoise::PerlinNoise()
 {
   unsigned seed = (int)time(NULL);
@@ -195,7 +199,7 @@ CubeCluster* World::generate(int x, int z){
       }
     }
   }
-  std::cout << "GENERATING " << x << " " << z << std::endl;
+  LOG_INFO("GENERATING " + std::to_string(x) + " " + std::to_string(z));
   c->d_ready = 0;
   return c;
 }
@@ -244,19 +248,18 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
   int col_f = (camera->getZ()/16) + d_render_dist;
   std::vector<CubeCluster*> ready;
 
-  std::cout << "Erased: " << d_erased_q.size() << std::endl;
-  std::cout << "write: " << d_write_q.size() << std::endl;
-  std::cout << "needed: " << d_needed_q.size() << std::endl;
-  std::cout << "generated: " << d_generated_q.size() << std::endl;
-  std::cout << "generated2: " << d_generated2_q.size() << std::endl;
-  std::cout << "needmesh: " << d_needmesh_q.size() << std::endl;
+  LOG_DEBUG("Erased: " + std::to_string(d_erased_q.size()));
+  LOG_DEBUG("write: " + std::to_string(d_write_q.size()));
+  LOG_DEBUG("needed: " + std::to_string(d_needed_q.size()));
+  LOG_DEBUG("generated: " + std::to_string(d_generated_q.size()));
+  LOG_DEBUG("generated2: " + std::to_string(d_generated2_q.size()));
+  LOG_DEBUG("needmesh: " + std::to_string(d_needmesh_q.size()));
 
   d_mtx_create.lock();
   while(!d_generated_q.empty()){
     const std::pair<glm::ivec2, CubeCluster*> elem = d_generated_q.front();
     d_generated_q.pop_front();
     d_generated2_q.push_back(elem);
-    std::cout << "SETTING " << elem.first.x << " " << elem.first.y << " " << elem.second << std::endl;
     cubes[elem.first] = elem.second;
   }
   d_mtx_create.unlock();
@@ -287,7 +290,9 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
     }
 
     if(chunk1 && chunk2 && chunk3 && chunk4){
-      std::cout << "REQUESTING MESH " << it2->first[0] << " " << it2->first[1] << std::endl;
+      LOG_DEBUG("REQUESTING MESH " + 
+          std::to_string(it2->first[0]) + " " + 
+          std::to_string(it2->first[1]));
       d_needmesh_q.push_back(*it2);
       it2 = d_generated2_q.erase(it2);
     }
@@ -315,7 +320,7 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
       }
       else{
         d_mtx_create.lock();
-        std::cout << "ADDING TO NEEDED " << coords.x << " " << coords.y << std::endl;
+        LOG_DEBUG("ADDING TO NEEDED " + std::to_string(coords.x) + " " + std::to_string(coords.y));
         d_needed_q.push_back(coords);
         cubes[coords] = nullptr;
         d_mtx_create.unlock();
@@ -361,7 +366,7 @@ void World::draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
   while(it1 != d_erased_q.end()){
     const auto& chunk = *it1;
     if(chunk.second->d_ready == 2){
-      std::cout << "deleting " << chunk.first.x << " " << chunk.first.y << std::endl;
+      LOG_INFO("deleting " + std::to_string(chunk.first.x) + " " + std::to_string(chunk.first.y));
       delete chunk.second;
       it1 = d_erased_q.erase(it1);
     }
@@ -455,9 +460,14 @@ void World::breakBlock(const glm::vec3& location, const glm::vec3& direction){
   if(!block)
     return;
   auto blockVal = block.value();
-  std::cout << "BREAKBLOCK: " << blockVal[0] << " " << blockVal[1] << " "  << blockVal[2] << std::endl;
+  LOG_DEBUG("BREAKBLOCK: " + 
+      std::to_string(blockVal[0]) + " " + 
+      std::to_string(blockVal[1]) + " "  + 
+      std::to_string(blockVal[2]));
   CubeCluster* chunk = getChunkFromWorldSpace(blockVal);
-  std::cout << "CHUNK: " << chunk->d_x << " " << chunk->d_z << std::endl;
+  LOG_DEBUG("CHUNK: " + 
+      std::to_string(chunk->d_x) + " " + 
+      std::to_string(chunk->d_z));
   bool res = chunk->remove(blockVal[0], blockVal[1], blockVal[2]);
   std::cout << res << std::endl;
   outlineBlock(location, direction);
@@ -553,7 +563,9 @@ CubeCluster* World::getChunkFromWorldSpace(const glm::vec3& coords) const{
     return chunk;
   }
   catch (const std::exception& e){
-    std::cout << "getChunkFromWorldSpace failed: x: " << x << " z: " << z <<std::endl;
+    LOG_WARNING("getChunkFromWorldSpace failed: x: " + 
+        std::to_string(x) + " z: " + 
+        std::to_string(z));
   }
   return nullptr;
 }

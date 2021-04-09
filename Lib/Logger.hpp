@@ -10,26 +10,20 @@
 #include <unordered_map>
 #include <ostream>
 #include <iostream>
+#include <iomanip>
 
 #define SET_LOG_CATEGORY(x) static const std::string __logger_category = x
-#define __LOG_LEVEL 4
 
-#if __LOG_LEVEL >= 5
-#define LOG_DEBUG \
-  __LOGGER.logMetaData(__logger_category, "DEBUG"); \
-  __LOGGER
-#else
-#define LOG_DEBUG doot
-#endif
-
-//#define LOG_INFO(x)  \
-  //if constexpr(__LOGGER.d_level >= 4) Logger::INFO(x, __logger_category)
-//#define LOG_ERROR(x)  \
-  //if constexpr(__LOGGER.d_level >= 3) Logger::ERROR(x, __logger_category)
-//#define LOG_WARNING(x) \
-  //if constexpr(__LOGGER.d_level >= 2) Logger::WARNING(x, __logger_category)
-//#define LOG_FATAL(x)  \
-  //if constexpr(__LOGGER.d_level >= 1) Logger::FATAL(x, __logger_category)
+#define LOG_DEBUG(x)  \
+  if constexpr(Logger::d_level >= 5) Logger::DEBUG(x, __logger_category)
+#define LOG_INFO(x)  \
+  if constexpr(Logger::d_level >= 4) Logger::INFO(x, __logger_category)
+#define LOG_ERROR(x)  \
+  if constexpr(Logger::d_level >= 3) Logger::ERROR(x, __logger_category)
+#define LOG_WARNING(x) \
+  if constexpr(Logger::d_level >= 2) Logger::WARNING(x, __logger_category)
+#define LOG_FATAL(x)  \
+  if constexpr(Logger::d_level >= 1) Logger::FATAL(x, __logger_category)
 
 /**
  * Logger will log messages from different sources at different levels
@@ -38,41 +32,55 @@
  */
 class Logger {
   private:
-    std::mutex d_lock;
+    inline static std::mutex d_lock;
 
-    std::unordered_map<std::string, int> d_stats;
-    std::ostream& d_stream = std::cout;
+    inline static std::unordered_map<std::string, int> d_stats;
+    inline static constexpr std::ostream& d_stream = std::cout;
 
-
-  public:
-    int d_log_level = 4;
-
-    void logMetaData(std::string category, std::string level){
+    static void log(std::string msg, std::string category, std::string level){
       d_lock.lock();
       std::time_t now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+      auto time = std::gmtime(&now);
+      auto timestamp = std::put_time(time, "%Y-%m-%d %H:%M:%S");
       d_stream << 
-        std::ctime(&now) << " " << 
-        std::this_thread::get_id() << " " <<  
-        level << " " << 
-        category << ": ";
+      level << " " << 
+      timestamp << " " << 
+      std::this_thread::get_id() << " " <<  
+      category << ": " << 
+      msg << 
+      std::endl;
       d_lock.unlock();
     }
 
-    operator std::ostream(){
-      return d_stream;
+  public:
+    static constexpr int d_level = 3;
+
+    static void DEBUG(std::string msg, std::string category){
+      log(msg, category, "DEBUG");
+    }
+    static void INFO(std::string msg, std::string category){
+      log(msg, category, "INFO");
+    }
+    static void ERROR(std::string msg, std::string category){
+      log(msg, category, "ERROR");
+    }
+    static void WARNING(std::string msg, std::string category){
+      log(msg, category, "WARNING");
+    }
+    static void FATAL(std::string msg, std::string category){
+      log(msg, category, "FATAL");
     }
 
-    template<class T>
-    Logger& operator<<(const T& data){
-      d_lock.lock();
-      d_stream << data;
-      d_lock.unlock();
-      return *this;
-    }
+    //operator std::ostream(){
+      //return d_ostream;
+    //}
+
+    //template<class T>
+    //Logger& operator<<(const T& data){
+      //d_ostream << data;
+    //}
 
 };
-
-Logger __LOGGER;
 
 
 #endif
